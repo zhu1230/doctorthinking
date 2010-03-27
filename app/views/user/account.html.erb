@@ -1,0 +1,76 @@
+<style type="text/css">
+<!--
+body {font-family:Arial, Helvetica, sans-serif;margin:0;font-size:12px;}
+a {font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#002850;}
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;color:#002850;}
+a:hover {text-decoration:underline;color:#002850;}
+a:active {text-decoration:none;color:#002850;}
+h1,h2,h3,p,ul,li {margin:0;padding:0;}
+ul,li {list-style-type:none;list-style-images:none;}
+.nowpsn {width:880px;padding:0 10px;height:30px;margin:10px auto;border-bottom:1px solid #d8d8d8;clear:both;}
+.nowpsn h1 {font:normal 18px "黑体";float:left;line-height:30px;}
+.nowpsn span {font-size:12px;float:right;line-height:30px;}
+.area {width:900px;margin:0 auto;}
+.area .nav {width:156px;float:left;overflow:hidden;}
+.area .nav .header,.area .nav .footer {width:156px;height:8px;background:url(/images/bg.gif) left top no-repeat;float:left;overflow:hidden;}
+.area .nav .footer {background:url(/images/bg.gif) left -8px no-repeat;}
+.area .nav ul {width:154px;float:left;border-left:1px solid #C7E6F8;border-right:1px solid #C7E6F8;background:#F7FAFF;}
+.area .nav ul li {width:134px;line-height:22px;padding-left:20px;float:left;}
+.area .nav ul h2 {width:134px;line-height:26px;font-size:12px;padding-left:20px;background:url(/images/icon.gif) 10px -128px no-repeat;}
+.area .cont {width:730px;float:right;}
+.area .cont ul {width:730px;float:left;}
+.area .cont li {width:730px;float:left;}
+.area .cont li h3 {font-size:12px;line-height:22px;color:#FF9C16;float:left;padding:0 10px;}
+.area .cont li span {font-weight:bold;line-height:22px;color:#003A62;float:right;padding:0 10px;}
+.area .cont li p span {width:730px;float:left;border-top:1px solid #d8d8d8;text-indent:1em;line-height:22px;padding:0px 0px 10px 0; margin-bottom:20px;}
+-->
+</style>
+
+<div class="nowpsn">
+	<h1>个人账户</h1>
+    <span><a href="#">首页</a> &gt; <a href="#"><u>个人账户</u></a></span>
+</div>
+<div class="area">
+	<div class="nav">
+    	<div class="header"></div>
+<%=render :partial=>"shared/account_menu"%>
+        <div class="footer"></div>
+    </div>
+    <div class="cont">
+    	<ul>
+        	<li>
+                <h3>昵称</h3><span>
+                <a id="name_edit">修改</a></span>
+                <p><%=in_place_text_field :user,'name',{:external_control => 'name_edit'}%></p>
+            </li>
+            <li>
+                <h3>电子邮件</h3><span>
+                <a id='mail_edit'>修改</a></span>
+                <p><%=in_place_text_field :user,'email',{:click_to_edit_text => '编辑',:external_control => 'mail_edit'}%></p>
+            </li>
+            <li>
+                <h3>科室</h3>
+                <span>
+                <a id='edit_keshi'>修改</a></span>
+                <p><%=in_place_select :user,'keshiinplace',{:choices=>$ccc,:external_control => 'edit_keshi'}%></p>
+            </li>
+            <li>
+                <h3>职称</h3><span>
+                <a id='edit_zhicheng'>修改</a></span>
+                <p><%=in_place_select :user,'zhicheng_title',{:choices=>$zhicheng.invert.to_a,:external_control => 'edit_zhicheng'}%></p>
+            </li>
+            <li>
+                <h3>个人说明</h3><span>
+                <a id='edit_buchong'>修改</a></span>
+                <p><%=in_place_text_area :user,'buchong',{:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;",:external_control => 'edit_buchong'}%></p>
+            </li>
+            <li>
+                <h3>接收社区邮件选项</h3>
+                <span>
+                <a id='edit_sub'>修改选项</a></span>
+                <p><%=in_place_radio_collection :user,'sub_title',{:choices=>[['接收','1'],['不接收','0']],:checked=>true,:external_control => 'edit_sub'}%></p>
+            </li>
+        </ul>
+    </div>
+</div>

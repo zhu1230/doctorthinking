@@ -1,0 +1,3 @@
+<%= !logged_in? ? "精华":link_to_remote("精华",:url=>{:controller=>'misc/rank',:action=>'rank_bingli_info',:id=>bingli_info.id,:rank_tag=>'perfect'})%>(<font id='perfect'><%=bingli_info.perfect.size%></font>)
+<%= !logged_in? ? "良好":link_to_remote("良好",:url=>{:controller=>'misc/rank',:action=>'rank_bingli_info',:id=>bingli_info.id,:rank_tag=>'fine'})%>(<font id='fine'><%=bingli_info.fine.size%></font>)
+<%= !logged_in? ? "隐藏":link_to_remote("隐藏",:url=>{:controller=>'misc/rank',:action=>'rank_bingli_info',:id=>bingli_info.id,:rank_tag=>'hide'})%>(<font id='hide'><%=bingli_info.hide.size%></font>)

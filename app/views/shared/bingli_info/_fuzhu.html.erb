@@ -1,0 +1,16 @@
+<%@type=FuzhuType.find(:all,:conditions=>"parent_id=0") %>
+<div id="fuzhu_id[<%=id%>]">
+  <br>
+  <%if id>0%> <p style="width:860px;height:30px;line-height:30px;margin:0px auto;background:url(/images/line3.gif) 0px 15px repeat-x;display:block;"><%end%>
+    <span class="tab"><h1>检查类型：</h1><%=select_tag "fuzhu[#{id}][type]",options_for_select([['请选择','']])+options_from_collection_for_select(@type,:id,:title),{:prompt=>"请选择","onchange"=>remote_function(:url=>{:action=>'get_select'},:with=>"'parent_id='+value+'_'+id")} -%>
+        <div id="typechilds[<%=id%>]"></div>
+    </span>
+    <span class="tab"><h1>结果描述：</h1><%=text_area_tag "fuzhu[#{id}][content]",'',:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;" %>
+    </span>
+    <div id="file_upload_scope[<%=id%>]">
+        <span class="tab"><h1>相关附件：</h1><%=file_field_tag "fuzhu[#{id}][file][]",:id=>"upload_file[#{id}]" %><%=link_to_function '新增附件',"new Insertion.Before('bottom[#{id}]','<span class=\"tab\"><h1>相关附件：</h1>'+$('upload_file[#{id}]').outerHTML+'</span>');",:style=>"padding:0px 0px 0px 30px" %><%=link_to_function '×取消',"$(\'fuzhu_id[#{id}]\').remove()",:style=>"display:block; width:100px; height:50px; line-height:30px; float:right; padding:0px 50px 0px 0px; clear:both;",:id=>"bottom[#{id}]"%>
+        </span>
+    </div>
+   
+    
+</div>

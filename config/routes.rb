@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+
+
   map.resources :follows
   map.resources :contents
   map.resources :facebook_posts
@@ -60,6 +62,14 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.login '/login', :controller => 'sessions', :action => 'new'
+  map.register '/register', :controller => 'users', :action => 'create'
+  map.signup '/signup', :controller => 'users', :action => 'new'
+  map.resources :users
+
+  map.resource :session
   
   map.resources :users do |user|
     user.resources :activities
@@ -145,6 +155,20 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
+  
+    map.connect 'biz/bingli_comment/:action/:id',:controller=>'biz/bingli_comment'
+#  map.connect 'biz/topic/:keshi/:topic_id',:controller=>'biz/topic',:action=>'showOne'
+  map.index '/biz/bingli_info/index',:controller=>"biz/bingli_info",:action=>"index"
+  map.connect 'biz/bingli_info/:action/:id',:controller=>"biz/bingli_info"
+  #for tag
+  
+  #map.connect ':controller/:action/:type/:id'
+  #for fine,perfect,favorite,participation
+  map.connect 'user/:action',:controller=>"/user"
+  map.connect 'meet/:action/:id',:controller=>"meet"
+  map.connect ':controller/:action/:keshi'  
+  
+  
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

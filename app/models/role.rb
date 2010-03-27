@@ -39,6 +39,10 @@ class Role < ActiveRecord::Base
   def self.admin
     @@admin ||= Role.find_by_rolename('administrator')
   end
-  
-  
+  def name
+	self.rolename
+end
+def name=(aa)
+	self.rolename=aa
+  end
 end

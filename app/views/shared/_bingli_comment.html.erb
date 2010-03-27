@@ -1,0 +1,15 @@
+<li id='bingli_comment_<%=bingli_comment.id%>'>
+                <p class="intro">
+                    <%=bingli_comment.content %>
+                </p>
+                <span class="info">
+                    <font color="#F39B1D">
+                        <%=link_to bingli_comment.user.nickname,:controller=>"user/personal",:action=>"index",:id=>bingli_comment.user.id %>
+                    </font>
+                    评论于 <%=bingli_comment.thetime.strftime("%Y-%m-%d %H:%M:%S") %>
+                    <u>
+                        <%=link_to '评论',{:controller=>"biz/bingli_comment",:action=>"show",:id=>bingli_comment.id},:popup => true %>(<%=bingli_comment.comments.size -%>)
+                    </u>
+                    <%=render :partial=>"shared/rank_bingli_comment",:locals=>{:bingli_comment=>bingli_comment} %>
+                </span>
+            </li>

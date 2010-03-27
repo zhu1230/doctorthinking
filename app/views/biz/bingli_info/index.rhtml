@@ -1,0 +1,64 @@
+<style type="text/css"> 
+<!--
+.listbox {width:930px;margin:0px auto;}
+.listbox .menu {width:930px;height:27px;background:url(/images/box_menu_bg.gif) repeat-x;float:left;overflow:hidden;}
+.listbox .menu .menu_tab1 {float:left;width:85px;height:27px;line-height:27px;background:url(/images/box_menu_tab1.gif) no-repeat;text-align:center;margin:0px 5px;}
+.listbox .menu .menu_tab1 a {color:#004483;font-weight:bold;font-size:14px;}
+.listbox .menu .menu_tab2 {float:left;width:83px;height:26px;line-height:27px;background:url(/images/box_menu_tab2.gif) no-repeat;text-align:center;border:1px #D7E0E5 solid;border-bottom:0px;margin:0px 5px;}
+.listbox .menu .menu_tab2 a {font-size:14px;}
+.listbox .menu .menu_tab3 {float:left;width:105px;height:26px;line-height:27px;background:url(/images/box_menu_tab2.gif) no-repeat;text-align:center;border:1px #D7E0E5 solid;border-bottom:0px;float:right;}
+.listbox .menu .menu_tab3 a {color:#F0AE36;font-size:14px;font-weight:bold;}
+.listbox .cnt {width:928px;border:1px #D7E0E5 solid;border-top:0px;}
+.listbox .cnt ul {width:900px;margin:0px auto;}
+.listbox .cnt li {width:900px;float:left;border-bottom:1px #ccc dotted;padding:10px 0px;}
+.listbox .cnt h1 a {font-size:14px;float:left;color:#094C76;display:inline;}
+.listbox .cnt .title {width:900px;float:left;line-height:32px;}
+.listbox .cnt .time {color:#A7A7A7;padding-left:10px;}
+.listbox .cnt .intro {margin:0px;padding:0px;line-height:18px;text-indent:2em;width:560px;float:left;color:#333;}
+.listbox .cnt .info {width:140px;float:right;line-height:22px;}
+.listbox .cnt .pic {float:left;border:3px #EBEBEB solid;margin-left:30px;width:100px;height:70px;overflow:hidden;}
+-->
+</style>
+<%    @keshi=Keshi.find(params[:keshi])%>
+
+
+<div class="mainnav2"> 
+    <ul> 
+        <li class="begin"><a href="#">栏目一</a></li> 
+        <li><a href="#">栏目二</a></li> 
+        <li><a href="#">栏目三</a></li> 
+    </ul> 
+</div> 
+<div class="search"><%=render :partial=>"shared/bingli_info/search",:locals => {:keshi=>@keshi}%></div>
+<div class="listbox"> 
+	<div class="menu"> 
+    	<div class="<%=params[:controller]=="biz/bingli_info" ? "menu_tab1":"menu_tab2"%>"><%=link_to "最新",:controller=>"biz/bingli_info",:action=>"index",:keshi=>params[:keshi]%></div>
+        <div class="<%=params[:controller]=="misc/search" && params[:type]=="hot"?"menu_tab1":"menu_tab2"%>"><%=link_to "热门",:controller=>"misc/search",:action=>"do_search",:type=>"hot",:keshi=>params[:keshi]%></div>
+        <div class="<%=params[:controller]=="misc/search" && params[:type]=="perfect"?"menu_tab1":"menu_tab2"%>"><%=link_to "精华",:controller=>"misc/search",:action=>"do_search",:type=>"perfect",:keshi=>params[:keshi]%></div>
+        <div class="menu_tab3"><%=link_to "发起新讨论",:controller=>"bingli_info",:action=>"input",:keshi=>params[:keshi]%></div> 
+    </div> 
+    <div class="cnt"> 
+    	<ul>
+    		<% @bingli_infos.each {|t|%> 
+       	  <li> 
+                <span class="title"><h1><%=link_to t.title,:controller=>"biz/bingli_info",:action=>"showOne",:id=>t.id%></h1> 
+                <span class="time"><script type="text/javascript" charset="utf-8">
+	document.write(get_local_time_for_date(<%=t.thetime.to_i * 1000%>));
+</script></span></span> 
+              <p class="intro"><%=(t.bingli.zhusu.to_s+t.bingli.xianbingshi.to_s+t.bingli.tigejiancha.to_s)%>...<%=link_to "更多>>",{:controller=>"biz/bingli_info",:action=>"showOne",:id=>t.id},:style=>"color:#FFB32E;"%></p>
+			  <%if t.getpic.size>0 then %>
+			   <%=link_to image_tag(t.getpic.public_filename(:thumb),:class=>"pic"),t.getpic.public_filename%>
+			   <%end%>
+               
+                <span class="info">发贴人：<%=t.user.nickname%> <br /> 
+              贴子数：<%=t.bingli_comments_count%><br />主题分值：<%=t.rank_num%>分<br /><%=link_to image_tag("/images/more1.gif",:border=>0),:controller=>"biz/bingli_info",:action=>"showOne",:id=>t.id%></span> 
+          </li>
+		  <%}%> 
+        </ul> 
+        <div class="blank"></div> 
+        <div class="page"> 
+			<%= will_paginate @bingli_infos,:class=>"apple_pagination",:params=>{:keshi=>params[:keshi]}%>
+            </div> 
+            <div class="blank"></div> 
+    </div> 
+</div> 

@@ -18,7 +18,13 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  
+  protect_from_forgery
+  include AuthenticatedSystem
+  # You can move this into a different controller, if you wish.  This module gives you the require_role helpers, and others.
+  include RoleRequirementSystem
+  # See ActionController::RequestForgeryProtection for details
+  # Uncomment the :secret if you're not using the cookie session store
+ # layout :mylayout
   #include Facebooker::Rails::Controller
 
   # See ActionController::RequestForgeryProtection for details
@@ -37,7 +43,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :api_filter
 
-  include AuthenticatedSystem
+
   
   
   def set_vars
@@ -75,5 +81,12 @@ class ApplicationController < ActionController::Base
     end
     online_users
   end
+	def showErrors item
+	ret = content_tag(:h2, "Errors")
+	ret << content_tag(:ul, nil) do
+		item.errors.full_messages.map { |e| 
+		  content_tag(:li, e) }
+		end
+end
   
 end

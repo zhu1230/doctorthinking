@@ -1,0 +1,4 @@
+	<%=text_field "search_str",'',:style=>"width:200px;border:1px #ccc solid;"%><input name="提交" type="submit" value="查找病例"class="btn" />&nbsp;
+		<%=select_tag "keshi",options_for_select($ccc,keshi.id), {:onchange=>"this.form.submit()"}%>
+    
+	  

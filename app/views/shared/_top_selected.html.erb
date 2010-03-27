@@ -1,0 +1,28 @@
+<script type="text/javascript">
+function gE(id){return document.getElementById(id);}
+function toggleObj(obj){if(obj){obj.style.display=(obj.style.display=='none')?'block':'none';}}
+</script>
+<div class="header">
+  <div class="logo"><img src="/images/top/logo.gif" /></div>
+    <div class="ad"><img src="/images/top/joinad1.gif" /><br />
+      <a href="#"><font color="#FFCC3">会员登录</font></a></div>
+</div>
+<div class="mainnav">
+	<ul>
+	 <%=render :partial=>"shared/menu_top" %>
+      <li class="search" style="float:right; margin-right:5px;"><input name="" type="text" style="width:80px;border:1px #ccc solid;" /><input name="提交" type="submit" value="查找病例"class="headersearch" /> 
+      <a href="#">帮助</a>│<a href="#">注册</a> </li>
+    </ul>
+    <div class="now">
+	<h1>选择科室</h1>
+    <span><a href="###" onmouseover="toggleObj(gE('city-pop'));">内科</a></span>
+    <div id="city-pop" style="display:none;width:60px;float:left;">
+        <div style="float:left;width:60px;text-align:right;"><a href="###" onclick="toggleObj(gE('city-pop'));">×</a></div>
+        <div style="float:left;width:60px;text-align:left;">内科内科<br />内科内科<br />内科内科<br />内科内科<br /></div>
+    </div>
+    <div class="right">想要更多信息
+      <a href="#"><font color="#6699CC">内科圈子</font></a></div>
+    </div>
+  </div>
+</div>
+<div class="nav_foot"><h1>想要更多信息，XXX圈子</h1><h2><a href="#">首页</a> >> <a href="#">医学会议</a></h2></div>

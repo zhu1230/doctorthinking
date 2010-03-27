@@ -1,0 +1,11 @@
+<div class="header">
+  <div class="logo"><img src="/images/top/logo.gif" /></div>
+    <div class="topnav"><a href="#"><b><%=current_user.nickname%></b></a> | <a href="#">调整字体大小</a> | <%=link_to "我的消息","inbox_url"%>(<%=current_user.id%>) | <%=link_to "我的账户",:controller=>"/user",:action=>"index"%> | <%=link_to "退出",logout_url%></div>
+</div>
+<div class="mainnav" style="height:33px;">
+	<ul>
+	 <%=render :partial=>"shared/menu_top" %>
+      <li class="search" style="padding-left:45px;"><input name="" type="text" style="width:80px;border:1px #ccc solid;" /><input name="提交" type="submit" value="查找病例"class="headersearch" /> 
+      <a href="#">帮助</a>│<a href="#">注册</a> </li>
+    </ul>
+</div>

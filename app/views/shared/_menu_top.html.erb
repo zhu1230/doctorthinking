@@ -1,0 +1,9 @@
+		<li class="index" ><%=link_to "首页",index_url%></li>
+        <li class="bltl"><%=link_to "医学会议",{:controller=>"/meet",:action=>"index"}%></li>
+        <li class="bltl"><%=link_to "资料下载",{:controller=>"biz/bingli_info",:action=>"index"}%></li>
+        <li class="bltl"><%=link_to "经验交流",{:controller=>"biz/bingli_info",:action=>"index"}%></li>
+        <li class="bltl"><%=link_to "病例讨论",{:controller=>"biz/bingli_info",:action=>"index"}%></li>
+		<% if logged_in?%>
+			<li class="qz"><a href="#">圈子</a></li>
+			<li class="hy"><a href="#">会议</a></li>
+			<%end%>

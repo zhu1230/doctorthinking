@@ -1,0 +1,352 @@
+
+<style type="text/css">
+<!-- .show_box, .comment_box {
+    width: 928px;
+    border: 1px #D0E1EB solid;
+    margin: 0px auto;
+    overflow: hidden;
+    clear: both;
+} .show_box .menu, .comment_box .menu {
+    width: 928px;
+    height: 30px;
+    border-bottom: 1px #D0E1EB solid;
+    background: url(/images/tab_bg1.gif) repeat-x;
+    float: left;
+} .show_box .menu h1, .comment_box .menu h1 {
+    line-height: 30px;
+    margin: 0px;
+    padding: 0px 0px 0px 30px;
+    background: url(/images/showh1bg.gif) 10px 6px no-repeat;
+    font-size: 14px;
+    float: left;
+    display: inline;
+    color: #004575;
+} .show_box .menu .info {
+    float: right;
+    line-height: 30px;
+    padding-right: 10px;
+} .show_box .cnt {
+    width: 928px;
+    float: left;
+} .show_box .cnt .title {
+    width: 880px;
+    margin: 0px auto;
+    line-height: 22px;
+    display: block;
+    padding: 10px;
+    color: #5D5D5B;
+    border-bottom: 1px #EBEBEB dotted;
+} .show_box .cnt ul {
+    width: 880px;
+    padding: 10px;
+    margin: 0px auto;
+} .show_box .cnt li {
+    width: 880px;
+    line-height: 22px;
+    color: #5D5D5B;
+    border-bottom: 1px #EBEBEB dotted;
+    margin: 6px 0px;
+    padding: 3px 0px;
+} .show_box .cnt .name {
+    width: 80px;
+    float: left;
+    display: block;
+    color: #004575;
+} .show_box .cnt .intro {
+    width: 810px;
+    float: left;
+    margin: 0px;
+    padding: 0px 0px 0px 80px;
+    display: block;
+} .show_box .cnt .pic {
+    float: left;
+    display: block;
+    border: 1px #ccc solid;
+    line-height: 20px;
+    padding: 3px 0px 0px 0px;
+    width: 124px;
+    text-align: center;
+    margin: 0px;
+    padding-bottom: 0px;
+} .comment_box .menu h1 {
+    background: url(/images/commenth1bg.gif) 10px 6px no-repeat;
+} .comment_box .cnt ul {
+    width: 900px;
+    margin: 6px auto;
+} .comment_box .cnt li {
+    width: 900px;
+    float: left;
+    padding: 6px 0px;
+    border-bottom: 1px #ccc dotted;
+} .comment_box .cnt .intro {
+    width: 900px;
+    margin: 0px auto;
+    padding: 0px;
+    display: block;
+    text-indent: 2em;
+    line-height: 20px;
+} .comment_box .cnt .info {
+    width: 900px;
+    text-align: right;
+    margin: 0px auto;
+    display: block;
+} .user_box {
+    width: 928px;
+    border: 1px #FECFA5 solid;
+    margin: 0px auto;
+    overflow: hidden;
+    clear: both;
+} .user_box .menu {
+    width: 928px;
+    float: left;
+} .user_box .menu h1 {
+    line-height: 30px;
+    margin: 0px;
+    padding: 0px 0px 0px 30px;
+    background: url(/images/userh1bg.gif) 10px 6px no-repeat;
+    font-size: 14px;
+    float: left;
+    display: inline;
+    color: #004575;
+} .user_box .cnt {
+    width: 880px;
+    padding: 10px;
+    float: left;
+    color: #999;
+    line-height: 30px;
+} .user_box .cnt h1 {
+    width: 210px;
+    float: left;
+    height: 50px;
+    margin: 0px 0px 0px 10px;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 20px;
+}.listbox {
+    width: 930px;
+    margin: 0px auto;
+} .listbox .menu {
+    width: 930px;
+    height: 27px;
+    float: left;
+    overflow: hidden;
+} .listbox .menu .menu_tab3 {
+    float: left;
+    width: 105px;
+    height: 26px;
+    line-height: 27px;
+    background: url(/images/box_menu_tab2.gif) no-repeat;
+    text-align: center;
+    border: 1px #D7E0E5 solid;
+    border-bottom: 0px;
+    float: right;
+} .listbox .menu .menu_tab3 a {
+    color: #F0AE36;
+    font-size: 14px;
+    font-weight: bold;
+	
+}
+-->
+</style>
+<div class="search">
+    <div class="sleft">
+        <%=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>@bingli_info.keshi} %>
+    </div>
+    <div class="sright">
+        <h2><a href="#">其它链接一</a></h2>
+        <h2><a href="#">其它链接二</a></h2>
+        <h2><a href="#">其它链接三</a></h2>
+        <h2><a href="#">其它链接四</a></h2>
+    </div>
+</div>
+<div class="listbox">
+    <div class="menu">
+        <div class="menu_tab3" style="margin-left:10px;">
+            <%=link_to "发起回应",:controller=>"biz/bingli_comment",:action=>"input",:bingli_info_id=>@bingli_info.id %>
+        </div>
+        <div class="menu_tab3">
+            <%=link_to "发起新讨论",:controller=>"biz/bingli_info",:action=>"input",:keshi=>@bingli_info.keshi.id %>
+        </div>
+    </div>
+</div>
+</div>
+<div class="show_box">
+    <div class="menu">
+        <h1><%=@bingli_info.title %></h1>
+        <span class="info">
+            <font color="#999999">
+                发表人：
+            </font>
+            <%=link_to @user.nickname,:controller=>"user/personal",:action=>"index",:id=>@user.id %>
+            <font color="#999999">
+                发表时间：
+            </font>
+            <%=@bingli_info.thetime.strftime("%Y-%m-%d %H:%M:%S") %>
+            <font color="#999999">
+                评分：
+            </font>
+            <%=@bingli_info.rank_num %><a href="#">
+                <u>
+                    与朋友分享此讨论
+                </u>
+            </a>
+            <u>
+                打印 
+            </u>
+            <font color="#FFB32E">
+                <u id='add_fav<%=@bingli_info.id%>'>
+                    <%= if logged_in? && current_user.favorites.exists?(@bingli_info.id) then '已收藏' else (link_to_remote "收藏",:url=>{:controller=>'biz/bingli_info',:action=>'add_favorite',:id=>@bingli_info.id}) end %>
+                </u>
+            </font>
+        </span>
+    </div>
+    <div class="cnt">
+        <span class="title">
+            <font color="#004575">
+                性别：
+            </font>
+            <%=@bingli.sex==1? "男".to_s : "女".to_s %>&nbsp;&nbsp;&nbsp;
+            <font color="#004575">
+            </font>
+            <%=@bingli.age.blank? ? '不详' : @bingli.age.to_s+'岁' %>
+            &nbsp;&nbsp;&nbsp;
+            <font color="#004575">
+                婚姻状况：
+            </font>
+            <%= @bingli.marriage ? "已婚" : "未婚" %>
+            <br/>
+            <font color="#004575">
+                主诉：
+            </font>
+            <%=@bingli.zhusu %>
+            
+            <%if !@bingli.yibanbuchong.blank?%><br/><font color="#004575">一般情况补充：</font><%=@bingli.yibanbuchong%><%end%>
+        </span>
+        <ul>
+            <%if !@bingli.zhuyaozhengzhuang.blank? %>
+            <li>
+                <span class="name">主要症状：</span>
+                <p class="intro">
+                    <%=@bingli.zhuyaozhengzhuang %>
+                </p>
+            </li>
+            <%end %>
+            <% if !@bingli.xianbingshi.blank? %>
+            <li>
+                <span class="name">现病史 ：</span>
+                <p class="intro">
+                    <%=@bingli.xianbingshi %>
+                </p>
+            </li>
+            <%end %>
+            <%if !@bingli.jiwang.blank? %>
+            <li>
+                <span class="name">既往病史 ：</span>
+                <p class="intro">
+                    <%=@bingli.jiwang %>
+                </p>
+            </li>
+            <%end %>
+			<%if !@bingli.tigejiancha.blank?%>
+			<li>
+			<span class="name">体格检查 ：</span>
+			 <p class="intro">
+                    <%=@bingli.tigejiancha %>
+                </p>
+				</li>
+			<%end%>
+            <%if !@bingli.fuzhu_details.blank? %>
+            <%@bingli.fuzhu_details.each {|fd| %>
+            <li>
+                <span class="name">辅助诊断：</span>
+                <p class="intro">
+                    <%=fd.fuzhu_type.title+" : "+fd.content %>
+                    <br/>
+                    <%fd.attachments.each {|pic| %><span class="pic"><%="附件"+(fd.attachments.index(pic)+1).to_s %><%=link_to image_tag(pic.public_filename(:thumb),:style=>"border:0px"),pic.public_filename ,:toptions=>"effect=transform,group="+fd.id.to_s+",layout=quicklook,shaded=1",:rel=>"lytebox[0]"%>
+                        <br/>
+                        
+                    </span>
+               
+                <%} %>
+                     </p>
+            </li>
+            <% } end %>
+            <%if !@bingli.chubu_details.blank? %>
+	<li>
+              <span class="name">初步诊断：</span>
+              <%@bingli.chubu_details.each{|c|%>
+                <p class="intro">
+                    <%=(@bingli.chubu_details.index(c)+1).to_s+":" if @bingli.chubu_details.size > 1%><%=c.content%>
+                </p>
+                <%}%>
+            </li>
+            <%end %>
+            <%if !@bingli.question_details.blank? %>
+            <li>
+                <span class="name">疑问：</span>
+                <%@bingli.question_details.each{|q|%>
+                <p class="intro">
+                    <%=(@bingli.question_details.index(q)+1).to_s+":" if @bingli.question_details.size > 1%><%=q.content%>
+                </p>
+                <%}%>
+            </li>
+            <%end %>
+            <%if !@bingli.final.blank? %>
+            <li>
+                <span class="name">最终诊断：</span>
+                <p class="intro">
+                    <%=@bingli.final %>
+                </p>
+            </li>
+            <%end %>
+            <%if !@bingli.zongbuchong.blank?%>
+            <li>
+              <span class="name">病例补充：</span>
+                <p class="intro">
+                    <%=@bingli.zongbuchong %>
+                </p>
+            </li>
+            <%end%>
+        </ul>
+    </div>
+</div>
+<div class="blank">
+</div>
+<div class="comment_box">
+    <div class="menu">
+        <h1>评论</h1>
+    </div>
+    <div class="cnt">
+        <ul id="bingli_comments">
+        	 <%=render :partial=>"shared/bingli_comment",:collection=>@bingli_comments%>
+        </ul>
+        <div class="blank">
+        </div>
+    </div>
+</div>
+<div class="blank">
+</div>
+<%=will_paginate @bingli_comments,:class=>"digg_pagination",:style=>"width:630px;padding:10px 0px;margin:0px auto;float:right;padding:6px 0px;" %>
+<div class="user_box">
+    <div class="menu">
+        <h1>我要评论</h1>
+    </div>
+    <div class="cnt">
+        <%if logged_in? %>
+		<%=form_remote_tag :url=>{:controller=>"biz/bingli_info",:action=>"add_bingli_comment",:id=>@bingli_info.id}%>
+		<%=text_area_tag "bingli_comment_content","对病例有疑问？现在提问，或者发起回应表达你的观点",:cols=>"",:rows=>"",:style=>"width:600px;height:100px;border:1px #ccc solid;color:#999;font-size:12px;padding:10px; float:left;"%>
+		 <label style="position: relative;top:100px;padding:0px 0px 0px 30px;bottom: 0px;"><%=submit_tag "提交"%></label>
+		</form> 
+        <%else %>
+        <h1>您尚未
+            <u>
+            <font color="#FF6600">
+                <%=link_to('登录',login_url) %>
+            </font>，不能回应<font color="#FF0000"><%=link_to "我要注册>>",signup_url %></font>
+        </u>
+       
+        </h1>
+		<%end%>
+    </div>
+</div>

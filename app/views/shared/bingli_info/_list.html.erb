@@ -1,0 +1,28 @@
+<% tabnav :bingli_infos do%>
+<table width="1083" border="1" align="center">
+  <tr> 
+    <td> 
+      <div align="left">主题主题主题1（排序按照最新回复来排）</div></td>
+    <td>
+<div align="center">发表人1</div></td>
+    <td>
+<div align="center">讨论帖子数（用颜色或图案来显示高低）</div></td>
+    <td>
+<div align="center">主题分值</div></td>
+    <td>
+<div align="center">发表时间</div></td>
+  </tr>
+  <% @bingli_infos.each {|t|%>
+  <tr> 
+    <td> 
+      <div align="left"><%= '['+t.tags.join('-')+']' unless t.tags.size==0%><%=link_to t.title,:controller=>"biz/bingli_info",:action=>'showOne',:id=>t.id%></div></td>
+    <td><div align="center"><%=t.user.nickname%></div></td>
+    <td><div align="center"><%=t.bingli_comments.size%></div></td>
+    <td><div align="center"><%=t.rank_num%></div></td>
+    <td><div align="center"><script type="text/javascript" charset="utf-8">
+	document.write(get_local_time_for_date(<%=t.thetime.to_i * 1000%>));
+</script></div></td>
+  </tr>
+  <% }%>
+</table>
+<%end%>

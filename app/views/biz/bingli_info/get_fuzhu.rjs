@@ -1,0 +1,3 @@
+id=params[:max_id].to_i
+page.insert_html 'bottom','fuzhu_scope',:partial=>'shared/bingli_info/fuzhu',:locals=>{:id=>id}
+page << "max_id++;"

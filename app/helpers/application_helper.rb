@@ -52,5 +52,47 @@ module ApplicationHelper
               :only_path => false, 
               :controller => 'avatar.php'}.merge(options))  
   end
+  def tag_cloud(tags, classes)
+    max, min = 0, 0
+    tags.each { |t|
+      max = t.num.to_i if t.num.to_i > max
+      min = t.num.to_i if t.num.to_i < min
+    }
+
+    divisor = ((max - min) / classes.size) + 1
+
+    tags.each { |t|
+      yield t.id,t.name, classes[(t.num.to_i - min) / divisor]
+    }
+  end
+  #show messege
+  def showMessage message,type
+#    page << "openWithIframe('#{messege}','#{url_for(url)}',300,200);"
+#    return
+    page[type].replace_html message
+     page.visual_effect :appear,type.to_s,{:duration=>2.0,:queue=>{:scope=>"one"}}
+    # page.visual_effect :fade,type.to_s,{:duration=>2.0,:queue=>{:scope=>"one",:position=>"end"}}
+#    if !url.blank? 
+#      page.delay(2) do 
+#        page.redirect_to url_for(url)
+#      end
+#    end
+  end
+
+	def showErrors item
+
+	ret = content_tag(:h2, "错误")
+	ret << content_tag(:ul, nil) do
+		item.errors.full_messages.map { |e| 
+		  content_tag(:li, e) }
+		end
+	end
+def clearMessages
+	page['success'].hide
+	page['info'].hide
+	page['error'].hide
+	page['warning'].hide
+	page['validation'].hide
+end
   
 end

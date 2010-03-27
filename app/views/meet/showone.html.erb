@@ -1,0 +1,83 @@
+<style type="text/css">
+<!--
+.show_box,.comment_box {width:928px;border:1px #D0E1EB solid;margin:0px auto;overflow:hidden;clear:both;}
+.show_box .menu,.comment_box .menu {width:928px;height:30px;border-bottom:1px #D0E1EB solid;background:url(/images/tab_bg1.gif) repeat-x;float:left;}
+.show_box .menu h1,.comment_box .menu h1 {line-height:30px;margin:0px;padding:0px 0px 0px 30px;background:url(/images/showh1bg.gif) 10px 6px no-repeat;font-size:14px;float:left;display:inline;color:#004575;}
+.show_box .menu .info {float:right;line-height:30px;padding-right:10px;}
+.show_box .cnt {width:908px;float:left;padding:10px;}
+.show_box .cnt p {line-height:22px;margin:0;padding:3px 0;font-size:14px;}
+.show_box .cnt h1 {line-height:30px;margin:5px 0px 0px 0px;padding:0px 0px 0px 30px;background:url(/images/fujian.gif) 10px 6px no-repeat;font-size:12px;float:left;display:inline;border-top:1px solid #d8d8d8;width:880px;}
+.show_box .cnt ul {width:908px;float:left;padding:6px 0;}
+.show_box .cnt li {width:908px;float:left;height:26px;line-height:26px;display:block;}
+.show_box .cnt .name {width:670px;float:left;text-indent:2em;}
+.show_box .cnt .data {width:90px;float:left;text-align:center;}
+.show_box .cnt .no {width:90px;float:left;text-align:center;}
+.show_box .cnt .fen {width:50px;float:left;text-align:center;}
+
+.show_box .cnt li.header {background:#EFF8FF;}
+.comment_box .menu h1 {background:url(/images/commenth1bg.gif) 10px 6px no-repeat;}
+.comment_box .cnt ul {width:900px;margin:6px auto;}
+.comment_box .cnt li {width:900px;float:left;padding:6px 0px;border-bottom:1px #ccc dotted;}
+.comment_box .cnt .intro {width:900px;margin:0px auto;padding:0px;display:block;text-indent:2em;line-height:20px;}
+.comment_box .cnt .info {width:900px;text-align:right;margin:0px auto;display:block;}
+.user_box {width:928px;border:1px #FECFA5 solid;margin:0px auto;overflow:hidden;clear:both;}
+.user_box .menu {width:928px;float:left;}
+.user_box .menu h1 {line-height:30px;margin:0px;padding:0px 0px 0px 30px;background:url(/images/userh1bg.gif) 10px 6px no-repeat;font-size:14px;float:left;display:inline;color:#004575;}
+.user_box .cnt {width:880px;padding:10px;float:left;color:#999;line-height:30px;}
+.user_box .cnt h1{
+	width:120px;
+	float:left;
+	height:50px;
+	margin:50px 0px 0px 10px;
+	display:block;
+	font-size:12px;
+	font-weight:normal;
+	line-height:20px;
+}
+-->
+</style>
+
+<div class="show_box">
+  <div class="menu">
+    <h1><%=@meeting.title%></h1>
+    <span class="info"><font color="#999999">发表时间：</font><font color="#004575"><%=@meeting.thetime.strftime("<%Y %m %d>")%></font> <font color="#999999">分值：</font>1 <a href="#"></a> <a href="#"><u><font color="#004575">打印</font></u></a> <a href="#"><font color="#FFB32E"><u>收藏</u></font></a></span></div>
+    <div class="cnt"><p><%=@meeting.content%></p>
+    <h1>相关附件下载</h1>
+    <ul>
+    	<li class="header"><span class="name">名称</span><span class="data">日期</span><span class="no">下载次数</span><span class="fen">分值</span></li>
+<%@meeting.attachment_miscs.each do |a|%>
+        <li><span class="name"><a href="#"><font color="#004575"><%=a.filename%></font></a></span><span class="data"><font color="#999999"><%=a.created_at.strftime("%Y-%m-%d %H:%M:%S")%></font></span><span class="no"><font color="#666666">5</font></span><span class="fen"><font color="#666666">10分</font></span></li>
+<%end%>
+       
+    </ul>
+    </div>
+</div>
+<div class="blank"></div>
+<div class="comment_box">
+	<div class="menu"><h1>评论</h1></div>
+    <div class="cnt">
+    	<ul  id="comments">
+       	<%=render :partial=>'shared/comment',:collection=>@comments,:as=>:comment%>
+        </ul>
+        <div class="blank"></div>
+  </div>
+</div>
+<div class="blank">
+</div>
+<%=will_paginate @comments,:class=>"digg_pagination",:style=>"width:630px;padding:10px 0px;margin:0px auto;float:right;padding:6px 0px;" %>
+<div class="user_box">
+	<div class="menu"><h1>我要评论</h1></div>
+  <div class="cnt">
+   		<%if logged_in? %>
+		<%=form_remote_tag :url=>{:controller=>"/meet",:action=>"add_comment",:id=>@meeting.id} %>
+		<%=text_area_tag "comment","对病例有疑问？现在提问，或者发起回应表达你的观点",:cols=>"",:rows=>"",:style=>"width:600px;height:100px;border:1px #ccc solid;color:#999;font-size:12px;padding:10px; float:left;"%>
+		 <label style="position: relative;top:100px;padding:0px 0px 0px 30px;bottom: 0px;"><%=submit_tag "提交"%></label>
+		</form>
+		<%else%>
+		<h1>您尚未<a href="#"><u><font color="#FF6600">登录</font></u></a>，不能留言 <a href="#"><font color="#FF0000">我要注册>></font></a><br />
+    <label>
+	<%end%>
+   
+    </label></h1>
+  </div>
+</div>

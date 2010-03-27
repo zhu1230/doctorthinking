@@ -1,0 +1,13 @@
+    if !logged_in?
+      page.showMessage '您必须先登陆！';return
+    end
+    if rank_bingli_comment? params[:id]
+      page.showMessage '您已经进行过评价！';return 
+      end
+    p=BingliComment.find(params[:id])
+    if(params[:rank_tag]=="uphold")then p.uphold+=1 else p.denial+=1 end
+    p.save
+    UsersRankBingliComments.create(:user_id=>current_user.id,:bingli_comment_id=>params[:id],:rank_tag=>params[:rank_tag])
+    page.replace_html "uphold[#{p.id}]",p.uphold
+    page.replace_html "denial[#{p.id}]",p.denial
+    page.showMessage '投票成功',:info

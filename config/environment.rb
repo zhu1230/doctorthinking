@@ -11,7 +11,7 @@ RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
-
+require 'plugins/app_config/lib/configuration'
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -28,7 +28,7 @@ Rails::Initializer.run do |config|
   config.gem 'disguise'
   config.gem "ruby-openid", :lib => "openid"
   config.gem "aws-s3", :lib => "aws/s3"
-  
+  config.active_record.observers = :user_observer
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
 
@@ -44,26 +44,26 @@ Rails::Initializer.run do |config|
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug
-
+ config.load_paths += %W(#{RAILS_ROOT}/app/middleware)
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
   # Run "rake -D time" for a list of tasks for finding time zone names. Comment line to use default local time.
   #config.time_zone = 'UTC'
-  config.time_zone = 'Eastern Time (US & Canada)'
-
+  #config.time_zone = 'Eastern Time (US & Canada)'
+  config.time_zone = 'UTC'
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
-  config.action_controller.session = {
-    :session_key => '_railsnet_session',
-    :secret      => '1de1b661448c6a6b1ad69c2e7dfdf921887cde6d32f1e218f4f69a600f4969195085e05e9f24a8a911cae34d9085ac4c115510857b11df236f7526d2a0c307a7'
-  }
+  # config.action_controller.session = {
+  #   :session_key => '_railsnet_session',
+  #   :secret      => '1de1b661448c6a6b1ad69c2e7dfdf921887cde6d32f1e218f4f69a600f4969195085e05e9f24a8a911cae34d9085ac4c115510857b11df236f7526d2a0c307a7'
+  # }
 
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
   # (create the session table with "rake db:sessions:create")
-  config.action_controller.session_store = :active_record_store
+ # config.action_controller.session_store = :active_record_store
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,
@@ -72,7 +72,12 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
-  
+  config.i18n.default_locale = 'zh-CN'
+  config.app_config.maxRankBingliCommentOneDay=20
+  config.app_config.maxRankBingliInfoOneDay=20
+  config.app_config.rankTagBingliInfo={:perfect=>10,:fine=>5,:hide=>-3}
+  config.app_config.perfectNum='10'
+  config.app_config.fineNum='5'
  config.active_record.observers = :announcement_observer, :invite_observer, :user_observer, :message_observer, :wall_post_observer
 end
 

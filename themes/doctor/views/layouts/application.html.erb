@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title><%= @network.name %></title>
+	<link rel="shortcut icon" href="/favicon.ico" />
+<%#= javascript_include_tag "lytebox" %>
+<%#= stylesheet_link_tag "lytebox",:media=>"screen"%>
+   <%= javascript_include_tag "top_up" %>
+   <%= javascript_include_tag "jquery" %>
+<%= javascript_include_tag :defaults %>
+<%= stylesheet_link_tag "tag_clouds","pagination","fabiao","top/style","in_place_styles"%>
+
+	<%= stylesheet_link_tag 'style' %>
+	<%= stylesheet_link_tag "themes/mycompany/mycompany.css" %>
+	
+	<%= stylesheet_link_tag '../javascripts/dojo/dijit/themes/tundra/tundra.css' %>
+	<%= stylesheet_link_tag '../javascripts/dojo/dojox/grid/resources/Grid.css' %>
+	<%= stylesheet_link_tag '../javascripts/dojo/dojox/grid/resources/tundraGrid.css' %>
+	
+	
+
+	<script type="text/javascript" src="/javascripts/dojo/release/dojo/dojo/dojo.js" djConfig="isDebug:false, parseOnLoad: true"></script>
+	<script type="text/javascript" src="/javascripts/dojo/release/dojo/dojo/mydojo.js"></script>
+
+	<%= javascript_include_tag "widget" %>
+		
+	<%= render 'layouts/widgets' %>
+    
+	<%= javascript_include_tag "slide_show" %>
+	
+	<%= yield :script_content %>
+	
+	<%= javascript_include_tag "application" %>
+	
+
+
+	
+	<%= include_tiny_mce_if_needed %>
+	
+
+</head>
+
+<body>
+	<%= inplace_error_div%>
+	<%#= navigation :main %>
+<%if (params[:controller]=="sessions" && params[:action]=="new") %>
+<%=render(:partial=>"shared/top_login")%>
+<%else if(params[:controller]=="users" && params[:action]=="new")%>
+<%=render(:partial=>"shared/top_register")%>
+<%else if logged_in? %>
+<%=render(:partial=>"shared/top_logon")%>
+<%else%>
+<%=render(:partial=>"shared/top_unlogon")%>
+<%end end end%>
+
+<style type="text/css" media="screen">
+	#notice {
+		border: solid 1px #99cc99;
+		background-color: #e2f9e3;
+		color: #006600;
+		padding: 5px;
+		margin-bottom: 5px;
+	}
+
+	  #notice.error {
+	  	border-color: #cc0000;
+	  	background-color: #eeaaaa;
+	  	color: #cc0000;
+	  }
+
+	.align_right{
+	  text-align: right;
+	}
+</style>
+<% if flash[:error] || flash[:notice] %>
+    <%= content_tag :div, flash[:error] || flash[:notice], :id => 'notice', :class => ('error' if flash[:error]) %>
+ <p class='align_right'>
+      <%= link_to_function "X", "this.parentNode.fade({duration: 2});", :title => "close" %>
+    </p>
+    <script type="text/javascript">
+        setTimeout("new Effect.Fade('notice');", 10000)
+    </script>
+<% end %>
+
+<div id='info' class="infos" style="display:none">Info message</div>
+
+<div id='success' class="success" style="display:none">Successful operation message</div>
+
+<div id='warning' class="warning" style="display:none">Warning message</div>
+
+<div id='error' class="error" style="display:none">Error message</div>
+
+<div id='validation' class="validation" style="display:none">Error message</div>
+<style type="text/css" media="screen">
+	body{
+	font-family:Arial, Helvetica, sans-serif; 
+	font-size:13px;
+	}
+	.infos, .success, .warning, .error, .validation {
+	border: 1px solid;
+	margin: 10px 0px;
+	padding:15px 10px 15px 50px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	}
+	.infos {
+	color: #00529B;
+	background-color: #BDE5F8;
+	background-image: url('/images/messages/info.png');
+	}
+	.success {
+	color: #4F8A10;
+	background-color: #DFF2BF;
+	background-image:url('/images/messages/success.png');
+	}
+	.warning {
+	color: #9F6000;
+	background-color: #FEEFB3;
+	background-image: url('/images/messages/warning.png');
+	}
+	.error {
+	color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url('/images/messages/error.png');
+	}
+	.validation {
+	color: #D63301;
+	background-color: #FFCCBA;
+	background-image: url('/images/messages/validation.png');
+	}
+</style>
+
+<%#=render :partial=>"shared/top"%>
+<div id='show' class='unnamed1' style="display:none" align='center'><table width="75%" height="257" border="1">
+      <tr> 
+        <td bgcolor="#9966FF" id='info'>&nbsp;</td>
+      </tr>
+    </table></div>
+	<div id="content">
+		<div id="header">
+			<div id="masthead"></div>
+			<%= render :partial => 'shared/nav_menu' %>
+		</div>
+		<div id="main">
+			<div class="col1">
+				<%= yield  %>
+			</div>
+			<div class="col2">
+				<!-- TODO: Needs to be refactored to move this content into page templates -->
+				<% if @section == 'MAIN' %>
+					<%= render :partial => 'users/user_control_widget' %>
+					<!-- place holder for AJAX widgets -->
+					<div id="right_side_widgets"></div>
+				<% elsif @section == 'MY PAGE' || (@section == 'MEMBERS' && @user != nil)%>
+					<!-- On a user page -->
+					<%= render :partial => 'users/add_friend_widget' %>
+					<%= render :partial => 'users/user_control_widget' %>
+					<%= render :partial => 'events/events_profile' %>
+					<%= render :partial => 'forum_posts/forum_posts_profile' %>
+					<% if current_user == @user %>
+						<%= render :partial => 'messages/unread_messages_widget' %>
+					<% end %>
+					<div id="right_side_widgets"></div>
+				<% else %>
+					<%= render :partial => 'users/user_control_widget' %>
+				<% end %>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div id="footer">
+			<%= render :partial => 'shared/footer' %>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+<%=render :partial=>"shared/bottom"%>
+</body>
+</html>

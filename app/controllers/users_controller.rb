@@ -13,7 +13,7 @@
 #   limitations under the License.
 
 class UsersController < ApplicationController
-  
+    include AuthenticatedSystem
   uses_tiny_mce :options => {
                               :theme => 'advanced',
                               :theme_advanced_toolbar_location => "top",
@@ -235,7 +235,12 @@ class UsersController < ApplicationController
   end
 
 
+
+
+  
+  
   def create
+   logout_keeping_session!
     @user = User.new(params[:user])
     if @user.facebook_id
       create_facebook_user
@@ -244,14 +249,16 @@ class UsersController < ApplicationController
       sleep 4  # required for photo upload
       cookies.delete :auth_token
       @user.roles << Role.find_by_rolename('user')
-      @user.save
-      if @user.errors.empty?
+	  success = @user && @user.save
+    if success && @user.errors.empty?
         if params[:invite_code]
           Invite.accept(params[:invite_code]) 
         end
         @user.set_photo(params[:user_photo])
         respond_to do |format|
           format.html {
+		  self.current_user = @user # !! now logged in
+      #redirect_back_or_default('/')
             flash[:notice] = "Thanks for signing up!"
             render :template=>'sessions/signup_thankyou'
           }

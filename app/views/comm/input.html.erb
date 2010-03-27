@@ -1,0 +1,59 @@
+<style type="text/css">
+<!--
+body {font-family:"宋体";margin:0;font-size:12px;}
+a {font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#002850;}
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;color:#002850;}
+a:hover {text-decoration:underline;color:#002850;}
+a:active {text-decoration:none;color:#002850;}
+h1,h2,h3,p,ul,li {margin:0;padding:0;}
+ul,li {list-style-type:none;list-style-images:none;}
+.area {width:928px;border:1px #D0E1EB solid;margin:0 auto;overflow:hidden;clear:both;}
+.area .atitle {width:928px;height:30px;border-bottom:1px #D0E1EB solid;background:url(images/tab_bg1.gif) repeat-x;float:left;}
+.area .atitle h1 {line-height:30px;margin:0px;padding:0px 0px 0px 30px;background:url(images/showh1bg2.gif) 10px 6px no-repeat;font-size:14px;float:left;display:inline;color:#004575;}
+.area .atitle span {line-height:30px;float:right;padding-right:20px;}
+.area .cont {width:908px;float:left;padding:10px;}
+.area .cont ul {width:820px;float:left;}
+.area .cont li {width:820px;float:left;line-height:30px;overflow:hidden;}
+.area .cont h3 {width:820px;color:#FF9400;font-size:12px;line-height:30px;}
+.area .cont span {line-height:30px;}
+.area li input,.area li textarea {border:1px solid #879BB3;width:300px;}
+.area li label {width:230px;text-align:right;padding-right:5px;float:left;line-height:30px;} 
+.area .btn {width:85px;height:32px;line-height:32px;cursor:pointer;background:url(images/loginbg.gif) -87px -247px no-repeat;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;margin:10px 0 0;padding:0;font-weight:bold;color:#072A46;}
+
+-->
+</style>
+
+<div class="area">
+  <div class="atitle">
+	  <h1><font color="#000000">经验交流新发</font></h1>
+	  <span><font color="#999999">加</font><font color="red">*</font><font color="#999999">号的为必填信息</font></span>	</div>
+    <div class="cont">
+       	  <ul>
+           	<li><label for="uesr"><font color="#004575">主题：</font></label>
+           	<input type="text" />&nbsp;<font color="red">*</font><br />
+            </li>
+               <li style="margin-bottom:10px;">
+                 <label for="uesr"><font color="#004575">内容：</font></label>
+                 <span class="tab">
+                 <textarea name="textarea" cols="" rows="" style="width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;">
+                 </textarea>
+                 </span>&nbsp;<font color="red">*</font></li>
+               <li>
+                 <label for="uesr"><font color="#004575">会议所属科室：</font></label>
+                 <select name="select3" id="select3" style="width:100px;" />
+                   <option value="请选择">-请选择-</option>
+                 </select>
+                 &nbsp;<font color="red">*</font></li>
+                 <li>
+                 <label for="uesr"><font color="#004575">附件上传：</font></label>
+                 <select name="select" id="select" style="width:100px;" /><option value="请选择">-请选择-</option></select>&nbsp;<font color="red">
+                 <input type="submit" name="button" id="button" value="浏览" style="width:60px;" />
+                 </font></li>
+                 <li style="padding-left:236px;"><input name="" type="checkbox" value="" checked style="border:0;width:18px;" />是否带提问    </li>
+                 <li style="padding-left:236px;"><input name="" type="checkbox" value="" checked style="border:0;width:18px;" />是否显示讨论    </li>
+                 <li style="padding-left:236px;"><input name="" type="checkbox" value="" checked style="border:0;width:18px;" />是否可以交流    </li>
+                 <li style="padding-left:236px;"><input type="submit" value="完成" class="btn" /></li>
+          </ul>
+  </div>
+</div>
