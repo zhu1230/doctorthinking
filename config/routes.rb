@@ -1,6 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-
-
+  map.resources :blog_post_topics
   map.resources :follows
   map.resources :contents
   map.resources :facebook_posts
