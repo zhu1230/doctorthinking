@@ -20,7 +20,7 @@ test:
   username: root
   password:  
   host: localhost
-test:
+production:
   adapter: mysql
   database: enginey_development
   username: root
