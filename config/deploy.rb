@@ -1,7 +1,8 @@
+default_run_options[:pty] = true
 set :user,'root'
 set :password,'200113'
 set :application, "doctorthinking.com"
-set :repository,  "https://doctorthinking.googlecode.com/svn/trunk"
+set :repository,  "git://github.com/zhu1230/doctorthinking.git"
 set :use_sudo, false 
 # If you have previously been relying upon the code to start, stop 
 # and restart your mongrel application, or if you rely on the database
@@ -26,11 +27,13 @@ set :use_sudo, false
 # via the :deploy_to variable:
  set :deploy_to, "/var/www/html/#{application}"
  set :scm_username, "zhu1230"
-set :scm_password, "Nj8rE3dK4py3"
-
+set :scm_password, "zhu1230"
+ssh_options[:forward_agent] = true
+set :branch, "master"
+set :deploy_via, :remote_cache
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
-set :scm, :subversion
+set :scm, "git"
 # see a full list by running "gem contents capistrano | grep 'scm/'"
 
 role :web, "doctorthinking.com"
