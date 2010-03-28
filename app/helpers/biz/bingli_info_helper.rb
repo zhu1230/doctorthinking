@@ -1,0 +1,2 @@
+module Biz::BingliInfoHelper
+end

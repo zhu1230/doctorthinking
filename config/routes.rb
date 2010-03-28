@@ -163,7 +163,7 @@ ActionController::Routing::Routes.draw do |map|
   
   #map.connect ':controller/:action/:type/:id'
   #for fine,perfect,favorite,participation
-  map.connect 'user/:action',:controller=>"/user"
+  map.connect 'user/:action/:id',:controller=>"user"
   map.connect 'meet/:action/:id',:controller=>"meet"
   map.connect ':controller/:action/:keshi'  
   

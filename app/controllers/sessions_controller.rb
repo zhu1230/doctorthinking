@@ -22,9 +22,8 @@ class SessionsController < ApplicationController
 
 	 respond_to do |format|
 	        format.html {
-	          
+	          redirect_back_or_default('/')
 	          flash[:notice] = I18n.t("app.user.login_success")
-	          render :controller=>"/biz/bingli_info",:action =>""
 	        }
 	        format.xml  {
 	          render :xml => self.current_user.to_xml(:dasherize => false)

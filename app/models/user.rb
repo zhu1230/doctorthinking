@@ -96,10 +96,10 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :name, :password, :password_confirmation,:keshiinplace,:zhicheng_title,:buchong,:sub_title
 
 def sub_title
-self.sub.to_i == 0 ? "不接受" : "接受"
+self.receive_emails ?   "接受" : "不接受"
 end
 def sub_title=(aa)
-self.sub=aa
+self.receive_emails=aa
 end
 def zhicheng_title=(aa)
   self.zhicheng=aa

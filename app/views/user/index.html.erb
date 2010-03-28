@@ -19,11 +19,11 @@ h1,h2,h3,p {margin:0;padding:0;}
 -->
 </style>
 <div class="uesrinfo">
-	<h1>欢迎回来：<%=current_user.nickname%>!</h1>
-    <span>您有<%=current_user.unread_count%>条待读信息。<%=link_to "查看",inbox_url%></span>
+	<h1>欢迎回来：<%=current_user.login%>!</h1>
+    <span>您有<%=current_user.unread_messages.size%>条待读信息。<%=link_to "查看",:controller=>"messages"%></span>
 </div>
 <div class="use">
 	<h1>您可以通过快速通道使用以下功能：</h1>
     <h2><%=link_to "补充个人信息",:controller=>"user",:action=>"account"%></h2>
-  <h2 class="use2"><%=link_to "发表病例讨论",:controller=>"biz/bingli_info",:action=>"input",:keshi_id=>current_user.keshi.id%></h2>
+  <h2 class="use2"><%=link_to "发表病例讨论",:controller=>"biz/bingli_info",:action=>"input"%></h2>
 </div>

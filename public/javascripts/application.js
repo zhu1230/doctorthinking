@@ -1,3 +1,6 @@
+// Place your application-specific JavaScript functions and classes here
+// This file is automatically included by javascript_include_tag :defaults
+
 
 dojo.addOnLoad(site_init);
 
@@ -12,9 +15,9 @@ function site_init() {
 	}
 }
 
-function $(id) {
-	return document.getElementById(id);	
-}
+// function $(id) {
+// 	return document.getElementById(id);	
+// }
 
 function submit_wall_post() {
 	before_wall_post();
