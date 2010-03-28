@@ -241,6 +241,7 @@ class UsersController < ApplicationController
   
   def create
    logout_keeping_session!
+	params[:user]['keshi_id']=1
     @user = User.new(params[:user])
     if @user.facebook_id
       create_facebook_user

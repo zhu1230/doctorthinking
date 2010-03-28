@@ -42,7 +42,6 @@
 </head>
 
 <body>
-	<%= inplace_error_div%>
 	<%#= navigation :main %>
 
 
@@ -65,15 +64,6 @@
 	  text-align: right;
 	}
 </style>
-<% if flash[:error] || flash[:notice] %>
-    <%= content_tag :div, flash[:error] || flash[:notice], :id => 'notice', :class => ('error' if flash[:error]) %>
- <p class='align_right'>
-      <%= link_to_function "X", "this.parentNode.fade({duration: 2});", :title => "close" %>
-    </p>
-    <script type="text/javascript">
-        setTimeout("new Effect.Fade('notice');", 10000)
-    </script>
-<% end %>
 
 <div id='info' class="infos" style="display:none">Info message</div>
 
@@ -123,6 +113,20 @@
 	}
 </style>
 
+<%flash.each{ |key,value|%>
+<script type="text/javascript">  	
+	Element.update('<%= key.to_s=="notice" ? "info" : key%>',"<%=value%>");
+	Effect.Appear('<%= key.to_s=="notice" ? "info" : key%>',{duration:2,queue:{position: 'end', scope:'one'}});	
+  </script>
+    <!-- <%#= content_tag :div, flash[:error] || flash[:notice], :id => 'notice', :class => ('error' if flash[:error]) %>
+ <p class='align_right'>
+      <%#= link_to_function "X", "this.parentNode.fade({duration: 2});", :title => "close" %>
+    </p>
+    <script type="text/javascript">
+        setTimeout("new Effect.Fade('notice');", 10000)
+    </script> -->
+<%}%>
+
 <%#=render :partial=>"shared/top"%>
 <div id='show' class='unnamed1' style="display:none" align='center'><table width="75%" height="257" border="1">
       <tr> 
@@ -168,10 +172,9 @@
 			<div style="clear:both;"></div>
 		</div>
 		<div id="footer">
-			<%= render :partial => 'shared/footer' %>
+<%=render :partial=>"shared/bottom"%>
 		</div>
 		<div style="clear:both;"></div>
 	</div>
-<%=render :partial=>"shared/bottom"%>
 </body>
 </html>
