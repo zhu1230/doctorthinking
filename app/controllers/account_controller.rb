@@ -1,4 +1,4 @@
 class AccountController < ApplicationController
-  authenticated_commands
+  #authenticated_commands
 
 end

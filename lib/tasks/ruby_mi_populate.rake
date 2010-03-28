@@ -5,8 +5,8 @@ namespace :railsnet do
       
       ##########################################################################
       # SETUP, modify this to change how you want to configure your sample data
-      NETWORK_NAME = 'RubyMI'
-      NUMBER_OF_TEST_USERS = 12
+      NETWORK_NAME = 'DoctorThinking.com'
+      NUMBER_OF_TEST_USERS = 10
       GROUP_PHOTO_1 = File.new(RAILS_ROOT + "/public/images/rails.png")
       GROUP_PHOTO_2 = File.new(RAILS_ROOT + "/public/images/rails2.png")
       ##########################################################################
@@ -20,8 +20,8 @@ namespace :railsnet do
       puts 'Create network...'
       Network.destroy_all
       network = Network.create(:name => NETWORK_NAME,
-                     :organization => 'Ruby Enthusiasts of Michigan',
-                     :website => 'http://www.rubymi.org',
+                     :organization => 'Doctorthinking.com',
+                     :website => 'http://www.doctorthinking.com',
                      :description => 'Welcome to the Ruby Enthusiasts of Michigan website.  This site serves as a hub for all of the Ruby related activities and events that happen in and around Michigan.')
     
       
@@ -35,17 +35,17 @@ namespace :railsnet do
       Photo.destroy_all
       state_id = State.find_by_name('MICHIGAN').id
       print '.'
-      user1 = User.new :first_name=>'Timothy',
-                    :last_name=>'Fisher',
+      user1 = User.new :first_name=>'Vincent',
+                    :last_name=>'Zhu',
                     :sex=>'M',
                     :state_id=>state_id,
                     :country_id=>1,
                     :zip=>'48134',
                     :login=>'admin', 
-                    :email=>'timothyf@gmail.com',
-                    :city=>'Flat Rock',
-                    :twitter_id=>'tfisher',
-                    :facebook_url=>'http://www.facebook.com/trfisher',
+                    :email=>'zhu1230@gmail.com',
+                    :city=>'Nanjing',
+                    :twitter_id=>'zhu1230',
+                    :facebook_url=>'http://www.facebook.com/zhu1230',
                     :activated_at=>'2009-01-01',
                     :password=>'admin',
                     :password_confirmation=>'admin'
