@@ -20,16 +20,16 @@ limitations under the License.
 		<div id="forum_my"><%= link_to 'My Discussions', user_forum_posts_path(current_user) %></div>
 	<% end %>
 </div>		
-<h1>Discussion Forum</h1>
+<h1>经验交流</h1>
 <div id="forum_table">
 	<% if logged_in? && current_user.is_admin %>
-		<button class="tundra" dojoType="dijit.form.Button" onclick="add_new_topic()">Add New Topic</button><br/><br/>
+		<button class="tundra" dojoType="dijit.form.Button" onclick="add_new_topic()">增加新主题</button><br/><br/>
 	<% end %>
 	<div id="topic_header">
-		<div class="topic_title">Forum</div>
-		<div class="topic_threads">Threads</div>
-		<div class="topic_posts">Posts</div>
-		<div class="topic_last_post">Last Post</div>				
+		<div class="topic_title">交流区</div>
+		<div class="topic_threads">主题</div>
+		<div class="topic_posts">回复</div>
+		<div class="topic_last_post">最新回复</div>				
 	</div>
 	<% @forum_topics.each do |topic| %>
 		<div class="a_topic">
@@ -45,12 +45,12 @@ limitations under the License.
 					<%= last_post.created_at %>
 				</div>
 			<% else %>
-				<div class="topic_last_post">No Posts</div>
+				<div class="topic_last_post">无交流内容</div>
 			<% end %>
 		</div>
 	<% end %>
 	<% if @forum_topics.length == 0 %>
-		No topics exist.
+		无交流主题
 	<% end %>
 </div>
 

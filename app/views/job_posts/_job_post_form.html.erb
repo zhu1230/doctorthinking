@@ -16,36 +16,36 @@ limitations under the License.
 <% form_for(@job_post, :html => { :multipart => true }) do |f| -%>			
 	<%= f.error_messages %>
 	<div class="form_field">
-    	<label for="job_title">Job Title:</label>
+    	<label for="job_title">工作主题:</label>
 		<%= f.text_field :job_title, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="job_id">Job ID:</label>
+    	<label for="job_id">工作ID:</label>
 		<%= f.text_field :job_id, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="company">Company:</label>
+    	<label for="company">公司:</label>
 		<%= f.text_field :company, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="website">Website:</label>
+    	<label for="website">网站:</label>
 		<%= f.text_field :website, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="contact_name">Contact Name:</label>
+    	<label for="contact_name">联系人:</label>
 		<%= f.text_field :contact_name, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="email">Contact Email:</label>
+    	<label for="email">联系Email:</label>
 		<%= f.text_field :email, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="end_date">End Date:</label>
+    	<label for="end_date">截止日期:</label>
 		<%= f.text_field :end_date, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="description">Description:</label>
-		<span class="help_text">maximum 5000 characters</span><br/>
+    	<label for="description">描述:</label>
+		<span class="help_text">最多2000个字</span><br/>
 		<%= f.text_area :description, :cols=>80, :rows=>20, :class=>"mceEditor" %>
 	</div>
     <%= f.submit "Save", :class=>'add_button' %>

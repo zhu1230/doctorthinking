@@ -17,24 +17,24 @@ class UserMailer < ActionMailer::Base
   # Send the activation code to users who sign up
   def signup_notification(user)
     setup_email(user)
-    @subject    += 'Please activate your new account'  
-    @body[:url]  = "http://www.rubymi.org/activate/#{user.activation_code}" 
+    @subject    += '请激活您的帐户'  
+    @body[:url]  = "http://www.doctorthinking.com/activate/#{user.activation_code}" 
   end
   
   
   # Send a new user signup notification to the site admins
   def new_user_signup(user)
     setup_admin_email(user)
-    @subject    += 'New User Signup'  
-    @body[:url]  = "http://www.rubymi.org" 
+    @subject    += '新用户登记'  
+    @body[:url]  = "http://www.doctorthinking.com/" 
   end
   
 
   # Send a new user activated notification to the site admins
   def new_user_activated(user)
     setup_admin_email(user)
-    @subject    += 'New User Activated'  
-    @body[:url]  = "http://www.rubymi.org" 
+    @subject    += '新用户激活'  
+    @body[:url]  = "http://www.doctorthinking.com/" 
   end
   
 
@@ -59,7 +59,7 @@ class UserMailer < ActionMailer::Base
   def wall_post_notification(wall_post)
     setup_email(wall_post.user)
     @subject    += 'Wall Post Notification'  
-    @body[:url]  = "http://www.rubymi.org" 
+    @body[:url]  = "http://www.doctorthinking.com/" 
     @content_type = "text/html"
   end
   
@@ -67,9 +67,9 @@ class UserMailer < ActionMailer::Base
   # Send a notification to the recipient of a message.
   def message_notification(message)
     setup_email(message.recipient)
-    @subject    += 'Message Notification'  
+    @subject    += '消息通知'  
     @body[:message] = message
-    @body[:url]  = "http://www.rubymi.org" 
+    @body[:url]  = "http://www.doctorthinking.com/" 
     @content_type = "text/html"
   end
   
@@ -78,7 +78,7 @@ class UserMailer < ActionMailer::Base
   def invite_notification(invite)
     @recipients  = "#{invite.email}"
     @from        = "#{invite.user.email}"
-    @subject     = "An Invitation to Join RubyMI "
+    @subject     = "一个邀请您加入医思社区"
     @sent_on     = Time.now
     @body[:invite] = invite
     @content_type = "text/html"
@@ -87,8 +87,8 @@ class UserMailer < ActionMailer::Base
   
   def activation(user)
     setup_email(user)
-    @subject    += 'Your account has been activated!'
-    @body[:url]  = "http://www.rubymi.org/"
+    @subject    += '您的帐户已被激活!'
+    @body[:url]  = "http://www.doctorthinking.com/"
   end
   
   
@@ -96,8 +96,8 @@ class UserMailer < ActionMailer::Base
   # Setup an email that will be sent to a single user
   def setup_email(user)
     @recipients  = "#{user.email}"
-    @from        = "admin@rubymi.org"
-    @subject     = "[RubyMI] "
+    @from        = "zhu1230@gmail.com"
+    @subject     = "[医思社区－－doctorthinking.com] "
     @sent_on     = Time.now
     @body[:user] = user
   end
@@ -107,8 +107,8 @@ class UserMailer < ActionMailer::Base
   def setup_admin_email(user)
     emails = User.admins_and_creators.collect { |p| p.email } 
     @recipients  = emails.join(',')  
-    @from        = "admin@rubymi.org"
-    @subject     = "[RubyMI] "
+    @from        = "zhu1230@gmail.com"
+    @subject     = "[医思社区－－doctorthinking.com] "
     @sent_on     = Time.now
     @body[:user] = user 
   end
@@ -118,8 +118,8 @@ class UserMailer < ActionMailer::Base
   def setup_all_user_email
     emails = User.find(:all).collect { |p| p.email } 
     @recipients  = emails.join(',')  
-    @from        = "admin@rubymi.org"
-    @subject     = "[RubyMI] "
+    @from        = "zhu1230@gmail.com"
+    @subject     = "[医思社区－－doctorthinking.com] "
     @sent_on     = Time.now
   end
   

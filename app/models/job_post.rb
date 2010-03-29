@@ -16,10 +16,7 @@ class JobPost < ActiveRecord::Base
   
   include Streamable 
   acts_as_streamable
-  
-  def user
-    nil
-  end
+  belongs_to :user
   
   acts_as_taggable_on :tags
   

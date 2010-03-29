@@ -51,6 +51,7 @@ class JobPostsController < ApplicationController
 
   def create
     @job_post = JobPost.new(params[:job_post])
+	@job_post.user_id=current_user.id
     respond_to do |format|
       if @job_post.save
         flash[:notice] = 'JobPost was successfully created.'
