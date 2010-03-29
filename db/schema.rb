@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20100328160927) do
     t.datetime "updated_at"
   end
 
+
   create_table "bingli_comments", :force => true do |t|
     t.string   "title",          :limit => 45, :default => "",  :null => false
     t.datetime "thetime",                                       :null => false
@@ -192,6 +193,7 @@ ActiveRecord::Schema.define(:version => 20100328160927) do
     t.integer "bingli_id",                 :null => false
   end
 
+
   create_table "classified_categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -261,6 +263,7 @@ ActiveRecord::Schema.define(:version => 20100328160927) do
     t.datetime "updated_at"
   end
 
+
   create_table "favorites", :force => true do |t|
     t.integer "user_id",        :null => false
     t.integer "bingli_info_id", :null => false
@@ -305,6 +308,7 @@ ActiveRecord::Schema.define(:version => 20100328160927) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
 
   create_table "fuzhu_details", :force => true do |t|
     t.integer "fuzhu_type_id"
@@ -505,6 +509,7 @@ ActiveRecord::Schema.define(:version => 20100328160927) do
     t.datetime "updated_at"
   end
 
+
   create_table "question_details", :force => true do |t|
     t.string  "content",   :default => "", :null => false
     t.integer "bingli_id",                 :null => false
@@ -525,6 +530,7 @@ ActiveRecord::Schema.define(:version => 20100328160927) do
     t.datetime "updated_at"
   end
 
+
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
@@ -532,6 +538,7 @@ ActiveRecord::Schema.define(:version => 20100328160927) do
 
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+
 
   create_table "rss_feeds", :force => true do |t|
     t.string   "name"
@@ -586,10 +593,12 @@ ActiveRecord::Schema.define(:version => 20100328160927) do
     t.string "name"
   end
 
+
   create_table "tags_bingli_infos", :id => false, :force => true do |t|
     t.integer "tag_id",         :default => 0, :null => false
     t.integer "bingli_info_id", :default => 0, :null => false
   end
+
 
   create_table "themes", :force => true do |t|
     t.string "name"
@@ -651,6 +660,7 @@ ActiveRecord::Schema.define(:version => 20100328160927) do
     t.string   "identity_url"
     t.boolean  "receive_emails",                          :default => true
     t.string   "api_key",                   :limit => 40, :default => ""
+
     t.string   "name",                                    :default => ""
     t.integer  "jifen",                                   :default => 0
     t.integer  "bingli_infos_count",                      :default => 0
@@ -673,6 +683,7 @@ ActiveRecord::Schema.define(:version => 20100328160927) do
     t.integer  "bingli_info_id",                                    :null => false
     t.string   "rank_tag",       :default => "",                    :null => false
     t.datetime "thetime",        :default => '2008-04-26 11:43:52'
+
   end
 
   create_table "videos", :force => true do |t|
