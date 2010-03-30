@@ -7,7 +7,7 @@
 <% for invite in @invites %>
   <tr>
     <td><%= link_to 'Show', invite %></td>
-    <td><%= link_to 'Edit', edit_invite_path(invite) %></td>
+    <td><%= link_to '修改', edit_invite_path(invite) %></td>
     <td><%= link_to 'Destroy', invite, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

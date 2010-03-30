@@ -7,7 +7,7 @@
 <% @follows.each do |follow| %>
   <tr>
     <td><%= link_to 'Show', follow %></td>
-    <td><%= link_to 'Edit', edit_follow_path(follow) %></td>
+    <td><%= link_to '修改', edit_follow_path(follow) %></td>
     <td><%= link_to 'Destroy', follow, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

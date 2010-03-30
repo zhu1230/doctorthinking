@@ -39,7 +39,7 @@ limitations under the License.
 	</div>
 	<% if logged_in? && (current_user.is_admin || current_user.id == @photo.user.id) %>
 		<div id="admin_controls" class="tundra">
-			<%= link_to 'Edit', edit_photo_path(@photo) %>
+			<%= link_to '修改', edit_photo_path(@photo) %>
 			<%= link_to "Delete", photo_path(@photo), :confirm=>'Are you sure?', :method=>:delete %>
 		</div>
 	<% end %>

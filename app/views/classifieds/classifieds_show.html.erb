@@ -27,7 +27,7 @@ limitations under the License.
 	<%= render :partial => 'classified_brief', :locals=>{:classified=>@classified} %>
 	<% if logged_in? && (current_user.is_admin || current_user.id == classified.user.id) %>
 		<div class="classified_controls">
-			<%= link_to 'Edit', edit_classified_url(@classified) %>  
+			<%= link_to '修改', edit_classified_url(@classified) %>  
 			<%= link_to 'Delete', @classified, :confirm => 'Are you sure?', :method => :delete %>
 		</div>
 	<% end %>

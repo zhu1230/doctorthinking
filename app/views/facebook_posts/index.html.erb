@@ -7,7 +7,7 @@
 <% for facebook_post in @facebook_posts %>
   <tr>
     <td><%= link_to 'Show', facebook_post %></td>
-    <td><%= link_to 'Edit', edit_facebook_post_path(facebook_post) %></td>
+    <td><%= link_to '修改', edit_facebook_post_path(facebook_post) %></td>
     <td><%= link_to 'Destroy', facebook_post, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

@@ -22,7 +22,7 @@ limitations under the License.
 <% for html_content in @html_contents %>
   <tr>
     <td><%= link_to 'Show', html_content %></td>
-    <td><%= link_to 'Edit', edit_html_content_path(html_content) %></td>
+    <td><%= link_to '修改', edit_html_content_path(html_content) %></td>
     <td><%= link_to 'Destroy', html_content, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

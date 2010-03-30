@@ -17,9 +17,9 @@ limitations under the License.
 
 <div id="book_review_links">
 	<% if logged_in? %>
-		<div id="book_reviews_all"><%= link_to 'All Book Reviews' %></div>
-		<div id="book_reviews_my"><%= link_to 'My Book Reviews', user_book_reviews_path(current_user) %></div>
-		<div id="book_reviews_add"><%= link_to 'Add a Book Review', new_book_review_path %></div>
+		<div id="book_reviews_all"><%= link_to '所有书评' %></div>
+		<div id="book_reviews_my"><%= link_to '我的书评', user_book_reviews_path(current_user) %></div>
+		<div id="book_reviews_add"><%= link_to '增加书评', new_book_review_path %></div>
 	<% end %>
 </div>
 
@@ -28,7 +28,7 @@ limitations under the License.
 		<%= render :partial => 'book_review_brief', :locals=>{:review=>review} %>
 	<% end %>
 	<% if @book_reviews.length == 0 %>
-		No reviews exist.
+		目前无书评.
 	<% end %>
 </div>
 <div style="clear:both;"></div>

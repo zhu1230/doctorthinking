@@ -29,7 +29,7 @@
 				<td><%= admin.email %></td>
 				<td><%= admin.activated_at %></td>
 				<td>
-					<%= link_to 'Edit', '/admin/user_edit?id=' + admin.id.to_s %> | 
+					<%= link_to '修改', '/admin/user_edit?id=' + admin.id.to_s %> | 
 					<%= link_to 'Delete', '/admin/user_delete?id=' + admin.id.to_s, :confirm => 'Are you sure you want to delete this user?' %>
 				</td>
 			</tr>
@@ -60,7 +60,7 @@
 				<td><%= user.email %></td>
 				<td><%= user.activated_at %></td>
 				<td>
-					<%= link_to 'Edit', '/admin/user_edit?id=' + user.id.to_s %> |
+					<%= link_to '修改', '/admin/user_edit?id=' + user.id.to_s %> |
 					<%= link_to 'Delete', '/admin/user_delete?id=' + user.id.to_s, :confirm => 'Are you sure you want to delete this user?' %> |
 					<%= link_to 'Activate', '/admin/user_activate?id=' + user.id.to_s, :confirm => 'Are you sure you want to activate this user?' %> |
 					<%= link_to 'Make Admin', '/admin/user_promote?id=' + user.id.to_s, :confirm => 'Are you sure you want to make this user a Site Admin?' %>

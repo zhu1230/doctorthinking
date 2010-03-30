@@ -10,7 +10,7 @@
 		<%= link_to album.title, photo_album_path(album) %><br/>
 		<%= album.photos.size.to_s %> Photos<br/>
 		<% if logged_in? && (current_user.is_admin) %>
-			<%= link_to 'Edit', edit_photo_album_path(album) %><br/>
+			<%= link_to '修改', edit_photo_album_path(album) %><br/>
 			<%= link_to 'Delete', '' %>
 		<% end %>
 	</div>

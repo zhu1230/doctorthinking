@@ -57,7 +57,8 @@
         </span>
         <span class="tab"><h1>标签：</h1><%=select "tags","already",Tag.find(:all).collect{|t|[t.name,t.id]},{:prompt=>"--选择已有标签--"} %>
             &nbsp;<%=text_field_tag "tags[custom]" %>
-            &nbsp;&nbsp;<strong>分类</strong>&nbsp;<%=select_tag "catelog_id",options_for_select(Catelog.find(:all,:conditions=>["keshi_id=?",params[:id]]).collect{|c|[c.title,c.id]}),{ :include_blank => true } %>
+            &nbsp;&nbsp;<strong>分类</strong>&nbsp;<%= collection_select(:parent,:id, @keshis,:id,:title,:include_blank => '选择科室') %><%= related_collection_select(:catelog, :id,'parent_id',@catelogs, :id, :title, :keshi_id,:include_blank => '选择分类')%>
+<%#=select_tag "catelog_id",options_for_select(Catelog.find(:all,:conditions=>["keshi_id=?",params[:id]]).collect{|c|[c.title,c.id]}),{ :include_blank => true } %>
         </span>
         <span class="title"><h2>病例内容</h2></span>
         <span class="title2"><h3>一般情况</h3></span>

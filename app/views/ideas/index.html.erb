@@ -7,7 +7,7 @@
 <% for idea in @ideas %>
   <tr>
     <td><%= link_to 'Show', idea %></td>
-    <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
+    <td><%= link_to '修改', edit_idea_path(idea) %></td>
     <td><%= link_to 'Destroy', idea, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

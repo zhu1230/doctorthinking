@@ -29,7 +29,7 @@ limitations under the License.
 	</div>
 	<div class="module_body" id="wall_posts_body">
 		<% if logged_in? %>
-			<%= link_to 'Add Comment', 'javascript:show_wall_post_entry()' %>
+			<%= link_to '我要评论', 'javascript:show_wall_post_entry()' %>
 		<% end %>
 		<% if logged_in? %>
 			<%= render :partial => 'shared/wall_post_entry_form', :locals=>{:parent=>parent} %>

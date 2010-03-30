@@ -17,17 +17,17 @@ limitations under the License.
 
 <div id="photos_links">
 	<% if logged_in? %>
-		<div id="photos_all"><%= link_to 'All Photos' %></div>
-<!--    <div id="albums_all"><%= link_to 'All Albums' %></div>
-		<div id="photos_my"><%= link_to 'My Photos', user_photos_path(current_user) %></div>
-		<div id="albums_my"><%= link_to 'My Albums', user_photo_albums_path(current_user) %></div> -->
-		<div id="photos_add"><%= link_to 'Add a photo', new_photo_path %></div>
+		<div id="photos_all"><%= link_to '所有图片' %></div>
+<!--    <div id="albums_all"><%= link_to '所有相册' %></div>
+		<div id="photos_my"><%= link_to '我的图片', user_photos_path(current_user) %></div>
+		<div id="albums_my"><%= link_to '我的相册', user_photo_albums_path(current_user) %></div> -->
+		<div id="photos_add"><%= link_to '添加图片', new_photo_path %></div>
 	<% end %>
 </div>
 <% if @user %>
-	<h1>My Photos (<%= @photos.size %>)</h1>
+	<h1>我的图片 (<%= @photos.size %>)</h1>
 <% else %>
-	<h1>All Photos (<%= @photos.size %>)</h1>
+	<h1>所有图片 (<%= @photos.size %>)</h1>
 <% end %>
 
 <div id="photos_table">
@@ -35,7 +35,7 @@ limitations under the License.
 		<%= render :partial => 'photo_brief', :locals=>{:photo=>photo} %>
 	<% end %>
 	<% if @photos.length == 0 %>
-		No Photos
+		无图片
 	<% end %>
 </div>
 

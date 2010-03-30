@@ -18,9 +18,9 @@ limitations under the License.
 
 <div id="groups_links">
 	<% if logged_in? %>
-		<div id="groups_all"><%= link_to 'All Groups' %></div>
-		<div id="groups_my"><%= link_to 'My Groups', user_groups_path(current_user) %></div>
-		<div id="groups_add"><%= link_to 'Add a Group', new_group_path %></div>
+		<div id="groups_all"><%= link_to '所有圈子' %></div>
+		<div id="groups_my"><%= link_to '我参与的圈子', user_groups_path(current_user) %></div>
+		<div id="groups_add"><%= link_to '新建圈子', new_group_path %></div>
 	<% end %>
 </div>
 <% if @user %>

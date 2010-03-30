@@ -34,7 +34,7 @@ limitations under the License.
 		<% elsif logged_in? && current_user.pending_friends.include?(user) %>
 			<b>Pending Friend</b>
 		<% elsif logged_in? && user.id != current_user.id %>
-			<%= link_to 'Add Friend', 'friends/create?user_id='+current_user.id.to_s + '&friend_id=' + user.id.to_s %>
+			<%= link_to '增加好友', 'friends/create?user_id='+current_user.id.to_s + '&friend_id=' + user.id.to_s %>
 		<% end %>
 		<!--
 		<% if logged_in? && current_user.roles.include?(Role.creator) %>

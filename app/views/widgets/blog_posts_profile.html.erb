@@ -49,7 +49,7 @@ limitations under the License.
 						</div>
 						<% if logged_in? && (current_user.is_admin || current_user.id == post.user.id) %>
 							<div class="blog_post_controls">
-								<div class="edit_blog_post_link"><%= link_to 'Edit', edit_blog_post_path(post) %></div>
+								<div class="edit_blog_post_link"><%= link_to '修改', edit_blog_post_path(post) %></div>
 								<div class="delete_blog_post_link"><%= link_to "Delete", blog_post_path(post), :confirm => "Are you sure", :method => :delete %></div>
 							</div>
 						<% end %>
@@ -75,7 +75,7 @@ limitations under the License.
 	<% else %>
 		<div class="foot_left">
 			<% if logged_in? && (@user.id == current_user.id) %>
-				<%= link_to 'Add Post', new_blog_post_path %>
+				<%= link_to '发布帖子', new_blog_post_path %>
 			<% end %>
 		</div>
 		<div class="foot_right">

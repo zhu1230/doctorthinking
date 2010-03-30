@@ -19,7 +19,7 @@ limitations under the License.
 	<% if logged_in? %>
 		<div id="blogs_all"><%= link_to 'All Blog Posts' %></div>
 		<div id="blogs_my"><%= link_to 'My Blog', user_blog_posts_path(current_user) %></div>
-		<div id="blogs_add"><%= link_to 'Add a Blog Post', new_blog_post_path %></div>
+		<div id="blogs_add"><%= link_to '新建日志', new_blog_post_path %></div>
 	<% end %>
 </div>
 <div class="blog_post blog_post_view">

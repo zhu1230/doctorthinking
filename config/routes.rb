@@ -157,7 +157,7 @@ ActionController::Routing::Routes.draw do |map|
   
     map.connect 'biz/bingli_comment/:action/:id',:controller=>'biz/bingli_comment'
 #  map.connect 'biz/topic/:keshi/:topic_id',:controller=>'biz/topic',:action=>'showOne'
-  map.index '/biz/bingli_info/index',:controller=>"biz/bingli_info",:action=>"index"
+  map.index '/',:controller=>"home",:action=>"index"
   map.connect 'biz/bingli_info/:action/:id',:controller=>"biz/bingli_info"
   #for tag
   

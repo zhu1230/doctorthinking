@@ -26,7 +26,7 @@
 				<td><%= group.creator_id %></td>
 				<td><%= group.featured %></td>
 				<td>
-					<%= link_to 'Edit', '/admin/group_edit?id=' + group.id.to_s %> |
+					<%= link_to '修改', '/admin/group_edit?id=' + group.id.to_s %> |
 					<%= link_to 'Delete', '/admin/group_delete?id=' + group.id.to_s, :confirm => 'Are you sure you want to delete this group?' %> |
 				</td>
 			</tr>

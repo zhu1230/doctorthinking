@@ -28,7 +28,7 @@ limitations under the License.
 <% content_for :module_footer do %>
 	<div class="foot_left">
 		<% if logged_in? && (current_user.is_admin) %>
-			<%= link_to 'Edit', edit_html_content_path(@content) %>
+			<%= link_to '修改', edit_html_content_path(@content) %>
 		<% end %>
 	</div>
 	<div class="foot_right">

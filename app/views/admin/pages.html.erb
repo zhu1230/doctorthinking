@@ -11,7 +11,7 @@
 </style>
 
 <h2 class="ic-db">Pages</h2>
-<%= link_to 'Add Page', '/admin/page_new' %>
+<%= link_to '建立页面', '/admin/page_new' %>
 <table id="pages">
 	<thead>
 		<th width="50px">ID</th>
@@ -24,9 +24,9 @@
 				<td><%= page.id %></td>
 				<td><%= page.title %></td>
 				<td>
-					<%= link_to 'Edit', '/admin/page_edit?id=' + page.id.to_s %> |
-					<%= link_to 'Delete', '/admin/page_delete?id=' + page.id.to_s, :confirm => 'Are you sure you want to delete this page?' %> |
-					<%= link_to 'View', "/pages/show/#{page.title}" %>
+					<%= link_to '编辑', '/admin/page_edit?id=' + page.id.to_s %> |
+					<%= link_to '删除', '/admin/page_delete?id=' + page.id.to_s, :confirm => 'Are you sure you want to delete this page?' %> |
+					<%= link_to '查看', "/pages/show/#{page.title}" %>
 				</td>
 			</tr>
 		<% end %>
@@ -35,7 +35,7 @@
 
 
 <h2 class="ic-db">Widgets</h2>
-<%= link_to 'Add Widget', '/admin/widget_new' %>
+<%= link_to '增加部件', '/admin/widget_new' %>
 <table id="widgets">
 	<thead>
 		<th width="50px">ID</th>
@@ -50,7 +50,7 @@
 				<td><%= widget.name %></td>
 				<td><%= widget.title %></td>
 				<td>
-					<%= link_to 'Edit', '/admin/widget_edit?id=' + widget.id.to_s %> |
+					<%= link_to '修改', '/admin/widget_edit?id=' + widget.id.to_s %> |
 					<%= link_to 'Delete', '/admin/widget_delete?id=' + widget.id.to_s, :confirm => 'Are you sure you want to delete this widget?' %> |
 				</td>
 			</tr>
@@ -61,7 +61,7 @@
 <h2 class="ic-db">Layouts</h2>
 Layouts place widgets into specific positions on a page.  Selecting all the layouts for a particular
 page will determine the content for that page.<br/><br/>
-<%= link_to 'Add Layout', '/admin/layout_new' %>
+<%= link_to '新建布局', '/admin/layout_new' %>
 <table id="layouts">
 	<thead>
 		<th width="50px">ID</th>
@@ -86,7 +86,7 @@ page will determine the content for that page.<br/><br/>
 				<td><%= layout.row_num %></td>
 				<td><%= layout.html_content_id %></td>
 				<td>
-					<%= link_to 'Edit', '/admin/layout_edit?id=' + layout.id.to_s %> |
+					<%= link_to '修改', '/admin/layout_edit?id=' + layout.id.to_s %> |
 					<%= link_to 'Delete', '/admin/layout_delete?id=' + layout.id.to_s, :confirm => 'Are you sure you want to delete this layout?' %> |
 				</td>
 			</tr>
@@ -95,7 +95,7 @@ page will determine the content for that page.<br/><br/>
 </table>
 
 <h2 class="ic-db">Contents</h2>
-<%= link_to 'Add Content', '/admin/content_new' %>
+<%= link_to '新建内容', '/admin/content_new' %>
 <table id="contents">
 	<thead>
 		<th width="50px">ID</th>
@@ -108,7 +108,7 @@ page will determine the content for that page.<br/><br/>
 				<td><%= content.id %></td>
 				<td><%= content.title %></td>
 				<td>
-					<%= link_to 'Edit', '/admin/content_edit?id=' + content.id.to_s %> |
+					<%= link_to '修改', '/admin/content_edit?id=' + content.id.to_s %> |
 					<%= link_to 'Delete', '/admin/content_delete?id=' + content.id.to_s, :confirm => 'Are you sure you want to delete this content?' %> |
 				</td>
 			</tr>

@@ -30,7 +30,7 @@
 				<td><%= event.location %></td>
 				<td><%= event.organized_by %></td>
 				<td>
-					<%= link_to 'Edit', '/admin/event_edit?id=' + event.id.to_s %> |
+					<%= link_to '修改', '/admin/event_edit?id=' + event.id.to_s %> |
 					<%= link_to 'Delete', '/admin/event_delete?id=' + event.id.to_s, :confirm => 'Are you sure you want to delete this event?' %> |
 				</td>
 			</tr>

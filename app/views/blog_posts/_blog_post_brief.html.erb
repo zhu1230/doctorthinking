@@ -28,7 +28,7 @@ limitations under the License.
 		<div class="blog_post_detail">Posted by <%= link_to blog_post.user.name, user_path(blog_post.user) %> at <%= blog_post.created_at %></div>
 		<% if logged_in? && (current_user.is_admin) %>
 			<div class="blog_post_controls">
-				<div class="edit_blog_post_link"><%= link_to 'Edit', edit_blog_post_path(blog_post) %></div>
+				<div class="edit_blog_post_link"><%= link_to '修改', edit_blog_post_path(blog_post) %></div>
 				<div class="delete_blog_post_link"><%= link_to "Delete", blog_post_path(blog_post), :confirm => "Are you sure", :method => :delete %></div>
 			</div>
 		<% end %>

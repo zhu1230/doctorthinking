@@ -32,7 +32,7 @@ limitations under the License.
 	</div>
 	<% if logged_in? && current_user.is_group_admin(@group) %>
 		<div class="module_foot">
-			<%= link_to 'Edit', edit_group_url(@group) %>
+			<%= link_to '修改', edit_group_url(@group) %>
 		</div>
 	<% end %>
 </div>

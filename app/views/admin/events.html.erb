@@ -9,7 +9,7 @@
 </style>
 
 <h2 class="ic-db">Events</h2>
-<%= link_to 'Add Event', '/admin/event_new' %>
+<%= link_to '增加活动', '/admin/event_new' %>
 <table id="events">
 	<thead>
 		<th width="50px">ID</th>
@@ -30,7 +30,7 @@
 				<td><%= event.location %></td>
 				<td><%= event.organized_by %></td>
 				<td>
-					<%= link_to 'Edit', '/admin/event_edit?id=' + event.id.to_s %> |
+					<%= link_to '修改', '/admin/event_edit?id=' + event.id.to_s %> |
 					<%= link_to 'Delete', '/admin/event_delete?id=' + event.id.to_s, :confirm => 'Are you sure you want to delete this event?' %> |
 				</td>
 			</tr>

@@ -22,7 +22,7 @@ limitations under the License.
 <% for status_post in @status_posts %>
   <tr>
     <td><%= link_to 'Show', status_post %></td>
-    <td><%= link_to 'Edit', edit_status_post_path(status_post) %></td>
+    <td><%= link_to '修改', edit_status_post_path(status_post) %></td>
     <td><%= link_to 'Destroy', status_post, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

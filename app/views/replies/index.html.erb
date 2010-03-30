@@ -22,7 +22,7 @@ limitations under the License.
 <% for reply in @replies %>
   <tr>
     <td><%= link_to 'Show', reply %></td>
-    <td><%= link_to 'Edit', edit_reply_path(reply) %></td>
+    <td><%= link_to '修改', edit_reply_path(reply) %></td>
     <td><%= link_to 'Destroy', reply, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

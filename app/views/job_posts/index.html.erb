@@ -3,7 +3,7 @@
 
 <div id="jobs_links">
 	<% if logged_in? %>
-		<div id="jobs_add"><%= link_to 'Add a Job Post', new_job_post_path %></div>
+		<div id="jobs_add"><%= link_to '新建工作信息', new_job_post_path %></div>
 	<% end %>
 </div>
 <h1>Job Posts (<%= @job_posts.length %>)</h1>

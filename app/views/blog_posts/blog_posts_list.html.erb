@@ -17,9 +17,9 @@ limitations under the License.
 
 <div id="blogs_links">
 	<% if logged_in? %>
-		<div id="blogs_all"><%= link_to 'All Blog Posts' %></div>
-		<div id="blogs_my"><%= link_to 'My Blog', user_blog_posts_path(current_user) %></div>
-		<div id="blogs_add"><%= link_to 'Add a Blog Post', new_blog_post_path %></div>
+		<div id="blogs_all"><%= link_to '所有日志' %></div>
+		<div id="blogs_my"><%= link_to '我的博客', user_blog_posts_path(current_user) %></div>
+		<div id="blogs_add"><%= link_to '新增日志', new_blog_post_path %></div>
 	<% end %>
 </div>
 <% if @user %>

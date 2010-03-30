@@ -39,7 +39,7 @@ limitations under the License.
 			<div class="link_poster">
 				Posted by <%= link_to link.user.name, user_path(link.user) %> at <%= link.created_at.to_s(:basic) %>
 				<% if logged_in? && (current_user.is_admin || current_user.id == link.user.id) %>
-					<div class="edit_proj_link"><%= link_to 'Edit', edit_link_path(link) %></div>
+					<div class="edit_proj_link"><%= link_to '修改', edit_link_path(link) %></div>
 					<div class="edit_proj_link"><%= link_to "Delete", link_path(link), :confirm => "Are you sure", :method => :delete %></div>
 				<% end %>
 			</div>
@@ -54,7 +54,7 @@ limitations under the License.
 <% content_for :module_footer do %>
 	<div class="foot_left">
 		<% if logged_in? %>
-			<%= link_to 'Add Link', new_link_path %>
+			<%= link_to '添加链接', new_link_path %>
 		<% end %>
 	</div>
 	<div class="foot_right">

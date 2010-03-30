@@ -35,7 +35,7 @@ limitations under the License.
 				<%= announcement.body %>
 			</div>
 			<% if logged_in? && (current_user.is_admin) %>
-				<div class="edit_announc_link"><%= link_to 'Edit', edit_announcement_path(announcement) %></div>
+				<div class="edit_announc_link"><%= link_to '修改', edit_announcement_path(announcement) %></div>
 				<div class="edit_announc_link"><%= link_to "Delete", announcement_path(announcement), :confirm => "Are you sure", :method => :delete %></div>
 			<% end %>
 		</div>
@@ -49,7 +49,7 @@ limitations under the License.
 <% content_for :module_footer do %>
 	<div class="foot_left">
 		<% if logged_in? && current_user.is_admin %>
-			<%= link_to 'Add Announcement', new_announcement_path %>
+			<%= link_to '发布公告', new_announcement_path %>
 		<% end %>
 	</div>
 	<div class="foot_right">

@@ -14,7 +14,8 @@ class Biz::BingliInfoController < ApplicationController
   end
 
   def input
-
+	@keshis=Keshi.find(:all)
+	@catelogs=Catelog.find(:all)
   end
   def add_favorite
     current_user.favorites << BingliInfo.find(params[:id])
@@ -22,6 +23,7 @@ class Biz::BingliInfoController < ApplicationController
   end
   def save
         @bingli=Bingli.new(params[:bingli])
+		
         process_yiwen params,@bingli
         process_chubu params,@bingli
         process_fuzhu params,@bingli unless params[:fuzhu].blank?
@@ -30,8 +32,10 @@ class Biz::BingliInfoController < ApplicationController
         @bingli.bingli_info.keshi_id=params[:keshi_id]
         @bingli.bingli_info.user=current_user
         @bingli.bingli_info.thetime=Time.new
+		@bingli.bingli_info.catelog_id=params[:catelog][:id]
         process_bingli_info params,@bingli
         if @bingli.save
+		flash[:success]="病例发布成功！"
           redirect_to :action=>"showOne",:id=>@bingli.bingli_info.id
 #        show '发表成功',{:action=>"showOne",:id=>@bingli.bingli_info.id}
 #        return;

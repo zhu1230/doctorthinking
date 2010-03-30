@@ -29,7 +29,7 @@
 					<td><%= topic.parent_id %></td>
 					<td><%= topic.default %></td>
 					<td>
-						<%= link_to 'Edit', '/admin/blog_post_topic_edit?id=' + topic.id.to_s %> |
+						<%= link_to '修改', '/admin/blog_post_topic_edit?id=' + topic.id.to_s %> |
 						<%= link_to 'Delete', '/admin/blog_post_topic_delete?id=' + topic.id.to_s, :confirm => 'Are you sure you want to delete this blog post topic?' %> |
 					</td>
 				</tr>
@@ -41,7 +41,7 @@
 <% end %>
 
 <h2 class="ic-db">Blog Posts</h2>
-<%= link_to 'Add Post', '/admin/blog_post_new' %><br/><br/>
+<%= link_to '发布帖子', '/admin/blog_post_new' %><br/><br/>
 <table id="blog_posts">
 	<thead>
 		<th width="50px">ID</th>
@@ -50,7 +50,7 @@
 		<th width="90px">Parent ID</th>
 		<th width="90px">Published</th>
 		<th width="90px">Featured</th>
-		<th width="200px">Actions</th>
+		<th width="200px">操作</th>
 	</thead>
 	<tbody>
 		<% @blog_posts.each do |post| %>
@@ -62,7 +62,7 @@
 				<td><%= post.published %></td>
 				<td><%= post.featured %></td>
 				<td>
-					<%= link_to 'Edit', '/admin/blog_post_edit?id=' + post.id.to_s %> |
+					<%= link_to '修改', '/admin/blog_post_edit?id=' + post.id.to_s %> |
 					<%= link_to 'Delete', '/admin/blog_post_delete?id=' + post.id.to_s, :confirm => 'Are you sure you want to delete this blog post?' %> |
 				</td>
 			</tr>

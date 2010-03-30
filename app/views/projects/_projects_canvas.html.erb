@@ -17,7 +17,7 @@ limitations under the License.
 
 <div id="projects_links">
 	<% if logged_in? %>
-		<div id="projects_add"><%= link_to 'Add a Project', new_project_path %></div>
+		<div id="projects_add"><%= link_to '新建课题', new_project_path %></div>
 	<% end %>
 </div>
 <h1>Projects (<%= @projects.length %>)</h1>
@@ -27,7 +27,7 @@ limitations under the License.
 			<div class="project_name">
 				<%= link_to project.name, project.url %>
 				<% if logged_in? && (current_user.is_admin || current_user.id == project.user.id) %>
-					<div class="edit_proj_link"><%= link_to 'Edit', edit_project_path(project) %></div>
+					<div class="edit_proj_link"><%= link_to '修改', edit_project_path(project) %></div>
 					<div class="edit_proj_link"><%= link_to "Delete", project_path(project), :confirm => "Are you sure", :method => :delete %></div>
 				<% end %>
 			</div>

@@ -7,7 +7,7 @@
 <% @widget_layouts.each do |widget_layout| %>
   <tr>
     <td><%= link_to 'Show', widget_layout %></td>
-    <td><%= link_to 'Edit', edit_widget_layout_path(widget_layout) %></td>
+    <td><%= link_to '修改', edit_widget_layout_path(widget_layout) %></td>
     <td><%= link_to 'Destroy', widget_layout, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

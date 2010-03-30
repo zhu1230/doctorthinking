@@ -22,7 +22,7 @@ limitations under the License.
 <% for rss_feed in @rss_feeds %>
   <tr>
     <td><%= link_to 'Show', rss_feed %></td>
-    <td><%= link_to 'Edit', edit_rss_feed_path(rss_feed) %></td>
+    <td><%= link_to '修改', edit_rss_feed_path(rss_feed) %></td>
     <td><%= link_to 'Destroy', rss_feed, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

@@ -17,9 +17,9 @@ limitations under the License.
 
 <div id="links_links">
 	<% if logged_in? %>
-		<div id="links_all"><%= link_to 'All Links' %></div>
-		<div id="links_my"><%= link_to 'My Links', user_links_path(current_user) %></div>
-		<div id="links_add"><%= link_to 'Add a Link', new_link_path %></div>
+		<div id="links_all"><%= link_to '所有链接' %></div>
+		<div id="links_my"><%= link_to '我发布的链接', user_links_path(current_user) %></div>
+		<div id="links_add"><%= link_to '添加链接', new_link_path %></div>
 	<% end %>
 	<div style="clear:both;"></div>
 </div>
@@ -41,7 +41,7 @@ limitations under the License.
 			<div class="link_poster">
 				Posted by <%= link_to link.user.name, user_path(link.user) %> at <%= link.created_at.to_s(:basic) %>
 				<% if current_user.is_admin || current_user.id == link.user.id %>
-					<div class="edit_proj_link"><%= link_to 'Edit', edit_link_path(link) %></div>
+					<div class="edit_proj_link"><%= link_to '修改', edit_link_path(link) %></div>
 					<div class="edit_proj_link"><%= link_to "Delete", link_path(link), :confirm => "Are you sure", :method => :delete %></div>
 				<% end %>
 			</div>

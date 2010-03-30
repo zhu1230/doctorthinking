@@ -22,7 +22,7 @@ limitations under the License.
 <% for video in @videos %>
   <tr>
     <td><%= link_to 'Show', video %></td>
-    <td><%= link_to 'Edit', edit_video_path(video) %></td>
+    <td><%= link_to '修改', edit_video_path(video) %></td>
     <td><%= link_to 'Destroy', video, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

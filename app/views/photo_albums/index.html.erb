@@ -22,7 +22,7 @@ limitations under the License.
 <% for photo_album in @photo_albums %>
   <tr>
     <td><%= link_to 'Show', photo_album %></td>
-    <td><%= link_to 'Edit', edit_photo_album_path(photo_album) %></td>
+    <td><%= link_to '修改', edit_photo_album_path(photo_album) %></td>
     <td><%= link_to 'Destroy', photo_album, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

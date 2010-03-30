@@ -28,7 +28,7 @@
 				<td><%= topic.title %></td>
 				<td class="center_col"><%= topic.user_id %></td>
 				<td>
-					<%= link_to 'Edit', '/admin/forum_topic_edit?id=' + topic.id.to_s %> |
+					<%= link_to '修改', '/admin/forum_topic_edit?id=' + topic.id.to_s %> |
 					<%= link_to 'Delete', '/admin/forum_topic_delete?id=' + topic.id.to_s, :confirm => 'Are you sure you want to delete this forum topic?' %> |
 				</td>
 			</tr>

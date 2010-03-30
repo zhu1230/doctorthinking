@@ -44,7 +44,7 @@ limitations under the License.
 	<% if logged_in? && current_user == @user -%>
 		<div class="foot_left"></div>
 		<div class="foot_right">
-			<span class="edit_link"><%= link_to 'Edit', edit_user_path(@user) %></span>
+			<span class="edit_link"><%= link_to '修改', edit_user_path(@user) %></span>
 		</div>
 		<div style="clear:both;"></div>
 	<% end %>

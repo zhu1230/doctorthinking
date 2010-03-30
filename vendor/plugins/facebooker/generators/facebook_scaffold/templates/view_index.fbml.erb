@@ -13,7 +13,7 @@
     <td><%%=h <%= singular_name %>.<%= attribute.name %> %></td>
 <% end -%>
     <td><%%= link_to 'Show', <%= singular_name %> %></td>
-    <td><%%= link_to 'Edit', edit_<%= singular_name %>_path(<%= singular_name %>) %></td>
+    <td><%%= link_to '修改', edit_<%= singular_name %>_path(<%= singular_name %>) %></td>
     <td><%%= button_to 'Destroy', <%= singular_name %>, :method => :delete %></td>
   </tr>
 <%% end %>

@@ -30,8 +30,8 @@
 </head>
 <body>
 
-	<div id="content">
-		<div id="header">
+i<div id='content'>
+
 			<%if (params[:controller]=="sessions" && params[:action]=="new") %>
 			<%=render(:partial=>"shared/top_login")%>
 			<%else if(params[:controller]=="users" && params[:action]=="new")%>
@@ -41,13 +41,13 @@
 			<%else%>
 			<%=render(:partial=>"shared/top_unlogon")%>
 			<%end end end%>
-		</div>
+
 		<%=render :partial=>"shared/message_bar"%>
-		<div id="main">
-			<div >
+	
+		
 				<%= yield  %>
-			</div>
-			<div >
+		
+	
 				<!-- TODO: Needs to be refactored to move this content into page templates -->
 				<% if @section == 'MAIN' %>
 					<%#= render :partial => 'users/user_control_widget' %>
@@ -66,13 +66,7 @@
 				<% else %>
 					<%#= render :partial => 'users/user_control_widget' %>
 				<% end %>
-			</div>
-			<div></div>
-		</div>
-		<div>
+</div>			
 <%=render :partial=>"shared/bottom"%>
-		</div>
-		<div></div>
-	</div>
 </body>
 </html>

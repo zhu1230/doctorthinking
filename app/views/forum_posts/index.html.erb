@@ -17,10 +17,10 @@ limitations under the License.
 
 <div id="forum_links">
 	<% if logged_in? %>
-		<div id="forum_all"><%= link_to 'Show Topics', forum_topics_path %></div>
+		<div id="forum_all"><%= link_to '显主题', forum_topics_path %></div>
 		<% if @forum_topic %>
-			<div id="forum_my"><%= link_to 'My Posts', user_forum_posts_path(current_user) %></div>
-			<div id="forum_add"><%= link_to 'Add a Post', new_forum_post_path(:forum_topic_id=>@forum_topic.id) %></div>
+			<div id="forum_my"><%= link_to '我的所有回复', user_forum_posts_path(current_user) %></div>
+			<div id="forum_add"><%= link_to '我要回复', new_forum_post_path(:forum_topic_id=>@forum_topic.id) %></div>
 		<% end %>
 	<% end %>
 </div>		
@@ -32,10 +32,10 @@ limitations under the License.
 <div id="forum_table">	
 	<table id="post_table" border="1" cellpadding="2" cellspacing="0">
 		<thead>
-			<th>Posts</th>
-			<th>Views</th>
+			<th>帖子</th>
+			<th>查看</th>
 			<th>Replies</th>
-			<th>Latest Activity</th>
+			<th>最新热点</th>
 		</thead>
 		<% for forum_post in @forum_posts %>
 			<tr>
