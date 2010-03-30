@@ -71,6 +71,7 @@ ul,li {list-style-type:none;list-style-images:none;}
         	<span>加*号的为必填信息</span>
         	<h3>1.建立你的账号</h3>
        	  <ul>
+				<li><label for="uesr">用户名：</label><%= f.text_field :login -%>&nbsp;<font color="red">*</font></li>
            	<li><label for="uesr">你的邮箱：</label><%= f.text_field :email %>&nbsp;<font color="red">*</font><br />
 					<font color="#99999">例如:name@163.com</font>
             </li>
