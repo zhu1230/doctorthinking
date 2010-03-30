@@ -13,32 +13,66 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<div class="main">
-    <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
-	<div id="login_form">
-		<h5>Sign in with your RubyMI login and password</h5>
-		<% form_tag session_path do -%>
-			<div class="form_field">
-				<label for="login">Login:</label>
-				<%= text_field_tag 'login' %>
-			</div>
-			<div class="form_field">
-				<label for="password">Password:</label>
-				<%= password_field_tag 'password' %>
-			</div>	
-			<div id="login_btn">
-				<%= submit_tag 'Log in', :class=>'login_btn' %>
-			</div>
-		<% end -%>
-		<div style="clear:both;"></div>
-	</div>
-	<!-- <div id="facebook_login">
-		<h5>Signin with your Facebook account</h5>
-		<div id="facebook_login_button">
-			<%#= fb_login_button('window.location = "/users/link_facebook_account";')%>
-		</div>
-	</div> -->
-	<div style="clear:both;"></div>
+
+
+
+<style type="text/css">
+<!--
+body {font-family:Arial, Helvetica, sans-serif;margin:0;font-size:12px;}
+a {font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#002850;}
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;color:#002850;}
+a:hover {text-decoration:underline;color:#002850;}
+a:active {text-decoration:none;color:#002850;}
+h1,h2 {margin:0;padding:0;}
+.l_area {width:780px;margin:40px auto;}
+.l_area .intro {width:380px;float:left;}
+.l_area .intro .pic {width:380px;height:116px;background:url(/images/user/loginbg.gif) 0px 20px no-repeat;margin:0 0 30px 0;}
+.l_area .intro h1 {font:normal 12px "宋体";color:#828282;height:25px;line-height:25px;padding:0 0 0 40px;margin:10px 0;clear:both;}
+.l_area .intro h1.t1 {background:url(/images/user/loginbg.gif) left -106px no-repeat;}
+.l_area .intro h1.t2 {background:url(/images/user/loginbg.gif) left -142px no-repeat;margin-bottom:20px;}
+.l_area .intro h2 a {background:url(/images/user/loginbg.gif) left -170px no-repeat;font-size:12px;color:#728DBA;text-decoration:underline;padding:0 0 0 14px;border-top:1px solid #D8D8D8;clear:both;height:60px;line-height:60px;width:360px;display:block;}
+.l_area .login {width:360px;float:right;}
+.l_area .login .header {width:360px;height:12px;background:url(/images/user/loginbg.gif) left -292px no-repeat;float:left;overflow:hidden;}
+.l_area .login .content {width:358px;background:#EFF5F5;border-right:1px solid #CBE6F9;border-left:1px solid #CBE6F9;float:left;}
+.l_area .login .content h1 {font-size:14px;width:358px;height:30px;line-height:30px;text-align:center;}
+.l_area .login .content label {width:140px;text-align:right;line-height:30px;height:30px;font-size:14px;float:left;}
+.l_area .login .content p {width:358px;float:left;font-size:12px;margin:0;}
+.l_area .login .content .loginbtn  {width:73px;height:50px;cursor:pointer;background:url(/images/user/loginbg.gif) left -237px no-repeat;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;margin:0 0 0 140px;padding:0;}
+.l_area .login .content .regbtn  {width:85px;height:32px;line-height:32px;cursor:pointer;background:url(/images/user/loginbg.gif) -87px -247px no-repeat;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;margin:10px 0 0;padding:0;font-weight:bold;color:#072A46;}
+.l_area .login .foot {width:360px;height:12px;background:url(/images/user/loginbg.gif) left -304px no-repeat;float:left;overflow:hidden;}
+-->
+</style><div class="l_area">
+	<% form_tag '/session' do -%>
+  <div class="intro">
+    	<div class="pic"></div>	
+        <h1 class="t1">在您登录到账户后，可提供给您更多的服务</h1>
+        <h1 class="t2">在右侧进行登录，使用电子邮件地址和您所选择的密码</h1>
+      <h2><a href="#">立即注册</a></h2>
+  </div>
+  <div class="login">
+  	<div class="header"></div>
+    <div class="content">
+   	  <h1><font color="#2497FF">Doctor</font><font color="#F49E00">Thinking</font> 登录</h1>
+        <p><label for="email">电子邮件&nbsp;</label><%= text_field_tag 'login' %></p>
+        <p><label for="password">DoctorThinking密码&nbsp;</label><%= password_field_tag 'password' %></p>
+        <p><label style="margin-left:54px;"><%= check_box_tag 'remember_me' %><a href="#" title="选择是否记录您的信息">记住我</a></label></p>
+        <div class="clear"></div>
+        <p><%=submit_tag "登 录",:class=>"loginbtn",:value=>""%></p>  <% end -%>
+      <p style="width:338px;text-align:center;border-top:1px solid #C9CDCE;margin:20px 0 0 5px;"><b>没有DoctorThinking账户？</b>&nbsp;&nbsp;<%=submit_tag "立即注册",{:onclick=>"location.href='"+url_for(signup_url)+"'",:class=>"regbtn"}%>
+      </p>
+        <p style="text-align:center;margin-top:20px;"><a href="#"><u>忘记密码？　</u></a> <a href="#"><u>修改密码</u></a></p>
+    </div>
+    <div class="foot"></div>
+  </div>
+
 </div>
+
+<!-- <div id="facebook_login">
+	<h5>Signin with your Facebook account</h5>
+	<div id="facebook_login_button">
+		<%#= fb_login_button('window.location = "/users/link_facebook_account";')%>
+	</div>
+</div> -->
+
+

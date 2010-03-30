@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<% widget_title = "Forum Posts" %>
+<% widget_title = "经验交流" %>
 
 <% @forum_posts = ForumPost.find(:all, 
 								 :select=>"id, title, body, user_id, created_at", 
@@ -40,7 +40,7 @@ limitations under the License.
 		</div>
 	<% end %>
 	<% if @forum_posts.length == 0 %>
-		No forum posts exist!
+		无交流贴!
 	<% end %>
 	<div style="clear:both;"></div>
 <% end %>
@@ -48,7 +48,7 @@ limitations under the License.
 <% content_for :module_footer do %>
 	<div class="foot_left"></div>
 	<div class="foot_right">
-		<%= link_to 'View All', forum_topics_url %>
+		<%= link_to "显示全部", forum_topics_url %>
 	</div>
 	<div style="clear:both;"></div>
 <% end %>

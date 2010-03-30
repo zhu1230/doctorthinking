@@ -13,12 +13,114 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<%= stylesheet_link_tag 'profile' %>
+<style type="text/css">
+<!--
+body {font-family:"宋体";margin:0;font-size:12px;}
+a {font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#002850;}
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;color:#002850;}
+a:hover {text-decoration:underline;color:#002850;}
+a:active {text-decoration:none;color:#002850;}
+h1,h2,h3,p,ul,li {margin:0;padding:0;}
+ul,li {list-style-type:none;list-style-images:none;}
+.area {width:880px;margin:0 auto;padding-top:20px;}
+.area .atitle,.area .cont {width:880px;flaot:left;}
+.area .atitle h1 {font-size:16px;line-height:30px;}
+.area .atitle h2 {font-size:12px;padding-bottom:10px;font-weight:normal;color:#999;}
+.area .cont1 {width:620px;float:left;border-top:1px solid #d8d8d8;overflow:hidden; padding:0px; margin:0px;}
+.area .cont1 ul {width:620px;float:left;}
+.area .cont1 li {width:620px;float:left;line-height:30px;overflow:hidden;}
+.area .cont1 h3 {width:620px;color:#FF9400;font-size:12px;line-height:30px;}
+.area .cont1 span {line-height:30px;}
+.area li input,.area li textarea {border:1px solid #879BB3;width:200px;}
+.area li label {width:130px;text-align:right;padding-right:5px;float:left;line-height:30px;}
+.area .btn {width:85px;height:32px;line-height:32px;cursor:pointer;background:url(/images/user/loginbg.gif) -87px -247px no-repeat;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;margin:10px 0 0;padding:0;font-weight:bold;color:#072A46;}
+.area .cont2 {width:250px;float:right;}
+.area .cont2 .header {width:250px;height:12px;overflow:hidden;background:url(/images/user/regbg.gif) left top no-repeat;float:left;}
+.area .cont2 .footer {width:250px;height:12px;overflow:hidden;background:url(/images/user/regbg.gif) left -12px no-repeat;float:left;}
+.area .cont2 .cont {width:248px;float:left;background:#F7FAFF;border-left:1px solid #CBE6F9;border-right:1px solid #CBE6F9;}
+.area .cont2 .cont p {float:left;line-height:22px;font-size:14px;padding:6px 10px;}
 
-<h1>Signup</h1>		
+#signup_help {
+	float: right;
+	width: 180px;
+	margin-right: 50px;
+	margin-top: 100px;
+	border: 1px solid #777777;
+	padding: 8px;
+	background-color: #F8F8F8;
+}
+-->
+</style>
+
+<div class="area">
+  <%= error_messages_for :user,:class=>"error" %>
+	<div class="atitle">
+	  <h1>加入<font color="#2497FF">Doctor</font><font color="#F49E00">Thinking</font></h1>
+	  <h2>请填写以下关于你的信息</h2>
+	</div>
+  <% form_for :user, :url => users_path do |f| -%>
+	<div id="signup_help">
+		在注册成功之后，您将收到一个确认注册的电子邮件。请按照邮件中的激活帐户链接来完成此次注册过程。
+	</div>
+	<% if @invite_code %>
+		<input type="hidden" id="invite_code" name="invite_code" value="<%= @invite_code %>"/>
+	<% end %>
+    <div class="cont">
+   	  <div class="cont1">
+        	<span>加*号的为必填信息</span>
+        	<h3>1.建立你的账号</h3>
+       	  <ul>
+           	<li><label for="uesr">你的邮箱：</label><%= f.text_field :email %>&nbsp;<font color="red">*</font><br />
+					<font color="#99999">例如:name@163.com</font>
+            </li>
+                <li><label for="uesr">密码：</label><%=f.password_field :password%>&nbsp;<font color="red">*</font></li>
+                <li><label for="uesr">重复密码：</label><%= f.password_field :password_confirmation %>&nbsp;<font color="red">*</font></li>
+          </ul>
+            <h3>2.建立你的个人信息</h3>
+        	<ul>
+            	<li><label for="uesr">昵称：</label><%= f.text_field :name %>&nbsp;<font color="red">*</font><br/>
+					<font color="#99999">4-20个字符之内，使用中文或英文字母</font>                 </li>
+                <li><label for="uesr">科室选择：</label>
+                  <%=f.select "keshi_id",$ccc%>&nbsp;<font color="red">*</font>                </li>
+                <li><label for="uesr">个人补充说明 ：</label>
+                  <%=f.text_area "about_me",:cols=>"45",:rows=>"5",:style=>"width:300px;"%>
+                  <br />
+					<font color="#99999" style="padding-left:140px;">您的研究热点，举例：肝胆外科等。</font>                </li>
+                <li style="padding-top:10px;"><label for="uesr">职称：</label>
+                  <%=f.select("zhicheng",[["初级",1 ],["中级",2 ],["高级",3 ]], { :include_blank => true })%>&nbsp;<font color="red">*</font>                </li>
+                <li style="padding-left:136px;"><%=f.check_box "receive_emails",{:style=>"border:0;width:18px;",:checked=>true},1,0%>是否接收社区的邮件通知                </li>
+              <li style="padding-left:136px;"><%=check_box_tag "agree","1",true,{:style=>"border:0;width:18px;"}-%>我同意DoctorThinking社区的 <a href="#"><font color="FF9700">使用条款</font></a>和 <a href="#"><font color="FF9700">用户隐私</font></a> </li>
+              <li style="padding-left:136px;"><input type="submit" value="完成" class="btn" />
+              &nbsp;<a href="#">取消</a></li>
+          </ul>
+      </div>
+        <div class="cont2">
+        	<div class="header"></div>
+            <div class="cont"><p><strong><font color="#333333">注册成为会员，您可以免费获得</font></strong><br />
+                <font color="#666666">一、最新相关会议第一时间通知。<br />
+二、热点技术每周摘要。<br />
+三、新技术学习资料与操作录像。<br />
+四、随您需要而整理的便利而丰富的病例资料。<br />
+五、与国内专家共同探讨疾病疾病疑点及新技术的机会。<br />
+六、共享自己的工作体验，收到同行的精心反馈。<br />
+七、其它。</font></p>
+            </div>
+            <div class="footer"></div>
+        </div>
+    </div>
+  <% end -%>
+</div>
+
+
+
+
+<%#= stylesheet_link_tag 'profile' %>
+
+<!-- <h1>Signup</h1>		
 <div id="add_user">
 	<%= render :partial => 'new_user_form' %>
-</div>
+</div> -->
 
 
 

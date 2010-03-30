@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<% widget_title = "Projects" %>
+<% widget_title = "课题" %>
 <% @projects = Project.find(:all, :limit=>6, :include => :user)%>
 
 <% content_for :module_header do %>
@@ -45,7 +45,7 @@ limitations under the License.
 		</div>
 	<% end %>
 	<% if @projects.length == 0 %>
-		No Projects Exist!
+		目前无课题!
 	<% end %>
 	<div style="clear:both;"></div>
 <% end %>
@@ -57,7 +57,7 @@ limitations under the License.
 		<% end %>
 	</div> 
 	<div class="foot_right">
-		<%= link_to 'View All', projects_url %>
+		<%= link_to "显示全部", projects_url %>
 	</div>
 	<div style="clear:both;"></div>
 <% end %>

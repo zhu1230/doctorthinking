@@ -1,27 +1,12 @@
-<%#
-Copyright 2009 Timothy Fisher
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-%>
 <% @users = User.find(:all, :limit=>8, 
-					  :select=>"id, first_name, last_name", 
+					  :select=>"id, first_name, last_name,name", 
 					  :conditions => "activated_at is not null", 
 					  :order => User.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()',
 					  :include=>:profile_photo) %>
 
 <% @users_count = User.cached_count %>
 
-<% widget_title = "Members (#{@users_count})" %>
+<% widget_title = "会员 (#{@users_count})" %>
 
 <% content_for :module_header do %>
 	<div class="head_left">
@@ -40,6 +25,7 @@ limitations under the License.
 		<% count = count + 1 %>
 		<div class="user_widget_user">
 			<% if user.profile_photo %>
+			<%puts user.name%>
 				<%= link_to image_tag(user.profile_photo.public_filename(:small), :alt=>user.name), user_url(user) %>
 			<% else %>
 				<%= link_to '<div class="no_photo_user_widget"></div>', user_url(user) %>
@@ -54,5 +40,5 @@ limitations under the License.
 <% end %>
 
 <% content_for :module_footer do %>
-	<%= link_to 'View All', users_url %>
+	<%= link_to '显示全部', users_url %>
 <% end %>

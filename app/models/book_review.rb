@@ -13,13 +13,13 @@
 #   limitations under the License.
 
 class BookReview < ActiveRecord::Base
-  
+   belongs_to :user
   include Streamable 
   acts_as_streamable
   
   acts_as_taggable_on :tags
   
-  belongs_to :user
+ 
 
   
 end

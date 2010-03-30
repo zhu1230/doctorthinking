@@ -17,12 +17,12 @@ limitations under the License.
 
 <div id="bugs_links">
 	<% if logged_in? %>
-		<div id="bugs_all"><%= link_to 'All Bug Reports' %></div>
-		<div id="bugs_my"><%= link_to 'My Bug Reports', user_bug_reports_path(current_user) %></div>
+		<div id="bugs_all"><%= link_to '所有问题及建议' %></div>
+		<div id="bugs_my"><%= link_to '我提交的问题及建议', user_bug_reports_path(current_user) %></div>
 	<% end %>
 	<div style="clear:both;"></div>
 </div>
-<h1>Add a Bug Report</h1>		
+<h1>报告问题 / 提交建议</h1>		
 <div id="add_bug">
 	<%= render :partial => 'bug_report_form' %>
 	<div style="clear:both;"></div>

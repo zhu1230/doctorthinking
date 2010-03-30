@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<% widget_title = "Groups" %>
+<% widget_title = "圈子" %>
 
 <% @groups = Group.cached_groups %>
 
@@ -52,7 +52,7 @@ limitations under the License.
 			</div>
 		<% end %>
 		<% if @groups.length == 0 %>
-			No groups exist!
+		目前无小组存在!
 		<% end %>
 		<div style="clear:both;"></div>
 <% end %>
@@ -64,7 +64,7 @@ limitations under the License.
 		<% end %>
 	</div>
 	<div class="foot_right">
-		<%= link_to 'View All', groups_url %>
+		<%= link_to '显示全部', groups_url %>
 	</div>
 	<div style="clear:both;"></div>
 <% end %>

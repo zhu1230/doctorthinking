@@ -23,12 +23,16 @@ module Streamable
     def acts_as_streamable
       self.class_eval do
         after_create :log_activity
+after_destroy :log_destroy_activity
       end
     end
   end
   
   def log_activity
-    Activity.create!(:item => self, :user => self.user)
+    Activity.create!(:item => self, :user => self.user,:action=>"发布了")
   end
+def log_destroy_activity
+ Activity.create!(:item => self, :user => self.user, :action => "取消了")
+end
   
 end

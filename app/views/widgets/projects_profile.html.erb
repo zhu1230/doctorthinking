@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<% widget_title = "My Projects" %>
+<% widget_title = "我的课题" %>
 
 <% @user = User.find(user_id) %>
 
@@ -35,8 +35,8 @@ limitations under the License.
 			</div>
 		<% end %>
 	<% else %>
-		You have not posted any projects.<br/>
-		<%= link_to 'View projects...', projects_url() %>
+		您没有对课题发表评论<br/>
+		<%= link_to '查看课题...', projects_url() %>
 	<% end %>
 	<div style="clear:both;"></div>
 <% end %>
@@ -44,7 +44,7 @@ limitations under the License.
 <% content_for :module_footer do %>
 		<div class="foot_left"></div>
 		<div class="foot_right">
-			<%= link_to 'View All', projects_url %>
+			<%= link_to "显示全部", projects_url %>
 		</div>
 		<div style="clear:both;"></div>
 <% end %>

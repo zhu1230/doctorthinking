@@ -16,11 +16,11 @@ limitations under the License.
 <% form_for(@announcement) do |f| -%>			
 	<%= f.error_messages %>
 	<div class="form_field">
-    	<label for="title">Title:</label><br/>
+    	<label for="title">主题:</label><br/>
 		<%= f.text_field :title, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="body">Body:</label>
+    	<label for="body">内容:</label>
 		<span class="help_text">maximum 5000 characters</span><br/>
 		<%= f.text_area :body, :cols=>60, :rows=>6 %>
 	</div>

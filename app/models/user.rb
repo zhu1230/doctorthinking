@@ -93,12 +93,13 @@ class User < ActiveRecord::Base
  # attr_protected :roles
   belongs_to :keshi
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation,:keshiinplace,:zhicheng_title,:buchong,:sub_title
+  attr_accessible :login, :email, :name, :password, :password_confirmation,:keshiinplace,:zhicheng_title,:buchong,:receive
 
-def sub_title
+def receive
+puts receive_emails
 self.receive_emails ?   "接受" : "不接受"
 end
-def sub_title=(aa)
+def receive=(aa)
 self.receive_emails=aa
 end
 def zhicheng_title=(aa)
@@ -312,17 +313,17 @@ end
   end
   
   
-  def name
-    if first_name && last_name
-      first_name + ' ' + last_name
-    elsif first_name
-      first_name
-    elsif last_name
-      last_name
-    else
-      login
-    end
-  end
+  # def name
+  #    if first_name && last_name
+  #      first_name + ' ' + last_name
+  #    elsif first_name
+  #      first_name
+  #    elsif last_name
+  #      last_name
+  #    else
+  #      login
+  #    end
+  #  end
   
   
   def gender

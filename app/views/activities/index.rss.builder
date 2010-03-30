@@ -1,11 +1,11 @@
 xml.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8"
 xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
 	xml.channel do
-		xml.title "RubyMI Activity Feed"
+		xml.title "医思网 Activity Feed"
     #xml.link  activities_url
-    xml.link  "http://www.rubymi.org"
+    xml.link  "http://www.doctorthinking.com"
     xml.pubDate CGI.rfc1123_date @activities.first.created_at if @activities.any?
-    xml.description "RubyMI Activity Feed"
+    xml.description "医思网 Activity Feed"
     
     @activities.each do |activity|
       xml.item do

@@ -48,6 +48,7 @@ class BookReviewsController < ApplicationController
 
   def create
     @book_review = BookReview.new(params[:book_review])
+	@book_review.user_id=current_user.id
     respond_to do |format|
       if @book_review.save
         flash[:notice] = 'BookReview was successfully created.'

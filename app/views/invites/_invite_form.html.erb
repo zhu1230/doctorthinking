@@ -16,14 +16,14 @@ limitations under the License.
 <% form_for(@invite) do |f| %>
   <%= f.error_messages %>
 	<div class="form_field">
-    	<label for="email">Send To:</label>
+    	<label for="email">发送到:</label>
 		<%= f.text_field :email, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="message">Your Message <span class="label_help">(Optional)</span>:</label>
-		<span class="help_text">maximum 5000 characters</span><br/>
+    	<label for="message">您的信息 <span class="label_help">(可选)</span>:</label>
+		<span class="help_text">最大2000字</span><br/>
 		<%= f.text_area :message, :cols=>60, :rows=>8 %>
 	</div>
-	<%= f.submit "Invite" %>
+	<%= f.submit "发送邀请" %>
 <% end %>
 

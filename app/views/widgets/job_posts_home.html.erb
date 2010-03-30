@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<% widget_title = "Job Posts" %>
+<% widget_title = "招聘信息" %>
 
 <% @jobs = JobPost.find(:all, :select=>'id, job_title, company', :limit=>5, :order=>'created_at DESC') %>
 
@@ -45,7 +45,7 @@ limitations under the License.
 		</div>
 	<% end %>
 	<% if @jobs.length == 0 %>
-		No job posts exist!
+		无招聘信息!
 	<% end %>
 	<div style="clear:both;"></div>
 <% end %>
@@ -57,7 +57,7 @@ limitations under the License.
 		<% end %>
 	</div>
 	<div class="foot_right">
-		<%= link_to 'View All', job_posts_url %>
+		<%= link_to "显示全部", job_posts_url %>
 	</div>
 	<div style="clear:both;"></div>
 <% end %>

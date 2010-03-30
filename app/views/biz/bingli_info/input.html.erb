@@ -18,7 +18,8 @@
 .fabiao_box .cnt .title3 h1{color:#AFAFAF; font-size:14px; font-weight:normal; display:block; float:left; margin:0px 0px 0px 5px; padding:0px;}
 -->
 </style> 
-<%= error_messages_for :bingli %>
+<% puts flash.to_s%>
+<%= error_messages_for :bingli,:class=>"error" %>
 <%form_for :bingli,@bingli,:url=>{:controller=>"biz/bingli_info",:action=>"save"},:html =>{:multipart => true} do |f| %>
 <div class="search">
     <div class="sleft">

@@ -16,11 +16,11 @@ limitations under the License.
 <% form_for(@bug_report) do |f| -%>			
 	<%= f.error_messages %>
 	<div class="form_field">
-    	<label for="title">Title:</label><br/>
+    	<label for="title">主题:</label><br/>
 		<%= f.text_field :title, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
-    	<label for="browser">Browser:</label><br/>
+    	<label for="browser">您的浏览器为:</label><br/>
 		<%= f.select( :browser, { "IE 8" => "IE8", 
 								  "IE 7" => "IE7",
 								  "IE 6" => "IE6",
@@ -32,9 +32,9 @@ limitations under the License.
 								}) %>
 	</div>
 	<div class="form_field">
-    	<label for="description">Description:</label>
-		<span class="help_text">maximum 5000 characters</span><br/>
+    	<label for="description">描述:</label>
+		<span class="help_text">最多2000字</span><br/>
 		<%= f.text_area :description, :cols=>80, :rows=>20, :class=>"mceEditor" %>
 	</div>
-    <%= f.submit "Save", :class=>'add_button' %>
+    <%= f.submit "完成", :class=>'add_button' %>
 <% end %>

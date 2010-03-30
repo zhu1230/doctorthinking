@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<% widget_title = "Latest Activity" %>
+<% widget_title = "最新热点" %>
 
 <% @user = User.find(user_id) %>
 <% if only_statuses && include_friends  %>
@@ -62,7 +62,7 @@ limitations under the License.
 <% end %>
 
 <% content_for :module_footer do %>
-	<%= link_to 'View All', user_activities_path(@user) %>&nbsp;|&nbsp;	
+	<%= link_to "显示全部", user_activities_path(@user) %>&nbsp;|&nbsp;	
 	<%= link_to 'RSS', formatted_activities_url(:rss) %>
 	<%= link_to image_tag('feed.png', :alt=>'rss', :align=>'absmiddle'), formatted_activities_url(:rss) %>
 <% end %>

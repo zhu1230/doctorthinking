@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<% widget_title = "Latest Activity" %>
+<% widget_title = "最新动态" %>
 
 <% if logged_in? && include_friends %>
 	<% @user = User.find(current_user.id) %>
@@ -41,7 +41,7 @@ limitations under the License.
 				<% else %>
 					<input onclick="only_friends_activities(<%= @layout.id %>)" type="checkbox" id="friends_checkbox" name="friends_checkbox" />
 				<% end %>
-				<label>Only Friends</label>
+				<label>仅查看朋友</label>
 			</span>
 		<% end %>
 	</div>
@@ -55,7 +55,7 @@ limitations under the License.
 <% end %>
 
 <% content_for :module_footer do %>
-	<%= link_to 'View All', activities_path %>&nbsp;|&nbsp;
+	<%= link_to '查看全部', activities_path %>&nbsp;|&nbsp;
 	<%= link_to 'RSS', formatted_activities_url(:rss) %>
 	<%= link_to image_tag('feed.png', :alt=>'rss', :align=>'absmiddle'), formatted_activities_url(:rss) %>
 <% end %>

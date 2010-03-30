@@ -16,7 +16,7 @@ limitations under the License.
 <%= stylesheet_link_tag 'announcements' %>
 
 
-<h1>All Announcements (<%= @announcement_count.to_s %>)</h1>
+<h1>所有公告 (<%= @announcement_count.to_s %>)</h1>
 
 <div id="announcements_table">
 	<div class="page_controls"><%= will_paginate @announcements %><br/></div>
@@ -31,7 +31,7 @@ limitations under the License.
 	<% end %>
 	<div class="page_controls"><%= will_paginate @announcements %><br/></div>
 	<% if @announcements.length == 0 %>
-		No announcements exist.
+		目前无公告
 	<% end %>
 </div>
 <div style="clear:both;"></div>

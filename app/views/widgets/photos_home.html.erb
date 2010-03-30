@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<% widget_title = "Photos" %>
+<% widget_title = "图片库" %>
 
 <% @photos = Photo.find(:all, :limit=>6, 
 						:order => Photo.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()',
@@ -37,7 +37,7 @@ limitations under the License.
 				<%= link_to image_tag(photo.public_filename(:display), :id=>"widget_photo"), photo_path(photo) %>
 			</div>
 		<% else %>
-			No photos exist!
+			目前无任何图片!
 		<% end %>
 		<div style="clear:both;"></div>
 	</div>
@@ -45,8 +45,8 @@ limitations under the License.
 
 <% content_for :module_footer do %>
 	<% if logged_in? %>
-		<div class="foot_left"><%= link_to 'Add Photos', new_photo_path %></div>
+		<div class="foot_left"><%= link_to '增加图片', new_photo_path %></div>
 	<% end %>
-	<div class="foot_right"><%= link_to 'View All', photos_url %></div>
+	<div class="foot_right"><%= link_to '查看所有', photos_url %></div>
 	<div style="clear:both;"></div>
 <% end %>

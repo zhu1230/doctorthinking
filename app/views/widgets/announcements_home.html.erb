@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<% widget_title = "Announcements" %>
+<% widget_title = "社区公告" %>
 
 <% @announcements = Announcement.find(:all, :limit=>4, :order => 'created_at DESC') %>
 
@@ -41,7 +41,7 @@ limitations under the License.
 		</div>
 	<% end %>
 	<% if @announcements.length == 0 %>
-		No Annoucements Exist!
+		目前无社区公告!
 	<% end %>
 	<div style="clear:both;"></div>
 <% end %>
@@ -53,7 +53,7 @@ limitations under the License.
 		<% end %>
 	</div>
 	<div class="foot_right">
-		<%= link_to 'View All', announcements_url %>
+		<%= link_to '查看全部', announcements_url %>
 	</div>
 	<div style="clear:both;"></div>
 <% end %>

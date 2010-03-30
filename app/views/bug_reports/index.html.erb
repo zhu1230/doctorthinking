@@ -17,22 +17,22 @@ limitations under the License.
 
 <div id="bugs_links">
 	<% if logged_in? %>
-		<div id="bugs_all"><%= link_to 'All Reported Bugs' %></div>
-		<div id="bugs_my"><%= link_to 'My Reported Bugs', user_bug_reports_path(current_user) %></div>
+		<div id="bugs_all"><%= link_to '查看所有问题/建议' %></div>
+		<div id="bugs_my"><%= link_to '我的问题/建议', user_bug_reports_path(current_user) %></div>
 	<% end %>
-	<div id="bugs_add"><%= link_to 'Add a Bug', new_bug_report_path %></div>
+	<div id="bugs_add"><%= link_to '我要提交', new_bug_report_path %></div>
 
 </div>
 
 <div id="bugs_table">
 	<table id="bug_table" border="1" cellpadding="0" cellspacing="0">
 		<thead>
-			<th>Created</th>
-			<th>Title</th>
-			<th>Browser</th>
-			<th>Submitter</th>
-			<th>Resolved</th>
-			<th>Res. Date</th>
+			<th>提交时间</th>
+			<th>主题</th>
+			<th>浏览器</th>
+			<th>提交者</th>
+			<th>已解决</th>
+			<th>解决日期</th>
 		</thead>
 		<tbody>
 			<% @bug_reports.each do |bug| %>
@@ -58,7 +58,7 @@ limitations under the License.
 		</tbody>
 	</table>
 	<% if @bug_reports.length == 0 %>
-		No bugs have been reported.
+		目前没有问题或者建议。
 	<% end %>
 </div>
 <div style="clear:both;"></div>

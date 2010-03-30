@@ -17,7 +17,7 @@ limitations under the License.
 <%= stylesheet_link_tag 'activities' %>
 
 <h1>
-	Activities (<%= @activities_count %>)
+	热点 (<%= @activities_count %>)
 	<% if @user %>
 		for <%= @user.name %>
 	<% end %>
@@ -28,7 +28,7 @@ limitations under the License.
 		<div class="activity_feed_item"><%= activity_feed_message(activity) %></div>
 	<% end %>
 	<% if @activities.length == 0 %>
-		No activities exist.
+		当前没有热点存在。
 	<% end %>
 	<div class="page_controls"><%= will_paginate @activities %></div>
 </div>

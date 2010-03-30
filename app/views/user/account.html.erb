@@ -68,8 +68,8 @@ ul,li {list-style-type:none;list-style-images:none;}
             <li>
                 <h3>接收社区邮件选项</h3>
                 <span>
-                <a id='receive_emails'>修改选项</a></span>
-                <p><%=in_place_radio_collection :user,'receive_emails',{:choices=>[['接收','1'],['不接收','0']],:checked=>true,:external_control => 'receive_emails'}%></p>
+                <a id='receive'>修改选项</a></span>
+                <p><%=in_place_radio_collection :user,'receive',{:choices=>[['接收','1'],['不接收','0']],:checked=>true,:external_control => 'receive'}%></p>
             </li>
         </ul>
     </div>

@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<% widget_title = "Events" %>
+<% widget_title = "活动" %>
 
 <% @events = Event.cached_events %>
 
@@ -46,7 +46,7 @@ limitations under the License.
 			</div>
 		<% end %>
 		<% if @events.length == 0 %>
-			No events exist!
+			目前无活动!
 		<% end %>
 		<div style="clear:both;"></div>
 <% end %>
@@ -58,7 +58,7 @@ limitations under the License.
 			<% end %>
 		</div>
 		<div class="foot_right">
-			<%= link_to 'View All', events_url %>
+			<%= link_to "显示全部", events_url %>
 		</div>
 		<div style="clear:both;"></div>
 <% end %>

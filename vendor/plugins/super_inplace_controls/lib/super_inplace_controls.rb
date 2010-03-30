@@ -312,7 +312,7 @@ module Flvorful
 					page.show "#{id_string }_form"
 				end, 
 				:onmouseover => visual_effect(:highlight, id_string), 
-				:title => "Click to Edit", 
+				:title => "点击修改", 
 				:id => id_string ,
 				:class => "inplace_span #{"empty_inplace" if display_text.blank?}" 
 				)
@@ -323,7 +323,7 @@ module Flvorful
 			return "" unless options[:external_control]
 			id_string = id_string_for(object_name, method_name, object)
 			ec_id=options[:external_control]
-			javascript_tag do |j|
+			javascript_tag do 
 				res="Event.observe('#{ec_id}', 'click', function () {" 
 				res << update_page do |page|
 					page.hide "#{id_string}"
