@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
 
   include ViewCountable
   
-  before_filter :login_required, :only => [:new, :edit, :create, :update]
+ require_role "user", :only => [:new, :edit, :create, :update]
 
 
   # This method is called via AJAX to add a comment to a photo

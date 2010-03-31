@@ -19,7 +19,7 @@
 =end
 class FriendsController < ApplicationController
   
-  before_filter :login_required, :except => [:index, :show]
+ require_role "user", :except => [:index, :show]
   
   # Lists all friends of the specified user
   def index

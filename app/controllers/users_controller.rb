@@ -25,7 +25,7 @@ class UsersController < ApplicationController
                               :theme_advanced_buttons3 => ""
                             }
   
-  before_filter :login_required, :only => [:edit, :update]
+ require_role "user", :only => [:edit, :update]
   
   
   # Called from the blog settings of the 'My Blog' widget on a user page
@@ -260,7 +260,7 @@ class UsersController < ApplicationController
           format.html {
 		  self.current_user = @user # !! now logged in
       #redirect_back_or_default('/')
-            flash[:notice] = "Thanks for signing up!"
+            flash[:notice] = "感谢您的注册！"
             render :template=>'sessions/signup_thankyou'
           }
           format.xml {

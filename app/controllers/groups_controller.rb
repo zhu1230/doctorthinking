@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
                               :theme_advanced_buttons3 => ""
                             }
 
-  before_filter :login_required, :only => [:new, :edit, :create, :update]
+ require_role "user", :only => [:new, :edit, :create, :update]
   
   # must be a group admin to edit or update a group
   before_filter :check_group_auth, :only => [:edit, :update]

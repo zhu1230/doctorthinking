@@ -1,7 +1,7 @@
 class ApiKeysController < ApplicationController
   
   before_filter :login_from_cookie
-  before_filter :login_required
+ require_role "user"
  
  
   # Create or re-generate the API key

@@ -14,7 +14,7 @@
 
 class JobPostsController < ApplicationController
  
-  before_filter :login_required, :only => [:new, :edit, :create, :update, :destroy]
+ require_role "user", :only => [:new, :edit, :create, :update, :destroy]
   
   # only job_post creator or an admin can edit or update the job post.
   before_filter :check_auth, :only => [:edit, :update]

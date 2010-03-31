@@ -7,7 +7,7 @@ include AuthenticatedTestHelper
 # A test controller with and without access controls
 #
 class AccessControlTestController < ApplicationController
-  before_filter :login_required, :only => :login_is_required
+ require_role "user", :only => :login_is_required
   def login_is_required
     respond_to do |format|
       @foo = { 'success' => params[:format]||'no fmt given'}

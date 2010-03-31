@@ -18,7 +18,7 @@
 # from the JavaScript.
 class WidgetsController < ApplicationController
   
-  before_filter :login_required, :only => [:new, :edit, :create, :update]
+ require_role "user", :only => [:new, :edit, :create, :update]
 
 
   def grid_data

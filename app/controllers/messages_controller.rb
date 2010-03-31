@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
                               :theme_advanced_buttons3 => ""
                             }
                             
-  before_filter :login_required
+ require_role "user"
   
                             
   def index

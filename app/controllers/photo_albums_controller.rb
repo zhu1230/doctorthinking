@@ -16,7 +16,7 @@ class PhotoAlbumsController < ApplicationController
   
   include ViewCountable
   
-  before_filter :login_required, :only => [:new, :edit, :create, :update]
+ require_role "user", :only => [:new, :edit, :create, :update]
 
   def index
     @photo_albums = PhotoAlbum.find(:all)

@@ -25,8 +25,7 @@ class AdminController < ApplicationController
                               :theme_advanced_buttons3 => ""
                             }
                             
-  before_filter :login_required
-  
+  require_role "admin"
   # Display the Dashboard tab of the Admin page.
   def index
     @page = 'dashboard'

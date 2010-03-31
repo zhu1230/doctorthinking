@@ -1,6 +1,6 @@
 class FollowsController < ApplicationController
 
-  before_filter :login_required, :except => [:index, :show]
+ require_role "user", :except => [:index, :show]
 
 
   def index

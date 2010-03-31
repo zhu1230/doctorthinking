@@ -66,7 +66,7 @@ class TestRoleController < Test::Unit::TestCase
     assert(@controller.check_roles, "should pass")
   end
   
-  def test__no_user__role_required__returns_false
+  def test__no_user__require_role__returns_false
     @controller.class.require_role "admin"
     @controller.current_user = nil
     

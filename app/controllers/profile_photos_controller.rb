@@ -14,7 +14,7 @@
 
 class ProfilePhotosController < ApplicationController
   
-  before_filter :login_required, :only => [:create]
+ require_role "user", :only => [:create]
     
     
   def create

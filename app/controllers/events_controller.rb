@@ -25,7 +25,7 @@ class EventsController < ApplicationController
                               :theme_advanced_buttons3 => ""
                             }
   
-  before_filter :login_required, :only => [:new, :edit, :create, :update]
+ require_role "user", :only => [:new, :edit, :create, :update]
   
   # only event creator or an admin can edit or update an event.
   before_filter :check_auth, :only => [:edit, :update]

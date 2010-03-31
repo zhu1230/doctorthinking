@@ -43,16 +43,23 @@ class ProfilePhoto < Photo
   belongs_to :event
   
   has_many :activities, :source=>:item, :source_type=>'Photo'
-  
-  has_attachment :content_type => :image, 
-                 :storage => :file_system, 
-                 #:storage => :s3,
-                 :max_size => 50.megabyte,
-                 :resize_to => '175x175',
-                 :thumbnails => { :thumb => '32x32>', 
-                                  :small => '48x48', 
-                                  :medium => '82x82',
-                                  :member => '96x96'}
+  has_attachment :content_type => [:image],
+                :storage => :file_system, 
+                :min_size => 0.kilobytes,
+                :max_size => 50000.kilobytes,
+                :resize_to => '120x100>',
+                :thumbnails => {:thumb => '100x100>'},
+                :processor=>"Rmagick"  
+  # has_attachment :content_type => :image, 
+  #                :storage => :file_system, 
+  #                #:storage => :s3,
+  #                :max_size => 50.megabyte,
+  #                :resize_to => '175x175',
+  #                :thumbnails => { :thumb => '32x32>', 
+  #                                 :small => '48x48', 
+  #                                 :medium => '82x82',
+  #                                 :member => '96x96'},
+  # 				 :processor=>"Rmagick"
                                   
                                 
 end

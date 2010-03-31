@@ -14,7 +14,7 @@
 
 class ClassifiedsController < ApplicationController
 
-  before_filter :login_required, :only => [:new, :edit, :create, :update]
+ require_role "user", :only => [:new, :edit, :create, :update]
  
   def index
     @section = 'CLASSIFIEDS' 

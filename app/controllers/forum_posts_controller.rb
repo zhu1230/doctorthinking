@@ -27,7 +27,7 @@ class ForumPostsController < ApplicationController
      
   before_filter :set_section
   
-  before_filter :login_required, :only => [:new, :edit, :create, :update, :destroy]
+ require_role "user", :only => [:new, :edit, :create, :update, :destroy]
   
   
   def set_section
