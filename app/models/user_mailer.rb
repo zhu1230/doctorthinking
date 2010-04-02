@@ -78,7 +78,7 @@ class UserMailer < ActionMailer::Base
   def invite_notification(invite)
     @recipients  = "#{invite.email}"
     @from        = "#{invite.user.email}"
-    @subject     = "一个邀请您加入医思社区"
+    @subject     = "#{invite.user.name} 邀请您加入医思社区"
     @sent_on     = Time.now
     @body[:invite] = invite
     @content_type = "text/html"

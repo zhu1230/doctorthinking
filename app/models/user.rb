@@ -93,7 +93,7 @@ class User < ActiveRecord::Base
  # attr_protected :roles
   belongs_to :keshi
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation,:keshiinplace,:zhicheng_title,:buchong,:receive
+  attr_accessible :login, :email, :name, :password, :password_confirmation,:keshiinplace,:zhicheng_title,:about_me,:receive,:keshi_id,:zhicheng
 
 def receive
 puts receive_emails

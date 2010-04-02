@@ -5,7 +5,7 @@
 <div class="mainnav" style="height:33px;">
 	<ul>
 	 <%=render :partial=>"shared/menu_top" %>
-      <li class="search" style="padding-left:235px;"><%=text_field_tag "search_content","",:style=>"width:80px;border:1px #ccc solid;"%><%=submit_tag "提交",:class=>"headersearch"%>
+      <li class="search" style="float:right; margin-right:5px;"><%=text_field_tag "search_content","",:style=>"width:80px;border:1px #ccc solid;"%><%=submit_tag "提交",:class=>"headersearch"%>
       <a href="#">帮助</a>│<%=link_to "注册",signup_url%> </li>
     </ul>
 </div>

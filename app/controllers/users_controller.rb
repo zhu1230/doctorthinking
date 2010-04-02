@@ -241,13 +241,13 @@ class UsersController < ApplicationController
   
   def create
    logout_keeping_session!
-	params[:user]['keshi_id']=1
+	#params[:user]['keshi_id']=1
     @user = User.new(params[:user])
-    if @user.facebook_id
-      create_facebook_user
-    else
+    # if @user.facebook_id
+    #   create_facebook_user
+    # else
       # create just a local user
-      sleep 4  # required for photo upload
+      # sleep 4  # required for photo upload
       cookies.delete :auth_token
       @user.roles << Role.find_by_rolename('user')
 	  success = @user && @user.save
@@ -255,12 +255,12 @@ class UsersController < ApplicationController
         if params[:invite_code]
           Invite.accept(params[:invite_code]) 
         end
-        @user.set_photo(params[:user_photo])
+        # @user.set_photo(params[:user_photo])
         respond_to do |format|
           format.html {
 		  self.current_user = @user # !! now logged in
       #redirect_back_or_default('/')
-            flash[:notice] = "感谢您的注册！"
+            flash.now[:notice] = "感谢您的注册！"
             render :template=>'sessions/signup_thankyou'
           }
           format.xml {
@@ -289,7 +289,7 @@ class UsersController < ApplicationController
           }  
         end
       end
-    end
+    #end
   end
   
   

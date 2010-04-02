@@ -30,7 +30,7 @@
 </head>
 <body>
 
-i<div id='content'>
+<div id='content'>
 
 			<%if (params[:controller]=="sessions" && params[:action]=="new") %>
 			<%=render(:partial=>"shared/top_login")%>
@@ -41,7 +41,7 @@ i<div id='content'>
 			<%else%>
 			<%=render(:partial=>"shared/top_unlogon")%>
 			<%end end end%>
-
+	<%=render :partial=>"shared/top_sub"%>
 		<%=render :partial=>"shared/message_bar"%>
 	
 		

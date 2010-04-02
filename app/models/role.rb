@@ -33,11 +33,11 @@ class Role < ActiveRecord::Base
   @@creator = nil
   
   def self.creator
-    @@creator ||= Role.find_by_rolename('creator')
+    @@creator ||= Role.find_by_rolename('admin')
   end
   
   def self.admin
-    @@admin ||= Role.find_by_rolename('administrator')
+    @@admin ||= Role.find_by_rolename('admin')
   end
   def name
 	self.rolename
