@@ -711,4 +711,3 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.boolean  "profile"
   end
 
-end
