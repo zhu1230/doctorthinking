@@ -1,0 +1,17 @@
+<%= error_messages_for :user,:class=>"error"%>  
+  
+<% form_for :user do |f| -%>  
+  <p>  
+    重设密码 
+  </p>  
+  
+  <p>  
+    <label for="email">您的电子邮件</label><br />  
+    <%= f.text_field :email %>  
+  </p>  
+  
+  <p>  
+    <%= link_to "取消", login_url %>  
+    <%= submit_tag '发送' %>  
+  </p>  
+<% end -%>

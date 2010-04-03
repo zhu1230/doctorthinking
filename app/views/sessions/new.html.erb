@@ -48,7 +48,7 @@ h1,h2 {margin:0;padding:0;}
     	<div class="pic"></div>	
         <h1 class="t1">在您登录到账户后，可提供给您更多的服务</h1>
         <h1 class="t2">在右侧进行登录，使用电子邮件地址和您所选择的密码</h1>
-      <h2><a href="#">立即注册</a></h2>
+      <h2><%=link_to "立即注册",signup_url%></h2>
   </div>
   <div class="login">
   	<div class="header"></div>
@@ -59,9 +59,9 @@ h1,h2 {margin:0;padding:0;}
         <p><label style="margin-left:54px;"><%= check_box_tag 'remember_me' %><a href="#" title="选择是否记录您的信息">记住我</a></label></p>
         <div class="clear"></div>
         <p><%=submit_tag "登 录",:class=>"loginbtn",:value=>""%></p>  <% end -%>
-      <p style="width:338px;text-align:center;border-top:1px solid #C9CDCE;margin:20px 0 0 5px;"><b>没有DoctorThinking账户？</b>&nbsp;&nbsp;<%=submit_tag "立即注册",{:onclick=>"location.href='"+url_for(signup_url)+"'",:class=>"regbtn"}%>
+      <p style="width:338px;text-align:center;border-top:1px solid #C9CDCE;margin:20px 0 0 5px;"><b>没有DoctorThinking账户？</b>&nbsp;&nbsp;<%=submit_tag "立即注册",{:onclick=>"location.href='"+url_for(signup_url)+"';return false;",:class=>"regbtn"}%>
       </p>
-        <p style="text-align:center;margin-top:20px;"><a href="#"><u>忘记密码？　</u></a> <a href="#"><u>修改密码</u></a></p>
+        <p style="text-align:center;margin-top:20px;"><u><%=link_to "忘记密码？",forgot_url%>　</u> </p>
     </div>
     <div class="foot"></div>
   </div>

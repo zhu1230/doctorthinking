@@ -89,7 +89,7 @@ ul,li {list-style-type:none;list-style-images:none;}
                   <br />
 					<font color="#99999" style="padding-left:140px;">您的研究热点，举例：肝胆外科等。</font>                </li>
                 <li style="padding-top:10px;"><label for="uesr">职称：</label>
-                  <%=f.select("zhicheng",[["初级",1 ],["中级",2 ],["高级",3 ]], { :include_blank => true })%>&nbsp;<font color="red">*</font>                </li>
+                  <%=f.select("zhicheng",[["初级",1 ],["中级",2 ],["高级",3 ]], {:prompt => '选择您的职称'})%>&nbsp;<font color="red">*</font>                </li>
                 <li style="padding-left:136px;"><%=f.check_box "receive_emails",{:style=>"border:0;width:18px;",:checked=>true},1,0%>是否接收社区的邮件通知                </li>
               <li style="padding-left:136px;"><%=check_box_tag "agree","1",true,{:style=>"border:0;width:18px;"}-%>我同意DoctorThinking社区的 <a href="#"><font color="FF9700">使用条款</font></a>和 <a href="#"><font color="FF9700">用户隐私</font></a> </li>
               <li style="padding-left:136px;"><input type="submit" value="完成" class="btn" />

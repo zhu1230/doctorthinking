@@ -27,7 +27,44 @@ class UsersController < ApplicationController
   
  require_role "user", :only => [:edit, :update]
   
-  
+  	def forgot  
+	  if request.post?  
+	    user = User.find_by_email(params[:user][:email])  
+
+	    respond_to do |format|  
+	      if user  
+	        user.create_reset_code  
+	        flash[:notice] = "重设密码的链接已经发送到 #{user.email}"  
+
+	        format.html { redirect_to login_url }  
+	        format.xml { render "<img src=\"http://net.tutsplus.com/wp-includes/images/smilies/icon_mad.gif\" alt=\":x\" class=\"wp-smiley\">",ml => user.email, :status => :created }  
+	      else  
+	        flash[:error] = "#{params[:user][:email]} 不存在，请重新尝试"  
+
+	        format.html { redirect_to login_url }  
+	        format.xml { render "<img src=\"http://net.tutsplus.com/wp-includes/images/smilies/icon_mad.gif\" alt=\":x\" class=\"wp-smiley\">", ml => user.email, :status => :unprocessable_entity }  
+	      end  
+	    end  
+
+	  end  
+	end
+	
+	
+	def reset  
+	  @user = User.find_by_password_reset_code(params[:reset_code]) unless params[:reset_code].nil?  
+	  if request.post?  && @user
+	    if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])  
+	      self.current_user = @user  
+	      @user.delete_reset_code  
+	      flash[:notice] = "密码重设成功，您的邮件为 #{@user.email}"  
+	      redirect_to index_url  
+	    else  
+	      render :action => :reset  
+	    end  
+	  end  
+	end
+	
+	
   # Called from the blog settings of the 'My Blog' widget on a user page
   # this sets an RSS feed URL for mirroring
   def update_blog_feed_url
@@ -258,7 +295,7 @@ class UsersController < ApplicationController
         # @user.set_photo(params[:user_photo])
         respond_to do |format|
           format.html {
-		  self.current_user = @user # !! now logged in
+		 # self.current_user = @user # !! now logged in
       #redirect_back_or_default('/')
             flash.now[:notice] = "感谢您的注册！"
             render :template=>'sessions/signup_thankyou'
@@ -308,7 +345,7 @@ class UsersController < ApplicationController
           @user.profile_photo = profile_photo
         end  
         
-        flash[:notice] = 'User was successfully updated.'
+        flash[:notice] = '用户已成功更新.'
         format.html { 
           if params['admin_page']
             redirect_to('/admin/users')
@@ -331,7 +368,7 @@ class UsersController < ApplicationController
     self.current_user = params[:activation_code].blank? ? false : User.find_by_activation_code(params[:activation_code])
     if logged_in? && !current_user.active?
       current_user.activate
-      flash[:notice] = "Signup complete!"
+      flash[:notice] = "注册完成！"
       render :template=>'users/activate_complete'
     else
       redirect_back_or_default('/')
@@ -360,15 +397,15 @@ class UsersController < ApplicationController
       # respond with error output
       respond_to do |format|
         format.html {
-          flash[:notice] = "Incorrect username or password"
+          flash[:notice] = "用户名或密码错误"
           render :action => 'new'
         }
         format.xml {
-          data = {:message => "Incorrect username or password"}
+          data = {:message => "用户名或密码错误"}
           render :xml => data.to_xml(:dasherize => false), :status => 403
         }
         format.json {
-          data = {:message  => "Incorrect username or password"}
+          data = {:message  => "用户名或密码错误"}
           render :json => data.to_json(:dasherize => false), :status => 403
         }
       end

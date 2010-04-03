@@ -93,7 +93,7 @@ class User < ActiveRecord::Base
  # attr_protected :roles
   belongs_to :keshi
 
-  attr_accessible :login, :email, :name, :password, :password_confirmation,:keshiinplace,:zhicheng_title,:about_me,:receive,:keshi_id,:zhicheng
+  attr_accessible :login, :email, :name, :password, :password_confirmation,:keshiinplace,:zhicheng_title,:about_me,:receive,:keshi_id,:zhicheng,:password_reset_code
 
 def receive
 puts receive_emails
@@ -122,7 +122,20 @@ end
     roles.each{|r|b<<r.name}
     b.join("-")
   end
+def create_reset_code  
+  @reset = true  
+  self.attributes = {:password_reset_code => Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )}  
+  save(false)  
+end  
 
+def recently_reset?  
+  @reset  
+end  
+
+def delete_reset_code  
+  self.attributes = {:password_reset_code => nil}  
+  save(false)  
+end
 
   include Authentication
   include Authentication::ByPassword

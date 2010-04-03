@@ -90,7 +90,12 @@ class UserMailer < ActionMailer::Base
     @subject    += '您的帐户已被激活!'
     @body[:url]  = "http://www.doctorthinking.com/"
   end
-  
+
+  def reset_notification(user)  
+  setup_email(user)  
+  @subject    += '请重新设置您的密码'  
+  @body[:url]  = "http://www.doctorthinking.com/reset/#{user.password_reset_code}"  
+  end
   
   protected
   # Setup an email that will be sent to a single user

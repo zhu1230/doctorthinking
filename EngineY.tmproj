@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>public/javascripts/application.js</string>
+	<string>config/routes.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -36,6 +36,50 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>app/controllers/sessions_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>33</integer>
+				<key>line</key>
+				<integer>44</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>27</integer>
+		</dict>
+		<key>app/controllers/users_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>361</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>345</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>361</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>361</integer>
+			</dict>
 		</dict>
 		<key>app/models/event.rb</key>
 		<dict>
@@ -153,19 +197,49 @@
 			<key>firstVisibleLine</key>
 			<integer>24</integer>
 		</dict>
-		<key>app/views/blog_posts/show.html.erb</key>
+		<key>app/views/sessions/new.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>28</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>65</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
+			<integer>44</integer>
+		</dict>
+		<key>config/routes.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>66</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
 			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>50</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>16</integer>
+				<key>line</key>
+				<integer>66</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>66</integer>
+			</dict>
 		</dict>
 		<key>db/migrate/20100330144427_change_table_name.rb</key>
 		<dict>
@@ -214,7 +288,10 @@
 	<array>
 		<string>0</string>
 		<string>public/javascripts/application.js</string>
-		<string>app/views/blog_posts/show.html.erb</string>
+		<string>app/controllers/sessions_controller.rb</string>
+		<string>app/controllers/users_controller.rb</string>
+		<string>app/views/sessions/new.html.erb</string>
+		<string>config/routes.rb</string>
 		<string>app/views/blog_posts/blog_posts_show.html.erb</string>
 		<string>app/views/blog_posts/_blog_post_comment_form.html.erb</string>
 		<string>app/views/blog_posts/_blog_post_comments.html.erb</string>
@@ -226,6 +303,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{687, 241}, {1757, 668}}</string>
+	<string>{{478, 257}, {1757, 668}}</string>
 </dict>
 </plist>

@@ -1,0 +1,21 @@
+<%= error_messages_for :user,:class=>"error" %>  
+  
+<% form_for :user do |f| -%>  
+  <p>  
+    请为 <span><%= @user.email %></span>  设置新密码
+  </p>  
+  
+  <p>  
+    <label for="password">新密码</label><br />  
+    <%= f.password_field :password %>  
+  </p>  
+  
+  <p>  
+    <label for="password">重复密码</label><br />  
+    <%= f.password_field :password_confirmation %>  
+  </p>  
+  
+  <p>  
+    <%= submit_tag '重设' %>  
+  </p>  
+<% end -%>
