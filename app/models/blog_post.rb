@@ -15,7 +15,6 @@
 
 class BlogPost < ActiveRecord::Base
   include Streamable
-  
   acts_as_commentable
   acts_as_taggable_on :tags
   
