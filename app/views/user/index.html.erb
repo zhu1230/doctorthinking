@@ -26,4 +26,10 @@ h1,h2,h3,p {margin:0;padding:0;}
 	<h1>您可以通过快速通道使用以下功能：</h1>
     <h2><%=link_to "补充个人信息",:controller=>"user",:action=>"account"%></h2>
   <h2 class="use2"><%=link_to "发表病例讨论",:controller=>"biz/bingli_info",:action=>"input"%></h2>
+<h2 class="use2"><%=link_to "邀请好友加入",:controller=>"/invites",:action=>"new"%></h2>
+<h2 class="use2"><%=link_to "我的好友",user_friends_path(current_user)%></h2>
+<h2 class="use2"><%=link_to "我参与的圈子",user_groups_path(current_user)%></h2>
+<h2 class="use2"><%=link_to "个人博客",user_blog_posts_path(current_user)%></h2>
+<h2 class="use2"><%=link_to "参与的活动",events_path()%></h2>
+<h2 class="use2"><%=link_to "我的图库",user_photos_path(current_user)%></h2>
 </div>

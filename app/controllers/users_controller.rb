@@ -328,8 +328,7 @@ class UsersController < ApplicationController
       end
     #end
   end
-  
-  
+
   def update
     if (params[:id].to_s != current_user.id.to_s)
       redirect_back_or_default('/')
@@ -368,8 +367,10 @@ class UsersController < ApplicationController
     self.current_user = params[:activation_code].blank? ? false : User.find_by_activation_code(params[:activation_code])
     if logged_in? && !current_user.active?
       current_user.activate
-      flash[:notice] = "注册完成！"
-      render :template=>'users/activate_complete'
+      flash[:notice] = "感谢您激活您的帐号，现在您可以完全参与到医思网社区中。"
+      # render :template=>'users/activate_complete'
+	
+	redirect_to :controller=>"/user",:action=>"index"
     else
       redirect_back_or_default('/')
     end

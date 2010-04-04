@@ -38,7 +38,7 @@ class InvitesController < ApplicationController
     if Invite.find_by_email(@invite.email)
       # recipient has already been invited by this user
       respond_to do |format|
-        flash[:notice] = 'You have already invited this user.'
+        flash[:notice] = '您已经邀请了这个好友。'
         format.html { render :action => "new" }
         format.xml  { render :status => :unprocessable_entity }
         format.json  { render :status => :unprocessable_entity }
@@ -49,7 +49,7 @@ class InvitesController < ApplicationController
       @invite.invite_code = Invite.generate_invite_code    
       respond_to do |format|
         if @invite.save
-          flash[:notice] = 'Invite was successfully created.'
+          flash[:notice] = '邀请已成功发送。'
           format.html { redirect_to(@invite) }
           format.xml  { render :xml => @invite, :status => :created, :location => @invite }
           format.json  { render :json => @invite.to_json, :status => :created, :location => @invite }

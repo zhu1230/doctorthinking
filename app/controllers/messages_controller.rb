@@ -29,9 +29,9 @@ class MessagesController < ApplicationController
   
                             
   def index
-    user = User.find(params[:user_id])
-    @sent_messages = user.sent_messages
-    @received_messages = user.received_messages
+    
+    @sent_messages = current_user.sent_messages
+    @received_messages = current_user.received_messages
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @messages }

@@ -95,7 +95,7 @@ class EventsController < ApplicationController
           #@event.profile_photo = profile_photo
         end   
         Event.reset_cache
-        flash[:notice] = 'Event was successfully created.'
+        flash[:notice] = '活动已经建立。'
         format.html { 
           if params['admin_page']
             redirect_to('/admin/events')

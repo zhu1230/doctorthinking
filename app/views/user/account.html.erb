@@ -71,6 +71,12 @@ ul,li {list-style-type:none;list-style-images:none;}
                 <a id='receive'>修改选项</a></span>
                 <p><%=in_place_radio_collection :user,'receive',{:choices=>[['接收','1'],['不接收','0']],:checked=>true,:external_control => 'receive'}%></p>
             </li>
+            <li>
+                <h3>社区头像</h3><span>
+                <a id='mail_edit' onclick="Element.hide('avatar_old');Element.show('avatar_new')">修改</a></span>
+                <p><div id='avatar_old'><%=current_user.profile_photo ? image_tag(current_user.profile_photo.public_filename(:medium), :alt=>current_user.name) : "目前没有设置头像"%></div>
+<div id='avatar_new' style="display:none"><%=form_tag({:action=>"update_avatar",:controller=>"/user"},:multipart => true)%><%=file_field_tag 'avatar',{:accept => 'image/png,image/gif,image/jpeg'}%><%=submit_tag "完成"%><%=link_to_function "取消","Element.hide('avatar_new');Element.show('avatar_old');return false;"%></form></div></p>
+            </li>
         </ul>
     </div>
 </div>
