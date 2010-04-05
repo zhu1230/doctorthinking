@@ -26,8 +26,8 @@ set :use_sudo, false
 # servers (which is the default), you can specify the actual location
 # via the :deploy_to variable:
  set :deploy_to, "/var/www/html/#{application}"
- set :scm_username, "zhu1230"
-set :scm_password, "zhu1230"
+# set :scm_username, "zhu1230"
+#set :scm_password, "zhu1230"
 ssh_options[:forward_agent] = true
 set :branch, "master"
 set :deploy_via, :remote_cache
@@ -47,13 +47,15 @@ after "deploy:symlink",:prepare
 
 desc "restart override"
 task :restart, :roles => :app do
-  run "run apachectl restart"
+  run "apachectl restart"
 end
 
 desc "change file mode"
 task :prepare do
-  run "chmod -R 0755 /var/www/html/#{application}/*"
+  run "chmod -R 0755 /var/www/html/#{application}/current/*"
   run "touch /var/www/html/#{application}/current/log/acts_as_ferret.log | chmod -R 0777 /var/www/html/#{application}/current/log/acts_as_ferret.log"
-  run "chown -R apache /var/www/html/#{application}/*"
+  run "chown -R apache /var/www/html/#{application}/current/*"
+  run "cd /var/www/html/#{application}/current/"
+  run "rake db:migrate"
 #  run "apachectl restart"
 end
