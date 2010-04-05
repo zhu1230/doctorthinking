@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>config/environments/production.rb</string>
+	<string>app/controllers/user_controller.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -13,8 +13,6 @@
 			<string>EngineY</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>selected</key>
-			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -23,98 +21,42 @@
 	<integer>381</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/controllers/invites_controller.rb</key>
+		<key>app/controllers/user_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>36</integer>
+				<integer>30</integer>
 				<key>line</key>
-				<integer>51</integer>
+				<integer>14</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>36</integer>
-		</dict>
-		<key>app/controllers/messages_controller.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>4</integer>
-				<key>line</key>
-				<integer>31</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
 			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>21</integer>
 		</dict>
 		<key>app/controllers/users_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>370</integer>
+				<integer>330</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>363</integer>
+			<integer>324</integer>
 		</dict>
-		<key>app/models/user_mailer.rb</key>
+		<key>app/models/attachment.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>54</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>96</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/models/user_observer.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>33</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>8</integer>
-		</dict>
-		<key>app/views/invites/show.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>5</integer>
-				<key>line</key>
-				<integer>6</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/messages/_received_messages_list.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>44</integer>
-				<key>line</key>
-				<integer>10</integer>
+				<integer>13</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
@@ -125,31 +67,45 @@
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>10</integer>
+				<integer>15</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>10</integer>
+				<integer>13</integer>
 			</dict>
 		</dict>
-		<key>app/views/messages/index.html.erb</key>
+		<key>app/models/profile_photo.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>58</integer>
+				<integer>74</integer>
 				<key>line</key>
-				<integer>11</integer>
+				<integer>50</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
+			<integer>32</integer>
+		</dict>
+		<key>app/views/meet/input.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>36</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
 			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>121</integer>
 		</dict>
 		<key>app/views/sessions/new.html.erb</key>
 		<dict>
@@ -165,75 +121,19 @@
 			<key>firstVisibleLine</key>
 			<integer>45</integer>
 		</dict>
-		<key>app/views/user/index.html.erb</key>
+		<key>app/views/user/account.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>82</integer>
+				<integer>100</integer>
 				<key>line</key>
-				<integer>28</integer>
+				<integer>77</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/user_mailer/activation.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/user_mailer/invite_notification.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>71</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/user_mailer/reset_notification.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/user_mailer/signup_notification.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>15</integer>
-				<key>line</key>
-				<integer>20</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>48</integer>
 		</dict>
 		<key>app/views/users/activate_complete.html.erb</key>
 		<dict>
@@ -249,14 +149,14 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>config/environments/production.rb</key>
+		<key>app/views/users/show.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>19</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -268,14 +168,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>16</integer>
+				<integer>26</integer>
 				<key>line</key>
-				<integer>69</integer>
+				<integer>81</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>49</integer>
+			<integer>74</integer>
+		</dict>
+		<key>db/development.sqlite3</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>db/migrate/20100330144427_change_table_name.rb</key>
 		<dict>
@@ -296,38 +210,33 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>92</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>7804</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>7798</integer>
+			<integer>370</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/models/user_mailer.rb</string>
-		<string>app/views/user_mailer/activation.html.erb</string>
-		<string>config/environments/production.rb</string>
-		<string>log/development.log</string>
-		<string>app/controllers/messages_controller.rb</string>
-		<string>app/views/messages/index.html.erb</string>
-		<string>app/views/user/index.html.erb</string>
-		<string>app/controllers/invites_controller.rb</string>
-		<string>app/views/user_mailer/invite_notification.html.erb</string>
-		<string>app/views/invites/show.html.erb</string>
-		<string>app/views/messages/_received_messages_list.html.erb</string>
-		<string>app/views/user_mailer/signup_notification.html.erb</string>
-		<string>app/views/user_mailer/reset_notification.html.erb</string>
-		<string>app/models/user_observer.rb</string>
 		<string>app/views/sessions/new.html.erb</string>
+		<string>app/views/user/account.html.erb</string>
+		<string>app/views/meet/input.html.erb</string>
+		<string>app/views/users/show.html.erb</string>
+		<string>app/controllers/users_controller.rb</string>
+		<string>app/controllers/user_controller.rb</string>
+		<string>app/models/profile_photo.rb</string>
+		<string>db/development.sqlite3</string>
+		<string>log/development.log</string>
+		<string>app/models/attachment.rb</string>
 		<string>config/routes.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{622, 302}, {1757, 668}}</string>
+	<string>{{639, 334}, {1757, 668}}</string>
 </dict>
 </plist>

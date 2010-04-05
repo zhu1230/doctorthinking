@@ -12,20 +12,22 @@ class SessionsController < ApplicationController
   def create
     logout_keeping_session!
     user = User.authenticate(params[:login], params[:password])
-    if user.active?
+   
     if user 
+	 if user.active?
       # Protects against session fixation attacks, causes request forgery
       # protection if user resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset_session
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
+	logger.info { "remember me>"+new_cookie_flag.to_s }
       handle_remember_cookie! new_cookie_flag
     	login_count = self.current_user.login_count
 	      login_count = login_count + 1
 	      self.current_user.update_attribute('login_count', login_count)
 	      self.current_user.update_attribute('last_seen_at',Time.zone.now)
-
+logger.info { "session=>"+session.to_a.to_s }
 
 	 respond_to do |format|
 	        format.html {
@@ -38,7 +40,11 @@ class SessionsController < ApplicationController
 	        format.json  {
 	          render :json => self.current_user.to_json(:dasherize => false)
 	        }
-	      end           
+	      end 
+	else
+		flash[:notice]="您的帐户还未激活，请先查收您的邮箱，激活您的帐户。"
+		redirect_to login_url
+		end          
 	    else
 		  note_failed_signin
 	      @login       = params[:login]
@@ -58,10 +64,6 @@ class SessionsController < ApplicationController
 	        }
 	      end
 	    end
-	else
-		flash[:notice]="您的帐户还未激活，请先查收您的邮箱，激活您的帐户。"
-		redirect_to login_url
-	end
 	end
 
 

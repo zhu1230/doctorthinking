@@ -29,7 +29,10 @@
 	<%= include_tiny_mce_if_needed %>
 </head>
 <body>
-
+<%puts ">>>>>>>>>"+cookies.to_a.to_s%>
+<%puts ">>>>>>>>>"+cookies.keys.to_s%>
+<%puts ">>>>>>>>>"+cookies[:auth_token] if cookies && cookies[:auth_token]%>
+<%puts "session=>"+session.to_a.to_s%>
 <div id='content'>
 
 			<%if (params[:controller]=="sessions" && params[:action]=="new") %>

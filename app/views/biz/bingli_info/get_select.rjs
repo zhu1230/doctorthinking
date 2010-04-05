@@ -1,4 +1,3 @@
-puts params[:parent_id]
 p=params[:parent_id].split('_')
 #id=p[1][p[1].index('[')+1..p[1].index('[')+1]
 id=p[2]

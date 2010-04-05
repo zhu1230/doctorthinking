@@ -96,7 +96,6 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :name, :password, :password_confirmation,:keshiinplace,:zhicheng_title,:about_me,:receive,:keshi_id,:zhicheng,:password_reset_code
 
 def receive
-puts receive_emails
 self.receive_emails ?   "接受" : "不接受"
 end
 def receive=(aa)
