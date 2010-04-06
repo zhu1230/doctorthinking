@@ -41,7 +41,7 @@ ul,li {list-style-type:none;list-style-images:none;}
 .area .cont2 .cont {width:248px;float:left;background:#F7FAFF;border-left:1px solid #CBE6F9;border-right:1px solid #CBE6F9;}
 .area .cont2 .cont p {float:left;line-height:22px;font-size:14px;padding:6px 10px;}
 
-#signup_help {
+/*#signup_help {
 	float: right;
 	width: 180px;
 	margin-right: 50px;
@@ -49,10 +49,26 @@ ul,li {list-style-type:none;list-style-images:none;}
 	border: 1px solid #777777;
 	padding: 8px;
 	background-color: #F8F8F8;
+}*/
+#signup_help {
+	position:absolute;
+	left:600px;
+	top:230px;
+	width:209px;
+	height:68px;
+	z-index:5;
+	line-height:20px;
+	font-size:12px;
+	padding:6px;
+	border:#CCCCCC solid 1px;
+	background-color: #F8F8F8;
 }
+
 -->
 </style>
-
+<div id="signup_help">
+	在注册成功之后，您将收到一个确认注册的电子邮件。请按照邮件中的激活帐户链接来完成此次注册过程。
+</div>
 <div class="area">
   <%= error_messages_for :user,:class=>"error" %>
 	<div class="atitle">
@@ -60,9 +76,7 @@ ul,li {list-style-type:none;list-style-images:none;}
 	  <h2>请填写以下关于你的信息</h2>
 	</div>
   <% form_for :user, :url => users_path do |f| -%>
-	<div id="signup_help">
-		在注册成功之后，您将收到一个确认注册的电子邮件。请按照邮件中的激活帐户链接来完成此次注册过程。
-	</div>
+
 	<% if @invite_code %>
 		<input type="hidden" id="invite_code" name="invite_code" value="<%= @invite_code %>"/>
 	<% end %>

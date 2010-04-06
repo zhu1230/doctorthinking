@@ -9,7 +9,6 @@
 <%#= stylesheet_link_tag "lytebox",:media=>"screen"%>
 	<%= stylesheet_link_tag 'style' %>
 	<%#= stylesheet_link_tag "themes/mycompany/mycompany.css" %>
-	
 	<%= stylesheet_link_tag '../javascripts/dojo/dijit/themes/tundra/tundra.css' %>
 	<%= stylesheet_link_tag '../javascripts/dojo/dojox/grid/resources/Grid.css' %>
 	<%= stylesheet_link_tag '../javascripts/dojo/dojox/grid/resources/tundraGrid.css' %>
@@ -27,13 +26,10 @@
 		var authenticity_token = "<%= form_authenticity_token %>";				
     </script>
 	<%= include_tiny_mce_if_needed %>
+	<%puts "session=>"+session.to_a.to_s%>
 </head>
 <body>
-<%puts ">>>>>>>>>"+cookies.to_a.to_s%>
-<%puts ">>>>>>>>>"+cookies.keys.to_s%>
-<%puts ">>>>>>>>>"+cookies[:auth_token] if cookies && cookies[:auth_token]%>
-<%puts "session=>"+session.to_a.to_s%>
-<div id='content'>
+	<div id='content'>
 
 			<%if (params[:controller]=="sessions" && params[:action]=="new") %>
 			<%=render(:partial=>"shared/top_login")%>
@@ -44,12 +40,15 @@
 			<%else%>
 			<%=render(:partial=>"shared/top_unlogon")%>
 			<%end end end%>
+	<div class="mainnav" style="height:33px;">	
 	<%=render :partial=>"shared/top_sub"%>
+	</div>
 		<%=render :partial=>"shared/message_bar"%>
 	
 		
 				<%= yield  %>
 		
+	
 	
 				<!-- TODO: Needs to be refactored to move this content into page templates -->
 				<% if @section == 'MAIN' %>

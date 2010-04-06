@@ -520,6 +520,7 @@ end
   end
   
   def remember_token?
+	#puts "time compare="+Time.now.utc.to_s+"|"+remember_token_expires_at.to_s
     remember_token_expires_at && Time.now.utc < remember_token_expires_at 
   end
   

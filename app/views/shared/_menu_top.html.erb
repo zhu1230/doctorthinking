@@ -1,12 +1,15 @@
-		<li class="index" ><%=link_to "首页",index_url%></li>
+	<style type="text/css" media="screen">
+		.mainnav li.index.current {background:url(/images/navindexcurrent.gif);}
+		.mainnav li.index {background:url(/images/navindex.gif);}
+	</style>
+		<li class="index" ><%=link_to "首页",index_url,:class=>'index current'%></li>
         <li class="bltl"><%=link_to "病例讨论",{:controller=>"/biz/bingli_info",:action=>"index"}%></li>
-        <li class="bltl"><%=link_to "学术会议",{:controller=>"/meet",:action=>"index"}%></li>
+        <li class="yxhy"><%=link_to "学术会议",{:controller=>"/meet",:action=>"index"}%></li>
         <li class="bltl"><%=link_to "医生博客",{:controller=>"/blog_posts",:action=>"index"}%></li>
+        <li class="jyjl"><%=link_to "经验交流",{:controller=>"/forum_topics",:action=>"index"}%></li>
         <li class="bltl"><%=link_to "图片库",{:controller=>"/photo_manager",:action=>"index"}%></li>
-        <li class="bltl"><%=link_to "经验交流",{:controller=>"/forum_topics",:action=>"index"}%></li>
 		<% if logged_in?%>
 			<li class="qz"><%=link_to "个人信息", user_path(current_user)%></li>
 			<li class="bltl"><%=link_to "医生活动",{:controller=>"/events",:action=>"index"}%></li>
-	        <li class="bltl"><%=link_to "医生圈子",{:controller=>"/groups",:action=>"index"}%></li>
+			<%end%>	        <li class="bltl"><%=link_to "医生圈子",{:controller=>"/groups",:action=>"index"}%></li>
 			<li class="hy"><%=link_to "问题或者建议",bug_reports_url%></li>
-			<%end%>
