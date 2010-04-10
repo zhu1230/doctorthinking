@@ -56,6 +56,7 @@ class ForumPostsController < ApplicationController
       format.html {
         if params[:forum_topic_id]
           @forum_topic = ForumTopic.find(params[:forum_topic_id])
+		@page_title=@forum_topic.title
           @forum_posts = @forum_topic.forum_threads
         elsif current_user
           # just get posts for current user

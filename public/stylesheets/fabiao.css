@@ -18,7 +18,7 @@ a:active {text-decoration:none;color:#134E78;}
 ul,li {margin:0px;padding:0px;list-style-type:none;list-style-image:none;}
 input,select {font-size:12px;}
 .blank {height:8px;overflow:hidden;clear:both;}
-.header {height:120px;background:url(/images/headerbg.gif) repeat-x;}
+/*.header {height:120px;background:url(/images/headerbg.gif) repeat-x;}
 .header .banner {width:930px;height:120px;margin:0px auto;}
 .header .banner .logo {width:381px;height:48px;float:left;margin:14px 0px 0px 30px;}
 .header .banner .topnav {width:210px;height:18px;line-height:18px;text-align:center;margin-top:3px;background:url(/images/topnavbg.gif) no-repeat;color:#ffffff;float:right;}
@@ -26,17 +26,14 @@ input,select {font-size:12px;}
 .header .banner .mainnav ul {width:652px;margin:0px auto;flaot:left;}
 .header .banner .mainnav li {width:163px;height:32px;line-height:32px;text-align:center;background:url(/images/line1.gif) 0px 0px no-repeat;float:left;}
 .header .banner .mainnav li.current a,.header .banner .mainnav li.current a:visited {background:url(/images/mainnav_current.gif) 0px 0px no-repeat;color:#ffffff;display:block;}
-.header .banner .mainnav li a,.header .banner .mainnav li a:visited {color:#1C4966;font-size:14px;font-weight:bold;} 
-.mainnav2 {width:930px;height:24px;line-height:24px;border:1px #D1DEE4 solid;background:#F6FBFE;margin:0px auto;overflow:hidden;clear:both;}
-.mainnav2 ul {float:left;}
-.mainnav2 li {height:24px;line-height:24px;background:url(/images/line2.gif) 0px 5px no-repeat;float:left;padding:0px 10px;text-align:left;}
-.mainnav2 li.begin {background:url(/images/none.gif);}
-.mainnav2 li a,.mainnav2 li a:visted {color:#AEAFB3}
+.header .banner .mainnav li a,.header .banner .mainnav li a:visited {color:#1C4966;font-size:14px;font-weight:bold;} */
+
 .search {width:930px;padding:10px 0px;margin:0px auto;}
 .search .sleft {width:500px;float:left;padding:6px 0px;}
 .search .sright {width:430px;float:right;padding:6px 0px;}
 .search .sright h2 {border:1px #ccc solid;background:#F6F6F6;height:16px;line-height:16px;float:right;font-size:12px;font-weight:normal;margin:0px 3px;padding:0px 3px;}
 .search .btn {background:url(/images/searchbtn.gif) no-repeat;cursor:pointer;font-size:12px;width:61px;height:19px;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;margin:0px 0px 0px 4px;padding:0px;color:#fff;}
+
 .listbox .cnt .page {PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; MARGIN:0px 3px; PADDING-TOP: 3px; TEXT-ALIGN: center}
 .listbox .cnt .page A {BORDER-RIGHT: #aaaadd 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #aaaadd 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 2px; BORDER-LEFT: #aaaadd 1px solid; COLOR: #000099; PADDING-TOP: 2px; BORDER-BOTTOM: #aaaadd 1px solid; TEXT-DECORATION: none}
 .listbox .cnt .page A:hover {BORDER-RIGHT: #000099 1px solid; BORDER-TOP: #000099 1px solid; BORDER-LEFT: #000099 1px solid; COLOR: #000; BORDER-BOTTOM: #000099 1px solid}

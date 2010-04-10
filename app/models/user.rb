@@ -135,6 +135,9 @@ def delete_reset_code
   self.attributes = {:password_reset_code => nil}  
   save(false)  
 end
+def photo
+self.profile_photo || Photo.find(:first)
+end
 
   include Authentication
   include Authentication::ByPassword

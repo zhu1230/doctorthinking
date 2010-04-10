@@ -42,8 +42,11 @@
 	height:15px;
 	margin:3px;
 	padding:3px;
+	clear: left;
 }
 .inplace_radio_label{
+	clear: left;
+	margin-left: 10px;
 	text-align: left;
 	width:100px;
 }
@@ -55,8 +58,8 @@
 	display: block;
 	width:30px;
 	height:25px;
-	margin-top:5px;
-	margin-left:10px;
+	margin-top:0px;
+	margin-left:13px;
 }
 
 .inplace_checkbox{

@@ -1,9 +1,23 @@
+<style type="text/css" media="screen">
+	.nav {width:156px;float:left;overflow:hidden;}
+	.nav .header,.area .nav .footer {width:156px;height:8px;background:url(/images/bg.gif) left top no-repeat;float:left;overflow:hidden;}
+	.nav .footer {background:url(/images/bg.gif) left -18px no-repeat;}
+	.nav ul {width:154px;float:left;border-left:1px solid #C7E6F8;border-right:1px solid #C7E6F8;background:#F7FAFF;}
+/*	.nav ul li {width:134px;line-height:22px;padding-left:20px;float:left;}
+	.nav ul h2 {width:134px;line-height:26px;font-size:12px;padding-left:20px;}*/
+	.a_m_current{margin-left 0px;background:url(/images/icon.gif) 5px -133px no-repeat;width:134px;line-height:26px;font-size:12px;padding-left:20px;}
+	.a_m_item{width:134px;line-height:22px;padding-left:20px;float:left;}
+</style>
+<div class="nav">
+	<div class="header"></div>
 <ul>
-	<h2><%=link_to_unless_current "个人资料",{:controller=>"/user",:action=>"account"}%></h2>
-    <li><%=link_to_unless_current "密码修改",{:controller=>"/user",:action=>"pass_change"}%></li>
-    <li><a href="#">收藏夹</a></li>
+	<li><%=link_to_unless_current "个人资料",{:controller=>"/user",:action=>"account"},{:class=>"a_m_item"} do content_tag(:font,"个人资料",:class=>"a_m_current") end%></li>
+    <li><%=link_to_unless_current "密码修改",{:controller=>"/user",:action=>"pass_change"},{:class=>"a_m_item"} do content_tag(:font,"密码修改",:class=>"a_m_current") end%></li>
+    <!-- <li><a href="#">收藏夹</a></li>
     <li><a href="#">我的评论</a></li>
     <li><a href="#">待上线功能</a></li>
     <li><a href="#">待上线功能</a></li>
-    <li><a href="#">待上线功能</a></li>
+    <li><a href="#">待上线功能</a></li> -->
 </ul>
+<div class="footer"></div>
+</div>

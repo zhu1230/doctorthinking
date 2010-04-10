@@ -1,0 +1,22 @@
+home:
+    index: "首页"
+bingli_info:
+    index: "病例讨论列表"
+    input: "发表病例讨论"
+    showOne: "病例讨论"
+    save: "发表病例讨论"
+groups:
+    index: "圈子列表"
+    new: "新建圈子"
+    show: "圈子"
+sessions:
+    new: "用户登录"
+users:
+    new: "用户注册"
+blog_posts:
+    new: "发表博文"
+    index: "博客列表"
+    show: "博文浏览"
+forum_topics:
+    index: "经验交流"
+    

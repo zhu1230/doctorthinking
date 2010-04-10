@@ -1,8 +1,8 @@
 class Biz::BingliInfoController < ApplicationController
   require_role "user",:only=>[:input,:save,:add_favorite,:add_bingli_comment]
   def index
-    params[:keshi]=1 unless params[:keshi]
-    @bingli_infos=BingliInfo.paginate :page=>params[:page],:order=>"id",:per_page => 5,:conditions=>["keshi_id= ?",params[:keshi]]
+    #params[:keshi]=1 unless params[:keshi]
+    @bingli_infos=BingliInfo.paginate :page=>params[:page],:order=>"id",:per_page => 5#,:conditions=>["keshi_id= ?",params[:keshi]]
     #@bingli_infos=BingliInfo.find(:all,:conditions=>["keshi_id= ?",params[:keshi]])
   end
 
@@ -14,8 +14,7 @@ class Biz::BingliInfoController < ApplicationController
   end
 
   def input
-	@keshis=Keshi.find(:all)
-	@catelogs=Catelog.find(:all)
+
   end
   def add_favorite
     current_user.favorites << BingliInfo.find(params[:id])
@@ -28,13 +27,10 @@ class Biz::BingliInfoController < ApplicationController
         process_chubu params,@bingli
         process_fuzhu params,@bingli unless params[:fuzhu].blank?
         @bingli.bingli_info=BingliInfo.new(params[:bingli_info])
-        @bingli.bingli_info.catelog_id=params[:catelog_id]
-        @bingli.bingli_info.keshi_id=params[:keshi_id]
         @bingli.bingli_info.user=current_user
         @bingli.bingli_info.thetime=Time.new
-		@bingli.bingli_info.catelog_id=params[:catelog][:id]
         process_bingli_info params,@bingli
-        if @bingli.save
+        if  @bingli.save 
 		flash[:success]="病例发布成功！"
           redirect_to :action=>"showOne",:id=>@bingli.bingli_info.id
 #        show '发表成功',{:action=>"showOne",:id=>@bingli.bingli_info.id}

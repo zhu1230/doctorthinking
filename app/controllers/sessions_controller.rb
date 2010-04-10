@@ -21,13 +21,11 @@ class SessionsController < ApplicationController
       # reset_session
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
-	logger.info { "remember me>"+new_cookie_flag.to_s }
       handle_remember_cookie! new_cookie_flag
     	login_count = self.current_user.login_count
 	      login_count = login_count + 1
 	      self.current_user.update_attribute('login_count', login_count)
 	      self.current_user.update_attribute('last_seen_at',Time.zone.now)
-logger.info { "session=>"+session.to_a.to_s }
 
 	 respond_to do |format|
 	        format.html {

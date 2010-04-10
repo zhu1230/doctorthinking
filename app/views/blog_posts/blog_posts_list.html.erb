@@ -1,27 +1,30 @@
-<%#
-Copyright 2009 Timothy Fisher
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-%>
 <%= stylesheet_link_tag 'blogs' %>
-
-<div id="blogs_links">
-	<% if logged_in? %>
-		<div id="blogs_all"><%= link_to '所有日志' %></div>
-		<div id="blogs_my"><%= link_to '我的博客', user_blog_posts_path(current_user) %></div>
-		<div id="blogs_add"><%= link_to '新增日志', new_blog_post_path %></div>
-	<% end %>
+<style type="text/css" media="screen">
+	.blogs{width:940px;margin: 10px auto;}
+	.blog{width:900px;height:100px;	margin: 40px auto;border-bottom: 1px solid #999;}
+	.author_info{float: left;}
+	.blog_content{margin: 10px auto;}
+	.blog_info{}
+</style>
+<div class="mainnav2">
+    <ul>
+        <li class="begin"><%= link_to '所有日志' %></li>
+        <li><%= link_to '我的博客', user_blog_posts_path(current_user) if current_user%></li>
+        <li><%= link_to '新增日志', new_blog_post_path %></li>
+    </ul>
 </div>
+<div class="blogs">
+	<% for blog_post in @blog_posts %>
+		<%#= render :partial => 'blog_post_brief', :locals=>{:blog_post=>blog_post} %>
+
+	<div class="blog">
+		<div class="author_info"><%=link_to image_tag(blog_post.user.photo.public_filename(:thumb),{:size=>"50x50",:title=>blog_post.user.login+"的博客"}),user_blog_posts_path(blog_post.user)%></div>
+		<div class="blog_content"><%=blog_post.body[1...200]%></div>
+		<div class="blog_info"></div>
+	</div>
+		<% end %>
+</div>
+	<div class="page_controls"><%= will_paginate @blog_posts,:class=>"apple_pagination" %><br/></div>
 <% if @user %>
 	<h2 style="width:100%;">Blog Posts for <%= @user.name %> (<%= @blog_post_count.to_s %>)</h2>
 <% else %>
@@ -29,7 +32,7 @@ limitations under the License.
 <% end %>
 
 <% if logged_in? && @user == current_user %>
-	<div id="blogs_table_header">
+	<div id="blogs_table_header" style="width:960;margin:auto">
 		<% if @drafts_exist %>
 			<button id="show_drafts_btn" onclick="javascript:show_blog_drafts()">Show Drafts</button>
 		<% else %>
@@ -37,14 +40,5 @@ limitations under the License.
 		<% end %>
 	</div>
 <% end %>
-<div id="blogs_table">
-	<div class="page_controls"><%= will_paginate @blog_posts %><br/></div>
-	<% for blog_post in @blog_posts %>
-		<%= render :partial => 'blog_post_brief', :locals=>{:blog_post=>blog_post} %>
-	<% end %>
-	<div class="page_controls"><%= will_paginate @blog_posts %><br/></div>
-	<% if @blog_posts.length == 0 %>
-		No posts exist.
-	<% end %>
-</div>
+
 <div style="clear:both;"></div>

@@ -8,17 +8,7 @@ a:hover {text-decoration:underline;color:#002850;}
 a:active {text-decoration:none;color:#002850;}
 h1,h2,h3,p,ul,li {margin:0;padding:0;}
 ul,li {list-style-type:none;list-style-images:none;}
-.nowpsn {width:880px;padding:0 10px;height:30px;margin:10px auto;border-bottom:1px solid #d8d8d8;clear:both;}
-.nowpsn h1 {font:normal 18px "黑体";float:left;line-height:30px;}
-.nowpsn span {font-size:12px;float:right;line-height:30px;}
 .area {width:900px;margin:0 auto;}
-.area .nav {width:156px;float:left;overflow:hidden;}
-.area .nav .header,.area .nav .footer {width:156px;height:8px;background:url(/images/bg.gif) left top no-repeat;float:left;overflow:hidden;}
-.area .nav .footer {background:url(/images/bg.gif) left -8px no-repeat;}
-.area .nav ul {width:154px;float:left;border-left:1px solid #C7E6F8;border-right:1px solid #C7E6F8;background:#F7FAFF;}
-.area .nav ul li {width:134px;line-height:22px;padding-left:20px;float:left;}
-.area .nav ul li.current {width:134px;background:url(/images/icon.gif) 10px -130px no-repeat;padding-left:20px;font-weight:bold;}
-.area .nav ul h2 {width:134px;line-height:26px;font-size:12px;padding:0px 0px 0px 18px; float:left;}
 .area .cont {width:730px;float:right;}
 .area .cont h2 {width:700px;height:26px;line-height:26px;font-size:12px;color:#FF9800; float:left;border-bottom:1px solid #d8d8d8; margin:0px; padding:0px;}
 .area .cont ul {width:700px;float:left;padding:10px 0px;}
@@ -29,15 +19,8 @@ ul,li {list-style-type:none;list-style-images:none;}
 -->
 </style>
 
-<div class="nowpsn">
-	<h1>个人账户</h1>
-    <span><a href="#">首页</a> &gt; <a href="#"><u>个人账户</u></a></span></div>
 <div class="area">
-	<div class="nav">
-    	<div class="header"></div>
        <%=render :partial=>"shared/account_menu"%>
-        <div class="footer"></div>
-    </div>
     <div id='pass_form' class="cont">
 <%form_remote_tag :url=>{:controller=>"/user",:action=>"pass_save"},:loading=>"Element.hide('pass_form');Element.show('loader')",:complete=>"Element.hide('loader');Element.show('pass_form')" do %>
 
