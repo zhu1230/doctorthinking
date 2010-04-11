@@ -34,9 +34,10 @@ a:active {
 .header .login a {float:right;margin:26px 10px 0px 0px; font-size:12px;color:#FFCC33; padding:0px; width:60px; height:12px;}
 .mainnav {width:960px;height:57px;margin:0px auto;background:url(/images/top/mainnavbg.gif);}
 .mainnav ul {list-style-type:none;list-style-image:none;margin:0px;padding:0px;float:left;}
-.mainnav li {width:80px;height:29px;line-height:30px;list-style-type:none;list-style-image:none;margin:0px;padding:4px 0px 0px 15px;float:left;text-align:center;overflow:hidden;}
-.mainnav li.index {background:url(/images/navbg1.gif);}
-.mainnav li.index.current {background:url(/images/navbg2.gif);}       
+.mainnav li {width:110px;height:29px;line-height:30px;list-style-type:none;list-style-image:none;margin:0px;padding:4px 0px 0px 0px;float:left;text-align:center;overflow:hidden;}
+.mainnav li.index {border-left:thin solid #D9E5E4;}
+.mainnav li a {font-size:11pt;}
+.mainnav li.index.current {background-color: #FEFFFE;border-top: thin solid #D9E5E4;border-left: thin solid #D9E5E4;}       
 
 .mainnav li.rnav {float:right;width:100px;}
 .mainnav li.search {float:left;width:220px;}

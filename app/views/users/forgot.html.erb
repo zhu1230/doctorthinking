@@ -1,17 +1,18 @@
 <%= error_messages_for :user,:class=>"error"%>  
-  
-<% form_for :user do |f| -%>  
-  <p>  
-    重设密码 
-  </p>  
-  
-  <p>  
-    <label for="email">您的电子邮件</label><br />  
-    <%= f.text_field :email %>  
-  </p>  
-  
-  <p>  
-    <%= link_to "取消", login_url %>  
-    <%= submit_tag '发送' %>  
-  </p>  
+<div style="width:900px;margin:60px auto;text-align:justify;font-size: 13pt;">填写您的电子邮件地址并发送后，您将收到一封邮件，包含了如果找到您的密码的方法，请查收,医思网期待您的归来！</div>
+  <div style="width:900px;margin:10px auto;text-align:center"> 
+	<% form_for :user do |f| -%>  
+       	  <ul> 
+           	<li> 
+           	  <label><font color="#004575">您的电子邮件：</font></label> 
+           	<%= f.text_field :email %> 
+           	<br> 
+            </li> 
+            <li style="margin-top:20px"> 
+              <label> 
+             <%= submit_tag '发送' %>  
+               <%= link_to "取消", login_url %> </label> 
+            </li> 
+          </ul> 
 <% end -%>
+</div>

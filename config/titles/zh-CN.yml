@@ -13,6 +13,7 @@ sessions:
     new: "用户登录"
 users:
     new: "用户注册"
+    forgot: "重设密码"
 blog_posts:
     new: "发表博文"
     index: "博客列表"

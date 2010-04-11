@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 	      else  
 	        flash[:error] = "#{params[:user][:email]} 不存在，请重新尝试"  
 
-	        format.html { redirect_to login_url }  
+	        format.html { redirect_to forgot_url }  
 	        format.xml { render "<img src=\"http://net.tutsplus.com/wp-includes/images/smilies/icon_mad.gif\" alt=\":x\" class=\"wp-smiley\">", ml => user.email, :status => :unprocessable_entity }  
 	      end  
 	    end  
