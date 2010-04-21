@@ -45,7 +45,7 @@ Rails::Initializer.run do |config|
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug
-# config.load_paths += %W(#{RAILS_ROOT}/app/middleware)
+config.load_paths += %W(#{RAILS_ROOT}/app/middleware)
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
   # Run "rake -D time" for a list of tasks for finding time zone names. Comment line to use default local time.
@@ -88,7 +88,7 @@ end
 Time::DATE_FORMATS[:event_list] = "%B %d"
 
 #  Feb 27, 2009
-Time::DATE_FORMATS[:short_text] = "%b %d, %Y" 
+Time::DATE_FORMATS[:short_text] = "%b月 %d日, %Y" 
 
 #   Friday
 Time::DATE_FORMATS[:event_day] = "%A"
@@ -97,5 +97,5 @@ Time::DATE_FORMATS[:event_day] = "%A"
 Time::DATE_FORMATS[:event_brief] = "%B %d, %Y at %I:%M %p"
 
 #   2009-03-04 13:51:51
-Time::DATE_FORMATS[:basic] = "%Y-%m-%d %I:%M %p"
+Time::DATE_FORMATS[:basic] = "%Y-%m-%d %H:%M %p"
 

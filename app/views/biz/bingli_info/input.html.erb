@@ -1,41 +1,11 @@
-   <style type="text/css"> 
-<!--
-.fabiao_box {width:928px;border:1px #D0E1EB solid;margin:0px auto;overflow:hidden;clear:both;}
-.fabiao_box .menu {width:928px;height:26px;border-bottom:1px #D0E1EB solid;background:url(/images/tab_bg1.gif) repeat-x;float:left;}
-.fabiao_box .menu h1 {line-height:26px;margin:0px;padding:0px 0px 0px 10px;font-size:14px;float:left;display:inline;color:#004575;}
-.fabiao_box .menu .info {width:200px;text-align:right;line-height:26px;color:#9FA4A8;float:right;display:block;margin-right:6px;overflow:hidden;}
-.fabiao_box .cnt {width:928px;float:left;}
-.fabiao_box .cnt .title {width:860px;height:30px;line-height:30px;margin:0px auto;background:url(/images/line3.gif) 0px 15px repeat-x;display:block;}
-.fabiao_box .cnt .title h2 {width:90px;height:30px;line-height:30px;background:#fff;margin:0px auto;display:block;text-align:center;font-size:14px;font-weight:bold; color:#FF9900;}
-.fabiao_box .cnt .title2 {width:860px;height:24px;line-height:24px;background:#FFFCF5;margin:0px auto;display:block;border:1px #F6DFAD solid;color:#FE970E;overflow:hidden;}
-.fabiao_box .cnt .title2 h3 {height:24px;line-height:24px;display:block;font-size:14px;font-weight:bold;margin:0px 10px;padding:0px;float:left;}
-.fabiao_box .cnt .title2 h4 {height:24px;line-height:24px;display:inline;font-size:12px;font-weight:normal;margin:0px 10px;padding:0px;float:right;}
-.fabiao_box .cnt .title2 h4  a {color:#0F3A4A;text-decoration:underline;}
-.fabiao_box .cnt .tab {width:860px;margin:10px auto;display:block;}
-.fabiao_box .cnt .tab h1{font-weight:bold; font-size:12px; display:block; color:#004575; width:80px; height:25px; line-height:25px; margin:0px; padding:0px; float:left; text-align:right;}
-.fabiao_box .cnt .tab h2{float:left; margin:0px; display:block; height:30px; width:200px; line-height:30px; font-size:12px; font-weight:normal; color:#AFAFAF;}
-.fabiao_box .cnt .title3{width:860px;height:24px;line-height:24px;margin:0px auto;display:block;overflow:hidden;}
-.fabiao_box .cnt .title3 h1{color:#AFAFAF; font-size:14px; font-weight:normal; display:block; float:left; margin:0px 0px 0px 5px; padding:0px;}
--->
-</style> 
+<%= stylesheet_link_tag "fabiao"%>
 <%= error_messages_for :bingli,:class=>"error" %>
 <%@keshis=Keshi.find(:all)
 @catelogs=Catelog.find(:all)%>
+<%=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>@keshis} %>
+<%=render :partial=>"shared/nav3"%>
 <%form_for :bingli,@bingli,:url=>{:controller=>"biz/bingli_info",:action=>"save"},:html =>{:multipart => true} do |f| %>
-<div class="search">
-    <div class="sleft">
-        <input name="" type="text" style="width:200px;border:1px #ccc solid;"/><input name="提交" type="submit" value="查找病例"class="btn" />&nbsp;
-        <select name="">
-            <option value="-科室跳转-">-科室跳转-</option>
-        </select>
-    </div>
-    <div class="sright">
-        <h2><a href="#">其它链接一</a></h2>
-        <h2><a href="#">其它链接二</a></h2>
-        <h2><a href="#">其它链接三</a></h2>
-        <h2><a href="#">其它链接四</a></h2>
-    </div>
-</div>
+
 <div class="fabiao_box">
     <div class="menu">
         <h1>发表讨论</h1>
@@ -107,6 +77,6 @@
 		<%=f.text_area :zongbuchong,:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
         </span>
 		</div>
-        <span class="tab"><%=image_submit_tag "/images/btn2_1.gif",:hspace=>"200"%></span>
+        <span style="width:860px;margin:10px auto;display:block;"><%= f.submit "完  成", :class=>"subtn",:disable_with => '提交中...' %></span>
     </div>
 </div><%end %>

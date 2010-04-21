@@ -7,7 +7,7 @@ require_role :user,:only=>[:input,:save,:fileupload]
     
     @meeting=Meeting.find(params[:id])
     @comments=Comment.paginate(:conditions => ["commentable_type = ? and commentable_id = ?","Meeting",@meeting.id],
-    :order => "created_at DESC",:per_page=>10,:page=>params[:page])
+    :order => "created_at DESC",:per_page=>10,:page=>params[:page],:include=>"user")
   end
   def input
   end

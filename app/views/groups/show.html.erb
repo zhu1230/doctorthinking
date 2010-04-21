@@ -46,7 +46,7 @@ limitations under the License.
 		<% if logged_in? %>
 			<% unless @group.users.include?(current_user) %>
 				<% form_for(:membership, :url => memberships_path(:user_id => current_user.id, :group_id => @group.id)) do |f| %>
-					<%= submit_tag "Join Group" %>
+					<%= submit_tag "Join Group",:disable_with => '提交中...' %>
 				<% end %>
 			<% end %>
 		<% end %> 

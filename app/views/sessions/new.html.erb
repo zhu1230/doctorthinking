@@ -58,7 +58,7 @@ h1,h2 {margin:0;padding:0;}
         <p><label for="password">DoctorThinking密码&nbsp;</label><%= password_field_tag 'password' %></p>
         <p><label style="margin-left:54px;"><%= check_box_tag 'remember_me' %><a href="#" title="选择是否记录您的信息">记住我</a></label></p>
         <div class="clear"></div>
-        <p><%=submit_tag "登 录",:class=>"loginbtn",:value=>""%></p>  <% end -%>
+        <p><%=submit_tag "登 录",:class=>"loginbtn",:value=>"",:disable_with => '登录中...' %></p>  <% end -%>
       <p style="width:338px;text-align:center;border-top:1px solid #C9CDCE;margin:20px 0 0 5px;"><b>没有DoctorThinking账户？</b>&nbsp;&nbsp;<%=submit_tag "立即注册",{:onclick=>"location.href='"+url_for(signup_url)+"';return false;",:class=>"regbtn"}%>
       </p>
         <p style="text-align:center;margin-top:20px;"><u><%=link_to "忘记密码？",forgot_url%>　</u> </p>

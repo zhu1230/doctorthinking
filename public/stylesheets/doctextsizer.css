@@ -1,0 +1,34 @@
+.xsmallview{ /*CSS for "extra small font" setting*/
+font-size: 11px;
+}
+ 
+.smallview{ /*CSS for "small font" setting*/
+font-size: 13px;
+}
+ 
+.normalview{ /*CSS to return page to default setting (with no additional CSS rules added)*/
+}
+ 
+.largeview{ /*CSS for "large font" setting*/
+font-size: 21px;
+}
+ 
+.xlargeview{ /*CSS for "extra large font" setting*/
+font-size: 24px;
+}
+ 
+a.texttoggler{ /*CSS for Text Size Toggler control*/
+margin-right: 6px;
+}
+ 
+a.texttoggler img{ /*CSS for Text Size Toggler control*/
+border: 1px solid gray;
+}
+ 
+a.texttoggler img:hover{ /*CSS for Text Size Toggler control*/
+border: 1px solid red;
+}
+ 
+a.selectedtoggler img{ /*CSS for Selected Text Size Toggler control*/
+border: 1px solid red;
+}

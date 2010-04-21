@@ -51,8 +51,8 @@ limitations under the License.
 		</div>
 	</div>
 	<% if @user.id == nil %>
-		<%= submit_tag 'Signup', :class=>'add_button' %>
+		<%= submit_tag 'Signup', :class=>'add_button',:disable_with => '提交中...' %>
 	<% else %>
-		<%= submit_tag 'Save', :class=>'add_button' %>
+		<%= submit_tag 'Save', :class=>'add_button' ,:disable_with => '提交中...'%>
 	<% end %>
 <% end -%>

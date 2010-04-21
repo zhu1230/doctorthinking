@@ -15,16 +15,6 @@ class WallPostsController < ApplicationController
  require_role "user", :only => [:new, :edit, :create, :update]
   
 
-  def new
-    @wall_post = WallPost.new
-  end
-
-
-  def edit
-    @wall_post = WallPost.find(params[:id])
-  end
-
-
   def create
     @wall_post = WallPost.new(params[:wall_post])
     if params[:group_id]

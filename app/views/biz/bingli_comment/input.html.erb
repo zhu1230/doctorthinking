@@ -1,7 +1,7 @@
-<h1>Biz::BingliComment#input</h1>
 <%form_for :bingli_comment,@bingli_comment,:url=>{:action=>"save",:bingli_info_id=>params[:bingli_info_id]} do |f|-%>
+<div style="width:930px;margin 0 auto;">
 <p>主题：<%=f.text_field :title%></p>
 <p>内容：<%=f.text_area :content%></p>
-<p><%=submit_tag "提交"%></p>
+<p><%=submit_tag "提交",:disable_with => '提交中...'%></p>
+</div>
 <%end%>
-<p>Find me in app/views/biz/bingli_comment/input.html.erb</p>

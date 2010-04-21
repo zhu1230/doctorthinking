@@ -9,8 +9,8 @@
 .show_box .cnt h1 {line-height:30px;margin:5px 0px 0px 0px;padding:0px 0px 0px 30px;background:url(/images/fujian.gif) 10px 6px no-repeat;font-size:12px;float:left;display:inline;border-top:1px solid #d8d8d8;width:880px;}
 .show_box .cnt ul {width:908px;float:left;padding:6px 0;}
 .show_box .cnt li {width:908px;float:left;height:26px;line-height:26px;display:block;}
-.show_box .cnt .name {width:670px;float:left;text-indent:2em;}
-.show_box .cnt .data {width:90px;float:left;text-align:center;}
+.show_box .cnt .name {width:610px;float:left;text-indent:2em;}
+.show_box .cnt .data {width:150px;float:left;text-align:center;}
 .show_box .cnt .no {width:90px;float:left;text-align:center;}
 .show_box .cnt .fen {width:50px;float:left;text-align:center;}
 
@@ -36,11 +36,17 @@
 }
 -->
 </style>
-
+<div class="mainnav2"> 
+    <ul> 
+        <li class="begin"><a href="#">栏目一</a></li> 
+        <li><a href="#">栏目二</a></li> 
+        <li><a href="#">栏目三</a></li> 
+    </ul> 
+</div>
 <div class="show_box">
   <div class="menu">
     <h1><%=@meeting.title%></h1>
-    <span class="info"><font color="#999999">发表时间：</font><font color="#004575"><%=@meeting.thetime.strftime("<%Y %m %d>")%></font> <font color="#999999">分值：</font>1 <a href="#"></a> <a href="#"><u><font color="#004575">打印</font></u></a> <a href="#"><font color="#FFB32E"><u>收藏</u></font></a></span></div>
+    <span class="info"><font color="#999999">发表时间：</font><font color="#004575"><%=@meeting.thetime.to_s(:short_text)%></font> <font color="#999999">分值：</font>1 <a href="#"></a> <a href="#"><u><font color="#004575">打印</font></u></a> <a href="#"><font color="#FFB32E"><u>收藏</u></font></a></span> <a href="#"> <font color="#FF6600"><u>+发表新会议</u></font></a></div>
     <div class="cnt"><p><%=@meeting.content%></p>
     <h1>相关附件下载</h1>
     <ul>
@@ -57,7 +63,7 @@
 	<div class="menu"><h1>评论</h1></div>
     <div class="cnt">
     	<ul  id="comments">
-       	<%=render :partial=>'shared/comment',:collection=>@comments,:as=>:comment%>
+       	<%=render :partial=>'shared/comment',:collection=>@comments%>
         </ul>
         <div class="blank"></div>
   </div>
@@ -71,7 +77,7 @@
    		<%if logged_in? %>
 		<%=form_remote_tag :url=>{:controller=>"/meet",:action=>"add_comment",:id=>@meeting.id} %>
 		<%=text_area_tag "comment","对病例有疑问？现在提问，或者发起回应表达你的观点",:cols=>"",:rows=>"",:style=>"width:600px;height:100px;border:1px #ccc solid;color:#999;font-size:12px;padding:10px; float:left;"%>
-		 <label style="position: relative;top:100px;padding:0px 0px 0px 30px;bottom: 0px;"><%=submit_tag "提交"%></label>
+		 <label style="position: relative;top:100px;padding:0px 0px 0px 30px;bottom: 0px;"><%=submit_tag "提交",:disable_with => '提交中...' %></label>
 		</form>
 		<%else%>
 		<h1>您尚未<a href="#"><u><font color="#FF6600">登录</font></u></a>，不能留言 <a href="#"><font color="#FF0000">我要注册>></font></a><br />

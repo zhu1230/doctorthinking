@@ -16,14 +16,14 @@
 	.area .btn {width:85px;height:32px;line-height:32px;cursor:pointer;background:url(/images/loginbg.gif) -87px -247px no-repeat;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;margin:10px 0 0;padding:0;font-weight:bold;color:#072A46;}
 	-->
 </style>
-<%#= stylesheet_link_tag 'messages' %>
+<%= error_messages_for :message,:class=>"error" %>
 <div class="area">
 		<% form_for(:message, :url => messages_path, :html => { :multipart => true }) do |f| -%>
 	<ul>
     	<li>
 			<% if @recipient_id == nil %>
 			    	<label for="title" for="user">发送至：</label>
-					<%= f.collection_select(:recipient_id, @users, :id, :name, options ={:prompt => "-选择收件人"}) %>
+					<%= f.collection_select(:recipient_id, User.find(:all), :id, :login, options ={:prompt => "-选择收件人"}) %>
 			<% else %>
 		    	<label for="title">收件人：</label>
 				<%= User.find_by_id(@recipient_id).name %>

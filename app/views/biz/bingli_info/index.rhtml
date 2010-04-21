@@ -1,14 +1,14 @@
 <style type="text/css"> 
 <!--
-.listbox {width:930px;margin:0px auto;}
-.listbox .menu {width:930px;height:27px;background:url(/images/box_menu_bg.gif) repeat-x;float:left;overflow:hidden;}
+.listbox {width:958px;margin:10px auto;}
+.listbox .menu {width:960px;height:27px;background:url(/images/box_menu_bg.gif) repeat-x;float:left;overflow:hidden;}
 .listbox .menu .menu_tab1 {float:left;width:85px;height:27px;line-height:27px;background:url(/images/box_menu_tab1.gif) no-repeat;text-align:center;margin:0px 5px;}
 .listbox .menu .menu_tab1 a {color:#004483;font-weight:bold;font-size:14px;}
 .listbox .menu .menu_tab2 {float:left;width:83px;height:26px;line-height:27px;background:url(/images/box_menu_tab2.gif) no-repeat;text-align:center;border:1px #D7E0E5 solid;border-bottom:0px;margin:0px 5px;}
 .listbox .menu .menu_tab2 a {font-size:14px;}
 .listbox .menu .menu_tab3 {float:left;width:105px;height:26px;line-height:27px;background:url(/images/box_menu_tab2.gif) no-repeat;text-align:center;border:1px #D7E0E5 solid;border-bottom:0px;float:right;}
 .listbox .menu .menu_tab3 a {color:#F0AE36;font-size:14px;font-weight:bold;}
-.listbox .cnt {width:928px;border:1px #D7E0E5 solid;border-top:0px;}
+.listbox .cnt {width:958px;border:1px #D7E0E5 solid;border-top:0px;}
 .listbox .cnt ul {width:900px;margin:0px auto;}
 .listbox .cnt li {width:900px;float:left;border-bottom:1px #ccc dotted;padding:10px 0px;}
 .listbox .cnt h1 a {font-size:14px;float:left;color:#094C76;display:inline;}
@@ -29,7 +29,7 @@
         <li><a href="#">栏目三</a></li> 
     </ul> 
 </div> 
-<div class="search"><%=render :partial=>"shared/bingli_info/search",:locals => {:keshi=>@keshi}%></div>
+
 <div class="listbox"> 
 	<div class="menu"> 
     	<div class="<%=params[:controller]=="biz/bingli_info" ? "menu_tab1":"menu_tab2"%>"><%=link_to "最新",:controller=>"biz/bingli_info",:action=>"index",:keshi=>params[:keshi]%></div>

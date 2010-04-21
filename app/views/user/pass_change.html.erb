@@ -29,7 +29,7 @@ ul,li {list-style-type:none;list-style-images:none;}
         	<li><label for="oldpassword">旧密码：</label><br /><%=password_field_tag :old_pass%></li>
             <li><label for="newpassword">新密码：</label><br /><%=password_field_tag :password%></li>
             <li><label for="agreepassword">确认密码：</label><br /><%=password_field_tag :password_confirm%></li>
-          <li><%=submit_tag "提交",:class=>"btn"%>
+          <li><%=submit_tag "提交",:class=>"btn",:disable_with => '提交中...' %>
           &nbsp;&nbsp;<a href="#"><font color="#666666">取消</font></a></li>
         </ul>
   

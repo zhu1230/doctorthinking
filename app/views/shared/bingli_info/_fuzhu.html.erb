@@ -1,7 +1,7 @@
 <%@type=FuzhuType.find(:all,:conditions=>"parent_id=0") %>
 <div id="fuzhu_id[<%=id%>]">
-  <br>
-  <%if id>0%> <p style="width:860px;height:30px;line-height:30px;margin:0px auto;background:url(/images/line3.gif) 0px 15px repeat-x;display:block;"></p><%end%>
+  <br/>
+  <%if id>0%> <p style="width:860px;height:30px;line-height:30px;margin:0px auto;background:url(/images/line3.gif) 0px 15px repeat-x;display:block;"/><%end%>
     <span class="tab" style="width:860px;margin:10px auto;display:block;"><h1>检查类型：</h1><%=select_tag "fuzhu[#{id}][type]",options_for_select([['请选择','']])+options_from_collection_for_select(@type,:id,:title),{:prompt=>"请选择","onchange"=>remote_function(:url=>{:action=>'get_select'},:with=>"'parent_id='+value+'_'+id")} -%>
         <div id="typechilds[<%=id%>]"></div>
     </span>

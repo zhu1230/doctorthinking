@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag 'blogs' %>
+<%#= stylesheet_link_tag 'blogs' %>
 <style type="text/css" media="screen">
 	.blogs{width:940px;margin: 10px auto;}
 	.blog{width:900px;height:100px;	margin: 40px auto;border-bottom: 1px solid #999;}
@@ -6,13 +6,7 @@
 	.blog_content{margin: 10px auto;}
 	.blog_info{}
 </style>
-<div class="mainnav2">
-    <ul>
-        <li class="begin"><%= link_to '所有日志' %></li>
-        <li><%= link_to '我的博客', user_blog_posts_path(current_user) if current_user%></li>
-        <li><%= link_to '新增日志', new_blog_post_path %></li>
-    </ul>
-</div>
+<%=render :partial => "blog_menu"%>
 <div class="blogs">
 	<% for blog_post in @blog_posts %>
 		<%#= render :partial => 'blog_post_brief', :locals=>{:blog_post=>blog_post} %>

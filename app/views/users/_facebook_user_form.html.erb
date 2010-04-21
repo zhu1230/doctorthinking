@@ -43,9 +43,9 @@ please enter the following required data:
 		</div>
 	</div>
 	<% if @user.id == nil %>
-		<%= submit_tag 'Signup', :id=>'login_btn' %>
+		<%= submit_tag 'Signup', :id=>'login_btn' ,:disable_with => '提交中...'%>
 	<% else %>
-		<%= submit_tag 'Save', :id=>'login_btn' %>
+		<%= submit_tag 'Save', :id=>'login_btn',:disable_with => '提交中...' %>
 	<% end %>
 <% end -%>
 </div>

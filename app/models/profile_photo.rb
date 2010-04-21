@@ -48,7 +48,7 @@ class ProfilePhoto < Photo
                 :min_size => 0.kilobytes,
                 :max_size => 50000.kilobytes,
                 :resize_to => '120x100>',
-                :thumbnails => {:thumb => '100x100>', :medium => '150x150>'},
+                :thumbnails => {:thumb => '48x48>', :medium => '96x96>'},
                 :processor=>"Rmagick"  
   # has_attachment :content_type => :image, 
   #                :storage => :file_system, 

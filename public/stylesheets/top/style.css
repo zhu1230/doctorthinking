@@ -12,9 +12,7 @@ a {
 	font-size: 12px;
 	color: #042A53;
 }
-a:link {
-	text-decoration: none;
-}
+
 a:visited {
 	text-decoration: none;
 	color: #042A53;
@@ -27,6 +25,26 @@ a:active {
 	text-decoration: none;
 	color: #FF0000;
 }
+body,td,th {font-family:宋体;font-size:12px;color:#000000;}
+body {margin:0px;}
+a {font-family:宋体;font-size:12px;color:#000000;}
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;color:#000000;}
+a:hover {text-decoration:underline;color:#000000;}
+a:active {text-decoration:none;color:#134E78;}
+.f12white {font-family:宋体;font-size:12px;color:#fff;}
+.f12white:link {text-decoration:none;}
+.f12white:visited {text-decoration:none;color:#fff;}
+.f12white:hover {text-decoration:underline;color:#fff;}
+.f12white:active {text-decoration:none;color:#fff;}
+.f12red {font-family:宋体;font-size:12px;color:red;}
+.f12red:link {text-decoration:none;}
+.f12red:visited {text-decoration:none;color:red;}
+.f12red:hover {text-decoration:underline;color:red;}
+.f12red:active {text-decoration:none;color:red;}
+ul,li {margin:0px;padding:0px;list-style-type:none;list-style-image:none;}
+input,select {font-size:12px;}
+.blank {height:8px;overflow:hidden;clear:both;}
 .header {width:960px;height:71px;margin:0px auto;background:url(/images/top/headerbg.gif) repeat-x;overflow:hidden;}
 .header .logo {width:386px;height:53px;float:left;margin:10px 0px 0px 14px;}
 .header .topnav {float:right;margin:46px 10px 0px 0px;}
@@ -56,16 +74,18 @@ a:active {
 .mainnav2 li {height:24px;line-height:24px;background:url(/images/line2.gif) 0px 5px no-repeat;float:left;padding:0px 10px;text-align:left;}
 .mainnav2 li.begin {background:url(/images/none.gif);}
 .mainnav2 li a,.mainnav2 li a:visted {color:#AEAFB3}
-
-#city-pop{
+.footer {width:930px;height:108px;margin:0px auto;color:#A2A2A2;text-align:center;background:url(/images/footerbg.gif);line-height:23px;padding-top:24px;clear:both;}
+#resizer{
 	z-index: 1;
 	position: absolute;
-	left: 121px;
-	top: 130px;
+	left: 895px;
+	top: 63px;
 	right: 0px;
 	border: #D2EAEA 1px solid;
-	background-color: #FFFFFF;
+	background-color: #E3EDF0;
 	padding: 5px;
 	line-height: 1.6;
-	background:url(/images/top/qh1.gif) -54px -9px no-repeat;
+	opacity:0.5;
+	filter:alpha;
+/*	background:url(/images/top/qh1.gif) -54px -9px no-repeat;*/
 }

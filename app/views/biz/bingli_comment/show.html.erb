@@ -10,6 +10,6 @@
 <%form_tag url_for(:controller=>"biz/bingli_comment",:action=>"add_comment",:id=>@bingli_comment.id) do -%>
 <%=text_area_tag 'comment'%>
 <%=hidden_field_tag 'bingli_comment_id',@bingli_comment.id%>
-<%=submit_tag "提交"%>
+<%=submit_tag "提交",:disable_with => '提交中...'%>
 <%end%>
 

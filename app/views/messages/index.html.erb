@@ -1,30 +1,11 @@
-<%#
-Copyright 2009 Timothy Fisher
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-%>
-<%= stylesheet_link_tag 'messages' %>
-
-
-<h1>My Messages</h1>	
+<!-- <h1>My Messages</h1>	
 <div id="messages_links">
-	<div id="messages_add"><%= link_to 'New Message', new_message_path %></div>
-</div>
-<div id="messages_table">
-	<%= render :partial => 'received_messages_list' %>
-	<%= render :partial => 'sent_messages_list' %>
-</div>
-
+	<div id="messages_add"><%#= link_to 'New Message', new_message_path %></div>
+</div> -->
+<!-- <div id="messages_table">
+	<%#= render :partial => 'received_messages_list' %>
+	<%#= render :partial => 'sent_messages_list' %>
+</div> -->
 <style type="text/css">
 <!--
 body {font-family:"宋体";margin:0;font-size:12px;}
@@ -35,18 +16,15 @@ a:hover {text-decoration:underline;color:#002850;}
 a:active {text-decoration:none;color:#002850;}
 h1,h2,h3,p,ul,li {margin:0;padding:0;}
 ul,li {list-style-type:none;list-style-images:none;}
-.nowpsn {width:880px;padding:0 10px;height:30px;margin:10px auto;clear:both;}
-.nowpsn h1 {font:normal 18px "黑体";float:left;line-height:30px;}
-.nowpsn span {font-size:12px;float:right;line-height:30px;}
 .area {width:926px;margin:0 auto;}
-.area .atitle {width:926px;height:38px;background:url(images/messagebg.gif) left top no-repeat;float:left;}
-.area .atitle .menu_tab1,.area .atitle .menu_tab2 {width:102px;height:28px;line-height:28px;text-align:center;float:left;background:url(images/messagebg.gif) left -38px no-repeat;color:#999;margin:10px 0 0 6px;}
+.area .atitle {width:926px;height:38px;background:url(/images/messagebg.gif) left top no-repeat;float:left;}
+.area .atitle .menu_tab1,.area .atitle .menu_tab2 {width:102px;height:28px;line-height:28px;text-align:center;float:left;background:url(/images/messagebg.gif) left -38px no-repeat;color:#999;margin:10px 0 0 6px;}
 .area .atitle .menu_tab1 a {font-weight:bold;color:#FA9819;}
-.area .atitle .menu_tab2 {background:url(images/messagebg.gif) left -66px no-repeat;}
+.area .atitle .menu_tab2 {background:url(/images/messagebg.gif) left -66px no-repeat;}
 .area .atitle img {width:91px;height:23px;display:block;float:right;margin:8px 10px 0 0;border:0;}
 .area .cont {width:924px;float:left;border:1px solid #DBDBDB;border-top:0;}
 .area .cont:after{ content:".";display:block;height:0;clear:both;visibility:hidden;}
-.area .cont h2 {width:884px;line-height:26px;height:26px;color:#13254D;font-size:12px;font-weight:normal;background:url(images/icon.gif) 18px -210px no-repeat;padding-left:40px;}
+.area .cont h2 {width:884px;line-height:26px;height:26px;color:#13254D;font-size:12px;font-weight:normal;background:url(/images/icon.gif) 18px -210px no-repeat;padding-left:40px;}
 .area .cont ul {width:924px;float:left;padding-bottom:10px;}
 .area .cont li {width:894px;height:26px;float:left;padding:0 15px;border-bottom:1px solid #E5E5E5;}
 .area .cont li.header {background:#F3F7F8;border-top:1px solid #E5E5E5;}
@@ -74,16 +52,27 @@ function ContentDivChange(id,idx,allNum)
     document.getElementById("Content"+id+"_div_"+idx).style.display="block";
     
 }
+checked=false;
+function checkedAll (frm1) {
+	var aa= document.getElementById(frm1);
+	 if (checked == false)
+          {
+           checked = true
+          }
+        else
+          {
+          checked = false
+          }
+	for (var i =0; i < aa.elements.length; i++) 
+	{
+	 aa.elements[i].checked = checked;
+	}
+      }
+
+
     </script>
-
-</head>
-
-<body>
-<div class="nowpsn">
-	<h1>站内信</h1>
-    <span><a href="#">首页</a> > <a href="#">站内信</a></span>
-</div>
 <div class="area">
+		<% form_tag url_for(:controller=>"/messages",:action=>"destroy"),:id=>"checklist",:name=>"receivelist" do -%>
   <div class="atitle">
        	<div class="menu_tab1" id="Content1_title_1"><a href="javascript:void(0);" onmousedown="return ContentDivChange('1','1',3);">收件箱</a>(<%=current_user.unread_messages.size%>)</div>
         <div class="menu_tab2" id="Content1_title_2"><a href="javascript:void(0);" onmousedown="return ContentDivChange('1','2',3);">发件箱</a></div>
@@ -94,9 +83,9 @@ function ContentDivChange(id,idx,allNum)
         <div class="cont">
             <h2>您有<%=current_user.unread_messages.size%>封未读邮件</h2>
             <ul>
-              <li class="header"><span class="checkbox"><input name="" type="checkbox" value="" /></span><span class="time">时间</span><span class="theme">主题</span><span class="user">发件人</span><span class="state" style="padding-top:0;">状态</span></li>
+              <li class="header"><span class="checkbox"><%= check_box_tag('check_all', 'check_all', false,  :onclick => "checkedAll('receivelist');") %></span><span class="time">时间</span><span class="theme">主题</span><span class="user">发件人</span><span class="state" style="padding-top:0;">状态</span></li>
 <%current_user.unread_messages.each do |m|%>
-                <li><span class="checkbox"><input name="" type="checkbox" value="" /></span><span class="time"><%=m.created_at%></span><span class="theme"><%=link_to m.subject,m%></span><span class="user"><%=link_to m.sender.login,m.sender%></span><span class="state"><img src="images/weidu.gif" /><%=m.state%></span></li>
+                <li><span class="checkbox"><input name="" type="checkbox" value="" /></span><span class="time"><%=m.created_at%></span><span class="theme"><%=link_to m.subject,m%></span><span class="user"><%=link_to m.sender.login,m.sender%></span><span class="state"><img src="/images/weidu.gif" /><%=m.state%></span></li>
 <%end%>
              
                 <li style="padding-top:6px;border:0;"><a href="#"><img src="/images/message_icon1.gif" border="0" /></a> <a href="#"><img src="/images/message_icon2.gif" border="0" /></a>&nbsp;删除所选</li>
@@ -104,15 +93,20 @@ function ContentDivChange(id,idx,allNum)
             </ul>
         </div>	
     </div>
+	<%end%>
+	<% form_tag url_for(:controller=>"/messages",:action=>"destroy"),:id=>"checklist",:name=>"sentlist" do -%>
     <div id="Content1_div_2" style="display:none">
         <div class="cont">
-            <h2>您有1封未读邮件</h2>
+            <!-- <h2>您有1封未读邮件</h2> -->
             <ul>
-	<li class="header"><span class="checkbox"><input name="" type="checkbox" value="" /></span><span class="time">收件人</span><span class="theme">主题</span><span class="user">发送时间</span><span class="state" style="padding-top:0;">状态</span></li>
+	<li class="header"><span class="checkbox"><%= check_box_tag('check_all', 'check_all', false,  :onclick => "checkedAll('sentlist');") %></span><span class="time">收件人</span><span class="theme">主题</span><span class="user">发送时间</span><span class="state" style="padding-top:0;">状态</span></li>
+
 	<%current_user.sent_messages.each do |m|%>
-	                <li><span class="checkbox"><input name="" type="checkbox" value="" /></span><span class="time"><%=link_to m.recipient.login,m.recipient%></span><span class="theme"><%=link_to m.subject,m%></span><span class="user"><%=m.created_at%></span><span class="state"><img src="images/weidu.gif" /><%=m.state%></span></li>
+	                <li><span class="checkbox"><%=check_box_tag 'id[]',m.id,false %></span><span class="time"><%=link_to m.recipient.login,m.recipient%></span><span class="theme"><%=link_to m.subject,m%></span><span class="user"><%=m.created_at%></span><span class="state"><img src="/images/weidu.gif" /><%=m.state%></span></li>
 	<%end%>
-             <li style="padding-top:6px;border:0;"><a href="#"><img src="/images/message_icon1.gif" border="0" /></a> <a href="#"><img src="/images/message_icon2.gif" border="0" /></a>&nbsp;删除所选</li>
+	
+             <li style="padding-top:6px;border:0;"><a href="#"><img src="/images/message_icon1.gif" border="0" /></a> <a href="#"><img src="/images/message_icon2.gif" border="0" /></a>&nbsp;<%=submit_tag "删除所选", :disable_with => '删除中...' %></li>
+<% end -%>
              <li style="padding-top:6px;border:0;"><%=link_to image_tag("/images/xie.gif"),new_message_path%></li>
             </ul>
         </div>	

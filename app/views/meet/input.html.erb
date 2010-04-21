@@ -86,7 +86,7 @@ ul,li {list-style-type:none;list-style-images:none;}
 </script>
 <div class="area">
   <div class="atitle">
-	  <h1><font color="#000000">会议新发</font></h1><span><font color="#999999">加</font><font color="red">*</font><font color="#999999">号的为必填信息</font></span>	</div>
+	  <h1><font color="#000000">创建新会议</font></h1><span><font color="#999999">加</font><font color="red">*</font><font color="#999999">号的为必填信息</font></span>	</div>
 	<%form_for :meeting,@meeting,:url=>{:action=>'save'} do |f|%>
     <div class="cont">
        	  <ul>
@@ -149,7 +149,7 @@ ul,li {list-style-type:none;list-style-images:none;}
 				</span>
                 </li>
  <!-- <li style="padding-left:236px;"></li> -->
-                 <li style="padding-left:236px;"><%=submit_tag "完成",:class=>'btn'%></li>
+                 <li style="padding-left:236px;"><%=submit_tag "完  成",:class=>'btn',:disable_with => '提交中...'%></li>
           </ul>
   </div>
 <%end%>

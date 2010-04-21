@@ -5,6 +5,12 @@ bingli_info:
     input: "发表病例讨论"
     showOne: "病例讨论"
     save: "发表病例讨论"
+bingli_comment:
+    input: "发表讨论"
+meet:
+    index: "会议列表"
+    input: "发表会议"
+    showone: "查看会议"
 groups:
     index: "圈子列表"
     new: "新建圈子"
@@ -14,10 +20,20 @@ sessions:
 users:
     new: "用户注册"
     forgot: "重设密码"
+user:
+    account: "帐户资料修改"
+    pass_change: "密码修改"
+    index: "个人帐户"
 blog_posts:
     new: "发表博文"
     index: "博客列表"
     show: "博文浏览"
 forum_topics:
     index: "经验交流"
+photo_manager:
+    index: "图库列表"
+messages:
+    index: "个人消息"
+    show: "查看消息"
+    new: "写消息"
     

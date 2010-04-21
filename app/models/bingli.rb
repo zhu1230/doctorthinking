@@ -7,6 +7,7 @@ class Bingli < ActiveRecord::Base
   has_many :attachments
   belongs_to :user
   validates_presence_of :bingli_info
+validates_associated :bingli_info
   validates_presence_of :zhusu
   acts_as_ferret :fields => [:zhusu, :yibanqingkuang,:zhuyaozhengzhuang,:xianbingshi,:tigejiancha,:jiwang,:final]
 	def keshi_id

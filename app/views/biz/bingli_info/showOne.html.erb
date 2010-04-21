@@ -1,13 +1,12 @@
-
 <style type="text/css">
 <!-- .show_box, .comment_box {
-    width: 928px;
+    width: 958px;
     border: 1px #D0E1EB solid;
     margin: 0px auto;
     overflow: hidden;
     clear: both;
 } .show_box .menu, .comment_box .menu {
-    width: 928px;
+    width: 958px;
     height: 30px;
     border-bottom: 1px #D0E1EB solid;
     background: url(/images/tab_bg1.gif) repeat-x;
@@ -26,7 +25,7 @@
     line-height: 30px;
     padding-right: 10px;
 } .show_box .cnt {
-    width: 928px;
+    width: 958px;
     float: left;
 } .show_box .cnt .title {
     width: 880px;
@@ -41,10 +40,11 @@
     padding: 10px;
     margin: 0px auto;
 } .show_box .cnt li {
-    width: 880px;
+    width: 900px;
+	overflow: auto;
     line-height: 22px;
     color: #5D5D5B;
-    border-bottom: 1px #EBEBEB dotted;
+    border-bottom:1px #EBEBEB dotted;
     margin: 6px 0px;
     padding: 3px 0px;
 } .show_box .cnt .name {
@@ -91,13 +91,13 @@
     margin: 0px auto;
     display: block;
 } .user_box {
-    width: 928px;
+    width: 958px;
     border: 1px #FECFA5 solid;
     margin: 0px auto;
     overflow: hidden;
     clear: both;
 } .user_box .menu {
-    width: 928px;
+    width: 958px;
     float: left;
 } .user_box .menu h1 {
     line-height: 30px;
@@ -124,7 +124,7 @@
     font-weight: normal;
     line-height: 20px;
 }.listbox {
-    width: 930px;
+    width: 958958px;
     margin: 0px auto;
 } .listbox .menu {
     width: 930px;
@@ -149,17 +149,10 @@
 }
 -->
 </style>
-<div class="search">
-    <div class="sleft">
-        <%=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>@bingli_info.keshi} %>
-    </div>
-    <div class="sright">
-        <h2><a href="#">其它链接一</a></h2>
-        <h2><a href="#">其它链接二</a></h2>
-        <h2><a href="#">其它链接三</a></h2>
-        <h2><a href="#">其它链接四</a></h2>
-    </div>
-</div>
+<%=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>@bingli_info.keshi} %>
+ 
+<%=render :partial=>"shared/nav3"%>
+
 <div class="listbox">
     <div class="menu">
         <div class="menu_tab3" style="margin-left:10px;">
@@ -175,14 +168,11 @@
     <div class="menu">
         <h1><%=@bingli_info.title %></h1>
         <span class="info">
-            <font color="#999999">
-                发表人：
-            </font>
             <%=link_to @user.nickname,:controller=>"user/personal",:action=>"index",:id=>@user.id %>
             <font color="#999999">
-                发表时间：
+                发表于
             </font>
-            <%=@bingli_info.thetime.strftime("%Y-%m-%d %H:%M:%S") %>
+            <%=@bingli_info.thetime.to_s(:basic) %>
             <font color="#999999">
                 评分：
             </font>
@@ -336,7 +326,7 @@
         <%if logged_in? %>
 		<%=form_remote_tag :url=>{:controller=>"biz/bingli_info",:action=>"add_bingli_comment",:id=>@bingli_info.id}%>
 		<%=text_area_tag "bingli_comment_content","对病例有疑问？现在提问，或者发起回应表达你的观点",:cols=>"",:rows=>"",:style=>"width:600px;height:100px;border:1px #ccc solid;color:#999;font-size:12px;padding:10px; float:left;"%>
-		 <label style="position: relative;top:100px;padding:0px 0px 0px 30px;bottom: 0px;"><%=submit_tag "提交"%></label>
+		 <label style="position: relative;top:100px;padding:0px 0px 0px 30px;bottom: 0px;"><%=submit_tag "提交",:disable_with => '提交中...'%></label>
 		</form> 
         <%else %>
         <h1>您尚未
