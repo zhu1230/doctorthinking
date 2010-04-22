@@ -3,4 +3,3 @@ log/*
 public/attahments/*
 public/photos/*
 config/deploy.rb
-config/database.yml
