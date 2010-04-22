@@ -24,7 +24,7 @@ production:
   adapter: mysql
   database: enginey_development
   username: root
-  password:  
+  password: zhu1230
   host: localhost
 
 # POSTGRES
