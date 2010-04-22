@@ -71,7 +71,7 @@ class HomeController < ApplicationController
   
   # Render the network's homepage
   def index
-    if Network.find(:first) == nil
+    if false #Network.find(:first) == nil
       flash[:notice] = 'Looks like you have not created a network yet.'
       redirect_to :action => 'install'
     else
