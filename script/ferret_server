@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/opt/ruby8/bin/ruby
 
 begin
   require File.join(File.dirname(__FILE__), '../vendor/plugins/acts_as_ferret/lib/server_manager')
