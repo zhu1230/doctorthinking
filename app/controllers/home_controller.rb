@@ -71,10 +71,10 @@ class HomeController < ApplicationController
   
   # Render the network's homepage
   def index
-    if Network.find(:first) == nil
-      flash[:notice] = 'Looks like you have not created a network yet.'
-      redirect_to :action => 'install'
-    else
+    # if Network.find(:first) == nil
+    #   flash[:notice] = 'Looks like you have not created a network yet.'
+    #   redirect_to :action => 'install'
+    # else
       @section = 'MAIN'
       @page_name = 'home' 
       @page = Page.find_by_title('home')
