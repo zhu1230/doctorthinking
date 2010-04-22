@@ -12,7 +12,7 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
   adapter: mysql
-  database: doctorthinking_development
+  database: enginey_development
   encoding: UTF8
   username: root
   password: zhu1230
@@ -23,7 +23,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   adapter: mysql
-  database: doctorthinking_test
+  database: enginey_development
   encoding: UTF8
   username: root
   password: zhu1230
@@ -31,7 +31,7 @@ test:
 
 production:
   adapter: mysql
-  database: doctorthinking_development
+  database: enginey_development
   encoding: UTF8
   username: root
   password: zhu1230
