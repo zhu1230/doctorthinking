@@ -82,7 +82,7 @@ class HomeController < ApplicationController
                            :select=>'id, parent_id, filename', 
                            :order => Photo.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()',
                            :conditions => {:thumbnail => nil, :is_profile => nil})
-    end
+    #end
   end
   
   
