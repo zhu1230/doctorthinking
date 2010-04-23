@@ -38,8 +38,8 @@ class ApplicationController < ActionController::Base
   
   
   before_filter :set_vars, :update_session
-  before_filter :set_facebook_session
-  helper_method :facebook_session
+  # before_filter :set_facebook_session
+  # helper_method :facebook_session
   
   before_filter :api_filter
 
@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
   
   
   def set_vars
-     @network = Network.network
+     #@network = Network.network
   end
   
   
