@@ -91,26 +91,26 @@ class UsersController < ApplicationController
 
   
   # Called after a user logs in via Facebook Connect
-  def link_facebook_account
-    if self.current_user.nil?
-      # no local user, so create a new local user account
-      # seems like a user who already exists locally, but not yet linked to facebook would also take this path
-      #  (unless he was registered to facebook which would set his email hash allowing the login_by_facebook to log
-      #   him in)
-      if (facebook_session)
-        @user = User.new
-        @user.facebook_id = facebook_session.user.id
-        render :partial => 'facebook_user_form', :layout=>true
-      end
-    else
-      # local user account exists, link the facebook account with local account
-      # seems like this path would only be taken when local user is already linked to facebook user
-      # could be reached if user already locally logged in connects with facebook
-      # of if a user has been registered to facebook, but not connected yet
-      self.current_user.link_fb_connect(facebook_session.user.id) unless self.current_user.facebook_id == facebook_session.user.id
-      redirect_to '/'
-    end
-  end
+  # def link_facebook_account
+  #    if self.current_user.nil?
+  #      # no local user, so create a new local user account
+  #      # seems like a user who already exists locally, but not yet linked to facebook would also take this path
+  #      #  (unless he was registered to facebook which would set his email hash allowing the login_by_facebook to log
+  #      #   him in)
+  #      if (facebook_session)
+  #        @user = User.new
+  #        @user.facebook_id = facebook_session.user.id
+  #        render :partial => 'facebook_user_form', :layout=>true
+  #      end
+  #    else
+  #      # local user account exists, link the facebook account with local account
+  #      # seems like this path would only be taken when local user is already linked to facebook user
+  #      # could be reached if user already locally logged in connects with facebook
+  #      # of if a user has been registered to facebook, but not connected yet
+  #      self.current_user.link_fb_connect(facebook_session.user.id) unless self.current_user.facebook_id == facebook_session.user.id
+  #      redirect_to '/'
+  #    end
+  #  end
   
   
   def promote_to_group_admin
@@ -255,13 +255,13 @@ class UsersController < ApplicationController
   end
 
 
-  def create_facebook_user
-    if facebook_session
-      User.create_from_fb_connect(facebook_session.user, @user.email, @user.login, @user.first_name, @user.last_name)
-      flash[:notice] = "Thanks for signing up!"
-    end
-    redirect_to '/'
-  end
+  # def create_facebook_user
+  #   if facebook_session
+  #     User.create_from_fb_connect(facebook_session.user, @user.email, @user.login, @user.first_name, @user.last_name)
+  #     flash[:notice] = "Thanks for signing up!"
+  #   end
+  #   redirect_to '/'
+  # end
 
 
 

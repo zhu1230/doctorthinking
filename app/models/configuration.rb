@@ -21,8 +21,8 @@ class Configuration
   def self.get
     {
       :use_proxy => false,
-      :proxy_host => '10.0.6.251',
-      :proxy_port => '3128',
+      :proxy_host => '',
+      :proxy_port => '',
       :enable_self_registration => true,
       :max_tweets => 5,
       :enable_facebook_connect => false
@@ -50,9 +50,9 @@ class Configuration
   end
   
   
-  def self.ENABLE_FACEBOOK_CONNECT
-    false
-  end
+  # def self.ENABLE_FACEBOOK_CONNECT
+  #   false
+  # end
   
   
   def self.USE_PROXY

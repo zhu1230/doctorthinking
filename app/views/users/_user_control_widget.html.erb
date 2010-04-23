@@ -34,7 +34,7 @@ limitations under the License.
 						<% end %>
 					</div>
 					<div style="float:left;margin-left:25px;margin-top:-4px;">
-						<% if facebook_session %>
+						<% if false #facebook_session %>
 							<span id="sign_out"><%= fb_logout_link 'Sign Out', logout_path %></span><br/>
 						<% else %>
 							<span id="sign_out"><%= link_to 'Sign Out', logout_path %></span><br/>
