@@ -16,7 +16,7 @@ require 'digest/md5'
 
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  
+  include TagsHelper
   def display_widget(widget)
     if widget.protected == false || logged_in?
       render :partial => widget.path, :locals => {:widget=>widget}
@@ -52,19 +52,19 @@ module ApplicationHelper
               :only_path => false, 
               :controller => 'avatar.php'}.merge(options))  
   end
-  def tag_cloud(tags, classes)
-    max, min = 0, 0
-    tags.each { |t|
-      max = t.num.to_i if t.num.to_i > max
-      min = t.num.to_i if t.num.to_i < min
-    }
-
-    divisor = ((max - min) / classes.size) + 1
-
-    tags.each { |t|
-      yield t.id,t.name, classes[(t.num.to_i - min) / divisor]
-    }
-  end
+  # def tag_cloud(tags, classes)
+  #   max, min = 0, 0
+  #   tags.each { |t|
+  #     max = t.num.to_i if t.num.to_i > max
+  #     min = t.num.to_i if t.num.to_i < min
+  #   }
+  # 
+  #   divisor = ((max - min) / classes.size) + 1
+  # 
+  #   tags.each { |t|
+  #     yield t.id,t.name, classes[(t.num.to_i - min) / divisor]
+  #   }
+  # end
   #show messege
   def showMessage message,type
 #    page << "openWithIframe('#{messege}','#{url_for(url)}',300,200);"
