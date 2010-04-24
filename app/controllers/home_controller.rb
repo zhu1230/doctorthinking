@@ -51,7 +51,7 @@ class HomeController < ApplicationController
         network.init_network()     
         user1.save     
         user1.activate
-        user1.roles << Role.find_by_rolename('creator')
+        user1.roles << Role.find_by_rolename('admin')
         
         if params[:sample_data_input]
           network.create_sample_users(10)
