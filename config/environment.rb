@@ -99,3 +99,5 @@ Time::DATE_FORMATS[:event_brief] = "%B %d, %Y at %I:%M %p"
 #   2009-03-04 13:51:51
 Time::DATE_FORMATS[:basic] = "%Y-%m-%d %H:%M %p"
 
+TagList.delimiter = /,|;|，/
+

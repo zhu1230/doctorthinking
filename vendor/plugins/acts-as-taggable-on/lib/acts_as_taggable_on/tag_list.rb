@@ -1,6 +1,9 @@
 class TagList < Array
-  cattr_accessor :delimiter
+  cattr_accessor :delimiter,:delimiter_show
   self.delimiter = ','
+#hack by vincent.zhu
+self.delimiter_show = ','
+#end hack
   
   def initialize(*args)
     add(*args)
@@ -44,8 +47,10 @@ class TagList < Array
     clean!
     
     map do |name|
-      name.include?(delimiter) ? "\"#{name}\"" : name
-    end.join(delimiter.ends_with?(" ") ? delimiter : "#{delimiter} ")
+	#hack by vincent.zhu change delimiter to delimiter_show
+      name.include?(delimiter_show) ? "\"#{name}\"" : name
+    end.join(delimiter_show.ends_with?(" ") ? delimiter_show : "#{delimiter_show} ")
+	#end hack
   end
   
  private

@@ -2,7 +2,7 @@
 	<div class="module" id="user_control_widget">
 		<div class="module_body user_section">
 			<% if !logged_in? %>
-				Welcome to <%= "doctorthinking"#@network.name %><br/>
+				Welcome to <%= "doctorthinking" %><br/>
 				<% if Configuration.ENABLE_SELF_REGISTRATION %>
 				<span id="sign_up"><%= link_to 'Sign Up', signup_url %></span><br/>
 				or 

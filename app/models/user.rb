@@ -166,7 +166,7 @@ end
   
   # we want the user activity stream message after activating, not after creating
   #after_create :log_activity
-  after_create :register_user_to_fb
+  # after_create :register_user_to_fb
   
   cattr_reader :per_page
   @@per_page = 10

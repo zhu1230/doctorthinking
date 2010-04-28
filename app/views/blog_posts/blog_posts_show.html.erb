@@ -1,20 +1,21 @@
 <%=render :partial => "blog_menu"%>
 <%= stylesheet_link_tag 'blogs' %>
 	
-<div style="width:230px;float:left;padding:10px;border:1px solid #B8C6C6;margin-top:20px">
-	<% if @blog_post.user.profile_photo %>
+<div style="width:230px;float:left;padding:10px;border:1px solid #B8C6C6;margin-top:20px;vertical-align:middle;">
+	
+	<div id='user_brief' style="border:1px solid #A8A8A8;height:138px;width:138px;margin:0px auto;"><% if @blog_post.user.profile_photo %>
 		<%= link_to image_tag(@blog_post.user.profile_photo.public_filename(:medium), :alt=>@blog_post.user.name), user_url(@blog_post.user) %>
-	<% end %>	
+	<% end %>	</div>
+	<%=link_to @blog_post.user.login,user_path(@blog_post.user)%>
 </div>
-<div style="width:670px;float:right;border:1px solid #B8C6C6;margin-top:20px;margin-left:20px">
+<div id='blog_content' style="width:670px;float:right;border:1px solid #B8C6C6;margin-top:20px;margin-left:20px;padding-left:10px">
 	<div id='blog_nav' style="height:20px;"></div>
-	<div id='blog_title' style="height:100px;"><h1><%= link_to @blog_post.title, blog_post_path(@blog_post) %></h1>
-	Posted by <%= @blog_post.user.name %> at <%= @blog_post.created_at %>
-			<b>Tags:</b> <%= @blog_post.tag_list %></div>
-	<div id='blog_body'>	<%= @blog_post.body %></div>
+	<div id='blog_title' style="height:150px;"><div style=""><%= @blog_post.created_at %></div><h3 style="font-size:30px;font-weight:bold;"><%= link_to @blog_post.title, blog_post_path(@blog_post) %></h3>
+			<strong>标签: <%= @blog_post.tag_list %></strong></div>
+	<div id='blog_body'><%= @blog_post.body %></div>
 	<div id='blog_nav'></div>
 	<div id='blog_bottom'></div>
-<div id='comments'><%= render :partial => 'blog_post_comments' %></div>
+<div id='comments' style='margin:20px auto'>评论：<br/><%= render :partial => 'blog_post_comments' %></div>
 	
 	
 		

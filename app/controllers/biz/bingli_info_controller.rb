@@ -26,6 +26,7 @@ class Biz::BingliInfoController < ApplicationController
         process_yiwen params,@bingli
         process_chubu params,@bingli
         process_fuzhu params,@bingli unless params[:fuzhu].blank?
+params[:bingli_info][:catelog_id]=0
         @bingli.bingli_info=BingliInfo.new(params[:bingli_info])
         @bingli.bingli_info.user=current_user
         @bingli.bingli_info.thetime=Time.new
