@@ -12,7 +12,7 @@
 	</div>
 	
 	<div class="form_field">
-		<label for="topics">Topics:</label><br/><br/>
+		<label for="topics">分类:</label><br/><br/><%="无" if @blog_post_topics.blank?%>
 		<% @blog_post_topics.each do |topic| %>
 			<%= check_box_tag(
                             "blog_post[blog_post_topic_list][#{topic.id}]", 
@@ -23,7 +23,7 @@
 	</div>
 	
 	<div class="form_field">
-    	<label for="tags">Tags:</label><br/>
+    	<label for="tags">标签:</label><br/>
 		<%= f.text_field :tag_list, :class=>'input_field' %>
 	</div>
 	<div class="form_field">
@@ -31,5 +31,5 @@
 		<%= f.check_box :published, :class=>'checkbox_input', :checked=>'checked' %>
 		<span class="help_text">Important!  Uncheck this if you want to save the post as a draft.</span>
 	</div>
-    <%= f.submit "Save", :class=>'add_button' %>&nbsp;&nbsp;
+    <%= f.submit "发表", :class=>'add_button',:disable_with=>"保存中......" %>&nbsp;&nbsp;
 <% end %></div>

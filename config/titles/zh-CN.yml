@@ -5,6 +5,8 @@ bingli_info:
     input: "发表病例讨论"
     showOne: "病例讨论"
     save: "发表病例讨论"
+search:
+    do_search: "病例讨论列表"
 bingli_comment:
     input: "发表讨论"
 meet:

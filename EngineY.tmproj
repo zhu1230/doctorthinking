@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/views/blog_posts/blog_posts_list.html.erb</string>
+	<string>app/views/shared/_nav_bar.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -26,14 +26,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>151</integer>
+				<integer>134</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>176</integer>
+			<integer>120</integer>
 		</dict>
 		<key>app/controllers/home_controller.rb</key>
 		<dict>
@@ -48,20 +48,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>71</integer>
-		</dict>
-		<key>app/helpers/application_helper.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>14</integer>
-				<key>line</key>
-				<integer>18</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
 		</dict>
 		<key>app/models/blog_post.rb</key>
 		<dict>
@@ -105,7 +91,49 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>151</integer>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/blog_post_topics/index.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/blog_post_topics/new.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/blog_posts/_blog_menu.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>60</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/blog_posts/_blog_post_brief.html.erb</key>
 		<dict>
@@ -121,49 +149,63 @@
 			<key>firstVisibleLine</key>
 			<integer>6</integer>
 		</dict>
+		<key>app/views/blog_posts/_blog_post_form.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>25</integer>
+				<key>line</key>
+				<integer>25</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>app/views/blog_posts/blog_posts_list.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>78</integer>
 				<key>line</key>
-				<integer>27</integer>
+				<integer>28</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>23</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>44</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>27</integer>
-			</dict>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/blog_posts/blog_posts_show.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>108</integer>
+				<integer>66</integer>
 				<key>line</key>
-				<integer>12</integer>
+				<integer>6</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>63</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>69</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
 		</dict>
 		<key>app/views/layouts/application.html.erb</key>
 		<dict>
@@ -179,35 +221,33 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/shared/_menu_top.html.erb</key>
+		<key>app/views/shared/_bottom.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>116</integer>
+				<integer>139</integer>
 				<key>line</key>
-				<integer>20</integer>
+				<integer>0</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
+		</dict>
+		<key>app/views/shared/_nav_bar.html.erb</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>154</integer>
+				<integer>113</integer>
 				<key>line</key>
-				<integer>20</integer>
+				<integer>9</integer>
 			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>116</integer>
-				<key>line</key>
-				<integer>20</integer>
-			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/shared/_top_login.html.erb</key>
 		<dict>
@@ -307,6 +347,20 @@
 			<key>firstVisibleLine</key>
 			<integer>5</integer>
 		</dict>
+		<key>config/environment.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>101</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>70</integer>
+		</dict>
 		<key>config/initializers/load_keshi.rb</key>
 		<dict>
 			<key>caret</key>
@@ -315,6 +369,20 @@
 				<integer>45</integer>
 				<key>line</key>
 				<integer>1</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>config/titles/zh-CN.yml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>8</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -349,19 +417,33 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>log/mongrel.log</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>307</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>246</integer>
+		</dict>
 		<key>themes/doctor/views/layouts/application.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>76</integer>
+				<integer>96</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>59</integer>
+			<integer>73</integer>
 		</dict>
 		<key>vendor/plugins/acts-as-taggable-on/README</key>
 		<dict>
@@ -375,49 +457,21 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>71</integer>
-		</dict>
-		<key>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/acts_as_taggable_on.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>117</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>260</integer>
-		</dict>
-		<key>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/acts_as_tagger.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>20</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>18</integer>
+			<integer>65</integer>
 		</dict>
 		<key>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/tag_list.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>80</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>51</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>51</integer>
+			<integer>36</integer>
 		</dict>
 		<key>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/tagging.rb</key>
 		<dict>
@@ -432,36 +486,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/tags_helper.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
 		</dict>
 		<key>vendor/plugins/facebooker/lib/facebooker/models/applicationrestrictions.rb</key>
 		<dict>
@@ -482,14 +506,20 @@
 	<array>
 		<string>app/controllers/home_controller.rb</string>
 		<string>app/controllers/blog_posts_controller.rb</string>
+		<string>app/views/blog_posts/_blog_post_form.html.erb</string>
+		<string>app/views/blog_post_topics/index.html.erb</string>
+		<string>app/views/blog_post_topics/new.html.erb</string>
 		<string>themes/doctor/views/layouts/application.html.erb</string>
+		<string>app/views/shared/_bottom.html.erb</string>
 		<string>app/views/shared/_top_unlogon.html.erb</string>
 		<string>app/views/shared/_top_login.html.erb</string>
 		<string>app/views/shared/_top_logon.html.erb</string>
-		<string>app/views/shared/_menu_top.html.erb</string>
 		<string>app/views/blog_posts/blog_posts_list.html.erb</string>
+		<string>config/titles/zh-CN.yml</string>
+		<string>app/views/shared/_nav_bar.html.erb</string>
+		<string>app/views/blog_posts/_blog_menu.html.erb</string>
+		<string>config/environment.rb</string>
 		<string>app/models/blog_post.rb</string>
-		<string>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/tags_helper.rb</string>
 		<string>vendor/plugins/acts-as-taggable-on/README</string>
 		<string>app/views/blog_posts/_blog_post_brief.html.erb</string>
 		<string>app/views/blog_posts/blog_posts_show.html.erb</string>
@@ -501,15 +531,13 @@
 		<string>config/database.yml</string>
 		<string>config/initializers/load_keshi.rb</string>
 		<string>app/views/users/_user_control_widget.html.erb</string>
-		<string>app/helpers/application_helper.rb</string>
-		<string>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/acts_as_taggable_on.rb</string>
-		<string>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/acts_as_tagger.rb</string>
 		<string>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/tag_list.rb</string>
+		<string>log/mongrel.log</string>
 		<string>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/tagging.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{431, 213}, {1757, 668}}</string>
+	<string>{{626, 159}, {1757, 668}}</string>
 </dict>
 </plist>
