@@ -4,9 +4,9 @@
 			<% if !logged_in? %>
 				Welcome to <%= "doctorthinking" %><br/>
 				<% if Configuration.ENABLE_SELF_REGISTRATION %>
+
 				<span id="sign_up"><%= link_to 'Sign Up', signup_url %></span><br/>
 				or 
-				<% end %>
 				<span id="sign_in"><%= link_to 'Sign In', login_url %></span><br/>
 			<% else %>
 				<span id="user_name"><%= current_user.first_name %> <%= current_user.last_name %></span>

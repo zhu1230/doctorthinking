@@ -25,7 +25,7 @@ named_scope :published, :order => "created_at DESC"
   has_many :replies, :as => :item
   
   validates_length_of :title, :maximum=>200
-  validates_length_of :body,  :maximum=>5000
+  validates_length_of :body,  :maximum=>15000
   
   attr_accessor :blog_post_topic_list
   
@@ -46,6 +46,12 @@ named_scope :published, :order => "created_at DESC"
     else
       false
     end
+  end
+  
+  
+  # Returns a count of the blog posts which have been published
+  def self.published_count
+    BlogPost.count(:conditions => "published = true")
   end
 
   
@@ -73,6 +79,14 @@ named_scope :published, :order => "created_at DESC"
     selected_blog_post_topics = blog_post_topic_list.nil? ? [] : blog_post_topic_list.keys.collect{|id| BlogPostTopic.find_by_id(id)}
     selected_blog_post_topics.each {|blog_post_topic| self.blog_post_topics << blog_post_topic}
   end
+  
+  
+  # Returns an array of months that contain blog posts
+  #   ['01/2010','12/2009', '11/2009']
+  def self.months_with_posts
+    posts = BlogPost.find(:all)
+  end
+  
   
   private
   

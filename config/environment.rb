@@ -28,8 +28,12 @@ Rails::Initializer.run do |config|
   config.gem 'disguise'
   config.gem "ruby-openid", :lib => "openid"
   config.gem "aws-s3", :lib => "aws/s3"
+
   config.gem 'tiny_mce'
   config.active_record.observers = :user_observer
+
+  config.gem "jammit"
+
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
 
@@ -56,10 +60,12 @@ config.load_paths += %W(#{RAILS_ROOT}/app/middleware)
   # If you change this key, all old sessions will become invalid!
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
+
   # config.action_controller.session = {
   #   :session_key => '_enginey_session',
   #   :secret      => '1de1b661448c6a6b1ad69c2e7dfdf921887cde6d32f1e218f4f69a600f4969195085e05e9f24a8a911cae34d9085ac4c115510857b11df236f7526d2a0c307a7'
   # }
+
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
   # (create the session table with "rake db:sessions:create")
@@ -79,7 +85,18 @@ config.load_paths += %W(#{RAILS_ROOT}/app/middleware)
   config.app_config.perfectNum='10'
   config.app_config.fineNum='5'
  config.active_record.observers = :announcement_observer, :invite_observer, :user_observer, :message_observer, :wall_post_observer
+ 
+ config.action_mailer.delivery_method = :smtp
+ 
 end
+
+#ActionMailer::Base.smtp_settings = {
+#:address  => "smtp.gmail.com",
+#:port  => 25,
+#:user_name  => "timothyf@gmail.com",
+#:password  => "",
+#:authentication  => :login
+#}
 
 # sample usage
 #   event.start_time.to_s(:event_brief)

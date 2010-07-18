@@ -1,5 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.resources :blog_post_topics
+
+  map.resources :nav_items
+  map.resources :ey_modules
+  map.resources :modules
+  
+  Jammit::Routes.draw(map)
+
+
   map.resources :follows
   map.resources :contents
   map.resources :facebook_posts
@@ -20,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :widget_layouts, :collection => {:load => :get}
   map.resources :widgets, :collection => {:grid_data=>:get, :load=>:get}
-  map.resources :users, :collection => {:grid_data=>:get, :link_facebook_account => :get, :fb_register_all_users => :get}
+  map.resources :users, :collection => {:online_users=>:get, :grid_data=>:get, :link_facebook_account => :get, :fb_register_all_users => :get}
   map.resources :forum_posts, :collection => {:grid_data=>:get}
   map.resources :blog_posts, :collection => {:publish=>:get}
   map.resources :events, :collection => {:full_index=>:get,:participate=>:get}
@@ -44,7 +53,11 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'users/promote_to_group_admin', :controller=>'users', :action=>'promote_to_group_admin'
   map.connect 'wall_posts/delete', :controller=>'wall_posts', :action=>'destroy'
   map.connect 'users/authenticate.:format', :controller=>'users', :action=>'authenticate'
+  map.connect 'blog_post_topics/ajax_save', :controller=>'blog_post_topics', :action=>'ajax_save'
+  map.connect 'blog_post_topics/fetch_topic_list', :controller=>'blog_post_topics', :action=>'fetch_topic_list'
+  map.connect 'likes/like_text', :controller=>'likes', :action=>'like_text'
   
+  map.resources :blog_post_topics
   map.resources :videos
   map.resources :blogs
 
@@ -59,6 +72,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :memberships
   map.resource :session
+  map.resources :likes
   
   
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
@@ -118,7 +132,7 @@ map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
     a.resources :domain_themes
   end
   
-  map.connect 'pages/show/:title', :controller => 'pages', :action => 'show'
+  map.connect 'pages/show/:name', :controller => 'pages', :action => 'show'
   
   map.resources :pages
 

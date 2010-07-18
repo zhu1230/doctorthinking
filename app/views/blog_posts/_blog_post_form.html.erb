@@ -1,4 +1,5 @@
 <div style="margin:0 auto;">
+
 <% form_for(@blog_post, :html => { :multipart => true }) do |f| -%>			
 	<%= f.error_messages %>
 	<div class="form_field">
@@ -19,7 +20,15 @@
                             "1", 
                             @blog_post.blog_post_topics.detect{|d| d == topic}) %>
 			<%= "#{topic.name}"%><br />
+
 		<% end %>
+		<div id="create_topic">
+			<%= link_to 'Create a new topic', 'javascript:show_blog_topic_field()' %>
+			<div id="blog_post_topic_field" style="display:none;">
+				<input type="text" id="blog_post_topic_entry" name="blog_post_topic_entry" />
+				<%= link_to 'Save', 'javascript:save_blog_topic()' %>
+			</div>
+		</div>
 	</div>
 	
 	<div class="form_field">

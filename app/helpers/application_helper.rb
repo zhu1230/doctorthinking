@@ -16,7 +16,21 @@ require 'digest/md5'
 
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+
   include TagsHelper
+
+  
+  # if the user is currently logged in as an admin or creator return true
+  def logged_in_as_admin?
+    if logged_in? && (current_user.roles.include?(Role.creator) || current_user.roles.include?(Role.admin))
+      return true
+    else
+      return false
+    end
+  end
+  
+  
+
   def display_widget(widget)
     if widget.protected == false || logged_in?
       render :partial => widget.path, :locals => {:widget=>widget}

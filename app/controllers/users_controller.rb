@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   
  require_role "user", :only => [:edit, :update]
   
+
   	def forgot  
 	  if request.post?  
 	    user = User.find_by_email(params[:user][:email])  
@@ -65,6 +66,11 @@ class UsersController < ApplicationController
 	end
 	
 	
+
+  def online_users
+    who_is_online
+  end
+
   # Called from the blog settings of the 'My Blog' widget on a user page
   # this sets an RSS feed URL for mirroring
   def update_blog_feed_url
@@ -225,11 +231,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { 
         if (current_user && (current_user.id.to_s == params[:id].to_s))
-          @section = 'profile'
+          @section = 'PROFILE'
         else 
           @section = 'MEMBERS'
         end
-        @page_name = 'profile'
+        @page = Page.find_by_name('profile')
         if @user.twitter_id && @user.display_tweets
           @tweets = @user.fetch_tweets
         end
@@ -272,9 +278,15 @@ class UsersController < ApplicationController
    logout_keeping_session!
 	#params[:user]['keshi_id']=1
     @user = User.new(params[:user])
+
     # if @user.facebook_id
     #   create_facebook_user
     # else
+
+    # if Configuration.ENABLE_SELF_REGISTRATION == false
+    #   @user.enabled = false
+    # end
+
       # create just a local user
       # sleep 4  # required for photo upload
       cookies.delete :auth_token

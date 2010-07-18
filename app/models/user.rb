@@ -43,6 +43,8 @@ class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :groups, :through => :memberships 
   has_many :own_groups,:class_name=>'Group',:foreign_key=>'creator_id'
+  has_many :likes
+  
   # TODO: 
   #   Add a condition to only get the attendances set in the future.
   #   Do not get attendances for past events
@@ -162,7 +164,7 @@ end
                   :state, :state_id, :password, :password_confirmation, :website, :blog, 
                   :blog_feed, :about_me, :display_tweets, :twitter_id, :linked_in_url, 
                   :facebook_url, :receive_emails, :last_seen_at, :login_count, :facebook_id,
-                  :activated_at
+                  :activated_at, :enabled
   
   # we want the user activity stream message after activating, not after creating
   #after_create :log_activity
@@ -189,6 +191,31 @@ end
       return self.status_posts[0]
     end
     nil
+  end
+  
+  
+  # Return true if the user likes the activity passed in, otherwise false
+  def like_this?(activity)
+    @likes = Like.find_likes_cast_by_user(self)
+    if @likes
+      results = @likes.select{|like| (like.likable_id == activity.id && like.likable_type == 'Activity') }
+      if results && results.size > 0
+        return true
+      end
+    end
+    return false
+  end
+  
+  
+  # Returns the Like object associated with the Activity passed in for this user, if this user 'likes' the activity
+  def get_like(activity)
+    Like.find_by_user_id_and_likable_id_and_likable_type(self.id, activity.id, 'Activity')
+  end
+  
+  
+  # Returns an array of users who have an API key
+  def self.with_api_key
+    User.find(:all, :conditions => "api_key != ''")
   end
   
   
@@ -411,6 +438,12 @@ end
   end
   
   
+  # Return pending users
+  def self.pending_users
+    User.find(:all, :conditions => ['enabled = 0'])
+  end
+  
+  
   # Return the site admins
   def self.admins
     User.find(:all, :conditions => ['role_id = ?', Role.admin.id], :joins => :permissions)
@@ -467,6 +500,15 @@ end
     Permission.create(:user_id=>self.id, :role_id=>Role.find_by_rolename('group_admin').id, :group_id=>group_id)
   end
 
+
+  # Enables a pending user
+  def approve
+    self.enabled = true
+    save(false)
+    log_activity
+    User.reset_cache
+  end
+  
   
   # Activates the user in the database.
   def activate
@@ -483,7 +525,7 @@ end
     # the existence of an activation code means they have not activated yet
     activation_code.nil?
   end
-  
+    
   
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   # def self.authenticate(login, password)

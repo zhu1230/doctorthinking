@@ -17,11 +17,20 @@ namespace :enginey do
       network = Network.create(:name => NETWORK_NAME,
                      :organization => 'EngineY',
                      :website => 'http://www.enginey.com',
+                     :url => 'http://www.enginey.com',
+                     :admin_email => 'admin@rubymi.org',
                      :description => 'The homepage for the EngineY framework.')
     
       
       puts 'Populating roles...'
       network.init_network() 
+      
+      
+      ##########################################################################
+      puts 'Creating config settings...'
+      ConfigSetting.destroy_all
+      Configuration.create_defaults
+      
       
       ##########################################################################
       puts 'Creating users...'

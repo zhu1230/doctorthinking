@@ -81,10 +81,25 @@ class BlogPostsController < ApplicationController
   def index
     if params[:user_id]
       index_blog_posts_for_user
+    elsif params[:topic_id]
+        @blog_post_topic = BlogPostTopic.find(params[:topic_id])
+        @blog_posts = @blog_post_topic.blog_posts.paginate(:all, :page=>params[:page])
+        @blog_post_count = @blog_posts.length
+    elsif params[:month]
+      month = params[:month].to_i
+      # show blog posts from the specified month and year
+      date = "#{month}/01/#{params[:year]}".to_date
+      start_date = "#{date.year.to_s}-#{date.strftime('%m')}-01"
+      end_date = "#{date.year.to_s}-#{(date + 1.month).strftime('%m')}-01"
+      
+      @blog_posts = BlogPost.paginate(:all, :page => params[:page],
+                                      :conditions => "created_at > '#{start_date}' AND created_at < '#{end_date}'", 
+                                      :page => params[:page], :order => 'created_at DESC') 
+      @blog_post_count = BlogPost.count(:conditions => "published = 'true' AND created_at > '#{start_date}' AND created_at < '#{end_date}'")
     else
-      # show paginated view of all blog posts
-      @blog_posts = BlogPost.paginate(:all, :page => params[:page], :order => 'created_at DESC') 
-      @blog_post_count = BlogPost.count(:conditions => "published = true")
+        # show paginated view of all blog posts
+        @blog_posts = BlogPost.paginate(:all, :page => params[:page], :order => 'created_at DESC') 
+        @blog_post_count = BlogPost.published_count
     end
     respond_to do |format|
       format.html { render :template=>'blog_posts/blog_posts_list' } 
@@ -145,7 +160,7 @@ class BlogPostsController < ApplicationController
         format.xml  { render :xml => @blog_post, :status => :created, :location => @blog_post }
         format.json  { render :json => @blog_post.to_json, :status => :created, :location => @blog_post }
       else
-        format.html { render :action => "new" }
+        format.html { render :partial=>'blog_posts_edit', :layout=>true }
         format.xml  { render :xml => @blog_post.errors, :status => :unprocessable_entity }
         format.json  { render :json => @blog_post.errors.to_json, :status => :unprocessable_entity }
       end

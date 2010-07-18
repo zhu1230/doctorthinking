@@ -39,18 +39,41 @@ class AdminController < ApplicationController
   end
   
   
+  def stats
+    @page = 'stats'
+  end
+  
+  
   def photos
     @page = 'photos'
     @photos = Photo.find(:all) 
   end
   
   
-  def pages
-    @page = 'pages'
+  def contents
+    @page = 'contents'
+    @html_contents = HtmlContent.find(:all)
+  end
+  
+  
+  def modules
+    @page = 'modules'
     @widgets = Widget.find(:all)
     @layouts = WidgetLayout.find(:all)
+    @pages = Page.find(:all)
+    @modules = EyModule.find(:all)
+  end
+  
+  
+  def pages
+    @page = 'pages'
     @pages = Page.find(:all) 
-    @html_contents = HtmlContent.find(:all) 
+  end
+  
+  
+  def tabs
+    @page = 'tabs'
+    @tabs = NavItem.find(:all)
   end
   
   
@@ -61,6 +84,7 @@ class AdminController < ApplicationController
       format.html {
         @users = User.find(:all)
         @admins = User.admins_and_creators
+        @pending_users = User.pending_users
       }
       format.json { 
         users = User.find(:all) do
@@ -179,9 +203,10 @@ class AdminController < ApplicationController
   # Display the Blog Posts tab of the Admin page.
   def blog_posts
     @page = 'blog_posts'
+    @blog_post_topics = BlogPostTopic.find(:all)
     respond_to do |format|
       format.html {
-        @blog_posts = BlogPost.find(:all)
+        @blog_posts = BlogPost.find(:all, :order => 'created_at DESC')
       }
       format.json { 
         blog_posts = BlogPost.find(:all) do
@@ -216,6 +241,16 @@ class AdminController < ApplicationController
   end
   
   
+  def api_keys
+    @users = User.with_api_key
+  end
+  
+  
+  def api_test
+    
+  end
+  
+  
   def page_new
     @page = Page.new
     render 'page_form'
@@ -247,6 +282,27 @@ class AdminController < ApplicationController
   end
   
   
+  def content_delete
+    
+  end
+  
+  
+  def widget_new
+    @widget = Widget.new
+    render 'widget_form'
+  end
+  
+  
+  def widget_edit
+    
+  end
+  
+  
+  def widget_delete
+    
+  end
+  
+  
   def layout_new
     @widget_layout = WidgetLayout.new
     render 'widget_layout_form'
@@ -272,9 +328,88 @@ class AdminController < ApplicationController
   end
   
   
+  def blog_post_new
+    @blog_post = BlogPost.new
+    @blog_post_topics = BlogPostTopic.find(:all)
+    render 'blog_post_form'
+  end
+  
+  
   def blog_post_edit
     @blog_post = BlogPost.find(params[:id])
+    @blog_post_topics = BlogPostTopic.find(:all)
     render 'blog_post_form'
+  end
+  
+  
+  def blog_post_delete
+    @blog_post = BlogPost.find(params[:id])
+    @blog_post.destroy
+    redirect_to '/admin/blog_posts'
+  end
+  
+  
+  # Exports all blog posts to an XML or JSON file
+  def blog_post_export
+    headers['Content-Type'] = "text/xml"
+    headers['Content-Disposition'] = 'attachment; filename="blog_posts_export.xml"'
+    @posts = BlogPost.find(:all)
+    render :template=>'blog_posts/export.xml.builder', :xml=>@posts, :type => :builder 
+  end
+  
+  
+  # Imports blog posts from an XML or JSON file into the database
+  def blog_post_import
+    require 'rexml/document'
+    doc = REXML::Document.new(params[:blog_posts_file].read) 
+    doc.elements.each("posts/post") do |element| 
+      blog_post = BlogPost.create(
+          :user => current_user,
+          :title => element.elements["title"].text,
+          :body => element.elements["body"].text,
+          :created_at => element.elements["created_at"].text,
+          :updated_at => element.elements["created_at"].text,
+          :views => element.elements["views"].text,
+          :published => false
+      )
+      
+      # process topics
+      element.elements.each("topics/topic") do |topic_el|
+        topic = topic_el.elements["name"].text
+        bp_topic = BlogPostTopic.find_or_create_by_name(topic)
+        blog_post.blog_post_topics << bp_topic
+        blog_post.save
+      end
+      
+      # process tags
+      tags = []
+      element.elements.each("tags/tag") do |tag_el|
+        tags << tag_el.elements["name"].text
+      end
+      blog_post.tag_list = tags.join(',')
+      blog_post.save
+    end
+    redirect_to '/admin/blog_posts'
+  end
+  
+  
+  def photo_add
+    sleep 5
+    @photo = Photo.new(params[:photo])
+    @photo.user = current_user;
+    if @photo.save
+      flash[:notice] = 'Photo was successfully created.'
+      redirect_to '/admin/photos'    
+    else
+      redirect_to '/admin/photos'
+    end
+  end
+  
+  
+  def photo_delete
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    redirect_to '/admin/photos'
   end
   
   
@@ -315,6 +450,13 @@ class AdminController < ApplicationController
   end
   
   
+  def user_approve
+    @user = User.find(params[:id])
+    @user.approve
+    redirect_to '/admin/users'
+  end
+  
+  
   def user_activate
     @user = User.find(params[:id])
     @user.activate
@@ -341,14 +483,24 @@ class AdminController < ApplicationController
   end
   
   
+  def network_url
+    @network = Network.find(:first)
+  end
+  
+  
+  def network_admin_email
+    @network = Network.find(:first)
+  end
+  
+  
   def network_description
     @network = Network.find(:first)
   end
   
   
   def privacy_edit
-    if HtmlContent.find_by_content_id('privacy')
-      @privacy = HtmlContent.find_by_content_id('privacy')
+    if HtmlContent.find_by_title('privacy')
+      @privacy = HtmlContent.find_by_title('privacy')
     else
       @privacy = HtmlContent.new
     end
@@ -362,7 +514,7 @@ class AdminController < ApplicationController
     else
       privacy = HtmlContent.new
       privacy.body = params[:privacy_text]
-      privacy.content_id = 'privacy'
+      privacy.title = 'privacy'
       privacy.save
     end    
     redirect_to :action => 'settings' 
@@ -371,8 +523,8 @@ class AdminController < ApplicationController
   
   # Used to display the current Analytics code
   def analytics_code
-    if HtmlContent.find_by_content_id('analytics')
-      @analytics = HtmlContent.find_by_content_id('analytics')
+    if HtmlContent.find_by_title('?analytics?')
+      @analytics = HtmlContent.find_by_title('?analytics?')
     else
       @analytics = HtmlContent.new
     end
@@ -387,7 +539,7 @@ class AdminController < ApplicationController
     else
       analytics = HtmlContent.new
       analytics.body = params[:analytics_text]
-      analytics.content_id = 'analytics'
+      analytics.title = '?analytics?'
       analytics.save
     end    
     redirect_to :action => 'settings' 
@@ -399,6 +551,12 @@ class AdminController < ApplicationController
     network = Network.find(params[:id]) 
     if params[:network_name]
       network.update_attributes(:name => params[:network_name]) 
+    end
+    if params[:network_url]
+      network.update_attributes(:url => params[:network_url]) 
+    end
+    if params[:network_admin_email]
+      network.update_attributes(:admin_email => params[:network_admin_email]) 
     end
     if params[:network_description]
       network.update_attributes(:description => params[:network_description]) 

@@ -1,0 +1,30 @@
+
+<h1>Current Images</h1>
+<div id="photos_list">
+	<% @photos.each do |photo| %>
+		<% if photo.parent_id == nil %>
+			<div class="admin_photo">
+				<%= link_to image_tag(photo.public_filename(:member)), photo.public_filename() %><br/>
+				<%= link_to 'Delete', "/admin/photo_delete?id=#{photo.id}" %>
+			</div>
+		<% end %>
+	<% end %>
+
+	<% if @photos.size == 0 %>
+		You have not uploaded any images.
+	<% end %>
+</div>
+
+<div id="add_photo">
+	<h1>Add an Image</h1>
+	<% form_for(:photo, :url => '/admin/photo_add', :html => { :multipart => true }) do |f| -%>			
+		<%= f.error_messages %>
+		<p>
+	    	<label for="photo">Image:</label>
+			<%= f.file_field :uploaded_data %>
+		</p>			
+	  	<p>
+	    	<%= f.submit "Add Image", :class=>'add_button' %>
+	  	</p>
+	<% end %>
+</div>

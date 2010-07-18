@@ -11,6 +11,7 @@
 
 ActiveRecord::Schema.define(:version => 20100330144427) do
 
+
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
     t.boolean  "public",     :default => true
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.integer "fuzhu_detail_id"
     t.integer "parent_id"
   end
+
 
   create_table "attendances", :force => true do |t|
     t.integer  "attendee_id"
@@ -229,6 +231,12 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "updated_at"
   end
 
+  create_table "config_settings", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
   create_table "countries", :force => true do |t|
     t.string   "name"
     t.string   "abbreviation"
@@ -261,14 +269,26 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "facebook_posts", :force => true do |t|
+=======
+  create_table "ey_modules", :force => true do |t|
+    t.string   "name"
+    t.boolean  "active",     :default => true
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "favorites", :force => true do |t|
     t.integer "user_id",        :null => false
     t.integer "bingli_info_id", :null => false
+=======
+  create_table "facebook_posts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
   end
 
   create_table "feeds", :force => true do |t|
@@ -311,6 +331,7 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "fuzhu_details", :force => true do |t|
     t.integer "fuzhu_type_id"
     t.string  "content",       :default => "", :null => false
@@ -328,6 +349,8 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.integer "parent_id", :default => 0,  :null => false
   end
 
+=======
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -377,6 +400,7 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
     t.integer  "user_id",      :null => false
   end
 
@@ -390,10 +414,24 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.integer  "widget_id"
     t.integer  "col_num"
     t.integer  "row_num"
+=======
+  end
+
+  create_table "likes", :force => true do |t|
+    t.integer  "user_id",      :null => false
+    t.integer  "likable_id",   :null => false
+    t.string   "likable_type", :null => false
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
+=======
+  add_index "likes", ["likable_type", "likable_id"], :name => "index_likable_type"
+  add_index "likes", ["user_id"], :name => "fk_likes_user"
+
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
   create_table "links", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -402,6 +440,7 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "meeting_tags", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -422,6 +461,8 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.string   "address"
   end
 
+=======
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "group_id"
@@ -440,6 +481,21 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "nav_items", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.string   "url"
+    t.boolean  "login_required"
+    t.boolean  "login_allowed"
+    t.boolean  "admin_required"
+    t.boolean  "enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
   create_table "networks", :force => true do |t|
     t.string   "name"
     t.string   "organization"
@@ -447,6 +503,11 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
+=======
+    t.string   "url"
+    t.string   "admin_email"
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
   end
 
   create_table "pages", :force => true do |t|
@@ -510,11 +571,14 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "question_details", :force => true do |t|
     t.string  "content",   :default => "", :null => false
     t.integer "bingli_id",                 :null => false
   end
 
+=======
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
   create_table "replies", :force => true do |t|
     t.text     "body"
     t.integer  "user_id"
@@ -530,6 +594,7 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
@@ -538,6 +603,8 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
+=======
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
   create_table "rss_feeds", :force => true do |t|
     t.string   "name"
     t.string   "url"
@@ -651,6 +718,7 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.string   "identity_url"
     t.boolean  "receive_emails",                          :default => true
     t.string   "api_key",                   :limit => 40, :default => ""
+<<<<<<< HEAD
     t.string   "name",                                    :default => ""
     t.integer  "jifen",                                   :default => 0
     t.integer  "bingli_infos_count",                      :default => 0
@@ -673,6 +741,8 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.integer  "bingli_info_id",                                    :null => false
     t.string   "rank_tag",       :default => "",                    :null => false
     t.datetime "thetime",        :default => '2008-04-26 11:43:52'
+=======
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
   end
 
   create_table "videos", :force => true do |t|
@@ -709,6 +779,10 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "updated_at"
     t.text     "description"
     t.boolean  "profile"
+<<<<<<< HEAD
+=======
+    t.integer  "ey_module_id"
+>>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
   end
 
 end

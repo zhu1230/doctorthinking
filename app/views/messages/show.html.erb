@@ -26,12 +26,14 @@ ul,li {list-style-type:none;list-style-images:none;}
 				<%= link_to @message.sender.name, user_url(@message.sender) %>
 			<% end %>
 		</div>
+
 		<div style="float:left;margin-left:10px">
     	<ul>
         	<li>标&nbsp;&nbsp;题：<strong><%=@message.subject%></strong></li>
             <li>发件人：<%=link_to @message.sender.login,user_url(@message.sender),{:style=>"color:#FF6600"}%> (<%=@message.sender.email%>)</li>
             <li>时&nbsp;&nbsp;间：<%=@message.created_at.to_s(:event_brief)%> </li>
         </ul>
+
 </div>
     </div>
     <div class="cont">

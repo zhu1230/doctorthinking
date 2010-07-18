@@ -38,6 +38,9 @@ class HomeController < ApplicationController
                           :organization => params[:network_org],
                           :website => params[:network_website],
                           :description => params[:network_desc])
+                
+    # set default configuration settings          
+    Configuration.create_defaults
           
     User.destroy_all                     
     user1 = User.new :first_name=>params[:first_name],
@@ -82,6 +85,7 @@ class HomeController < ApplicationController
       #                      :select=>'id, parent_id, filename', 
       #                      :order => Photo.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()',
       #                      :conditions => {:thumbnail => nil, :is_profile => nil})
+
     end
   end
   
