@@ -1,7 +1,7 @@
 <%form_for :bingli_comment,@bingli_comment,:url=>{:action=>"save",:bingli_info_id=>params[:bingli_info_id]} do |f|-%>
 <div style="width:930px;margin 0 auto;">
 <p>主题：<%=f.text_field :title%></p>
-<p>内容：<%=f.text_area :content%></p>
-<p><%=submit_tag "提交",:disable_with => '提交中...'%></p>
+<p>内容：<%=f.text_area :content,:cols=>40,:rows=>30,:class=>"mceEditor"%></p>
+<p><%=submit_tag "提交",:disable_with => '提交中...'%><%=link_to "返回",:back%></p>
 </div>
 <%end%>

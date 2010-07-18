@@ -1,3 +1,4 @@
+<%unless controller.controller_name=="home" && controller.action_name=="index"%>
 <style type="text/css" media="screen">
 	<!--
 	.nowpsn {width:958px;padding:0 0px;height:35px;margin:0px auto;clear:both;border-bottom:1px solid #d8d8d8;}
@@ -9,3 +10,4 @@
 	<div class="nav_title"><%=easy_title%></div>
     <span><%=link_to "首页",index_url%> > <%=link_to EasyTitles.get_current_title(controller.controller_name,"index"),:action=>"index"%> <%if controller.action_name!="index"%>>  <%=link_to EasyTitles.get_current_title(controller.controller_name, controller.action_name),:action=>controller.action_name%><%end%></span>
 </div>
+<%end%>

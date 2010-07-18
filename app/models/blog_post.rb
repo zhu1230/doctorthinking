@@ -17,7 +17,8 @@ class BlogPost < ActiveRecord::Base
   include Streamable
   acts_as_commentable
   acts_as_taggable_on :tags
-  
+  named_scope :by_date, :order => "created_at DESC"
+named_scope :published, :order => "created_at DESC"
   has_and_belongs_to_many :blog_post_topics
   
   belongs_to :user 

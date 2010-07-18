@@ -1,15 +1,13 @@
 <div class="add_comment">
 	<% if logged_in? %>
-		<span class="title">Add a Comment:</span>
-		<form id="comment_entry_form" name="comment_entry_form" action="/blog_posts/add_comment" method="POST">
-			<input type="hidden" name="blog_post_id" value="<%= @blog_post.id %>"/>
-			<%= text_area(:comment, :comment, :cols => 40, :rows => 10,:class=>"mceEditor") %>
-			<div id="comment_btns">
-				<a href="javascript:add_blog_post_comment()">Add Comment</a>
-			</div>
-		</form>
+	<%form_remote_tag :url=>add_comment_blog_post_comments_path(@blog_post.id),:before => "tinyMCE.triggerSave(true,true)" do -%>
+		<span class="title">增加评论:</span>	
+			<%=text_area(:comment,:comment, :cols => 40, :rows => 10,:class=>"mceEditor") %>
+			<%=submit_tag "发表",{:onclick=>"uses_tiny_mce"}%>
+
+		<%end-%>
 	<% else %>
-		<span class="title">You must be a member to add a comment.</span>
+		<span class="title">您需要 <%=link_to "登录",login_url,{:style=>'color:#FF8300'}%> 才能发表评论.,还没有帐户？现在就 <%=link_to '注册',signup_url,{:style=>'color:#FF8300'}%> </span>
 	<% end %>
 </div>
 

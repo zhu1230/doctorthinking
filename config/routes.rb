@@ -23,7 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :collection => {:grid_data=>:get, :link_facebook_account => :get, :fb_register_all_users => :get}
   map.resources :forum_posts, :collection => {:grid_data=>:get}
   map.resources :blog_posts, :collection => {:publish=>:get}
-  map.resources :events, :collection => {:full_index=>:get}
+  map.resources :events, :collection => {:full_index=>:get,:participate=>:get}
   map.resources :stats, :collection => {:index=>:get}
   map.resources :memberships, :collection => {:find=>:get}
   
@@ -47,7 +47,11 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :videos
   map.resources :blogs
-  map.resources :blog_posts
+
+  map.resources :blog_posts  do |bp|
+	bp.resources :comments,:controller=>"blog_posts",:collection => {:add_comment => :post}
+	end
+
   map.resources :groups
   map.resources :photos
   map.resources :profile_photos
@@ -78,7 +82,8 @@ map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
     user.resources :follows
     user.resources :announcements
     user.resources :book_reviews
-    user.resources :groups
+    user.resources :groups,:collection => {:participate=>:get}
+    user.resources :events,:collection => {:participate=>:get}
     user.resources :photos
     user.resources :messages
     user.resources :bug_reports
@@ -156,7 +161,7 @@ map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
-  
+  map.tagged_source ':controller/tagged/:tag',:action=>'tagged'
     map.connect 'biz/bingli_comment/:action/:id',:controller=>'biz/bingli_comment'
 #  map.connect 'biz/topic/:keshi/:topic_id',:controller=>'biz/topic',:action=>'showOne'
   map.index '/',:controller=>"home",:action=>"index"
@@ -167,7 +172,7 @@ map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
   #for fine,perfect,favorite,participation
   map.connect 'user/:action/:id',:controller=>"user"
   map.connect 'meet/:action/:id',:controller=>"meet"
-  map.connect ':controller/:action/:keshi'  
+  map.connect 'biz/bingli_info/:action/:keshi',:controller=>"biz/bingli_info"
   
   
   map.connect ':controller/:action/:id'

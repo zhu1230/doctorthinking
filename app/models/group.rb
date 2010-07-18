@@ -29,6 +29,7 @@
 
 class Group < ActiveRecord::Base
   
+  acts_as_taggable_on :tags
   has_many :memberships, :dependent => :destroy
   has_many :users, :through => :memberships, 
                                 :order => Group.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()' 

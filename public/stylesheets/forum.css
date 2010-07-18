@@ -45,8 +45,11 @@
 }
 
 #forum_table {
+	width:960px;
+	margin: 10px auto;
 	float: left;
 	clear: both;
+	border: 1px solid #999;
 }
 
 .forum_brief {
@@ -234,12 +237,12 @@
 	padding: 20px;
 	padding-bottom: 5px;
 	padding-top: 5px;
-	width: 590px;
+	width: 940px;
 }
 
 .topic_title {
 	float: left;
-	width: 250px;
+	width: 310px;
 	clear: both;
 }
 
@@ -263,7 +266,7 @@
 .topic_threads {
 	float: left;
 	margin-top: -10px;
-	width: 50px;
+	width: 150px;
 	text-align: right;
 	margin-left: 10px;
 }
@@ -271,15 +274,18 @@
 .topic_posts {
 	float: left;
 	margin-top: -10px;
-	width: 50px;
+	width: 150px;
 	text-align: right;
+	border: 1px solid #999;
 }
 
 .topic_last_post {
 	float: left;
-	margin-left: 25px;
+	margin-left: 75px;
 	width: 180px;
 	margin-top: -10px;
+	border: 1px solid #999;
+	text-align: right;
 }
 
 #topic_header .topic_threads, #topic_header .topic_posts, #topic_header .topic_last_post {

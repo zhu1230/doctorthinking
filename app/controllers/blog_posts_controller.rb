@@ -42,8 +42,8 @@ class BlogPostsController < ApplicationController
 						    :theme_advanced_fonts => %w{宋体=宋体;黑体=黑体;仿宋=仿宋;楷体=楷体;隶书=隶书;幼圆=幼圆;Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats}, # 字体  
 						    # :force_br_newlines => true, # 此选项强制编辑器将段落符号(P)替换成换行符(BR)。不建议用：ff下不好使，用了此选项后，输入内容的居中、清单或编号都被破坏。  
 						    :plugins => %w{contextmenu paste media emotions table fullscreen}},
-						  :only => [:new, :edit, :show, :index, :create, :update]# tiny_mce考虑的非常贴心，这里是限定哪些action中起用
- require_role "user", :only => [:new, :edit, :create, :update]
+						  :only => [:new, :edit, :show, :index, :create, :update,:add_comment]# tiny_mce考虑的非常贴心，这里是限定哪些action中起用
+ require_role "user", :only => [:new, :edit, :create, :update,:add_comment]
   
   # only event creator or an admin can edit or update an event.
   before_filter :check_auth, :only => [:edit, :update]
@@ -74,22 +74,11 @@ class BlogPostsController < ApplicationController
   
   
   # This method is called via AJAX to add a comment to a blog post
-  def add_comment
-    @blog_post = BlogPost.find(params[:blog_post_id])
-    comment = Comment.new
-    comment.comment = params[:comment][:comment]
-    comment.user = current_user
-    @blog_post.comments << comment
-    respond_to do |format|
-      format.html { render :partial=>'blog_post_comments' } 
-      format.xml  { head :ok }
-    end
-  end
+
   
   
   # List all the blog posts
   def index
-    @section = 'BLOGS' 
     if params[:user_id]
       index_blog_posts_for_user
     else
@@ -180,7 +169,19 @@ class BlogPostsController < ApplicationController
     end
   end
 
-
+	def tagged
+	  # @blog_posts = BlogPost.paginate(:all, :page => params[:page], :order => 'created_at DESC') 
+	  #       @blog_post_count = BlogPost.count(:conditions => "published = true")
+@blog_posts = BlogPost.tagged_with(Tag.find(params[:tag]).name,:on => :tags).by_date.paginate(:page => params[:page], :per_page => 20)
+@blog_post_count=BlogPost.tagged_with(Tag.find(params[:tag]).name,:on => :tags).published.size
+    respond_to do |format|
+      format.html { render :template=>'blog_posts/blog_posts_list' } 
+      format.xml  { render :xml => @blog_posts }
+      format.json { render :json => @blog_posts.to_json } 
+    end
+	end
+	
+	
   def update
     @blog_post = BlogPost.find(params[:id])
     get_all_topics

@@ -1,58 +1,46 @@
-<%#
-Copyright 2009 Timothy Fisher
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-%>
 <% form_for(@event, :html => { :multipart => true }) do |f| -%>			
 	<%= f.error_messages %>
-	<label for="name">Name:</label>
+	<label for="name">活动名称:</label>
 	<%= f.text_field :name, :class=>'input_field' %>
-
-	<label for="photo">Image:</label>
+	<label>标签:</label>
+	<%=f.text_field :tag_list%>
+	<label for="photo">相关图片:</label>
 	<%= file_field_tag :event_photo, :class=>'input_field' %>
 
-	<label for="description">Description:</label>
+	<label for="description">描述:</label>
 	<%= f.text_area :description, :rows=>3, :class=>'input_field' %>
 
 	<label for="event_type">Event Type:</label>
 	<%= f.text_field :event_type, :class=>'input_field' %>
-	<div class="field_help_text">Example: Fundraiser, "Birthday Party"</div>
+	<div class="field_help_text">例如: "研讨会", "培训班"</div>
 
-	<label for="start_time">Start Time:</label>
+	<label for="start_time">开始时间:</label>
 	<div class="datetime"><%= f.datetime_select :start_time, :twelve_hour => true, :class=>'input_field' %></div>
 
-	<label for="end_time">End Time:</label>
+	<label for="end_time">结束时间:</label>
 	<div class="datetime"><%= f.datetime_select :end_time, :twelve_hour => true, :class=>'input_field' %></div>
 
-	<label for="location">Location:</label>
-	<%= f.text_field :location, :class=>'input_field' %>
+	<label for="location">地点:</label>
+	<div style='width:300px;border:1px solid red;height:30px'> <%=country_select_tag(:country,
+	       :only => [:china, :japan, :united_states],
+	       :update => 'state')%>
+	<%=state_select_tag(:state,:country => :china,:countries => [:china, :japan, :united_states],
+	       :update => 'city' )%>
+<%=	city_select_tag(:city, :country => :china, :state => :beijing )%></div>
 
-	<label for="street">Street:</label>
-	<%= f.text_field :street, :class=>'input_field' %>
-
-	<label for="city">City:</label>
+	<label for="city">城市:</label>
 	<%= f.text_field :city, :class=>'input_field' %>
 
-	<label for="website">Website or Map:</label>
+	<label for="website">网站或地图:</label>
 	<%= f.text_field :website, :class=>'input_field' %>
-	<div class="field_help_text">Add the web address for the venue or link to a Google Map</div>
+	<div class="field_help_text">填入网站地址或者google map的链接</div>
 
-	<label for="phone">Phone:</label>
+	<label for="phone">联系电话:</label>
 	<%= f.text_field :phone, :class=>'input_field' %>
 
-	<label for="organized_by">Organized By:</label>
+	<label for="organized_by">组织机构:</label>
 	<%= f.text_field :organized_by, :class=>'input_field' %>
-	<div class="field_help_text">If you want the host to be someone other than you</div>
+	<div class="field_help_text">默认为您自己</div>
 
 	<%= f.submit "Add Event", :class=>'add_button' %>
 	<div style="clear:both"></div>

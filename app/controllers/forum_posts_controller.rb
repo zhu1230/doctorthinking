@@ -127,7 +127,7 @@ class ForumPostsController < ApplicationController
 
   def create
     @forum_post = ForumPost.new(params[:forum_post])
-    @forum_post.user = current_user;
+    @forum_post.user = current_user
     respond_to do |format|
       if @forum_post.save
         if params[:ajax_call]

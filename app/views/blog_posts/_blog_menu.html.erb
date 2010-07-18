@@ -1,7 +1,7 @@
 <div class="mainnav2">
     <ul>
         <li class="begin"><%= link_to '所有日志',blog_posts_path %></li>
-        <li><%= link_to '我的博客', user_blog_posts_path(current_user) if current_user%></li>
+        <%if logged_in? %><li><%= link_to '我的博客', user_blog_posts_path(current_user) if current_user%></li><%end%>
         <li><%= link_to '新增日志', new_blog_post_path %></li>
     </ul>
 </div>

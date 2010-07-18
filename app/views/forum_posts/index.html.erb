@@ -1,65 +1,33 @@
-<%#
-Copyright 2009 Timothy Fisher
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-%>
-<%= stylesheet_link_tag 'forum' %>
-
-<div id="forum_links">
-	<% if logged_in? %>
-		<div id="forum_all"><%= link_to '显主题', forum_topics_path %></div>
-		<% if @forum_topic %>
-			<div id="forum_my"><%= link_to '我的所有回复', user_forum_posts_path(current_user) %></div>
-			<div id="forum_add"><%= link_to '我要回复', new_forum_post_path(:forum_topic_id=>@forum_topic.id) %></div>
-		<% end %>
-	<% end %>
-</div>		
+<%=render :partial => "forum_post_menu"%>	
 <% if @forum_topic %>
 	<h1><%= @forum_topic.title %></h1>
 <% else %>
 	<h1>Posts for <%= current_user.name %></h1>
 <% end %>
-<div id="forum_table">	
-	<table id="post_table" border="1" cellpadding="2" cellspacing="0">
-		<thead>
-			<th>帖子</th>
-			<th>查看</th>
-			<th>Replies</th>
-			<th>最新热点</th>
-		</thead>
+<div id="forum_table" style="width:960px;">	
+	<div id="header" style="width:950px;border:1px solid #999;margin-top:5px;padding:5px 0px 5px 10px;;height:30px;font-weight:bold;font-size:16pt;float:left;">
+			<span style="float:left;width:350px;">帖子</span>
+			<span style="float:left;width:100px;">查看</span>
+			<span style="float:left;width:100px;">讨论数量</span>
+			<span style="float:left;width:100px;">作者</span>
+			<span style="float:left;width:150px;text-align:right;">最近讨论</span>
+		</div>
 		<% for forum_post in @forum_posts %>
-			<tr>
-				<td>
-					<div class="discussions_col"><%= link_to forum_post.title, forum_post_path(forum_post) %></div>
-				</td>
-				<td>
-					<div class="views_col views_count"><%= forum_post.views %></div>
-				</td>
-				<td>
-					<div class="replies_col replies_count"><%= forum_post.replies.length %></div>
-				</td>
-				<td>
+	<div id='post_table' style="float:left;width:950px;margin-top:5px;padding:5px 0px 5px 10px;border:1px solid red;height:50px">
+			
+				<span style='float:left;width:350px;'><%= link_to forum_post.title, forum_post_path(forum_post) %></span>
+					<span style='float:left;width:100px;'><%= forum_post.views %></span>
+				<span style='float:left;width:100px;'><%= forum_post.replies.length %></span>
+				<span style='float:left;width:100px;'><%= forum_post.user.login %></span>
 				<% if forum_post.replies && forum_post.replies.length > 0 %>
-					<div class="activity_col latest_activity"><%= forum_post.replies[forum_post.replies.length-1].created_at %></div>
+					<span style='float:left;width:150px;'><%= forum_post.replies[forum_post.replies.length-1].created_at.to_s(:basic) %></span>
 				<% else %>
-					<div class="activity_col latest_activity"><%= forum_post.created_at %></div>
+				<span style='float:left;width:150px;text-align:right'><%= forum_post.created_at.to_s(:basic) %></span>
 				<% end %>
-				</td>
-			</tr>
+				</div>
 		<% end %>
-	</table>
+	</div>
 	<% if @forum_posts.length == 0 %>
 		No posts exist.
 	<% end %>
-</div>
 

@@ -10,18 +10,13 @@
 <div id='blog_content' style="width:670px;float:right;border:1px solid #B8C6C6;margin-top:20px;margin-left:20px;padding-left:10px">
 	<div id='blog_nav' style="height:20px;"></div>
 	<div id='blog_title' style="height:150px;word-break:break-all;"><div style=""><%= @blog_post.created_at %></div><h3 style="font-size:30px;font-weight:bold;"><%= link_to @blog_post.title, blog_post_path(@blog_post) %></h3>
-			<strong>标签: <%= @blog_post.tag_list %></strong></div>
+			<strong><%= "标签: "+@blog_post.tag_list.to_s unless @blog_post.tag_list.blank? %></strong></div>
 	<div id='blog_body' style='width:650px;word-break:break-all;'><%= @blog_post.body %></div>
 	<div id='blog_nav'></div>
 	<div id='blog_bottom'></div>
-<div id='comments' style='margin:20px auto'>评论：<br/><%= render :partial => 'blog_post_comments' %></div>
 	
-	
-		
-			
-
-		<%= render :partial => 'blog_post_comment_form' %>
-
+<div id='comments'><%= render :partial => 'blog_post_comments' unless @blog_post.comments.blank?%></div>
+<%= render :partial => 'blog_post_comment_form' %>
 </div>
 
 		<% if current_user == @blog_post.user %>

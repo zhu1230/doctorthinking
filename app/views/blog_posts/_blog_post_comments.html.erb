@@ -1,8 +1,9 @@
-<div id="blog_post_comments">
+<style type="text/css" media="screen">
+	#comments {border-top: 1px solid #999;border-bottom: 1px solid #999;}
+</style>
+<div style='margin:20px auto'>评论：<br/>
 
 	<% @blog_post.comments.each do |comment| %>
-	<li id='comment_<%=comment.id%>'>
-    	<p class="intro"><%=comment.comment%></p>
-      <span class="info"><font color="#F39B1D"><%=link_to comment.user.login,user_path(comment.user)%></font> <font color="#999999">评论于</font><font color="#666666"><%=comment.created_at.strftime("%Y %d %d %H:%M:%S")%></font></span>       	  </li>
+	<%=render :partial => "blog_post_comment",:locals=>{:comment=>comment}%>
 	<% end %>
 </div>

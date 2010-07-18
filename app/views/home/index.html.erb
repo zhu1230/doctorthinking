@@ -1,59 +1,254 @@
-<%#
-Copyright 2009 Timothy Fisher
+<style type="text/css">
+<!--
+body {
+	margin:0;
+	font-size:12px;
+}
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+.topad {
+	width:960px;
+	height:40px;
+	margin:0 auto;
+	background:url(/images/topad.jpg) no-repeat;
+	padding:60px 0;
+}
+.topad p {
+	clear:both;
+	line-height:22px;
+	font-size:16px;
+	font-family:"黑体";
+	width:500px;
+}
 
-  http://www.apache.org/licenses/LICENSE-2.0
+.area1,.area2,.area3 {
+	width:960px;
+	margin:0 auto;
+}
+.area1 ul {
+	width:960px;
+	float:left;
+	list-style-type:none;
+	list-style-image:none;
+}
+.area1 li {
+	width:305px;
+	float:left;
+	list-style-type:none;
+	list-style-image:none;
+}
+.area1 li p {
+	margin: 0px auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#727272;
+	line-height:22px;
+}
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-%>
+.area1 li .pic1 {
+ 	width:294px;
+	height:123px;
+	line-height:123px;
+	background:url(/images/pic1.jpg) no-repeat;
+	text-align:center;
+	overflow:hidden;
+}
+.area1 li .pic2 {
+ 	width:294px;
+	height:123px;
+	line-height:123px;
+	background:url(/images/pic2.jpg) no-repeat;
+	text-align:center;
+	overflow:hidden;
+}
+.area1 li .pic3 {
+ 	width:294px;
+	height:123px;
+	line-height:123px;
+	background:url(/images/pic3.jpg) no-repeat;
+	text-align:center;
+	overflow:hidden;
+}
 
-<% content_for :script_content do %>
-	<script>
-		function page_init() {
-			// delay slideshow start to allow photos widget to load via ajax
-			setTimeout(start_slideshow, 10000);
-		}
-		
-		function start_slideshow() {
-			<% photo = @photos[0] %>
-			var slide_show = new SlideShow("widget_photo", 3000);
-			<% @photos.each do |photo| %>
-			{
-				var img<%= photo.id %> = new Image();
-				img<%= photo.id %>.onload = function(){slide_show.add_slide(img<%= photo.id %>);};
-				img<%= photo.id %>.src = "<%= photo.public_filename(:display) %>";
-			}
-			<% end %>
-		}
-	</script>
-<% end %>
+.area1 li .pic1 a,.area1 li .pic2 a,.area1 li .pic3 a {
+ 	font-size:18px;
+	font-family:"黑体";
+	color:#6699CC;
+	text-decoration:underline;
+}
+.area1 li .pic1 a:hover,.area1 li .pic2 a:hover,.area1 li .pic3 a:hover {
+	color:#FF9900;
+}
 
-<div class="col1">
-	<div class="column_1">
-		<%= render :partial => 'shared/network_info_widget' %>
-		<div id="col_1_widgets"></div>
+.area1 li h4 {
+	font-size:16px;
+	color:#64A3C7;
+	padding:3px 0;
+}
+
+.area2 .a2title {
+	float:left;
+	padding:16px 0;
+}
+.area2 .a2title h4 {
+	font-size:24px;
+	font-weight: normal;
+	color:#64A3C7;
+	width: 375px;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-bottom: 0px;
+	padding-left: 0;
+}
+.area2 .a2title h4 span { color:#FF6600;	margin-right: 10px;
+}
+.area2 .a2cont {
+	width:958px;
+	float:left;
+	margin:0px auto;
+
+}
+.area2 .a2cont ul {
+	list-style-type:none;
+	list-style-image:none;
+	float:left;
+	width:960px;
+	margin:0 5px 0px 5px;
+}
+.area2 .a2cont li {
+	list-style-type:none;
+	list-style-image:none;
+	float:left;
+	width:63px;
+	text-align:center;
+	margin:0 5px 15px 5px;
+}
+.area2 .a2cont img {
+	display:block;
+	margin:0 auto;
+}
+.area2 .a2cont p a {
+	width:60px;
+	text-align:center;
+	line-height:22px;
+	color:#ADADAD;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.flink {
+	width:960px;
+	background:#D8EFFF;
+	padding:20px 0px;
+	margin:0 auto;
+	text-align:center;
+	height:20px;
+}
+.flink img {
+	float:left;
+	display:block;
+	margin:0 20px;
+}
+.area3 p {
+	line-height:22px;
+	color:#9B9B9B;
+	font-family:Arial, Helvetica, sans-serif;
+}
+-->
+h1,h2,h3,h4,p {margin:0;padding:0;}
+.f12white {font-family:宋体;font-size:12px;color:#fff;}
+.f12white:link {text-decoration:none;}
+.f12white:visited {text-decoration:none;color:#fff;}
+.f12white:hover {text-decoration:underline;color:#fff;}
+.f12white:active {text-decoration:none;color:#fff;}
+.f12red {font-family:宋体;font-size:12px;color:red;}
+.f12red:link {text-decoration:none;}
+.f12red:visited {text-decoration:none;color:red;}
+.f12red:hover {text-decoration:underline;color:red;}
+.f12red:active {text-decoration:none;color:red;}
+
+.f12blue {font-family:宋体;font-size:12px;color:#2B98DD;}
+.f12blue:link {text-decoration:underline;}
+.f12blue:visited {text-decoration:underline;color:#2B98DD;}
+.f12blue:hover {text-decoration:underline;color:#2B98DD;}
+.f12blue:active {text-decoration:underline;color:#2B98DD;}
+</style>
+<div class="topad">
+	<div style="float:left;padding-left:200px;">
+  <p style="float:left;color:#FC203B;">现在加入全新的医思社区，</p>
+    <p style="float:left;color:#349FDD;">由医生创建，为医生服务。</p>
+    <p style="float:left;font-size:12px;line-height:18px;margin-top:10px;color:#fff;">医思社区 DoctorThinking 是一个多平台的网络社区，旨在为医生提供学术科研交流，疑难病例讨论的平台。</p>
 	</div>
-	<div class="column_2">
-		<div id="col_2_widgets"></div>
-		<!-- display HTML widgets
-		<% if @html_contents %>
-			<% @html_contents.each do |html_content| %>
-				<%= render :partial => 'html_contents/html_content_widget', :locals=>{:content=>html_content} %>
-			<% end %>
-		<% end %>
-		-->
+    <div style="float:right;padding:50px 100px 0 0;"><a href="#"><img src="/images/join.gif" alt="Join Nows" /></a></div></div>
+<div class="blank"></div>
+<div class="area1">
+	<ul>
+    	<li>
+        	<p class="pic1"><a href="#">&gt;&gt;注册</a></p>
+          <div class="blank"></div>
+        <p><h4>超过 40,000+ 病例</h4></p>
+            <p>丰富，全面的病例为您提供更有价值的信息!</p>
+            <p><h4>结交同专业，同领域的医生</h4></p>
+            <p>从全球寻找和您在同一领域研究的同行</p>
+        </li>
+  <li style="margin:0 20px;">
+        	<p class="pic2"><a href="#">&gt;&gt;发表病例</a></p>
+      <div class="blank"></div>
+            <p><h4>超过 80,000+ 诊疗意见 </h4></p>
+            <p>经过同行广泛评价，为您提供更准确的诊疗思维</p>
+            <p><h4>提出想法，得到反馈</h4></p>
+            <p>听取众多医生同行对您诊疗思维的建议和评价</p>
+        </li>
+        <li>
+        	<p class="pic3"><a href="#">&gt;&gt;讨论</a></p>
+          <div class="blank"></div>
+            <p><h4>超过 500+ 的圈子和活动</h4></p>
+            <p>参与感兴趣的圈子，了解最新的学术和会议信息!</p>
+            <p><h4>创建您自己的圈子和发表会议</h4></p>
+            <p>在网上组织学术会议和医生活动，建立新的圈子</p>
+        </li>
+    </ul>
+</div>
+<div class="blank"></div>
+<div class="area2">
+	<div class="a2title"><h4><span>3900+</span>位医生，并且在快速增长</h4>
 	</div>
+    <div class="a2cont">
+    	<ul>
+        	<li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+
+        </ul>
+    </div>
+</div> 
+<div class="blank"></div>
+<div class="flink">
+	<img src="images/logo1.gif" /><img src="/images/logo2.gif" /><img src="/images/logo3.gif" /><img src="/images/logo4.gif" /><img src="/images/logo5.gif" /><img src="/images/logo6.gif" />
+</div>   
+<div class="blank"></div>
+<div class="area3">
+<p><b>医思网是做什么的？</b></p>
+<p>医思网 是一个为针对全球医生的专业交流社区. 获取您想要的病例，听取专业医生的诊疗意见，跟踪最新医学技术，认识同领域的医生并保持联系。</p>
 </div>
-<div class="col2">
-	<%#= render :partial => 'users/user_control_widget' %>
-	<!-- place holder for AJAX widgets -->
-	<div id="col_3_widgets"></div>
-</div>
-<div style="clear:both;"></div>
+<div class="blank"></div>

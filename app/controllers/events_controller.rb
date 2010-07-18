@@ -37,8 +37,11 @@ class EventsController < ApplicationController
   
   # Does not include past events
   def index
-    @section = 'EVENTS' 
+	if params[:user_id]
+	@events=User.find(params[:user_id]).own_events
+	else
     @events = Event.find(:all, :conditions=>'start_time>now()', :order=>'start_time ASC')
+	end
     respond_to do |format|
       format.html { render :template => 'events/index' }
       format.xml  { render :xml => @events }
@@ -49,7 +52,6 @@ class EventsController < ApplicationController
   
   # Includes past events
   def full_index
-    @section = 'EVENTS' 
     @past_events = true
     @events = Event.find(:all, :order=>'start_time ASC')
     respond_to do |format|
@@ -146,5 +148,15 @@ class EventsController < ApplicationController
       format.json { head :ok } 
     end
   end
+def participate
+if params[:user_id]
+@events=User.find(params[:user_id]).events
+respond_to do |format|
+  format.html { render :template => 'events/index' }
+  format.xml  { render :xml => @events }
+  format.json { render :json => @events.to_json }
+end
+end
+end
   
 end

@@ -17,6 +17,7 @@ groups:
     index: "圈子列表"
     new: "新建圈子"
     show: "圈子"
+    participate: "我参与的圈子"
 sessions:
     new: "用户登录"
 users:
@@ -30,6 +31,7 @@ blog_posts:
     new: "发表博文"
     index: "博客列表"
     show: "博文浏览"
+    tagged: "博客标签列表"
 forum_topics:
     index: "经验交流"
 photo_manager:
@@ -38,4 +40,9 @@ messages:
     index: "个人消息"
     show: "查看消息"
     new: "写消息"
+events:
+    index: "活动列表"
+    new: "创建活动"
+    participate: "我参与的活动"
+    
     

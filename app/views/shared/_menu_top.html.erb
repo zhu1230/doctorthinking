@@ -3,11 +3,11 @@
 		
 	<li class="index <%="current" if controller.controller_name=="home"%>"><img src="/images/navindexcurrent.gif" width="15" height="15" style="margin-top:3px;"/> <%=link_to "首页",index_url%></li>
 	    <li class="index <%="current" if controller.controller_name=="bingli_info"%>"><img src="/images/navindexcurrent5.gif" width="10" height="15" style="margin-top:3px;"/> <%=link_to "病例讨论",{:controller=>"/biz/bingli_info",:action=>"index"}%></li>
-    <li class="index <%="current" if controller.controller_name=="meet"%>"><img src="/images/navindexcurrent2.gif" width="17" height="15" style="margin-top:3px;"/> <%=link_to "学术会议",{:controller=>"/meet",:action=>"index"}%></li>
-<li class="index <%="current" if controller.controller_name=="blog_posts"%>"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%=link_to "医生博客",{:controller=>"/blog_posts",:action=>"index"}%></li>
-    <li class="index <%="current" if controller.controller_name=="forum_topics"%>"><img src="/images/navindexcurrent4.gif" width="16" height="15" style="margin-top:3px;"/> <%=link_to "经验交流",{:controller=>"/forum_topics",:action=>"index"}%></li>
-    						<li class="index  <%="current" if controller.controller_name=="groups"%>"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%=link_to "医生圈子",{:controller=>"/groups",:action=>"index"}%></li>
-				<li class="index  <%="current" if controller.controller_name=="events"%>"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%=link_to "医生活动",{:controller=>"/events",:action=>"index"}%></li>
+    <!-- <li class="index <%#="current" if controller.controller_name=="meet"%>"><img src="/images/navindexcurrent2.gif" width="17" height="15" style="margin-top:3px;"/> <%#=link_to "学术会议",{:controller=>"/meet",:action=>"index"}%></li> -->
+<li class="index <%="current" if controller.controller_name=="blog_posts"%>"><img src="/images/blogs.png" width="15" height="15" style="margin-top:3px;"/> <%=link_to "医生博客",{:controller=>"/blog_posts",:action=>"index"}%></li>
+    <li class="index <%="current" if controller.controller_name=="forum_topics"%>"><img src="/images/user_comment.png" width="16" height="15" style="margin-top:3px;"/> <%=link_to "经验交流",{:controller=>"/forum_topics",:action=>"index"}%></li>
+    						<li class="index  <%="current" if controller.controller_name=="groups"%>"><img src="/images/navindexcurrent4.gif" width="15" height="15" style="margin-top:3px;"/> <%=link_to "医生圈子",{:controller=>"/groups",:action=>"index"}%></li>
+				<li class="index  <%="current" if controller.controller_name=="events"%>"><img src="/images/navindexcurrent2.gif" width="15" height="15" style="margin-top:3px;"/> <%=link_to "医生活动",{:controller=>"/events",:action=>"index"}%></li>
 
 					
 
@@ -15,7 +15,7 @@
 		<!-- <li class="index"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%#=link_to "个人信息", user_path(current_user)%></li> -->
 							<!-- <li class="index"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%#=link_to "医生圈子",{:controller=>"/groups",:action=>"index"}%></li>
 				<li class="index"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%#=link_to "医生活动",{:controller=>"/events",:action=>"index"}%></li> -->
-					<!-- <li class="index <%#="current" if controller.controller_name=="photo_manager"%>"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%#=link_to "图片库",{:controller=>"/photo_manager",:action=>"index"}%></li> -->
+					<li class="index <%="current" if controller.controller_name=="photo_manager"%>"><img src="/images/photos.png" width="15" height="15" style="margin-top:3px;"/> <%=link_to "图片库",{:controller=>"/photo_manager",:action=>"index"}%></li>
 						
 			<%#end%>	  
 				<!-- <li class="index"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%#=link_to "问题或者建议",bug_reports_url%></li> -->

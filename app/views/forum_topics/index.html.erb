@@ -13,39 +13,38 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 %>
-<%= stylesheet_link_tag 'forum' %>
+<%#= stylesheet_link_tag 'forum' %>
 
 <div id="forum_links">
 	<% if logged_in? %>
 		<div id="forum_my"><%= link_to 'My Discussions', user_forum_posts_path(current_user) %></div>
 	<% end %>
 </div>		
-<h1>经验交流</h1>
-<div id="forum_table">
+<div style="width:960px;">
 	<% if logged_in? && current_user.is_admin %>
 		<button class="tundra" dojoType="dijit.form.Button" onclick="add_new_topic()">增加新主题</button><br/><br/>
 	<% end %>
-	<div id="topic_header">
-		<div class="topic_title">交流区</div>
-		<div class="topic_threads">主题</div>
-		<div class="topic_posts">回复</div>
-		<div class="topic_last_post">最新回复</div>				
+	<div id='header' style="width:948px;margin:10px auto;height:35px;font-size:15px;font-weight:bold;border-bottom:1px solid #999">
+		<span style="width:350px;float:left;text-align:left;">交流区</span>
+		<span style="width:150px;float:left;">主题</span>
+		<span style="width:150px;float:left;">回复</span>
+		<span style="width:150px;float:left;">最新回复</span>				
 	</div>
 	<% @forum_topics.each do |topic| %>
-		<div class="a_topic">
-			<div class="topic_title"><%= link_to topic.title, forum_topic_forum_posts_path(topic) %></div><br/>
-			<div class="topic_desc"><%= topic.description %></div>
-			<div class="topic_threads"><%= topic.forum_threads.length %></div>
-			<div class="topic_posts"><%= topic.forum_posts.length %></div>
+		<div style="width:948px;float:left;margin:10px auto;clear: both;background-color:#EFF7FC">
+			<div style="width:350px;float:left;text-align:left;"><%= link_to topic.title, forum_topic_forum_posts_path(topic),{:style=>"font-size:18pt;font-weight:bold;"} %></div><br/>
+			<div style="float:left;clear:both;width:350px;margin-top:10px;"><%= topic.description %></div>
+			<div style="width:150px;float:left;margin-top: -10px;"><%= topic.forum_threads.length %></div>
+			<div style="width:150px;float:left;margin-top: -10px;"><%= topic.forum_posts.length %></div>
 			<% if topic.forum_posts.length != 0 %>
 				<% last_post = topic.forum_posts[0] %>
-				<div class="topic_last_post">
+				<div style="float:left;width:150px;margin-top: -10px;">
 					<%= link_to last_post.title, forum_post_path(last_post) %><br/>
-					posted by <%= last_post.user.name %><br/>
-					<%= last_post.created_at %>
+					作者： <%=link_to last_post.user.login,user_path(last_post.user) %><br/>
+					<%= last_post.created_at.to_s(:basic) %>
 				</div>
 			<% else %>
-				<div class="topic_last_post">无交流内容</div>
+				<div style="float:left;width:150px;margin-top: -10px;">无交流内容</div>
 			<% end %>
 		</div>
 	<% end %>

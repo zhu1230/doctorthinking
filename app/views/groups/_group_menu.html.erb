@@ -1,0 +1,9 @@
+<div class="mainnav2">
+    <ul>
+        <li class="begin"><%= link_to '所有圈子',groups_path %></li>
+        <%if logged_in? %><li><%= link_to '我创建的圈子', user_groups_path(current_user)%></li>
+	<li><%= link_to '我参与圈子', participate_user_groups_path(current_user)%></li>
+	<%end%>
+        <li><%= link_to '新增圈子', new_group_path %></li>
+    </ul>
+</div>

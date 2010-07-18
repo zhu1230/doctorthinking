@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
   before_filter :check_group_auth, :only => [:edit, :update]
   
   # must be an admin to create new groups
-  before_filter :check_admin_auth, :only => [:new, :create]
+  #before_filter :check_admin_auth, :only => [:new, :create]
   
   
   def user_data
@@ -69,10 +69,9 @@ class GroupsController < ApplicationController
   
   
   def index
-    @section = 'GROUPS'   
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @groups = @user.groups
+      @groups = @user.own_groups
     else 
       @groups = Group.find(:all)
     end  
@@ -169,7 +168,16 @@ class GroupsController < ApplicationController
       end
     end
   end
-
+	def participate
+		if params[:user_id]
+			@groups=User.find(params[:user_id]).groups
+			respond_to do |format|
+		      format.html { render :template => "groups/index"}
+		      format.xml  { render :xml => @groups }
+		      format.json { render :json => @groups.to_json }
+		    end
+		end
+	end
 
   def destroy
     @group = Group.find(params[:id])

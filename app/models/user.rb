@@ -42,13 +42,13 @@ class User < ActiveRecord::Base
   
   has_many :memberships, :dependent => :destroy
   has_many :groups, :through => :memberships 
-  
+  has_many :own_groups,:class_name=>'Group',:foreign_key=>'creator_id'
   # TODO: 
   #   Add a condition to only get the attendances set in the future.
   #   Do not get attendances for past events
   has_many :attendances, :foreign_key =>'attendee_id', :dependent => :destroy
   has_many :events, :through => :attendances
-   
+  has_many :own_events,:class_name=>'Event'
   has_many :sent_messages, :class_name => 'Message', :foreign_key =>'sender_id', :order=>'created_at DESC'
   has_many :received_messages, :class_name => 'Message', :foreign_key =>'recipient_id', :order=>'created_at DESC'
   has_many :unread_messages, :class_name => 'Message', :foreign_key =>'recipient_id', :conditions => {:read => false} 
