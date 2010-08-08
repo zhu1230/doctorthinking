@@ -39,13 +39,10 @@ class UserMailer < ActionMailer::Base
   def new_user_signup(user)
     init
     setup_admin_email(user)
-<<<<<<< HEAD
+
     @subject    += '新用户登记'  
     @body[:url]  = "http://www.doctorthinking.com/" 
-=======
-    @subject    += 'New User Signup'  
-    @body[:url]  = "#{@url}" 
->>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
+
   end
   
 
@@ -53,13 +50,10 @@ class UserMailer < ActionMailer::Base
   def new_user_activated(user)
     init
     setup_admin_email(user)
-<<<<<<< HEAD
+
     @subject    += '新用户激活'  
     @body[:url]  = "http://www.doctorthinking.com/" 
-=======
-    @subject    += 'New User Activated'  
-    @body[:url]  = "#{@url}" 
->>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
+
   end
   
 
@@ -87,11 +81,9 @@ class UserMailer < ActionMailer::Base
     init
     setup_email(wall_post.user)
     @subject    += 'Wall Post Notification'  
-<<<<<<< HEAD
+
     @body[:url]  = "http://www.doctorthinking.com/" 
-=======
-    @body[:url]  = "#{@url}" 
->>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
+
     @content_type = "text/html"
   end
   
@@ -102,11 +94,9 @@ class UserMailer < ActionMailer::Base
     setup_email(message.recipient)
     @subject    += '消息通知'  
     @body[:message] = message
-<<<<<<< HEAD
+
     @body[:url]  = "http://www.doctorthinking.com/" 
-=======
-    @body[:url]  = "#{@url}" 
->>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
+
     @content_type = "text/html"
   end
   
@@ -116,11 +106,9 @@ class UserMailer < ActionMailer::Base
     init
     @recipients  = "#{invite.email}"
     @from        = "#{invite.user.email}"
-<<<<<<< HEAD
+
     @subject     = "#{invite.user.name} 邀请您加入医思社区"
-=======
-    @subject     = "An Invitation to Join #{@network_name} "
->>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
+
     @sent_on     = Time.now
     @body[:invite] = invite
     @content_type = "text/html"
@@ -130,7 +118,7 @@ class UserMailer < ActionMailer::Base
   def activation(user)
     init
     setup_email(user)
-<<<<<<< HEAD
+
     @subject    += '您的帐户已被激活!'
     @body[:url]  = "http://www.doctorthinking.com/"
   end
@@ -139,23 +127,17 @@ class UserMailer < ActionMailer::Base
   setup_email(user)  
   @subject    += '请重新设置您的密码'  
   @body[:url]  = "http://www.doctorthinking.com/reset/#{user.password_reset_code}"  
-=======
-    @subject    += 'Your account has been activated!'
-    @body[:url]  = "#{@url}"
->>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
+
   end
   
   protected
   # Setup an email that will be sent to a single user
   def setup_email(user)
     @recipients  = "#{user.email}"
-<<<<<<< HEAD
+
     @from        = "zhu1230@gmail.com"
     @subject     = "[医思社区－－doctorthinking.com] "
-=======
-    @from        = "#{@admin_email}"
-    @subject     = "[#{@network_name}] "
->>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
+
     @sent_on     = Time.now
     @body[:user] = user
   end
@@ -165,13 +147,10 @@ class UserMailer < ActionMailer::Base
   def setup_admin_email(user)
     emails = User.admins_and_creators.collect { |p| p.email } 
     @recipients  = emails.join(',')  
-<<<<<<< HEAD
+
     @from        = "zhu1230@gmail.com"
     @subject     = "[医思社区－－doctorthinking.com] "
-=======
-    @from        = "#{@admin_email}"
-    @subject     = "[#{@network_name}] "
->>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
+
     @sent_on     = Time.now
     @body[:user] = user 
   end
@@ -181,13 +160,10 @@ class UserMailer < ActionMailer::Base
   def setup_all_user_email
     emails = User.find(:all).collect { |p| p.email } 
     @recipients  = emails.join(',')  
-<<<<<<< HEAD
+
     @from        = "zhu1230@gmail.com"
     @subject     = "[医思社区－－doctorthinking.com] "
-=======
-    @from        = "#{@admin_email}"
-    @subject     = "[#{@network_name}] "
->>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
+
     @sent_on     = Time.now
   end
   
