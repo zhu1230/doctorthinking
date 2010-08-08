@@ -26,7 +26,6 @@ class UserMailer < ActionMailer::Base
   def signup_notification(user)
     init
     setup_email(user)
-<<<<<<< HEAD
     @subject    += '请激活您的帐户'  
     @body[:url]  = "http://www.doctorthinking.com/activate/#{user.activation_code}" 
 
