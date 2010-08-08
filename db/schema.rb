@@ -407,8 +407,6 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-=======
-  end
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id",      :null => false
