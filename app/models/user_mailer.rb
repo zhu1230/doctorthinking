@@ -16,9 +16,9 @@ class UserMailer < ActionMailer::Base
   
   def init
     @network = Network.find(:first)
-    @url = @network.url
-    @network_name = @network.name
-    @admin_email = @network.admin_email
+    @url = 'http://www.doctorthinking.com/'
+    @network_name = '医思网'
+    @admin_email = 'zhu1230@gmail.com'
   end
   
   
