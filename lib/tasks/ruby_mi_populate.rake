@@ -20,16 +20,12 @@ namespace :enginey do
       puts 'Create network...'
       Network.destroy_all
       network = Network.create(:name => NETWORK_NAME,
-<<<<<<< HEAD
+
                      :organization => 'Doctorthinking.com',
                      :website => 'http://www.doctorthinking.com',
-=======
-                     :organization => 'Ruby Enthusiasts of Michigan',
-                     :website => 'http://www.rubymi.org',
-                     :url => 'http://www.rubymi.org',
-                     :admin_email => 'admin@rubymi.org',
->>>>>>> ce05b8ce466d2a61476d30b6b9743fa12228499d
-                     :description => 'Welcome to the Ruby Enthusiasts of Michigan website.  This site serves as a hub for all of the Ruby related activities and events that happen in and around Michigan.')
+                     :url => 'http://www.doctorthinking.com',
+                     :admin_email => 'zhu1230@gmail.com',
+                     :description => ' welcome to doctorthinking.com!')
     
       
       puts 'Populating roles...'

@@ -32,7 +32,7 @@ Rails::Initializer.run do |config|
   config.gem 'tiny_mce'
   config.active_record.observers = :user_observer
 
-  config.gem "jammit"
+  # config.gem "jammit"
 
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
