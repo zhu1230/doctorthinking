@@ -154,8 +154,8 @@ end
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   validates_length_of       :about_me,  :maximum => 1500, :allow_nil => true
   validates_format_of       :email,    :with => Authentication.email_regex, :message => I18n.t("activerecord.errors.messages.look_like_email")
-  validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
-  validates_format_of       :login,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
+  validates_format_of       :name,     :with => Authentication.name_regex,  :message => I18n.t("activerecord.errors.messages.bad_name_message"), :allow_nil => true
+  validates_format_of       :login,    :with => Authentication.login_regex, :message => I18n.t("activerecord.errors.messages.bad_login_message")
   before_save :encrypt_password
   before_create :make_activation_code 
   # prevents a user from submitting a crafted form that bypasses activation
@@ -542,7 +542,7 @@ end
   
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
-    u = find_by_login(login.downcase) # need to get the salt
+    u = find_by_login(login.downcase) || find_by_email(login.downcase)# need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 

@@ -66,13 +66,15 @@
 	<div id='content'>
 			<%if (params[:controller]=="sessions" && params[:action]=="new") %>
 			<%=render(:partial=>"shared/top_login")%>
-			<%else if(params[:controller]=="users" && params[:action]=="new")%>
+			<%elsif(params[:controller]=="users" && params[:action]=="new")%>
 			<%=render(:partial=>"shared/top_register")%>
-			<%else if logged_in? %>
+			<%elsif(params[:controller]=="users" && params[:action]=="create" && !@user.errors.empty?) %>
+			<%=render(:partial=>"shared/top_register")%>
+			<%elsif logged_in? %>
 			<%=render(:partial=>"shared/top_logon")%>
 			<%else%>
 			<%=render(:partial=>"shared/top_unlogon")%>
-			<%end end end%>
+			<%end %>
 	
 	<%=render :partial=>"shared/nav_bar"%>
 	<%=render :partial=>"shared/message_bar"%>

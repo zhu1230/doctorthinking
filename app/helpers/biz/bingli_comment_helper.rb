@@ -1,3 +1,2 @@
 module Biz::BingliCommentHelper
-
 end

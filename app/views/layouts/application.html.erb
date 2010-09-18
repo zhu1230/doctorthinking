@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title><%= @network.name %></title>
+	<title><%= "医思网" %></title>
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<%= stylesheet_link_tag 'style' %>
 	
@@ -48,7 +48,7 @@
 					<%= yield  %>
 				</div>
 				<div class="col2">
-					<%= render :partial => 'users/user_control_widget' %>
+					<%#= render :partial => 'users/user_control_widget' %>
 				</div>
 				<div style="clear:both;"></div>
 			<% end %>

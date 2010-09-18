@@ -126,8 +126,15 @@ zh-CN:
           less_than_or_equal_to: "必须小于或等于 {{count}}"
           odd: "必须为单数"
           even: "必须为双数"
-          look_like_email: "电子邮件格式不对"
-    
+          look_like_email: "格式不对"
+          bad_login_message: "只能包含数字，字母，以及 .-_@ 字符。"
+          bad_name_message: "bb"
+      attributes:
+        user:
+          email: "电子邮件"
+          password: "密码"
+          password_confirmation: "重复密码"
+          login: "用户名"
     app:
       user:
           login_success: "登陆成功"

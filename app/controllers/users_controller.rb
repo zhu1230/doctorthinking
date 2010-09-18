@@ -320,7 +320,7 @@ class UsersController < ApplicationController
       else
         respond_to do |format|
           format.html {
-            render :action => 'new'
+           render :action=>"new" 
           }
           format.xml {
             render :xml => @user.errors, :status => 'failed'

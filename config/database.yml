@@ -15,7 +15,7 @@ development:
   database: enginey_development
   encoding: UTF8
   username: root
-  password: zhu1230
+  password: ouuju1n5
   host: localhost
 
 # Warning: The database defined as 'test' will be erased and
@@ -26,7 +26,7 @@ test:
   database: enginey_test
   encoding: UTF8
   username: root
-  password: zhu1230
+  password: ouuju1n5
   host: localhost
 
 production:
@@ -34,5 +34,5 @@ production:
   database: enginey_production
   encoding: UTF8
   username: root
-  password: zhu1230
+  password: ouuju1n5
   host: localhost
