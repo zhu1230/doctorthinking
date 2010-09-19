@@ -9,8 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100330144427) do
-
+ActiveRecord::Schema.define(:version => 20100919110000) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -55,7 +54,6 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.integer "fuzhu_detail_id"
     t.integer "parent_id"
   end
-
 
   create_table "attendances", :force => true do |t|
     t.integer  "attendee_id"
@@ -226,17 +224,13 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
 
   add_index "comments", ["user_id"], :name => "fk_comments_user"
 
-  create_table "content_pages", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "config_settings", :force => true do |t|
     t.string   "name"
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
   create_table "countries", :force => true do |t|
     t.string   "name"
     t.string   "abbreviation"
@@ -269,14 +263,12 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "updated_at"
   end
 
-
   create_table "ey_modules", :force => true do |t|
     t.string   "name"
     t.boolean  "active",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
 
   create_table "favorites", :force => true do |t|
     t.integer "user_id",        :null => false
@@ -322,7 +314,6 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
 
   create_table "fuzhu_details", :force => true do |t|
     t.integer "fuzhu_type_id"
@@ -398,27 +389,16 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.string "reserve", :limit => 45, :default => "", :null => false
   end
 
-  create_table "layouts", :force => true do |t|
-    t.integer  "page_id"
-    t.integer  "widget_id"
-    t.integer  "col_num"
-    t.integer  "row_num"
-
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "likes", :force => true do |t|
-    t.integer  "user_id",      :null => false
-    t.integer  "likable_id",   :null => false
-    t.string   "likable_type", :null => false
+    t.integer  "user_id",                      :null => false
+    t.integer  "likable_id",                   :null => false
+    t.string   "likable_type", :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "likes", ["likable_type", "likable_id"], :name => "index_likable_type"
   add_index "likes", ["user_id"], :name => "fk_likes_user"
-
 
   create_table "links", :force => true do |t|
     t.integer  "user_id"
@@ -465,7 +445,6 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
 
   create_table "nav_items", :force => true do |t|
     t.string   "name"
@@ -579,7 +558,6 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
 
-
   create_table "rss_feeds", :force => true do |t|
     t.string   "name"
     t.string   "url"
@@ -590,7 +568,7 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
   end
 
   create_table "sessions", :force => true do |t|
-    t.string   "session_id",       :null => false
+    t.string   "session_id",       :default => "", :null => false
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -715,13 +693,25 @@ ActiveRecord::Schema.define(:version => 20100330144427) do
     t.integer  "bingli_info_id",                                    :null => false
     t.string   "rank_tag",       :default => "",                    :null => false
     t.datetime "thetime",        :default => '2008-04-26 11:43:52'
-
   end
 
   create_table "videos", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "votes", :force => true do |t|
+    t.boolean  "vote",          :default => false
+    t.integer  "voteable_id",                      :null => false
+    t.string   "voteable_type", :default => "",    :null => false
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["voteable_id", "voteable_type"], :name => "fk_voteables"
+  add_index "votes", ["voter_id", "voter_type"], :name => "fk_voters"
 
   create_table "wall_posts", :force => true do |t|
     t.integer  "user_id"

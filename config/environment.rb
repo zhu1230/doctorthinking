@@ -24,7 +24,7 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
-  
+  config.gem "peteonrails-vote_fu", :lib => 'vote_fu', :source => 'http://gems.github.com'
   config.gem 'disguise'
   config.gem "ruby-openid", :lib => "openid"
   config.gem "aws-s3", :lib => "aws/s3"
