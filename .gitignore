@@ -1,5 +1,5 @@
 .svn
 log/*
-public/attahments/*
 public/photos/*
 config/deploy.rb
+public/attachments/*
