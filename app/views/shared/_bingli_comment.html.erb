@@ -1,4 +1,10 @@
 <li id='bingli_comment_<%=bingli_comment.id%>'>
+<div style='width=30px;float:left'> <div class="vote">
+    <input type="hidden" value="<%=bingli_comment.id%>">
+    <span id='vote' class="vote-up-off" title="This question is useful and clear (click again to undo)">up vote</span>
+    <span class="vote-count-post"><%=bingli_comment.votes_count%></span>
+    <span class="vote-down-off" title="This question is unclear or not useful (click again to undo)">down vote</span>
+</div></div>
                 <p class="intro">
                     <%=bingli_comment.content %>
                 </p>
@@ -10,6 +16,6 @@
                     <u>
                         <%=link_to '评论',{:controller=>"biz/bingli_comment",:action=>"show",:id=>bingli_comment.id},:popup => true %>(<%=bingli_comment.comments.size -%>)
                     </u>
-                    <%=render :partial=>"shared/rank_bingli_comment",:locals=>{:bingli_comment=>bingli_comment} %>
+                    <%#=render :partial=>"shared/rank_bingli_comment",:locals=>{:bingli_comment=>bingli_comment} %>
                 </span>
             </li>

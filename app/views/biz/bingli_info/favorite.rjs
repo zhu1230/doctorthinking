@@ -1,0 +1,7 @@
+#page.showMessage "收藏成功"
+if (!logged_in?)
+  page.showMessage('您需要登录后才能使用收藏功能。',:info)
+  
+end
+b=BingliInfo.find(params[:id])
+current_user.has_favorite?(b) ? current_user.has_no_favorite(b) : current_user.has_favorite?(b)

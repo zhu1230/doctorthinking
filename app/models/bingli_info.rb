@@ -1,4 +1,7 @@
 class BingliInfo < ActiveRecord::Base
+  acts_as_commentable
+  acts_as_voteable
+  acts_as_favorite
   belongs_to :bingli,:autosave=>true
   belongs_to :user,:counter_cache=>true
   belongs_to :keshi

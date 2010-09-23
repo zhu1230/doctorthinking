@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100919110000) do
+ActiveRecord::Schema.define(:version => 20100923170954) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -271,8 +271,11 @@ ActiveRecord::Schema.define(:version => 20100919110000) do
   end
 
   create_table "favorites", :force => true do |t|
-    t.integer "user_id",        :null => false
-    t.integer "bingli_info_id", :null => false
+    t.integer  "user_id"
+    t.string   "favorable_type", :limit => 30
+    t.integer  "favorable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "feeds", :force => true do |t|

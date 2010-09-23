@@ -25,8 +25,8 @@
     line-height: 30px;
     padding-right: 10px;
 } .show_box .cnt {
-    width: 958px;
-    float: left;
+    width: 900px;
+    float: right;
 } .show_box .cnt .title {
     width: 880px;
     margin: 0px auto;
@@ -71,25 +71,26 @@
 } .comment_box .menu h1 {
     background: url(/images/commenth1bg.gif) 10px 6px no-repeat;
 } .comment_box .cnt ul {
-    width: 900px;
+    width: 950px;
     margin: 6px auto;
 } .comment_box .cnt li {
-    width: 900px;
-    float: left;
+    width: 950px;
+    float:  left;
     padding: 6px 0px;
     border-bottom: 1px #ccc dotted;
 } .comment_box .cnt .intro {
-    width: 900px;
-    margin: 0px auto;
+    width: 950px;
+/*    margin: 0px auto;*/
     padding: 0px;
     display: block;
-    text-indent: 2em;
+    text-indent: 0.5em;
     line-height: 20px;
 } .comment_box .cnt .info {
     width: 900px;
     text-align: right;
     margin: 0px auto;
     display: block;
+    float:  left;
 } .user_box {
     width: 958px;
     border: 1px #FECFA5 solid;
@@ -147,8 +148,106 @@
     font-weight: bold;
 	
 }
+.vote {
+text-align: center;
+width:60px;
+  margin-top: 20px;
+}
+.vote span {
+color: #808185;
+display: block;
+font-weight: bold;
+}
+.vote-count-post {
+display: block;
+font-size: 240%;
+}
+.vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off, .comment-up-off, .comment-up-on, .comment-flag, .flag-off, .vote-accepted-off, .vote-accepted-on, .vote-accepted-off, .vote-accepted-on {
+font-size: 1px;
+text-indent: -9999em;
+}
+.vote-up-off, .vote-down-off, .vote-accepted-off, .star-off, .comment-up-off, .flag-off {
+cursor: pointer;
+}
+.vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off {
+background-image:url(/images/sprites.png);
+  background-repeat:  no-repeat; 
+overflow:   hidden;
+background-position: 0px -265px;
+display: block;
+height: 25px;
+margin: 0px auto;
+width: 41px;
+}
+.vote-down-off {
+background-position: 0px -300px;
+}
+.vote-up-on{background-position:0 -230px;}
+.star-off, .star-on {
+background-position: 0px -150px;
+height: 31px;
+width: 33px;
+}
+.favoritecount {
+color: #808185;
+text-align: center;
+}
+.star-on {
+background-position: 0px -190px;
+}
+.vote-down-off{background-position:0 -300px;}
+.favoritecount-selected{color:#D4A849;}
+.vote-down-on{background-position:0 -330px;}
 -->
 </style>
+<script type="text/javascript" charset="utf-8">
+  document.observe('dom:loaded',function(){
+    $$('span.vote-up-off').each(function(t){t.observe('click',function(){
+      var b=t.hasClassName('vote-up-on');
+      t.toggleClassName('vote-up-on');
+      var i=t.adjacent('input[type=hidden]').first().value;
+      var v=parseInt(t.adjacent('span.vote-count-post').first().innerText);   
+      t.adjacent('span.vote-count-post').first().innerText=(b ? v-1 : v+1);
+      if(t.adjacent('div.favoritecount b').size()==0){
+      new Ajax.Request('/biz/bingli_comment/voteup'+'?id='+i+'&type='+b,{method: 'get'});}
+      else{
+      new Ajax.Request('/biz/bingli_info/voteup'+'?id='+i+'&type='+b,{method: 'get'});
+      }
+  
+  })});
+  $$('span.vote-down-off').each(function(t){t.observe('click',function(){
+      var b=t.hasClassName('vote-down-on');
+      t.toggleClassName('vote-down-on');
+      var i=t.adjacent('input[type=hidden]').first().value;
+      var v=parseInt(t.adjacent('span.vote-count-post').first().innerText);   
+      t.adjacent('span.vote-count-post').first().innerText=(b ? v+1 : v-1);
+      if(t.adjacent('div.favoritecount b').size()==0){
+      new Ajax.Request('/biz/bingli_info/votedown'+'?id='+i+'&type='+b,{method: 'get'});
+      }else{
+      new Ajax.Request('/biz/bingli_comment/votedown'+'?id='+i+'&type='+b,{method: 'get'});
+      }
+  
+  })});
+    $$('span.star-off').each(function(t){t.observe('click',function(){
+      if(t.hasClassName('disabled'))return;
+      var b=t.hasClassName('star-on');
+      t.toggleClassName('star-on');
+       t.addClassName('disabled');
+       var v=parseInt(t.adjacent('div.favoritecount b').first().innerText);
+       t.adjacent('div.favoritecount b').first().innerText=b ? v-1 : v+1   
+      t.adjacent('div.favoritecount b').first().toggleClassName('favoritecount-selected');
+      var i=t.adjacent('input[type=hidden]').first().value;
+      new Ajax.Request('/biz/bingli_info/favorite'+'?id='+i+'&type='+b,{method: 'get'
+      ,
+      onSuccess: function(){t.removeClassName('disabled');}});
+  
+  })});
+ //  增加判断AJAX类型，增加disable，增加UNBIND CLICK事件 ，数字的变化
+  
+  
+  
+  })
+</script>
 <%=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>@bingli_info.keshi} %>
  
 <%=render :partial=>"shared/nav3"%>
@@ -173,10 +272,7 @@
                 发表于
             </font>
             <%=@bingli_info.thetime.to_s(:basic) %>
-            <font color="#999999">
-                评分：
-            </font>
-            <%=@bingli_info.rank_num %><a href="#">
+<a href="#">
                 <u>
                     与朋友分享此讨论
                 </u>
@@ -190,6 +286,18 @@
                 </u>
             </font>
         </span>
+    </div>
+    <div style="float:left;width:40px">
+      <div class="vote">
+    <input type="hidden" value="<%=@bingli_info.id%>">
+    <span id='vote' class="vote-up-off" title="This question is useful and clear (click again to undo)">up vote</span>
+    <span class="vote-count-post"><%=@bingli_info.votes_count%></span>
+    <span class="vote-down-off" title="This question is unclear or not useful (click again to undo)">down vote</span>
+
+    <span class="star-off" title="This is a favorite question (click again to undo)">favorite</span>
+    <div class="favoritecount"><b>4</b></div>    
+
+</div>
     </div>
     <div class="cnt">
         <span class="title">
@@ -339,4 +447,3 @@
         </h1>
 		<%end%>
     </div>
-</div>
