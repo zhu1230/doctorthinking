@@ -77,20 +77,20 @@
     width: 950px;
     float:  left;
     padding: 6px 0px;
-    border-bottom: 1px #ccc dotted;
+    border-bottom: 1px solid #AAA;
 } .comment_box .cnt .intro {
-    width: 950px;
+    width: 860px;
 /*    margin: 0px auto;*/
     padding: 0px;
     display: block;
     text-indent: 0.5em;
     line-height: 20px;
 } .comment_box .cnt .info {
-    width: 900px;
-    text-align: right;
+    width: 890px;
+    text-align: left;
     margin: 0px auto;
     display: block;
-    float:  left;
+    float:  right;
 } .user_box {
     width: 958px;
     border: 1px #FECFA5 solid;
@@ -200,54 +200,7 @@ background-position: 0px -190px;
 .vote-down-on{background-position:0 -330px;}
 -->
 </style>
-<script type="text/javascript" charset="utf-8">
-  document.observe('dom:loaded',function(){
-    $$('span.vote-up-off').each(function(t){t.observe('click',function(){
-      var b=t.hasClassName('vote-up-on');
-      t.toggleClassName('vote-up-on');
-      var i=t.adjacent('input[type=hidden]').first().value;
-      var v=parseInt(t.adjacent('span.vote-count-post').first().innerText);   
-      t.adjacent('span.vote-count-post').first().innerText=(b ? v-1 : v+1);
-      if(t.adjacent('div.favoritecount b').size()==0){
-      new Ajax.Request('/biz/bingli_comment/voteup'+'?id='+i+'&type='+b,{method: 'get'});}
-      else{
-      new Ajax.Request('/biz/bingli_info/voteup'+'?id='+i+'&type='+b,{method: 'get'});
-      }
-  
-  })});
-  $$('span.vote-down-off').each(function(t){t.observe('click',function(){
-      var b=t.hasClassName('vote-down-on');
-      t.toggleClassName('vote-down-on');
-      var i=t.adjacent('input[type=hidden]').first().value;
-      var v=parseInt(t.adjacent('span.vote-count-post').first().innerText);   
-      t.adjacent('span.vote-count-post').first().innerText=(b ? v+1 : v-1);
-      if(t.adjacent('div.favoritecount b').size()==0){
-      new Ajax.Request('/biz/bingli_info/votedown'+'?id='+i+'&type='+b,{method: 'get'});
-      }else{
-      new Ajax.Request('/biz/bingli_comment/votedown'+'?id='+i+'&type='+b,{method: 'get'});
-      }
-  
-  })});
-    $$('span.star-off').each(function(t){t.observe('click',function(){
-      if(t.hasClassName('disabled'))return;
-      var b=t.hasClassName('star-on');
-      t.toggleClassName('star-on');
-       t.addClassName('disabled');
-       var v=parseInt(t.adjacent('div.favoritecount b').first().innerText);
-       t.adjacent('div.favoritecount b').first().innerText=b ? v-1 : v+1   
-      t.adjacent('div.favoritecount b').first().toggleClassName('favoritecount-selected');
-      var i=t.adjacent('input[type=hidden]').first().value;
-      new Ajax.Request('/biz/bingli_info/favorite'+'?id='+i+'&type='+b,{method: 'get'
-      ,
-      onSuccess: function(){t.removeClassName('disabled');}});
-  
-  })});
- //  增加判断AJAX类型，增加disable，增加UNBIND CLICK事件 ，数字的变化
-  
-  
-  
-  })
-</script>
+<%=javascript_include_tag "bingli_info.js"%>
 <%=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>@bingli_info.keshi} %>
  
 <%=render :partial=>"shared/nav3"%>
@@ -288,14 +241,14 @@ background-position: 0px -190px;
         </span>
     </div>
     <div style="float:left;width:40px">
-      <div class="vote">
+      <div id='bingli_<%=@bingli_info.id%>' class="vote">
     <input type="hidden" value="<%=@bingli_info.id%>">
-    <span id='vote' class="vote-up-off" title="This question is useful and clear (click again to undo)">up vote</span>
+    <span  class="vote-up-off" title="这个问题清晰，有用处。">支持</span>
     <span class="vote-count-post"><%=@bingli_info.votes_count%></span>
-    <span class="vote-down-off" title="This question is unclear or not useful (click again to undo)">down vote</span>
+    <span class="vote-down-off" title="这个问题模糊，没有用处。">反对</span>
 
-    <span class="star-off" title="This is a favorite question (click again to undo)">favorite</span>
-    <div class="favoritecount"><b>4</b></div>    
+    <span class="star-off<%=current_user.has_favorite?(@bingli_info) ? ' star-on' : '' if logged_in?%>" title="This is a favorite question (click again to undo)">favorite</span>
+    <div id='favorite_<%=@bingli_info.id%>' class="favoritecount<%=current_user.has_favorite?(@bingli_info) ? ' favoritecount-selected' : '' if logged_in?%>"><b><%=@bingli_info.favorites.size%></b></div>    
 
 </div>
     </div>
@@ -413,7 +366,7 @@ background-position: 0px -190px;
 </div>
 <div class="comment_box">
     <div class="menu">
-        <h1>评论</h1>
+        <h1>讨论<%="(#{@bingli_comments.size})" unless @bingli_comments.blank?%></h1>
     </div>
     <div class="cnt">
         <ul id="bingli_comments">

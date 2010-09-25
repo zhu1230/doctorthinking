@@ -84,13 +84,14 @@ module ApplicationHelper
 #    page << "openWithIframe('#{messege}','#{url_for(url)}',300,200);"
 #    return
     page[type].replace_html message
-     page.visual_effect :appear,type.to_s,{:duration=>2.0,:queue=>{:scope=>"one"}}
+     page.visual_effect :appear,type.to_s,{:duration=>2.0,:queue=>{:scope=>"one",:position=>"front"}}
     # page.visual_effect :fade,type.to_s,{:duration=>2.0,:queue=>{:scope=>"one",:position=>"end"}}
 #    if !url.blank? 
 #      page.delay(2) do 
 #        page.redirect_to url_for(url)
 #      end
 #    end
+ page << "javascript:scroll(0,0)"
   end
 
 	def showErrors item
@@ -104,6 +105,7 @@ module ApplicationHelper
 def clearMessages
 	page['success'].hide
 	page['info'].hide
+	# page.visual_effect :fade,:info,{:duration=>0.1,:queue=>{:scope=>"one",:position=>"end"}}
 	page['error'].hide
 	page['warning'].hide
 	page['validation'].hide

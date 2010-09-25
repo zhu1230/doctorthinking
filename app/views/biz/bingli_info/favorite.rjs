@@ -1,7 +1,12 @@
-#page.showMessage "收藏成功"
 if (!logged_in?)
-  page.showMessage('您需要登录后才能使用收藏功能。',:info)
-  
-end
+  page.clearMessages
+  page.showMessage("您需要  "+(link_to '登录',login_url,:style=>'color:red')+"  后才能使用收藏功能。",:info)
+  page.call 'favoriteback',params[:id]
+else
 b=BingliInfo.find(params[:id])
-current_user.has_favorite?(b) ? current_user.has_no_favorite(b) : current_user.has_favorite?(b)
+if(current_user.has_favorite?(b))
+   current_user.has_no_favorite(b)
+else
+  current_user.has_favorite(b)
+end
+end

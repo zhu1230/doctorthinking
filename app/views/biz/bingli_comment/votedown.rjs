@@ -1,0 +1,10 @@
+if(!logged_in? )
+  page.clearMessages
+  page.showMessage("您需要  "+(link_to '登录',login_url,:style=>'color:red')+"  后才能使用投票功能。",:info)
+  page.call 'votedownback','post_'+params[:id]
+elsif(current_user.voted_on?(BingliComment.find(params[:id])))
+  page.showMessage("此前您已经对此病例投过票了。",:info)
+  page.call 'votedownback','post_'+params[:id]
+else
+  current_user.vote_against(BingliComment.find(params[:id]))
+end

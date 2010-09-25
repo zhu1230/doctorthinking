@@ -94,7 +94,7 @@ acts_as_favorite_user
   has_many :bingli_comment_ranks,:class_name=>"UsersRankBingliComments"
   has_many :bingli_infos
   has_many :bingli_comments 
-  has_and_belongs_to_many :favorites,:class_name => 'BingliInfo'
+  # has_and_belongs_to_many :favorites,:class_name => 'BingliInfo'
  # attr_protected :roles
   belongs_to :keshi
 
