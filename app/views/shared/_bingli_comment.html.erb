@@ -46,15 +46,19 @@ float: left;
 height: 32px;
 width: 32px;
 }
-.user-info{height:35px;width:205px;}.user-info .user-gravatar32{float:left;width:32px;height:32px;}.user-info .user-action-time{margin-top:2px;margin-bottom:4px;}
+.user-info{height:35px;width:205px;}.user-info .user-gravatar32{float:left;width:48px;height:48px;}.user-info .user-action-time{margin-top:2px;margin-bottom:4px;}
 .user-info .user-details{float:left;margin-left:5px;width:145px;overflow:hidden;white-space:nowrap;}
 .user-details{color:#888;line-height:17px;}#revisions{margin-top:20px;margin-left:20px;}.revision{border:2px solid #ddd;}
 .user-details td{color:Black;padding:4px 0 4px 0;}
 .user-action-time{margin-top:2px;margin-bottom:4px;}
 .vt{vertical-align:top;}
-.post-signature{padding-left:5px;padding-top:2px;text-align:left;vertical-align:top;width:175px;height:58px;}
+.post-signature{padding-left:5px;padding-top:2px;text-align:left;vertical-align:top;width:175px;height:74px;}
 </style>
-
+<<script type="text/javascript" charset="utf-8">
+	$("a[id^='comments-link-']").observe('click',function(){
+	  
+	})
+</script>
 <li id='bingli_comment_<%=bingli_comment.id%>'>
 <div style='width:30px;float:left'>
     <div id='post_<%=bingli_comment.id%>' class="vote">
@@ -81,7 +85,7 @@ width: 32px;
             <div class="user-info"><div class="user-action-time">
               
                     发表于 <%=bingli_comment.thetime.strftime("%Y-%m-%d %H:%M:%S") %>
-                  </div><div class="user-gravatar32"><a href="/users/9314/random"><img src="http://www.gravatar.com/avatar/b0bad23e2b52443f8d2595e53c10f691?s=32&amp;d=identicon&amp;r=PG" height="32" width="32" alt=""></a></div><div class="user-details">
+                  </div><div class="user-gravatar32"><%=link_to image_tag(bingli_comment.user.photo.public_filename(:thumb)),:controller=>"user/personal",:action=>"index",:id=>bingli_comment.user.id %></div><div class="user-details">
                     <font color="#F39B1D"><%=link_to bingli_comment.user.nickname,:controller=>"user/personal",:action=>"index",:id=>bingli_comment.user.id %></font>
                     <span class="mod-flair" title="moderator">♦</span><br><span class="reputation-score" title="reputation score 21690">21.7k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="24 silver badges"><span class="badge2"></span><span class="badgecount">24</span></span><span title="57 bronze badges"><span class="badge3"></span><span class="badgecount">57</span></span></div></div>
             </td>
@@ -92,8 +96,8 @@ width: 32px;
  <div id="comments-31766" class="comments">
         <table>
         <tbody>
-                    
-    <tr id="comment-67830" class="comment">
+ <%bingli_comment.comments.each{ |comment| %>                    
+    <tr id="comment-<%=comment.id%>" class="comment">
         <td class="comment-actions"><table><tbody><tr>
 <td class="comment-score">
 <span title="number of 'great comment' votes received" class="cool">3</span>
@@ -104,7 +108,7 @@ width: 32px;
 <tr><td>&nbsp;</td><td><div class="comment-flag flag-off" title="flag this comment as noise, offensive, or spam" style="visibility: hidden; ">flag</div></td></tr></tbody></table></td>
         <td class="comment-text"><div>So the edit allowed me to change my vote 1x and since I was outside the INITIAL vote timer, I was unable to instantly switch it back?  Seems like the changed vote should start a new timer, that way I would be able to correct my mistake immediately rather than being instantly locked into the first change I made.  That is no longer a "vote is too old" style functionality.  That is a "your vote is so old, you're only allowed 1 change per edit" style functionality –&nbsp;<a href="/users/132898/allen" title="194 reputation" class="comment-user owner">Allen</a> <span class="comment-date"><span title="2009-12-04 02:19:03Z">Dec 4 '09 at 2:19</span></span></div></td>
     </tr>
-            
+  <%}%>          
     <tr id="comment-67832" class="comment">
         <td class="comment-actions"><table><tbody><tr>
 <td class="comment-score">
@@ -131,7 +135,7 @@ width: 32px;
                     <%#=render :partial=>"shared/rank_bingli_comment",:locals=>{:bingli_comment=>bingli_comment} %>
                 </div>
                  <div style='float:left;'>
-                        <%=link_to '评论',{:controller=>"biz/bingli_comment",:action=>"show",:id=>bingli_comment.id},:popup => true %>(<%=bingli_comment.comments.size -%>)
+                   <a id="comments-link-65351" class="comments-link" title="add a comment to this post">添加评论</a>
                     </div>
 </div>
             </li>
