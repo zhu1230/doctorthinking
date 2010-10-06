@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>config/database.yml</string>
+	<string>Rakefile</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,6 +21,20 @@
 	<integer>374</integer>
 	<key>metaData</key>
 	<dict>
+		<key>Rakefile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>19</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>app/controllers/events_controller.rb</key>
 		<dict>
 			<key>caret</key>
@@ -223,6 +237,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>config/initializers/disguise.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>log/acts_as_ferret.log</key>
 		<dict>
 			<key>caret</key>
@@ -255,6 +283,8 @@
 	<key>openDocuments</key>
 	<array>
 		<string>config/database.yml</string>
+		<string>config/initializers/disguise.rb</string>
+		<string>Rakefile</string>
 		<string>app/models/user_mailer.rb</string>
 		<string>log/mongrel.log</string>
 		<string>log/acts_as_ferret.log</string>
@@ -262,6 +292,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{981, 406}, {1270, 782}}</string>
+	<string>{{785, 411}, {1270, 782}}</string>
 </dict>
 </plist>
