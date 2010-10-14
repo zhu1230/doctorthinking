@@ -31,7 +31,7 @@ params[:bingli_info][:catelog_id]=0
         @bingli.bingli_info.user=current_user
         @bingli.bingli_info.thetime=Time.new
         process_bingli_info params,@bingli
-        if  @bingli.save 
+        if  @bingli.save  
 		flash[:success]="病例发布成功！"
           redirect_to :action=>"showOne",:id=>@bingli.bingli_info.id
 #        show '发表成功',{:action=>"showOne",:id=>@bingli.bingli_info.id}

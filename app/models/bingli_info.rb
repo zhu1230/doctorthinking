@@ -12,6 +12,7 @@ class BingliInfo < ActiveRecord::Base
   has_many :perfect,:class_name=>"UsersRankBingliInfos",:conditions=>"rank_tag='perfect'"
   has_many :hide,:class_name=>"UsersRankBingliInfos",:conditions=>"rank_tag='hide'"
  validates_presence_of :title
+ validates_presence_of :tags,:message=>"最少要写一个"
  validates_presence_of :catelog_id
   def getpic
     if !self.bingli.fuzhu_details.nil?

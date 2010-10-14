@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag "fabiao"%>
-<%= error_messages_for :bingli,:class=>"error" %>
+<%= error_messages_for :bingli,:header_message=>"请重试！",:message=>"在建立病例时出现了一些问题：",:class=>"error" %>
 <%@keshis=Keshi.find(:all)
 @catelogs=Catelog.find(:all)%>
 <%=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>@keshis} %>
@@ -17,7 +17,7 @@
     </div>
     <div class="cnt">
         <span class="title"><h2>主要内容</h2></span>
-        <span class="tab"><h1>主题：</h1><input id="bingli_bingli_info[title]" name="bingli_info[title]" size="30" style="border:1px #889BAA solid;width:250px;" type="text" />
+        <span class="tab <%=(@bingli.errors.on(:title) ? 'fieldWithErrors' : '') if @bingli && @bingli.errors%>"><h1>主题：</h1><%=text_field_tag 'bingli_info[title]',(@bingli.bingli_info.title if @bingli && @bingli.bingli_info),{:style=>"border:1px #889BAA solid;width:250px;"}%>
             <font color="red">
                 *
             </font>
@@ -25,8 +25,8 @@
                 最多可输入30个汉字
             </font>
         </span>
-        <span class="tab"><h1>标签：</h1><%=select "tags","already",Tag.find(:all).collect{|t|[t.name,t.id]},{:prompt=>"--选择已有标签--"} %>
-            &nbsp;<%=text_field_tag "tags[custom]" %>
+        <span class="tab <%=(@bingli.errors.on(:tags) ? 'fieldWithErrors' : '') if @bingli && @bingli.errors%>"><h1>标签：</h1><%=select "tags","already",Tag.find(:all).collect{|t|[t.name,t.id]},{:prompt=>"--选择已有标签--"} %>
+            &nbsp;<%=text_field_tag "tags[custom]",'',{:style=>"border:1px #889BAA solid;width:130px;"} %>
             &nbsp;&nbsp;<strong>科室及分类：</strong>&nbsp;<%= collection_select(:bingli_info,:keshi_id, @keshis,:id,:title,{:selected=>current_user.keshi.id}) %><%#= related_collection_select(:bingli_info, :catelog_id,'bingli_info_keshi_id',@catelogs, :id, :title, :keshi_id,:include_blank =>['选择分类',''])%>
 <%#=select_tag "catelog_id",options_for_select(Catelog.find(:all,:conditions=>["keshi_id=?",params[:id]]).collect{|c|[c.title,c.id]}),{ :include_blank => true } %>
         </span>

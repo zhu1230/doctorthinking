@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Rakefile</string>
+	<string>public/javascripts/bingli_info.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,20 +21,6 @@
 	<integer>374</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Rakefile</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>19</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>app/controllers/events_controller.rb</key>
 		<dict>
 			<key>caret</key>
@@ -79,34 +65,90 @@
 				<integer>19</integer>
 			</dict>
 		</dict>
-		<key>app/models/user_mailer.rb</key>
+		<key>app/models/bingli.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>29</integer>
+				<integer>15</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/models/bingli_info.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>46</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/models/user.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>142</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>118</integer>
+		</dict>
+		<key>app/views/biz/bingli_info/input.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>37</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>46</integer>
+		</dict>
+		<key>app/views/biz/bingli_info/showOne.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>380</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>362</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>59</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>29</integer>
+				<integer>380</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>29</integer>
+				<integer>380</integer>
 			</dict>
 		</dict>
 		<key>app/views/events/_event_form.html.erb</key>
@@ -209,6 +251,20 @@
 				<integer>107</integer>
 			</dict>
 		</dict>
+		<key>app/views/shared/_bingli_comment.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>85</integer>
+				<key>line</key>
+				<integer>127</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>166</integer>
+			<key>firstVisibleLine</key>
+			<integer>107</integer>
+		</dict>
 		<key>app/views/users/activate_complete.html.erb</key>
 		<dict>
 			<key>caret</key>
@@ -223,21 +279,21 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>config/database.yml</key>
+		<key>config/locales/zh-CN.yml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>19</integer>
 				<key>line</key>
-				<integer>17</integer>
+				<integer>140</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>104</integer>
 		</dict>
-		<key>config/initializers/disguise.rb</key>
+		<key>log/development.log</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -249,49 +305,38 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>3356</integer>
 		</dict>
-		<key>log/acts_as_ferret.log</key>
+		<key>public/javascripts/bingli_info.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>45</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>48</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>log/mongrel.log</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>31</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>config/database.yml</string>
-		<string>config/initializers/disguise.rb</string>
-		<string>Rakefile</string>
-		<string>app/models/user_mailer.rb</string>
-		<string>log/mongrel.log</string>
-		<string>log/acts_as_ferret.log</string>
+		<string>app/models/bingli.rb</string>
+		<string>app/models/bingli_info.rb</string>
+		<string>log/development.log</string>
+		<string>config/locales/zh-CN.yml</string>
+		<string>app/models/user.rb</string>
+		<string>app/views/biz/bingli_info/input.html.erb</string>
+		<string>app/views/shared/_bingli_comment.html.erb</string>
+		<string>app/views/biz/bingli_info/showOne.html.erb</string>
+		<string>public/javascripts/bingli_info.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{785, 411}, {1270, 782}}</string>
+	<string>{{717, 267}, {1270, 782}}</string>
 </dict>
 </plist>

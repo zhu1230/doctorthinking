@@ -34,3 +34,7 @@
 .fabiao_box .cnt .title3{width:860px;height:24px;line-height:24px;margin:0px auto;display:block;overflow:hidden;}
 .fabiao_box .cnt .title3 h1{color:#AFAFAF; font-size:14px; font-weight:normal; display:block; float:left; margin:0px 0px 0px 5px; padding:0px;}
 .subtn {width:85px;height:32px;line-height:32px;cursor:pointer;background:url(/images/loginbg.gif) -87px -247px no-repeat;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;margin:10px 0 0;padding:0;font-weight:bold;color:#072A46;}
+
+.fieldWithErrors input, .fieldWithErrors textarea {
+  background-color: #ff8888;
+}

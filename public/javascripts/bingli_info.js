@@ -45,6 +45,13 @@
       }
   
   })});
+	$$("a[id^='comments-link-']").each (
+		function(s) { s.observe('click',function(){
+			$('add-comment-'+s.id.split('-')[2]).insert($('comment-form').innerHTML);
+			s.remove();
+	  		
+	})
+	});
     $$('span.star-off').each(function(t){t.observe('click',function(){
       if(t.hasClassName('disabled'))return;
       var b=t.hasClassName('star-on');

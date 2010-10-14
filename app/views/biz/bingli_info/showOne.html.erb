@@ -378,6 +378,9 @@ background-position: 0px -190px;
 </div>
 <div class="blank">
 </div>
+<div id='comment-form' style='display:none;'>
+	<table><tbody><tr><td><textarea name="comment" cols="68" rows="3" tabindex="204"></textarea></td><td><input type="submit" value="Add Comment" tabindex="205"></td></tr><tr><td colspan="2"><span class="text-counter cool">enter at least 15 characters</span><span class="form-error"></span></td></tr></tbody></table>
+	</div>
 <%=will_paginate @bingli_comments,:class=>"digg_pagination",:style=>"width:630px;padding:10px 0px;margin:0px auto;float:right;padding:6px 0px;" %>
 <div class="user_box">
     <div class="menu">

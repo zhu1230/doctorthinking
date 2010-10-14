@@ -135,6 +135,10 @@ zh-CN:
           password: "密码"
           password_confirmation: "重复密码"
           login: "用户名"
+        bingli:
+          zhusu: "主诉"
+          title: "主题"
+          tags: "标签"
     app:
       user:
           login_success: "登陆成功"

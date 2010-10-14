@@ -270,6 +270,11 @@ ActiveRecord::Schema.define(:version => 20100923170954) do
     t.datetime "updated_at"
   end
 
+  create_table "facebook_posts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "favorites", :force => true do |t|
     t.integer  "user_id"
     t.string   "favorable_type", :limit => 30
@@ -393,9 +398,9 @@ ActiveRecord::Schema.define(:version => 20100923170954) do
   end
 
   create_table "likes", :force => true do |t|
-    t.integer  "user_id",                      :null => false
-    t.integer  "likable_id",                   :null => false
-    t.string   "likable_type", :default => "", :null => false
+    t.integer  "user_id",      :null => false
+    t.integer  "likable_id",   :null => false
+    t.string   "likable_type", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -571,7 +576,7 @@ ActiveRecord::Schema.define(:version => 20100923170954) do
   end
 
   create_table "sessions", :force => true do |t|
-    t.string   "session_id",       :default => "", :null => false
+    t.string   "session_id",       :null => false
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -706,7 +711,7 @@ ActiveRecord::Schema.define(:version => 20100923170954) do
   create_table "votes", :force => true do |t|
     t.boolean  "vote",          :default => false
     t.integer  "voteable_id",                      :null => false
-    t.string   "voteable_type", :default => "",    :null => false
+    t.string   "voteable_type",                    :null => false
     t.integer  "voter_id"
     t.string   "voter_type"
     t.datetime "created_at"

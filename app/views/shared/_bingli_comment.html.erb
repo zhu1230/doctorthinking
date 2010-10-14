@@ -54,11 +54,10 @@ width: 32px;
 .vt{vertical-align:top;}
 .post-signature{padding-left:5px;padding-top:2px;text-align:left;vertical-align:top;width:175px;height:74px;}
 </style>
-<<script type="text/javascript" charset="utf-8">
-	$("a[id^='comments-link-']").observe('click',function(){
-	  
-	})
+<script type="text/javascript" charset="utf-8">
+
 </script>
+
 <li id='bingli_comment_<%=bingli_comment.id%>'>
 <div style='width:30px;float:left'>
     <div id='post_<%=bingli_comment.id%>' class="vote">
@@ -85,7 +84,7 @@ width: 32px;
             <div class="user-info"><div class="user-action-time">
               
                     发表于 <%=bingli_comment.thetime.strftime("%Y-%m-%d %H:%M:%S") %>
-                  </div><div class="user-gravatar32"><%=link_to image_tag(bingli_comment.user.photo.public_filename(:thumb)),:controller=>"user/personal",:action=>"index",:id=>bingli_comment.user.id %></div><div class="user-details">
+                  </div><div class="user-gravatar32"><%=link_to image_tag(bingli_comment.user.photo.public_filename(:small)),:controller=>"user/personal",:action=>"index",:id=>bingli_comment.user.id %></div><div class="user-details">
                     <font color="#F39B1D"><%=link_to bingli_comment.user.nickname,:controller=>"user/personal",:action=>"index",:id=>bingli_comment.user.id %></font>
                     <span class="mod-flair" title="moderator">♦</span><br><span class="reputation-score" title="reputation score 21690">21.7k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="24 silver badges"><span class="badge2"></span><span class="badgecount">24</span></span><span title="57 bronze badges"><span class="badge3"></span><span class="badgecount">57</span></span></div></div>
             </td>
@@ -126,16 +125,19 @@ width: 32px;
         <tfoot>
             <tr>
                 <td></td>
-                <td class="comment-form"><form id="add-comment-31766"></form></td>
+                <td class="comment-form"><form id="add-comment-<%=bingli_comment.id%>">
+                	
+                </form></td>
             </tr>
         </tfoot>
     
         </table>
     </div>
+	<div style='float:left;'>
+       <a id="comments-link-<%=bingli_comment.id%>" class="comments-link" title="add a comment to this post">添加评论</a>
+        </div>
                     <%#=render :partial=>"shared/rank_bingli_comment",:locals=>{:bingli_comment=>bingli_comment} %>
                 </div>
-                 <div style='float:left;'>
-                   <a id="comments-link-65351" class="comments-link" title="add a comment to this post">添加评论</a>
-                    </div>
+                 
 </div>
             </li>
