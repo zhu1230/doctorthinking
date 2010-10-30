@@ -17,6 +17,24 @@
 .listbox .cnt .intro {margin:0px;padding:0px;line-height:18px;text-indent:2em;width:560px;float:left;color:#333;}
 .listbox .cnt .info {width:140px;float:right;line-height:22px;}
 .listbox .cnt .pic {float:left;border:3px #EBEBEB solid;margin-left:30px;width:100px;height:70px;overflow:hidden;}
+.post-tag {
+float:left;
+height:20px;
+background-color: #E0EAF1;
+border-bottom: 1px solid #3E6D8E;
+border-right: 1px solid #7F9FB6;
+color: #3E6D8E;
+font-size: 90%;
+line-height: 1.8;
+margin: 2px 8px 2px 0px;
+padding: 1px 4px;
+text-decoration: none;
+white-space: nowrap;
+}
+.tags {
+float: left;
+line-height: 18px;
+}
 -->
 </style>
 <script type="text/javascript" charset="utf-8">
@@ -72,7 +90,9 @@ function distance_of_time_in_words(minutes) {
                 <span class="title"><h1><%=link_to t.title,:controller=>"biz/bingli_info",:action=>"showOne",:id=>t.id%></h1> 
                 <span class="time"><script type="text/javascript" charset="utf-8">
 	document.write(get_local_time_for_date(<%=t.thetime.to_i * 1000%>));
-</script></span></span> 
+</script></span></span>
+<div class='tags'><%for tag in t.tags%><%=link_to tag.name,{:controller=>'/biz/bingli_info',:action=>'tagged',:id=>tag.id},{:class=>"post-tag", :title=>"显示更多关于 '#{tag.name}' 的病例" ,:rel=>"tag"}%><%end%>
+	</div>
               <p class="intro"><%=(t.bingli.zhusu.to_s+t.bingli.xianbingshi.to_s+t.bingli.tigejiancha.to_s)%>...<%=link_to "更多>>",{:controller=>"biz/bingli_info",:action=>"showOne",:id=>t.id},:style=>"color:#FFB32E;"%></p>
 			  <%if t.getpic.size>0 then %>
 			   <%=link_to image_tag(t.getpic.public_filename(:thumb),:class=>"pic"),t.getpic.public_filename%>

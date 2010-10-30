@@ -84,8 +84,8 @@ ul,li {list-style-type:none;list-style-images:none;}
         	<ul>
             	<li><label for="uesr">昵称：</label><%= f.text_field :name %>&nbsp;<font color="red">*</font><br/>
 					<font color="#99999">4-20个字符之内，使用中文或英文字母</font>                 </li>
-                <li><label for="uesr">科室选择：</label>
-                  <%=f.select "keshi_id",$ccc%>&nbsp;<font color="red">*</font>                </li>
+                <li><label for="uesr">科室选择：</label><%= f.select :keshi_id, nested_set_options(Keshi) {|i| "#{'-' * i.level} #{i.name}" } %>
+                  &nbsp;<font color="red">*</font>                </li>
                 <li><label for="uesr">个人补充说明 ：</label>
                   <%=f.text_area "about_me",:cols=>"45",:rows=>"5",:style=>"width:300px;"%>
                   <br />

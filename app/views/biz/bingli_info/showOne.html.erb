@@ -201,6 +201,8 @@ background-position: 0px -190px;
 -->
 </style>
 <%=javascript_include_tag "bingli_info.js"%>
+<%= javascript_include_tag 'lytebox.js'%>
+<%= stylesheet_link_tag 'lytebox.css'%>
 <%=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>@bingli_info.keshi} %>
  
 <%=render :partial=>"shared/nav3"%>

@@ -14,14 +14,15 @@ class Biz::BingliInfoController < ApplicationController
   end
 
   def input
-
+@bingli_info=BingliInfo.new
+@bingli_info.build_bingli.fuzhu_details.build.attachments.build
   end
   def add_favorite
     current_user.favorites << BingliInfo.find(params[:id])
    # current_user.save
   end
   def save
-        @bingli=Bingli.new(params[:bingli])
+        @bingli_info=BingliInfo.new(params[:bingli_info])
 		
         process_yiwen params,@bingli
         process_chubu params,@bingli

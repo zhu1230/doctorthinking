@@ -9,6 +9,8 @@ class Bingli < ActiveRecord::Base
   validates_presence_of :bingli_info
   validates_associated :bingli_info
   validates_presence_of :zhusu
+accepts_nested_attributes_for :fuzhu_details, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
+
   acts_as_ferret :fields => [:zhusu, :yibanqingkuang,:zhuyaozhengzhuang,:xianbingshi,:tigejiancha,:jiwang,:final]
 	def keshi_id
 		self.bingli_info.keshi.id

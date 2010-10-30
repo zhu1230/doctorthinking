@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100923170954) do
+ActiveRecord::Schema.define(:version => 20101029205153) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -336,8 +336,11 @@ ActiveRecord::Schema.define(:version => 20100923170954) do
   end
 
   create_table "fuzhu_types", :force => true do |t|
-    t.string  "title",     :default => "", :null => false
-    t.integer "parent_id", :default => 0,  :null => false
+    t.string  "name",      :default => "", :null => false
+    t.integer "parent_id"
+    t.integer "lft"
+    t.integer "rgt"
+    t.integer "depth"
   end
 
   create_table "groups", :force => true do |t|
@@ -393,8 +396,12 @@ ActiveRecord::Schema.define(:version => 20100923170954) do
   end
 
   create_table "keshis", :force => true do |t|
-    t.string "title",   :limit => 45, :default => "", :null => false
-    t.string "reserve", :limit => 45, :default => "", :null => false
+    t.string  "name",      :limit => 45, :default => "", :null => false
+    t.string  "reserve",   :limit => 45, :default => "", :null => false
+    t.integer "parent_id"
+    t.integer "lft"
+    t.integer "rgt"
+    t.integer "depth"
   end
 
   create_table "likes", :force => true do |t|
