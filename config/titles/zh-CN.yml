@@ -4,7 +4,7 @@ bingli_info:
     index: "病例讨论列表"
     input: "发表病例讨论"
     showOne: "病例讨论"
-    save: "发表病例讨论"
+    save: "修改病例讨论"
 search:
     do_search: "病例讨论列表"
 bingli_comment:

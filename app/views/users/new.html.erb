@@ -49,21 +49,18 @@ ul,li {list-style-type:none;list-style-images:none;}
 	border:#CCCCCC solid 1px;
 	background-color: #F8F8F8;
 }
-.fieldWithErrors input, .fieldWithErrors textarea {
-  background-color: #ff8888;
-}
 -->
 </style>
 <div id="signup_help">
 	在注册成功之后，您将收到一个确认注册的电子邮件。请按照邮件中的激活帐户链接来完成此次注册过程。
 </div>
 <div class="area">
-  <%= error_messages_for :user,:header_message=>"请重试！",:message=>"在建立新用户时出现了一些问题：",:class=>"error" %>
+  <%= error_messages_for :user,:header_message=>"请重试！",:message=>"在建立新用户时出现了一些问题：",:class=>"validation" %>
 	<div class="atitle">
 	  <h1>加入<font color="#2497FF">Doctor</font><font color="#F49E00">Thinking</font></h1>
 	  <h2>请填写以下关于你的信息</h2>
 	</div>
-  <% form_for :user, :url => users_path do |f| -%>
+  <% form_for @user, :url => users_path do |f| -%>
 
 	<% if @invite_code %>
 		<input type="hidden" id="invite_code" name="invite_code" value="<%= @invite_code %>"/>
@@ -84,16 +81,16 @@ ul,li {list-style-type:none;list-style-images:none;}
         	<ul>
             	<li><label for="uesr">昵称：</label><%= f.text_field :name %>&nbsp;<font color="red">*</font><br/>
 					<font color="#99999">4-20个字符之内，使用中文或英文字母</font>                 </li>
-                <li><label for="uesr">科室选择：</label><%= f.select :keshi_id, nested_set_options(Keshi) {|i| "#{'-' * i.level} #{i.name}" } %>
+                <li><label for="uesr">科室选择：</label><%=f.select :keshi_id, grouped_options_for_select(keshi_by_groups,f.object.keshi_id,'-选择分类-')%>
                   &nbsp;<font color="red">*</font>                </li>
                 <li><label for="uesr">个人补充说明 ：</label>
                   <%=f.text_area "about_me",:cols=>"45",:rows=>"5",:style=>"width:300px;"%>
                   <br />
 					<font color="#99999" style="padding-left:140px;">您的研究热点，举例：肝胆外科等。</font>                </li>
-                <li style="padding-top:10px;"><label for="uesr">职称：</label>
-                  <%=f.select("zhicheng",[["初级",1 ],["中级",2 ],["高级",3 ]], {:prompt => '选择您的职称'})%>&nbsp;<font color="red">*</font>                </li>
+                <!-- <li style="padding-top:10px;"><label for="uesr">职称：</label>
+                                  <%#=f.select("zhicheng",[["初级",1 ],["中级",2 ],["高级",3 ]], {:prompt => '选择您的职称'})%>&nbsp;<font color="red">*</font>                </li> -->
                 <li style="padding-left:136px;"><%=f.check_box "receive_emails",{:style=>"border:0;width:18px;",:checked=>true},1,0%>是否接收社区的邮件通知                </li>
-              <li style="padding-left:136px;"><%=check_box_tag "agree","1",true,{:style=>"border:0;width:18px;"}-%>我同意DoctorThinking社区的 <a href="#"><font color="FF9700">使用条款</font></a>和 <a href="#"><font color="FF9700">用户隐私</font></a> </li>
+              <li style="padding-left:136px;"><%=f.check_box :agree,{:style=>"border:0;width:18px;"}%>我同意DoctorThinking社区的 <a href="#"><font color="FF9700">使用条款</font></a>和 <a href="#"><font color="FF9700">用户隐私</font></a> </li>
               <li style="padding-left:136px;"><input type="submit" value="完成" class="btn" />
               &nbsp; <%= link_to "取消", :back %></li>
           </ul>

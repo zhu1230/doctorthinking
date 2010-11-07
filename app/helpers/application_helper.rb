@@ -82,8 +82,8 @@ module ApplicationHelper
   #show messege
   def showMessage message,type
 #    page << "openWithIframe('#{messege}','#{url_for(url)}',300,200);"
-#    return
-    page[type].replace_html message
+   # return
+    page << "$('"+type.to_s+"').update('"+message+"'+$('notify-close').outerHTML);"
      page.visual_effect :appear,type.to_s,{:duration=>2.0,:queue=>{:scope=>"one",:position=>"front"}}
     # page.visual_effect :fade,type.to_s,{:duration=>2.0,:queue=>{:scope=>"one",:position=>"end"}}
 #    if !url.blank? 
@@ -91,7 +91,7 @@ module ApplicationHelper
 #        page.redirect_to url_for(url)
 #      end
 #    end
- page << "javascript:scroll(0,0)"
+ page << "javascript:scroll(0,0);"
   end
 
 	def showErrors item
@@ -110,5 +110,39 @@ def clearMessages
 	page['warning'].hide
 	page['validation'].hide
 end
-  
+  	def keshi_by_groups
+		h=Hash.new
+		Keshi.roots.each do |r|
+		setup_keshi(r,h)
+		end
+		h		
+	end
+	def fuzhu_by_groups
+		h=Hash.new
+		FuzhuType.roots.each do |r|
+		setup_fuzhu(r,h)
+		end
+		h		
+	end
+	protected
+	def setup_keshi(d,h)
+		if  !d.leaf?
+		h[d.name]||=Hash.new
+	d.children.each do |c| 
+		self.setup_keshi(c,h[d.name])
+			end
+		else
+		h[d.name] ||=d.id
+		end
+	end
+	def setup_fuzhu(d,h)
+		if  !d.leaf?
+		h[d.name]||=Hash.new
+	d.children.each do |c| 
+		self.setup_fuzhu(c,h[d.name])
+			end
+		else
+		h[d.name] ||=d.id
+		end
+	end
 end

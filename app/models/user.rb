@@ -113,7 +113,7 @@ def zhicheng_title
 $zhicheng.fetch(self.zhicheng.to_i,"中级")
 end
   def keshiinplace
-    self.keshi.title
+    self.keshi.name
   end
   def keshiinplace=(aa)
     self.keshi=Keshi.find(aa)
@@ -147,27 +147,23 @@ end
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
-  validates_presence_of     :login, :email#, :first_name, :last_name
-  validates_presence_of     :password,                   :if => :password_required?
-  validates_presence_of     :password_confirmation,      :if => :password_required?
-  validates_length_of       :password, :within => 4..40, :if => :password_required?
-  validates_confirmation_of :password,                   :if => :password_required?
+  validates_presence_of     :login, :email
   validates_length_of       :login,    :within => 3..40
   validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :login, :email, :case_sensitive => false
-  validates_length_of       :about_me,  :maximum => 1500, :allow_nil => true
   validates_format_of       :email,    :with => Authentication.email_regex, :message => I18n.t("activerecord.errors.messages.look_like_email")
   validates_format_of       :name,     :with => Authentication.name_regex,  :message => I18n.t("activerecord.errors.messages.bad_name_message"), :allow_nil => true
   validates_format_of       :login,    :with => Authentication.login_regex, :message => I18n.t("activerecord.errors.messages.bad_login_message")
+  validates_associated :keshi
+  validates_presence_of :keshi_id,	:message => I18n.t("activerecord.errors.messages.blank_keshi")
+  validates_acceptance_of 	:agree, :accept => "1",	 	:message => I18n.t("activerecord.errors.messages.must_agree")
+  validates_length_of       :about_me,  :maximum => 1500, :allow_nil => true
   before_save :encrypt_password
   before_create :make_activation_code 
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :id, :login, :email, :first_name, :last_name, :sex, :city, :country_id, 
-                  :state, :state_id, :password, :password_confirmation, :website, :blog, 
-                  :blog_feed, :about_me, :display_tweets, :twitter_id, :linked_in_url, 
-                  :facebook_url, :receive_emails, :last_seen_at, :login_count, :facebook_id,
-                  :activated_at, :enabled
+  attr_accessible :id, :login, :email,:password, :password_confirmation,:about_me, :receive_emails, :last_seen_at, :login_count,
+                  :activated_at, :enabled,:agree
   
   # we want the user activity stream message after activating, not after creating
   #after_create :log_activity

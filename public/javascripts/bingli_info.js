@@ -1,4 +1,4 @@
- document.observe('dom:loaded',function(){
+ function init(){
     $$('span.vote-up-off').each(function(t){t.observe('click',function(){
       if(t.hasClassName('disabled'))return;
       var b=t.hasClassName('vote-up-on');
@@ -52,6 +52,16 @@
 	  		
 	})
 	});
+	$$("form[id^='add-comment-']").each(
+		function(s){
+			s.observe('submit',function(event){
+				var v=s.select("textarea[name='comment']").first().value;
+				var id=s.id.substr('add-comment-'.length);
+				s.writeAttribute('action', '/biz/bingli_comment/'+id+'/comments');
+				s.request({method:'post',parameters:{comment:v,authenticity_token:fkey,id:id}})
+				event.stop();
+			})
+		})
     $$('span.star-off').each(function(t){t.observe('click',function(){
       if(t.hasClassName('disabled'))return;
       var b=t.hasClassName('star-on');
@@ -69,7 +79,7 @@
       }});
   
   })});
-  })
+  }
 function favoriteback(i){
   
   var t=$('favorite_'+i).select('b').first();

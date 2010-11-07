@@ -6,33 +6,17 @@ class Bingli < ActiveRecord::Base
   has_many :question_details#,:conditions=>"yiwen_has is not null"
   has_many :attachments
   belongs_to :user
-  validates_presence_of :bingli_info
-  validates_associated :bingli_info
   validates_presence_of :zhusu
-accepts_nested_attributes_for :fuzhu_details, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
-
+accepts_nested_attributes_for :fuzhu_details, :allow_destroy => true, :reject_if => proc { |obj| obj['fuzhu_type_id'].blank? || obj['content'].blank? }
+accepts_nested_attributes_for :chubu_details, :allow_destroy => true, :reject_if => proc { |obj| obj['content'].blank? }
+accepts_nested_attributes_for :question_details, :allow_destroy => true, :reject_if => proc { |obj| obj['content'].blank? }
+default_value_for :age, nil
+default_value_for :sex, nil
+default_value_for :marriage,0
   acts_as_ferret :fields => [:zhusu, :yibanqingkuang,:zhuyaozhengzhuang,:xianbingshi,:tigejiancha,:jiwang,:final]
 	def keshi_id
 		self.bingli_info.keshi.id
 	end
-	def after_validation
 
-	    # Skip errors that won't be useful to the end user
-	    filtered_errors = self.errors.reject{ |err| %{ bingli_info }.include?(err.first) }
-	    # recollect the field names and retitlize them
-	    # this was I won't be getting 'user.person.first_name' and instead I'll get
-	    # 'First name'
-	    filtered_errors.collect{ |err|
-	      if err[0] =~ /(.+\.)?(.+)$/
-	        err[0] = $2
-	      end
-	      err
-	    }
-
-	    # reset the errors collection and repopulate it with the filtered errors.
-	    self.errors.clear
-	    filtered_errors.each { |err| self.errors.add(*err) }
-
-	  end
 #  validates_
 end

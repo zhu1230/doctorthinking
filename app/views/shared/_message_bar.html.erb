@@ -16,17 +16,26 @@
 	.align_right{
 	  text-align: right;
 	}
+	.notify-close{
+/*		background-color: #FAD163;*/
+background-color: #AEDEF7;
+border: 2px solid #475F80;
+cursor: pointer;
+display: block;
+float: right;
+margin-right: 10px;
+margin-top:-2px;
+padding-left: 4px;
+padding-right: 4px;
+text-decoration: none;
+	}
 </style>
-
-<div id='info' class="infos" style="display:none"><div>www</div></div>
-
-<div id='success' class="success" style="display:none">Successful operation message</div>
-
-<div id='warning' class="warning" style="display:none">Warning message</div>
-
-<div id='error' class="error" style="display:none">Error message</div>
-
-<div id='validation' class="validation" style="display:none">Error message</div>
+<div style='display:none;'><span id='notify-close' class="notify-close"><a title="取消消息框" onclick="$(this).up().up().fade();">×</a></span></div>
+<div id='info' class="infos" style="display:none"></div>
+<div id='success' class="success" style="display:none"></div>
+<div id='warning' class="warning" style="display:none"></div>
+<div id='error' class="error" style="display:none"></div>
+<div id='validation' class="validation" style="display:none"></div>
 <style type="text/css" media="screen">
 	body{
 	font-family:Arial, Helvetica, sans-serif; 
@@ -67,10 +76,14 @@
 	}
 </style>
 
-<%flash.each{ |key,value|%>
-<script type="text/javascript">  	
-	Element.update('<%= key.to_s=="notice" ? "info" : key%>',"<%=value%>");
-	Effect.Appear('<%= key.to_s=="notice" ? "info" : key%>',{duration:2,queue:{position: 'end', scope:'one'}});	
+
+<script type="text/javascript">
+  	function message_bar() {
+	<%flash.each{ |key,value|%>
+  		Element.update('<%= key.to_s=="notice" ? "info" : key%>',"<%=value%>"+$('notify-close').outerHTML);
+		Effect.Appear('<%= key.to_s=="notice" ? "info" : key%>',{duration:2,queue:{position: 'end', scope:'one'}});
+		<%}%>
+  	}
   </script>
     <!-- <%#= content_tag :div, flash[:error] || flash[:notice], :id => 'notice', :class => ('error' if flash[:error]) %>
  <p class='align_right'>
@@ -79,4 +92,3 @@
     <script type="text/javascript">
         setTimeout("new Effect.Fade('notice');", 10000)
     </script> -->
-<%}%>

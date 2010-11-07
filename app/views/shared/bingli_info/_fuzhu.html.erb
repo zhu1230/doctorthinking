@@ -1,17 +1,25 @@
-<div id="fuzhu" style='display:none;'>
-
+<%if fuzhu.object.new_record? && fuzhu.object.new_by_build?%>
+<div id="fuzhu_blank" style='display:none;'>
+<%else%>
+<div id="fuzhu_<%=fuzhu.object.object_id%>" class='fuzhu'>
+<%end%>
 	<p id="compartmentation" style="width:860px;height:30px;line-height:30px;margin:0px auto;background:url(/images/line3.gif) 0px 15px repeat-x;">
-    <div class="tab" style="width:860px;margin:10px auto;display:block;"><h1>检查类型：</h1><%=fuzhu.select :fuzhu_type, nested_set_options(FuzhuType) {|i| "#{'-' * i.level} #{i.name}" },{:prompt=>"－请选择类别－"}%>
+
+    <div class="tab" style="height:30px;width:860px;margin:10px auto;display:block;"><h1>检查类型：</h1><%=fuzhu.select :fuzhu_type_id,  grouped_options_for_select(fuzhu_by_groups,fuzhu.object.fuzhu_type_id,'-选择分类-')%>
     </div>
+
     <span class="tab"><h1>结果描述：</h1><%=fuzhu.text_area :content,:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;" %>
     </span>
-    <div id="file_upload_scope" style='width:670px;height:100%;'>
+    <div id="file_upload_scope">
 	<%fuzhu.fields_for :attachments do |att|%>
-        <span id='upload_file' class="upload_file"><h1>相关附件：</h1><%=att.file_field :uploaded_data%><%=link_to_function "删除","if($$('div#file_upload_scope span.upload_file').size()==1){this.previous('input').value='';}else{this.up().remove();}"%>
-<%end%>
-        </span><div style='font-size:13px;height:25px;line-height:25px;color: #0F3A4A;text-decoration: underline;float:left;margin-left:10px;'><%=link_to_function '新增附件',"this.up().up().insert({bottom:this.up().previous('span.upload_file').outerHTML.gsub(/attachments_attributes\\\]\\\[\\d+\\\]/,'attachments_attributes]['+$$('#file_upload_scope span.upload_file input').size()+']')});" %></div>
+        <div id='upload_file' class="upload_file"><h1>相关附件：</h1><%=att.file_field :uploaded_data%><%=link_to_function "×删除","if(this.up().up().select('div.upload_file').size()==1){this.previous('input').value='';}else{this.up().remove();}"%>
 
+        </div>
+<%end%>
     </div>
- <%=link_to_function '×取消',"this.up().remove()",:style=>"display:block; width:100px; height:50px; line-height:30px; float:right; padding:0px 50px 0px 0px; clear:both;",:id=>"bottom[#{id}]"%>  
-    
+<div id='file_upload_new' style='width:860px;color: #0F3A4A;float:left;padding-left: 20px;margin-top:0px;margin-bottom:10px;'><%=link_to_function '+新增附件',"this.up().previous().insert({bottom:this.up().previous('div#file_upload_scope').down().outerHTML.gsub(/attachments_attributes\\\]\\\[\\d+\\\]/,'attachments_attributes]['+this.up().previous('#file_upload_scope').select('div.upload_file input').size()+']')});",:style=>'margin-top:10px;' %>
+<div style='border: 1px solid #999;float:right;margin-right:50px;padding:7px 10px;'>	<%=link_to_function '+再次添加',"add_new_fuzhu();",:style=>'float:right;'%>
+	<%=link_to_function '×取消',"this.up().up().up().remove()",:style=>"float:right;margin-right:30px;",:id=>"bottom"%> </div>
+	</div>
+    <div style="clear:both"></div> 
 </div>

@@ -53,10 +53,13 @@ width: 32px;
 .user-action-time{margin-top:2px;margin-bottom:4px;}
 .vt{vertical-align:top;}
 .post-signature{padding-left:5px;padding-top:2px;text-align:left;vertical-align:top;width:175px;height:74px;}
-</style>
-<script type="text/javascript" charset="utf-8">
 
-</script>
+.comments-link {
+	float:left;
+color: #888;
+padding: 0px 3px 2px;
+}
+</style>
 
 <li id='bingli_comment_<%=bingli_comment.id%>'>
 <div style='width:30px;float:left'>
@@ -134,8 +137,9 @@ width: 32px;
         </table>
     </div>
 	<div style='float:left;'>
-       <a id="comments-link-<%=bingli_comment.id%>" class="comments-link" title="add a comment to this post">添加评论</a>
+<%= link_to_function "添加评论","",{:id=>"comments-link-#{bingli_comment.id}",:class=>"comments-link", :title=>"对此讨论意见添加评论"} if logged_in? %>
         </div>
+		
                     <%#=render :partial=>"shared/rank_bingli_comment",:locals=>{:bingli_comment=>bingli_comment} %>
                 </div>
                  

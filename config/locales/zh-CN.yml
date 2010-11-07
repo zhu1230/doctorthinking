@@ -129,16 +129,20 @@ zh-CN:
           look_like_email: "格式不对"
           bad_login_message: "只能包含数字，字母，以及 .-_@ 字符。"
           bad_name_message: "bb"
+          must_agree: "才可以注册为新用户"
+          blank_keshi: "不能为空"
       attributes:
         user:
           email: "电子邮件"
           password: "密码"
           password_confirmation: "重复密码"
           login: "用户名"
-        bingli:
-          zhusu: "主诉"
+          agree: "您必须同意使用条款和隐私政策"
+          keshi_id: "所在科室"
+        bingli_info:
           title: "主题"
-          tags: "标签"
+          tag_list: "标签"
+          zhusu: "主诉"
     app:
       user:
           login_success: "登陆成功"

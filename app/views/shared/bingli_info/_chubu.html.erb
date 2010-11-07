@@ -1,14 +1,15 @@
-
-
-<div id='chubu'>
-    <div id="chubu_blank" style="display:none">
+   <%if chubu.object.new_record? && chubu.object.new_by_build?%>
+ <div id="chubu_blank" style="display:none">
+<%else%>
+<div id="chubu_<%=chubu.object.object_id%>">
+<%end%>
     	<span class="tab"><h1>诊断描述：</h1>
-    	<%=text_area_tag id="chubu[]","",:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
+    	<%=chubu.text_area :content,:style=>"width:500px;height:50px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
         <%=link_to_function '取消',"$(this.parentElement).remove()" %>
         <font color="#AFAFAF">
             可填写多项
         </font>
 		</span>
     </div>
-	  </div>
+
 

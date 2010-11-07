@@ -43,7 +43,7 @@ ul,li {list-style-type:none;list-style-images:none;}
                 <h3>科室</h3>
                 <span>
                 <a id='edit_keshi'>修改</a></span>
-                <p><%=in_place_select :user,'keshiinplace',{:choices=>$ccc,:external_control => 'edit_keshi'}%></p>
+                <p><%=in_place_select :user,'keshiinplace',{:choices=>Keshi.all.to_a,:external_control => 'edit_keshi'}%></p>
             </li>
             <li>
                 <h3>职称</h3><span>

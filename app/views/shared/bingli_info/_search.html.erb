@@ -4,7 +4,7 @@
 	.search .btn {background:url(/images/searchbtn.gif) no-repeat;cursor:pointer;font-size:12px;width:61px;height:19px;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;margin:0px 0px 0px 4px;padding:0px;color:#fff;}
 </style>
 <div class="search">	<%=text_field "search_str",'',:style=>"width:200px;border:1px #ccc solid;"%><input name="提交" type="submit" value="查找病例"class="btn" />&nbsp;
-		<%=select_tag "keshi",options_for_select($ccc,keshi.object_id), {:onchange=>"this.form.submit()"}%>
+		<%#=select_tag "keshi",options_for_select(keshi.object_name,keshi.object_id), {:onchange=>"this.form.submit()"}%>
 		</div>
     
 	  

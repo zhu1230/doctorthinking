@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101029205153) do
+ActiveRecord::Schema.define(:version => 20101107105248) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -85,7 +85,10 @@ ActiveRecord::Schema.define(:version => 20101029205153) do
     t.integer  "user_id",               :default => 0,  :null => false
     t.integer  "catelog_id",            :default => 0,  :null => false
     t.integer  "bingli_comments_count", :default => 0,  :null => false
+    t.integer  "page_views_counter",    :default => 0
   end
+
+  add_index "bingli_infos", ["page_views_counter"], :name => "index_bingli_infos_on_page_views_counter"
 
   create_table "bingli_infos_tags", :id => false, :force => true do |t|
     t.integer "tag_id",         :default => 0, :null => false
@@ -211,18 +214,6 @@ ActiveRecord::Schema.define(:version => 20101029205153) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "comments", :force => true do |t|
-    t.string   "title",            :limit => 50, :default => ""
-    t.string   "comment",                        :default => ""
-    t.integer  "commentable_id",                 :default => 0,  :null => false
-    t.string   "commentable_type", :limit => 15, :default => "", :null => false
-    t.integer  "user_id",                        :default => 0,  :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comments", ["user_id"], :name => "fk_comments_user"
 
   create_table "config_settings", :force => true do |t|
     t.string   "name"

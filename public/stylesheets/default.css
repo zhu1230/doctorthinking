@@ -1,3 +1,6 @@
 input.placeholder {
     color: #888;   
 }
+.fieldWithErrors input, .fieldWithErrors textarea {
+  background-color: #ff8888;
+}

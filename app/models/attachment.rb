@@ -6,7 +6,7 @@ class Attachment < ActiveRecord::Base
                  :resize_to => '520x500>',
                  :thumbnails => {:thumb => '100x100>'},
                  :processor=>"Rmagick"
-
+	belongs_to :fuzhu_detail
     validates_as_attachment
 #      has_many :childs,
 #              :class_name=>"Attachment",
