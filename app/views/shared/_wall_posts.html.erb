@@ -16,8 +16,8 @@ limitations under the License.
 <% parent.wall_posts.each do |post| %>
 	<div class="a_wall_post">
 		<div class="wall_post_photo">
-			<% if post.sender.profile_photo %>
-				<%= image_tag(post.sender.profile_photo.public_filename(:thumb)) %>
+			<% if post.sender.avatar %>
+				<%= image_tag(post.sender.avatar.url(:thumb)) %>
 			<% end %>
 		</div>
 		<div class="wall_post_text">

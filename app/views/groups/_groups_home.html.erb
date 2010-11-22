@@ -13,7 +13,7 @@
 			<% end %>
 				<div class="groups_widget_photo">
 					<% if group.profile_photo %>
-						<%= link_to image_tag(group.profile_photo.public_filename(:small), :alt=>group.name), group_url(group) %>
+						<%= link_to image_tag(group.profile_photo.url(:small), :alt=>group.name), group_url(group) %>
 					<% else %>
 						<%= link_to 'No Photo', group_url(group) %>
 					<% end %>

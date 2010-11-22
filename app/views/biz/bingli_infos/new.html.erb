@@ -1,0 +1,99 @@
+<%= stylesheet_link_tag "fabiao"%>
+<%= javascript_include_tag "input.js"%>
+<%= error_messages_for :bingli_info,:header_message=>"请重试！",:message=>"在建立病例时出现了一些问题：",:class=>"validation" %>
+<%#=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>Keshi.all} %>
+<%=render :partial=>"shared/nav3"%>
+<%build_fuzhu%>
+<%form_for [:biz,@bingli_info],:html =>{:multipart => true}  do |f| %>
+<div class="fabiao_box">
+    <div class="menu">
+        <h1>发表讨论</h1>
+        <span class="info">带
+            <font color="red">
+                *
+            </font>号为必填项目
+        </span>
+    </div>
+    <div class="cnt">
+        <span class="title"><h2>主要内容</h2></span>
+        <span class="tab"><h1>主题：</h1><%=f.text_field :title,{:minlimit=>5,:maxlimit=>30,:style=>"border:1px #889BAA solid;width:250px;"}%>
+            <font color="red">
+                *
+            </font>
+            <font id='bingli_info_title_counter' color="#AFAFAF">
+                最多可输入30个字符
+            </font>
+        </span>
+        <span class="tab"><h1>标签：</h1><%#=f.selectalready,BingliInfo.tag_counts_on(:tags,{:limit=>5}).collect{|t|[t.name,t.id]},{:prompt=>"--选择已有标签--"} %>
+            &nbsp;<%=f.text_field :tag_list,{:class=>"tag_list",:placeholder=>"-以逗号分隔－"} %>
+            &nbsp;&nbsp;<strong>科室分类：</strong>&nbsp;<%=f.select :keshi_id, grouped_options_for_select(keshi_by_groups,current_user.keshi.id,'-选择分类-')%><%#= related_collection_select(:bingli_info, :catelog_id,'bingli_info_keshi_id',@catelogs, :id, :title, :keshi_id,:include_blank =>['选择分类',''])%>
+<%#=select_tag "catelog_id",options_for_select(Catelog.find(:all,:conditions=>["keshi_id=?",params[:id]]).collect{|c|[c.title,c.id]}),{ :include_blank => true } %>
+        </span>
+<%f.fields_for :bingli do |bingli|%>
+        <span class="title"><h2>病例内容</h2></span>
+        <span class="title2"><h3>一般情况</h3></span>
+        <span class="tab"><h1>主诉：</h1><%=bingli.text_field :zhusu ,{:style=>"border:1px #889BAA solid;width:250px;",:minlimit => 3,:maxlimit => 50} %>
+            <font color="red">
+                *
+            </font>
+            <font id='bingli_info_bingli_attributes_zhusu_counter' color="#AFAFAF">
+                最多可输入50个字符
+            </font>
+        </span>
+        <span class="tab"><h1>性别：</h1><%=bingli.select :sex, options_for_select([['男',1],['女',0]],:selected=>bingli.object.sex)%>
+            &nbsp;<font>年龄</font><%=bingli.text_field :age,:size=> 3 ,:value=>bingli.object.age,:style=>"border:1px #889BAA solid;width:50px;",:placeholder=>'0' %>
+            &nbsp;&nbsp;<font>婚姻状况</font>&nbsp;<%=bingli.select :marriage,options_for_select([['不详','0'],['已婚','1'],['未婚','2']])%>
+            <h2 style="width:750px;">一般情况描述不足？<%=link_to_function "补充","new Effect.Appear('yibanqingkuang_buchong');",:class=>"f12red"%></h2></span>
+			<div id='yibanqingkuang_buchong' style="display:none">
+				<span class="tab">
+					<h1></h1><%=bingli.text_area "yibanbuchong",:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
+				</span>
+					
+			</div>
+        <span class="tab"><h1>详细：</h1><%=bingli.text_area :xianbingshi,{:class=>"bingshi placeholder",:placeholder=>"-现病史－"} %>
+            <%=bingli.text_area :jiwang,{:class=>"bingshi",:placeholder=>"-既往史－"}  %>
+            <%=bingli.text_area :tigejiancha,{:class=>"bingshi",:placeholder=>"-体格检查－"}  %>
+        </span>
+
+        <span class="title2"><h3>辅助诊断</h3><%#=javascript_tag "var max_id=0;" %>
+            <h4><%#=link_to_remote '+我要添加',{:url=>{:action=>'get_fuzhu'},:with=>"'max_id='+max_id",:before=>"$('tianjia').hide();",:complete => "$('tianjia').show();if($('fuzhu_scope').childElements() .size()>1)$('compartmentation_'+(max_id)).show();max_id++;new Effect.Highlight('fuzhu_id['+(max_id-1)+']');"},:id=>'tianjia' %>
+	<%=link_to_function '+我要添加',"add_new_fuzhu();"%></h4></span>
+<%#=fuzhu.text_field :content%>
+
+        <div id='fuzhu_scope'>
+			<%bingli.fields_for :fuzhu_details  do |fuzhu|%>
+        	<%=render :partial=>'shared/bingli_info/fuzhu',:locals => { :fuzhu => fuzhu }%>
+			<%end%>
+        </div>
+
+        <span class="title2"><h3>鉴别诊断</h3><h4><%=link_to_function '+我要添加',"add_new_chubu();" %></h4></span>
+		<div id='chubu'>
+		<%bingli.fields_for :chubu_details do |chubu|%>
+        <%=render :partial=>"shared/bingli_info/chubu",:locals=>{:chubu=>chubu} %>
+		<%end%>
+		</div>
+        <span class="title2"><h3>疑    问</h3><h4><%=link_to_function '+我要添加',"new Insertion.Bottom('yiwen','<div id=new style=display:none>'+$('yiwen_blank').innerHTML+'</div>');new Effect.Appear('new');$('new').id='';" %></h4></span>
+		<div id='yiwen'>
+		<%bingli.fields_for :question_details do |question|%>
+			<%=render :partial=>"shared/bingli_info/yiwen",:locals=>{:question=>question} %>
+		   	<%end%>     
+		</div>
+        <span class="title2"><h3>最终诊断</h3></span>
+        <span class="tab"><h1></h1>
+		<%=bingli.text_area :final,:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
+        </span>
+        <span class="title3"><h1>如果您觉得有不足的地方，请<%=link_to_function "补充","new Effect.Appear('buchong');"%></h1></span>
+		<div id='buchong' style="display:none">
+        <span class="tab"><h1>补充类型：</h1>
+            <select name="buchong_catelog">
+                <option value="-请选择-">-请选择-</option>
+            </select>
+        </span>
+        <span class="tab"><h1>补充内容：</h1>
+		<%=bingli.text_area :zongbuchong,:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
+        </span>
+		</div>
+		<%end%>
+        <div style="width:860px;margin:10px auto;display:block;vertical-align:middle;height:57px;"><%= f.submit "完  成", :class=>"subtn"%></div>
+    </div>
+</div><%end %>

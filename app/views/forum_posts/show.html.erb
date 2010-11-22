@@ -12,8 +12,8 @@
 		
 	<div id='post' style="border:1px solid red;float:left">	<div id='author' style="width:259px;border:1px solid white;float:left;">
 			<div class="forum_post_photo">
-		<% if @forum_post.user.profile_photo %>
-			<%= link_to image_tag(@forum_post.user.profile_photo.public_filename(:medium)), user_url(@forum_post.user) %>
+		<% if @forum_post.user.avatar %>
+			<%= link_to image_tag(@forum_post.user.avatar.url(:medium)), user_url(@forum_post.user) %>
 		<% else %>
 			<%= link_to @forum_post.user.name, user_url(@forum_post.user) %>
 		<% end %>

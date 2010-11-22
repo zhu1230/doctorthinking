@@ -37,6 +37,15 @@
 	margin:3px;
 	padding:3px;
 }
+.inplace_span{
+	width:260px;
+	float: left;
+	display:block;
+	float:left;
+	padding-right:1em;
+	margin:3px;
+	padding:3px;
+}
 .inplace_radio{
 	width:15px;
 	height:15px;

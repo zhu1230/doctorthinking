@@ -34,7 +34,7 @@ limitations under the License.
 		<% if @photos.length > 0 %>
 			<% photo = @photos[0] %>
 			<div class="photo_display">
-				<%= link_to image_tag(photo.public_filename(:display), :id=>"widget_photo"), photo_path(photo) %>
+				<%= link_to image_tag(photo.url(:display), :id=>"widget_photo"), photo_path(photo) %>
 			</div>
 		<% else %>
 			目前无任何图片!

@@ -6,7 +6,7 @@ class Bingli < ActiveRecord::Base
   has_many :question_details#,:conditions=>"yiwen_has is not null"
   has_many :attachments
   belongs_to :user
-  validates_presence_of :zhusu
+validates_length_of :zhusu, :within => 3..50, :on => :save,  :too_long => I18n.t("activerecord.errors.messages.bingli.zhusu.too_long_content"),:too_short => I18n.t("activerecord.errors.messages.bingli.zhusu.too_short_content")
 accepts_nested_attributes_for :fuzhu_details, :allow_destroy => true, :reject_if => proc { |obj| obj['fuzhu_type_id'].blank? || obj['content'].blank? }
 accepts_nested_attributes_for :chubu_details, :allow_destroy => true, :reject_if => proc { |obj| obj['content'].blank? }
 accepts_nested_attributes_for :question_details, :allow_destroy => true, :reject_if => proc { |obj| obj['content'].blank? }

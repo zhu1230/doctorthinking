@@ -1,0 +1,20 @@
+bc=BingliComment.new(params[:bingli_comment])
+bc.user=current_user
+# bc.bingli_info=BingliInfo.find(params[:bingli_info_id])
+bc.save
+if bc.errors.blank?
+puts bc.errors.inspect
+page.insert_html "bottom","bingli_comments",:partial=>'shared/bingli_comment',:locals=>{:bingli_comment=>bc}
+
+page.visual_effect :highlight, 'bingli_comment_'+bc.id.to_s
+# for later event register
+# page << "add_comment($('comments-link-#{bc.id}'));"
+
+page["bingli_comment_form"].reset
+
+else
+	
+page.insert_html "bottom","bingli_comment_form",:partial => 'shared/ajax_message',:locals => {:message => (bc.errors.full_messages.join '-')}
+
+
+end

@@ -25,8 +25,8 @@
 					<a href="http://www.kliroseis.gr/demos/easyadmin/index.php" class="logo">EngineY Admin</a>
 				</div>
 				<div id="admin-details">
-					<% if current_user.profile_photo %>
-						<%= image_tag(current_user.profile_photo.public_filename(:small), :alt=>current_user.name) %>
+					<% if current_user.avatar %>
+						<%= image_tag(current_user.avatar.url(:small), :alt=>current_user.name) %>
 					<% else %>
 						
 					<% end %>

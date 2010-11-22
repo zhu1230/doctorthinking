@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'lytebox.js'%>
+<%= stylesheet_link_tag 'lytebox.css'%>
 <style type="text/css">
 <!--
 body {font-family:"宋体";margin:0;font-size:12px;}
@@ -12,7 +14,7 @@ ul,li {list-style-type:none;list-style-images:none;}
 .area .atitle,.area .cont {width:880px;flaot:left;}
 .area .atitle h1 {font-size:16px;line-height:30px;}
 .area .atitle h2 {font-size:12px;padding-bottom:10px;font-weight:normal;color:#999;}
-.area .cont1 {width:620px;float:left;border-top:1px solid #d8d8d8;overflow:hidden; padding:0px; margin:0px;}
+.area .cont1 {width:600px;float:left;border-top:1px solid #d8d8d8;overflow:hidden; padding:0px; margin:0px;}
 .area .cont1 ul {width:620px;float:left;}
 .area .cont1 li {width:620px;float:left;line-height:30px;overflow:hidden;}
 .area .cont1 h3 {width:620px;color:#FF9400;font-size:12px;line-height:30px;}
@@ -20,7 +22,7 @@ ul,li {list-style-type:none;list-style-images:none;}
 .area li input,.area li textarea {border:1px solid #879BB3;width:200px;}
 .area li label {width:130px;text-align:right;padding-right:5px;float:left;line-height:30px;}
 .area .btn {width:85px;height:32px;line-height:32px;cursor:pointer;background:url(/images/user/loginbg.gif) -87px -247px no-repeat;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;margin:10px 0 0;padding:0;font-weight:bold;color:#072A46;}
-.area .cont2 {width:250px;float:right;}
+.area .cont2 {width:280px;float:right;}
 .area .cont2 .header {width:250px;height:12px;overflow:hidden;background:url(/images/user/regbg.gif) left top no-repeat;float:left;}
 .area .cont2 .footer {width:250px;height:12px;overflow:hidden;background:url(/images/user/regbg.gif) left -12px no-repeat;float:left;}
 .area .cont2 .cont {width:248px;float:left;background:#F7FAFF;border-left:1px solid #CBE6F9;border-right:1px solid #CBE6F9;}
@@ -49,6 +51,13 @@ ul,li {list-style-type:none;list-style-images:none;}
 	border:#CCCCCC solid 1px;
 	background-color: #F8F8F8;
 }
+.terms{
+	font-weight: bold;
+	font-color:#FF9700;
+	font-size: 1.3em;
+	text-decoration:underline;
+}
+
 -->
 </style>
 <div id="signup_help">
@@ -90,7 +99,7 @@ ul,li {list-style-type:none;list-style-images:none;}
                 <!-- <li style="padding-top:10px;"><label for="uesr">职称：</label>
                                   <%#=f.select("zhicheng",[["初级",1 ],["中级",2 ],["高级",3 ]], {:prompt => '选择您的职称'})%>&nbsp;<font color="red">*</font>                </li> -->
                 <li style="padding-left:136px;"><%=f.check_box "receive_emails",{:style=>"border:0;width:18px;",:checked=>true},1,0%>是否接收社区的邮件通知                </li>
-              <li style="padding-left:136px;"><%=f.check_box :agree,{:style=>"border:0;width:18px;"}%>我同意DoctorThinking社区的 <a href="#"><font color="FF9700">使用条款</font></a>和 <a href="#"><font color="FF9700">用户隐私</font></a> </li>
+              <li style="padding-left:136px;"><%=f.check_box :agree,{:style=>"border:0;width:18px;"}%>我同意DoctorThinking社区的 <%=link_to "使用条款",terms_path,{:rel=>"lyteframe",:rev=>"width: 600px; height: 450px; scrolling: yes;",:class => 'terms'}%>  和 <%=link_to "用户隐私",privacy_path,{:rel=>"lyteframe",:rev=>"width: 600px; height: 450px; scrolling: yes;",:class => 'terms'}%> </li>
               <li style="padding-left:136px;"><input type="submit" value="完成" class="btn" />
               &nbsp; <%= link_to "取消", :back %></li>
           </ul>
@@ -98,13 +107,13 @@ ul,li {list-style-type:none;list-style-images:none;}
         <div class="cont2">
         	<div class="header"></div>
             <div class="cont"><p><strong><font color="#333333">注册成为会员，您可以免费获得</font></strong><br />
-                <font color="#666666">一、最新相关会议第一时间通知。<br />
-二、热点技术每周摘要。<br />
-三、新技术学习资料与操作录像。<br />
-四、随您需要而整理的便利而丰富的病例资料。<br />
-五、与国内专家共同探讨疾病疾病疑点及新技术的机会。<br />
-六、共享自己的工作体验，收到同行的精心反馈。<br />
-七、其它。</font></p>
+                <font color="#666666">一、成为国内首家专业病例讨论网站会员。<br />
+二、简单而专业地搜索及收集您所需病例资料<br />
+三、实现与国内外专家共同探讨疾病疑点，获知最新技术。<br />
+四、查看热门及疑难病例，共同学习，提升专业水平。<br />
+五、为同行答疑解惑，共同进步。<br />
+六，结识更多的同行，分享专业领域的乐趣、。<br />
+七、热点技术每周摘要。</font></p>
             </div>
             <div class="footer"></div>
         </div>

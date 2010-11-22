@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :wysihat_files
+
 
   map.resources :blog_post_topics
 
@@ -170,13 +172,28 @@ map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "home"
  map.namespace :biz do |biz|
- 	biz.resources :bingli_infos ,:member=>{:showOne=>:get,:input => :get,:save => :post,},:collection => {:hot => :get,:active => :get,:week => :get,:month => :get}do |bi|
+ 	biz.resources :bingli_infos,:member => {:favorite => :get,:voteup => :get,:votedown => :get},:collection => {:hot => :get,:active => :get,:week => :get,:month => :get} do |bi|
  		bi.resources :comments
+		bi.resources :bingli_comments,:member => {:voteup => :get,:votedown => :get} do |bc|
+			bc.resources :comments
+			bc.resources :tags
+		end
+ 		# bi.resources :tags
  	end
-	biz.resources :bingli_comments do |bc|
-		bc.resources :comments
-	end
+	# biz.resources :bingli_comments ,:member => {:voteup => :get,:votedown => :get} do |bc|
+	# 	bc.resources :comments
+	# 	bc.resources :tags
+	# end
  end
+ map.with_options :controller => 'pages' do |page|
+ 	page.about 'about',:action => 'about'
+	page.privacy 'privacy',:action => 'privacy'
+	page.terms 'terms',:action => 'terms'
+	
+ end
+ # map.connect ':controller/:action/:id'
+	# map.resources :bingli_infos 
+	# map.resources :bingli_comments 
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
@@ -184,14 +201,13 @@ map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.tagged_source ':controller/tagged/:tag',:action=>'tagged'
   # map.connect 'biz/bingli_comment/:action/:id',:controller=>'biz/bingli_comment'
-#  map.connect 'biz/topic/:keshi/:topic_id',:controller=>'biz/topic',:action=>'showOne'
   map.index '/',:controller=>"home",:action=>"index"
   # map.about_us :controller=>"about"
 # map.connect '/biz/blingli_info/active',:controller=>"biz/bingli_info",:action=>"active"
   # map.connect 'biz/bingli_info/:action/:id',:controller=>"biz/bingli_info"
   # map.connect 'biz/bingli_info/:action/:id',:controller=>"biz/bingli_info"
   #for tag
-  
+  # map.privacy '/privacy',:controller => ''
   #map.connect ':controller/:action/:type/:id'
   #for fine,perfect,favorite,participation
   map.connect 'user/:action/:id',:controller=>"user"

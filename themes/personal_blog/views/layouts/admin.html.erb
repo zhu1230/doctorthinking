@@ -21,7 +21,7 @@
 				</div>
 				<div id="admin-details">
 					<% if current_user.profile_photo %>
-						<%= image_tag(current_user.profile_photo.public_filename(:small), :alt=>current_user.name) %>
+						<%= image_tag(current_user.profile_photo.url(:small), :alt=>current_user.name) %>
 					<% end %>
 					 Welcome <strong>Admin</strong>! 
 					<%= link_to 'Logout?', '/logout', {:class=>"a-red"}%><br/>

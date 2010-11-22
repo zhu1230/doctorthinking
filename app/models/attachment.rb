@@ -1,18 +1,14 @@
 class Attachment < ActiveRecord::Base
-   has_attachment :content_type => [:image],
-                 :storage => :file_system, 
-                 :min_size => 0.kilobytes,
-                 :max_size => 50000.kilobytes,
-                 :resize_to => '520x500>',
-                 :thumbnails => {:thumb => '100x100>'},
-                 :processor=>"Rmagick"
+	has_attached_file :file,:styles => {:big => '520x500>',:thumb => '100x100#',:index => '100x70!'},:default_style => :big,:convert_options => {}
+	validates_attachment_size :file,:less_than => 5.megabytes
+	validates_attachment_content_type :file,:content_type => ['image/gif','image/jpeg','image/png','image/tiff'],:message => '附件只能使用类型为 jpg,gif,png,tiff 的图片。'
 	belongs_to :fuzhu_detail
-    validates_as_attachment
+	
 #      has_many :childs,
 #              :class_name=>"Attachment",
 #              :foreign_key => "parent_id"
-def random_tempfile_filename
-"#{rand Time.now.to_i}"
-end
+# def random_tempfile_filename
+# "#{rand Time.now.to_i}"
+# end
 
 end

@@ -12,8 +12,8 @@
 				<span id="user_name"><%= current_user.first_name %> <%= current_user.last_name %></span>
 				<div style="clear:both;float:left;margin-top:8px;">
 					<div style="float:left;margin-left:8px;">
-						<% if current_user.profile_photo %>
-							<%= link_to image_tag(current_user.profile_photo.public_filename(:small), :alt=>current_user.name), user_url(current_user) %>
+						<% if current_user.avatar %>
+							<%= link_to image_tag(current_user.avatar.url(:small), :alt=>current_user.name), user_url(current_user) %>
 						<% else %>
 							<%= link_to '<div class="no_photo_user_widget"></div>', user_url(current_user) %>
 						<% end %>

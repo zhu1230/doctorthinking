@@ -4,3 +4,4 @@ input.placeholder {
 .fieldWithErrors input, .fieldWithErrors textarea {
   background-color: #ff8888;
 }
+/*input.placeholder { color: #a9a9a9 !important; }*/

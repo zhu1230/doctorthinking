@@ -17,7 +17,7 @@ limitations under the License.
 
 <div id="edit_photo">
 	<div id="edit_photo_pic">
-		<%= image_tag(@photo.public_filename(:display)) %>
+		<%= image_tag(@photo.url(:display)) %>
 	</div>
 	<div id="edit_photo_form">
 		<% form_for(@photo) do |f| -%>	

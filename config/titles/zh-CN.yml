@@ -1,14 +1,16 @@
 home:
     index: "首页"
-bingli_info:
+bingli_infos:
     index: "病例讨论列表"
-    input: "发表病例讨论"
-    showOne: "病例讨论"
-    save: "修改病例讨论"
+    new: "发表病例讨论"
+    show: "病例讨论"
+    edit: "修改病例讨论"
+    tagged: "搜索病例标签"
 search:
     do_search: "病例讨论列表"
-bingli_comment:
-    input: "发表讨论"
+bingli_comments:
+    new: "发表讨论"
+    edit: "编辑讨论"
 meet:
     index: "会议列表"
     input: "发表会议"

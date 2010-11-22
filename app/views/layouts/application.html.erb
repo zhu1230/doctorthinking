@@ -1,65 +1,110 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title><%= "医思网" %></title>
+	<title><%= "医思网"+"--"+easy_title %></title>
 	<link rel="shortcut icon" href="/favicon.ico" />
+<%#= javascript_include_tag "lytebox" %>
+<%#= stylesheet_link_tag "lytebox",:media=>"screen"%>
 	<%= stylesheet_link_tag 'style' %>
-	<%=stylesheet_link_tag 'default.css', :cache => true%>
-	<%= javascript_include_tag "jquery-1.4.2.min.js" %>
-
-	<%= javascript_include_tag "widget" %>
-	
-	<%= render 'layouts/widgets' %>
-    
-	<%= javascript_include_tag "slide_show" %>
-	
-	<%= yield :script_content %>
-	
-	<%= javascript_include_tag "application" %>
-	
+	<%=stylesheet_link_tag 'default.css'%>
+	<%#= stylesheet_link_tag "themes/mycompany/mycompany.css" %>
+	<%#= stylesheet_link_tag '../javascripts/dojo/dijit/themes/tundra/tundra.css' %>
+	<%#= stylesheet_link_tag '../javascripts/dojo/dojox/grid/resources/Grid.css' %>
+	<%#= stylesheet_link_tag '../javascripts/dojo/dojox/grid/resources/tundraGrid.css' %>
+	<!-- <script type="text/javascript" src="/javascripts/dojo/release/dojo/dojo/dojo.js" djConfig="isDebug:false, parseOnLoad: true"></script>
+	<script type="text/javascript" src="/javascripts/dojo/release/dojo/dojo/mydojo.js"></script> -->
+	<%#= javascript_include_tag "top_up" %>
+	<%#= javascript_include_tag "jquery" %>
+	<%= javascript_include_tag :defaults %>
+	<%= stylesheet_link_tag "tag_clouds","pagination","top/style"%>
+	<%#= javascript_include_tag "widget" %>
+		
+		<%= javascript_include_tag "doctextsizer" %>
+		<%= stylesheet_link_tag  "doctextsizer" %>
+	<%#= render 'layouts/widgets' %>
+    <%= javascript_include_tag "slide_show" %>
     <script type="text/javascript">  	
-		var authenticity_token = "<%= form_authenticity_token %>";				
+		var authenticity_token = "<%= form_authenticity_token %>";	
+		// var loaded = false;
+		// 
+		//   function startLoading() {
+		//     loaded = false;
+		//     window.setTimeout('showLoadingImage()', 1000);
+		//   }
+		// 
+		//   function showLoadingImage() {
+		//     var el = document.getElementById("loading_box");
+		//     if (el && !loaded) {
+		//         el.innerHTML = '<img src="/images/spinner.gif">';
+		//         new Effect.Appear('loading_box');
+		//     }
+		//   }	
+		// function stopLoading() {
+		//     Element.hide('loading_box');
+		//     loaded = true;
+		//   }
+		// Ajax.Responders.register({
+		//     onCreate : startLoading,
+		//     onComplete : stopLoading
+		//   });	
+		function resizeText(multiplier) { 
+
+		  if ($('main_content').style.fontSize == "") { 
+
+		    $('main_content').style.fontSize = "1.0em"; 
+
+		  } 
+
+		  $('main_content').style.fontSize = parseFloat($('main_content').style.fontSize) + (multiplier * 0.2) + "em"; 
+
+		}
     </script>
-	
 	<%= include_tiny_mce_if_needed %>
-	
-	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
-	
 </head>
-
 <body>
-
-<%#= fb_connect_javascript_tag %>
-<%#= init_fb_connect('XFBML', :js => :dojo) %> 
-
-	<div id="content">
-		<div id="header">
-			<div id="masthead"></div>
-			<%= render :partial => 'shared/nav_menu' %>
-		</div>
-		<div id="main">
-			<% if @section == 'MAIN' || @section == 'PROFILE' || (@section == 'MEMBERS' && @user != nil)%>
-				<%= yield %>
-			<% else %>
-				<div class="col1">
-					<%= yield  %>
+	<div id='content'>
+			<%if (params[:controller]=="sessions" && params[:action]=="new") %>
+			<%=render(:partial=>"shared/top_login")%>
+			<%elsif(params[:controller]=="users" && params[:action]=="new")%>
+			<%=render(:partial=>"shared/top_register")%>
+			<%elsif(params[:controller]=="users" && params[:action]=="create" && !@user.errors.empty?) %>
+			<%=render(:partial=>"shared/top_register")%>
+			<%elsif logged_in? %>
+			<%=render(:partial=>"shared/top_logon")%>
+			<%else%>
+			<%=render(:partial=>"shared/top_unlogon")%>
+			<%end %>
+	<div style='display:none;'><%=image_tag "/images/ajax-loader.gif", {:title => "提交中", :style => "margin-left: 10px;",:id => 'ajax-loader'} %></div>
+	<%=render :partial=>"shared/nav_bar"%>
+	<%=render :partial=>"shared/message_bar"%>
+	
+		<div id='main_content' style="clear:both;width:958px;margin:0px auto;padding-top: 15px;">
+				<%= yield  %>
 				</div>
-				<div class="col2">
+		
+
+				<!-- TODO: Needs to be refactored to move this content into page templates -->
+				<% if @section == 'MAIN' %>
 					<%#= render :partial => 'users/user_control_widget' %>
-				</div>
-				<div style="clear:both;"></div>
-			<% end %>
-		</div>
-		<div id="footer">
-			<%= render :partial => 'shared/footer' %>
-		</div>
-		<div style="clear:both;"></div>
-	</div>
-	<%= render '/layouts/analytics' %>
+					<!-- place holder for AJAX widgets -->
+					<div id="right_side_widgets"></div>
+				<% elsif @section == 'MY PAGE' || (@section == 'MEMBERS' && @user != nil)%>
+					<!-- On a user page -->
+					<%= render :partial => 'users/add_friend_widget' %>
+					<%#= render :partial => 'users/user_control_widget' %>
+					<%= render :partial => 'events/events_profile' %>
+					<%= render :partial => 'forum_posts/forum_posts_profile' %>
+					<% if current_user == @user %>
+						<%= render :partial => 'messages/unread_messages_widget' %>
+					<% end %>
+					<div id="right_side_widgets"></div>
+				<% else %>
+					<%#= render :partial => 'users/user_control_widget' %>
+				<% end %>
+		
+<%=render :partial=>"shared/bottom"%>
+</div>
 </body>
-
 </html>
-

@@ -131,6 +131,20 @@ zh-CN:
           bad_name_message: "bb"
           must_agree: "才可以注册为新用户"
           blank_keshi: "不能为空"
+          bingli_comment:
+              too_long_content: "内容最多 {{count}} 字符"
+              too_short_content: "内容最少需要 {{count}} 字符"
+          comment:
+              too_long_content: "内容最多 {{count}} 字符"
+              too_short_content: "内容最少需要 {{count}} 字符"
+          bingli:
+              zhusu:
+                  too_long_content: "内容最多 {{count}} 字符"
+                  too_short_content: "内容最少需要 {{count}} 字符"
+          bingli_info:
+              title:
+                  too_long_content: "内容最多 {{count}} 字符"
+                  too_short_content: "内容最少需要 {{count}} 字符"
       attributes:
         user:
           email: "电子邮件"
@@ -143,7 +157,16 @@ zh-CN:
           title: "主题"
           tag_list: "标签"
           zhusu: "主诉"
+        bingli_comment:
+          content: "讨论内容"
+        comment:
+          comment: "评论内容"
     app:
       user:
           login_success: "登陆成功"
           logout_success: "您已经注销"
+          en:
+    wysihat_files:
+      destroy:
+        name: "删除"
+        sure: "确定删除此文件吗?"

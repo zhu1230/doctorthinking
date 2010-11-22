@@ -65,7 +65,7 @@ module ActivityFeedHelper
         else
           if activity.item
             photo = Photo.find(activity.item.id, :select=>"id, user_id, filename, parent_id, created_at")
-            %(<span class="activity_text"><span class="activity_user_link">#{user_link(user)}</span> uploaded a photo - <a href="/photos/#{photo.id}">#{image_tag(photo.public_filename(:small))}</a>.</span>#{activity_date(photo)})
+            %(<span class="activity_text"><span class="activity_user_link">#{user_link(user)}</span> uploaded a photo - <a href="/photos/#{photo.id}">#{image_tag(photo.url(:small))}</a>.</span>#{activity_date(photo)})
           else
             # photo no longer exists, but still need to display upload event for history
             %(<span class="activity_text"><span class="activity_user_link">#{user_link(user)}</span> uploaded a photo.</span>#{activity_date(activity)})
@@ -87,7 +87,7 @@ module ActivityFeedHelper
           %(#{user_link(user)} is attending the event, #{link_to attendance.event.name, 'events/' + attendance.event.id.to_s}.  #{activity_date(attendance)})
         else
           # attendance no longer exists, user has canceled
-         %(#{image_tag(user.profile_photo.public_filename(:small))}#{user_link(user)} signed up for an event, but has since revoked that decision.)
+         %(#{image_tag(user.avatar.url(:small))}#{user_link(user)} signed up for an event, but has since revoked that decision.)
         end
       when "Membership"
         membership = activity.item

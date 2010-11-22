@@ -1,26 +1,27 @@
 <style type="text/css">
 <!--
-body {font-family:Arial, Helvetica, sans-serif;margin:0;font-size:12px;}
+/*body {font-family:Arial, Helvetica, sans-serif;margin:0;font-size:12px;}
 a {font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#002850;}
 a:link {text-decoration:none;}
 a:visited {text-decoration:none;color:#002850;}
 a:hover {text-decoration:underline;color:#002850;}
 a:active {text-decoration:none;color:#002850;}
 h1,h2,h3,p,ul,li {margin:0;padding:0;}
-ul,li {list-style-type:none;list-style-images:none;}
-.area {width:900px;margin:0 auto;}
+ul,li {list-style-type:none;list-style-images:none;}*/
+.area {width:900px;margin:0px auto;}
 .area .cont {width:730px;float:right;}
 .area .cont ul {width:730px;float:left;}
 .area .cont li {width:730px;float:left;}
-.area .cont li h3 {width:645px;font-size:12px;line-height:22px;color:#FF9C16;float:left;padding:0 10px;}
+/*.area .cont li div{border-bottom: 1px solid #d8d8d8;height:30px;}*/
+.area .cont li h3 {margin:0px;width:645px;font-size:12px;line-height:22px;color:#FF9C16;float:left;padding:0 10px;}
 .area .cont li span {float:right;font-weight:bold;line-height:22px;color:#003A62;float:right;padding:0 10px;}
-.area .cont li p span {width:730px;float:left;border-top:1px solid #d8d8d8;text-indent:1em;line-height:22px;padding:0px 0px 10px 0px; margin-bottom:20px;margin-left: 10px;}
+.area .cont li p span {border-top: 1px solid #d8d8d8;width:730px;float:left;text-indent:1em;line-height:22px;padding:0px 0px 10px 0px; margin-bottom:20px;margin-left: 10px;}
 /*.inplace_span {width:730px;float:left;border-top:1px solid #d8d8d8;text-indent:1em;line-height:22px;padding:0px 0px 10px 30px; margin-bottom:20px;margin-left:10px;}*/
 .in_place_editor_form {width:730px;margin:0 auto;float:none;border-top:1px solid #d8d8d8;line-height:22px;padding:0px 0px 10px 30px; margin-bottom:20px;}
 .inplace_select{float:left;margin-right: 20px;}
 -->
 </style>
-
+<%= stylesheet_link_tag "in_place_styles" %>
 
 <div class="area">
 	
@@ -30,26 +31,26 @@ ul,li {list-style-type:none;list-style-images:none;}
     <div class="cont">
     	<ul>
         	<li>
-                <h3>昵称</h3><span>
-                <a id="name_edit">修改</a></span>
+                <div><h3>昵称</h3><span>
+                <a id="name_edit">修改</a></span></div>
                 <p><%=in_place_text_field :user,'name',{:external_control => 'name_edit'}%></p>
             </li>
             <li>
-                <h3>电子邮件</h3><span>
-                <a id='mail_edit'>修改</a></span>
+                <div><h3>电子邮件</h3><span>
+                <a id='mail_edit'>修改</a></span></div>
                 <p><%=in_place_text_field :user,'email',{:click_to_edit_text => '编辑',:external_control => 'mail_edit'}%></p>
             </li>
             <li>
                 <h3>科室</h3>
                 <span>
                 <a id='edit_keshi'>修改</a></span>
-                <p><%=in_place_select :user,'keshiinplace',{:choices=>Keshi.all.to_a,:external_control => 'edit_keshi'}%></p>
+                <p><%=in_place_select :user,'keshiinplace',{:choices=>grouped_options_for_select(keshi_by_groups,current_user.keshi.id,'-选择分类-'),:external_control => 'edit_keshi'}%></p>
             </li>
-            <li>
+            <!-- <li>
                 <h3>职称</h3><span>
                 <a id='edit_zhicheng'>修改</a></span>
-                <p><%=in_place_select :user,'zhicheng_title',{:choices=>$zhicheng.invert.to_a,:external_control => 'edit_zhicheng'}%></p>
-            </li>
+                <p><%#=in_place_select :user,'zhicheng_title',{:choices=>$zhicheng.invert.to_a,:external_control => 'edit_zhicheng'}%></p>
+            </li> -->
             <li>
                 <h3>个人说明</h3><span>
                 <a id='about_me'>修改</a></span>
@@ -58,13 +59,13 @@ ul,li {list-style-type:none;list-style-images:none;}
             <li>
                 <h3>接收社区邮件选项</h3><span>
                 <a id='receive'>修改</a></span>
-                <p><%=in_place_radio_collection :user,'receive',{:choices=>[['接收','1'],['不接收','0']],:checked=>true,:external_control => 'receive'}%></p>
+                <p><%=in_place_radio_collection :user,'receive',{:choices=>[['接收','1'],['不接收','0']],:external_control => 'receive'}%></p>
             </li>
             <li>
                 <h3>社区头像</h3><span>
-                <a id='mail_edit' onclick="Element.hide('avatar_old');Element.show('avatar_new')">修改</a></span>
-                <p><div id='avatar_old'><%=current_user.profile_photo ? image_tag(current_user.profile_photo.public_filename(:medium), :alt=>current_user.name) : "目前没有设置头像"%></div>
-<div id='avatar_new' style="display:none"><%=form_tag({:action=>"update_avatar",:controller=>"/user"},:multipart => true)%><%=file_field_tag 'avatar',{:accept => 'image/png,image/gif,image/jpeg'}%><%=submit_tag "完成",:disable_with => '注册中...' %><%=link_to_function "取消","Element.hide('avatar_new');Element.show('avatar_old');return false;"%></form></div></p>
+                <a id='mail_edit' onclick="$('avatar_old').hide();$('avatar_new').show();">修改</a></span>
+                <p><span id='avatar_old' style='padding-top:10px;'><%=current_user.avatar ? image_tag(current_user.avatar.url(:medium), :alt=>current_user.name) : "目前没有设置头像"%></span>
+<div id='avatar_new' style='display:none;border-top: 1px solid #d8d8d8;width:730px;float:left;text-indent:1em;line-height:22px;padding:0px 0px 10px 0px; margin-bottom:20px;margin-left: 10px;'><%=form_tag({:action=>"update_avatar",:controller=>"/user"},:multipart => true)%><%=file_field_tag 'avatar',{:accept => 'image/png,image/gif,image/jpeg'}%><%=submit_tag "完成",:disable_with => '注册中...' %><%=link_to_function "取消","$('avatar_new').hide();$('avatar_old').show();return false;"%></form></div></p>
             </li>
         </ul>
     </div>

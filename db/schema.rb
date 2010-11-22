@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101107105248) do
+ActiveRecord::Schema.define(:version => 20101122153813) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -45,14 +45,13 @@ ActiveRecord::Schema.define(:version => 20101107105248) do
   end
 
   create_table "attachments", :force => true do |t|
-    t.string  "content_type"
-    t.string  "filename"
-    t.string  "thumbnail"
-    t.integer "size"
-    t.integer "width"
-    t.integer "height"
-    t.integer "fuzhu_detail_id"
-    t.integer "parent_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "fuzhu_detail_id",   :null => false
   end
 
   create_table "attendances", :force => true do |t|
@@ -64,16 +63,19 @@ ActiveRecord::Schema.define(:version => 20101107105248) do
   end
 
   create_table "bingli_comments", :force => true do |t|
-    t.string   "title",          :limit => 45, :default => "",  :null => false
-    t.datetime "thetime",                                       :null => false
-    t.integer  "uphold",                       :default => 0,   :null => false
+    t.string   "title",              :limit => 45, :default => "",  :null => false
+    t.datetime "created_at",                                        :null => false
+    t.integer  "uphold",                           :default => 0,   :null => false
     t.integer  "bingli_info_id"
-    t.integer  "user_id",                      :default => 0,   :null => false
-    t.integer  "keshi_id",                     :default => 0,   :null => false
-    t.integer  "catelog_id",                   :default => 0,   :null => false
-    t.string   "attachment_has",               :default => "0"
-    t.text     "content",                                       :null => false
-    t.integer  "denial",                       :default => 0,   :null => false
+    t.integer  "user_id",                          :default => 0,   :null => false
+    t.integer  "keshi_id",                         :default => 0,   :null => false
+    t.integer  "catelog_id",                       :default => 0,   :null => false
+    t.string   "attachment_has",                   :default => "0"
+    t.text     "content",                                           :null => false
+    t.integer  "denial",                           :default => 0,   :null => false
+    t.datetime "updated_at"
+    t.integer  "vote_for_count",                   :default => 0
+    t.integer  "vote_against_count",               :default => 0
   end
 
   create_table "bingli_infos", :force => true do |t|
@@ -86,6 +88,8 @@ ActiveRecord::Schema.define(:version => 20101107105248) do
     t.integer  "catelog_id",            :default => 0,  :null => false
     t.integer  "bingli_comments_count", :default => 0,  :null => false
     t.integer  "page_views_counter",    :default => 0
+    t.integer  "vote_for_count",        :default => 0
+    t.integer  "vote_against_count",    :default => 0
   end
 
   add_index "bingli_infos", ["page_views_counter"], :name => "index_bingli_infos_on_page_views_counter"
@@ -214,6 +218,20 @@ ActiveRecord::Schema.define(:version => 20101107105248) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comments", :force => true do |t|
+    t.string   "title",            :limit => 50, :default => ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "config_settings", :force => true do |t|
     t.string   "name"
@@ -683,6 +701,10 @@ ActiveRecord::Schema.define(:version => 20101107105248) do
     t.integer  "bingli_comments_count",                   :default => 0
     t.integer  "keshi_id",                                :default => 0
     t.string   "zhicheng",                                :default => ""
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "users_rank_bingli_comments", :force => true do |t|
@@ -749,6 +771,15 @@ ActiveRecord::Schema.define(:version => 20101107105248) do
     t.text     "description"
     t.boolean  "profile"
     t.integer  "ey_module_id"
+  end
+
+  create_table "wysihat_files", :force => true do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

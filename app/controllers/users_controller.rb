@@ -296,7 +296,6 @@ class UsersController < ApplicationController
         if params[:invite_code]
           Invite.accept(params[:invite_code]) 
         end
-        # @user.set_photo(params[:user_photo])
         respond_to do |format|
           format.html {
 		 # self.current_user = @user # !! now logged in
@@ -344,8 +343,8 @@ class UsersController < ApplicationController
         if params[:user_photo] && params[:user_photo].size != 0 
           # remove old profile photos
           Photo.destroy_all("user_id = " + @user.id.to_s + " AND is_profile = true")
-          profile_photo = ProfilePhoto.create!(:user_id=>@user.id, :is_profile=>true, :uploaded_data => params[:user_photo]) if params[:user_photo].size != 0 
-          @user.profile_photo = profile_photo
+          profile_photo = ProfilePhoto.create!(:user_id=>@user.id, :is_profile=>true, :file => params[:user_photo]) if params[:user_photo].size != 0 
+          @user.avatar = profile_photo
         end  
         
         flash[:notice] = '用户已成功更新.'

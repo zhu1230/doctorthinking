@@ -26,7 +26,7 @@ require_role :user,:only=>[:input,:save,:fileupload]
     redirect_to :controller=>'meet',:action=>'showone',:id=>m.id
   end
   def fileupload
-    am=AttachmentMisc.new :uploaded_data=>params[:Filedata]
+    am=AttachmentMisc.new :file=>params[:Filedata]
     am.save!
     render :text=>"FILEID:"+am.id.to_s
   end

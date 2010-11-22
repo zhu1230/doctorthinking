@@ -18,7 +18,7 @@
 	}
 	.notify-close{
 /*		background-color: #FAD163;*/
-background-color: #AEDEF7;
+background-color:transparent;
 border: 2px solid #475F80;
 cursor: pointer;
 display: block;
@@ -30,7 +30,7 @@ padding-right: 4px;
 text-decoration: none;
 	}
 </style>
-<div style='display:none;'><span id='notify-close' class="notify-close"><a title="取消消息框" onclick="$(this).up().up().fade();">×</a></span></div>
+<div style='display:none;'><span id='notify-close' class="notify-close" onclick="$(this).up().fade({duration: 0.2});"><a title="取消消息框">×</a></span></div>
 <div id='info' class="infos" style="display:none"></div>
 <div id='success' class="success" style="display:none"></div>
 <div id='warning' class="warning" style="display:none"></div>

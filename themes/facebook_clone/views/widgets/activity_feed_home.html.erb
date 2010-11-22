@@ -30,7 +30,7 @@ limitations under the License.
 			<div class="activity_user_img">
 				<% if activity.user %>
 				<% if activity.user.profile_photo %>
-					<%= link_to image_tag(activity.user.profile_photo.public_filename(:small), :alt=>activity.user.name), user_url(activity.user) %>
+					<%= link_to image_tag(activity.user.profile_photo.url(:small), :alt=>activity.user.name), user_url(activity.user) %>
 				<% else %>
 					<%= link_to '<div class="no_photo_user_widget"></div>', user_url(activity.user) %>
 				<% end %>

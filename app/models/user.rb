@@ -19,7 +19,12 @@ class User < ActiveRecord::Base
   # You may wish to modify it to suit your need
 
 acts_as_voter
+has_karma :bingli_infos
+has_karma :bingli_comments
 acts_as_favorite_user
+has_attached_file :avatar, :styles => {:thumb => '48x48>', :medium => '96x96>' ,:big => '158x158>'},:default_style => :big,:default_url => "/:attachment/:style/missing.jpg"
+validates_attachment_size :avatar,:less_than => 5.megabytes
+validates_attachment_content_type :avatar,:content_type => ['image/gif','image/jpeg','image/png','image/tiff'],:message => '头像只能使用类型为 jpg,gif,png,tiff 的图片。'
   # has_role? simply needs to return true or false whether a user has a role or not.  
   # It may be a good idea to have "admin" roles return true always
   
@@ -68,7 +73,7 @@ acts_as_favorite_user
   
   belongs_to :state
   belongs_to :country
-  has_one :profile_photo, :conditions => [ 'is_profile = ?', true ], :dependent => :destroy
+  # has_one :profile_photo, :conditions => [ 'is_profile = ?', true ], :dependent => :destroy
   has_many :photos
   has_many :wall_posts, :order=>'created_at DESC'
   
@@ -103,8 +108,8 @@ acts_as_favorite_user
 def receive
 self.receive_emails ?   "接受" : "不接受"
 end
-def receive=(aa)
-self.receive_emails=aa
+def receive=(v)
+self.receive_emails=v
 end
 def zhicheng_title=(aa)
   self.zhicheng=aa
@@ -139,9 +144,6 @@ end
 def delete_reset_code  
   self.attributes = {:password_reset_code => nil}  
   save(false)  
-end
-def photo
-self.profile_photo || Photo.find(:first)
 end
 
   include Authentication
@@ -410,15 +412,15 @@ end
   end
   
   
-  def set_photo(photo)
-    if photo && photo.size != 0 
-      # remove old profile photos
-      Photo.destroy_all("user_id = " + id.to_s + " AND is_profile = true")
-      self.profile_photo = ProfilePhoto.create!(:user_id=>id, 
-                                                :is_profile=>true, 
-                                                :uploaded_data => photo) 
-    end 
-  end
+  # def set_photo(photo)
+  #   if photo && photo.size != 0 
+  #     # remove old profile photos
+  #     Photo.destroy_all("user_id = " + id.to_s + " AND is_profile = true")
+  #     self.profile_photo = ProfilePhoto.create!(:user_id=>id, 
+  #                                               :is_profile=>true, 
+  #                                               :file => photo) 
+  #   end 
+  # end
   
   
 #  def set_temp_photo

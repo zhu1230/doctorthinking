@@ -28,7 +28,7 @@ limitations under the License.
 			{
 				var img<%= photo.id %> = new Image();
 				img<%= photo.id %>.onload = function(){slide_show.add_slide(img<%= photo.id %>);};
-				img<%= photo.id %>.src = "<%= photo.public_filename(:display) %>";
+				img<%= photo.id %>.src = "<%= photo.url(:display) %>";
 			}
 			<% end %>
 		}

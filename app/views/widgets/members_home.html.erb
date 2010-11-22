@@ -24,9 +24,9 @@
 	<% @users.each do |user | %>
 		<% count = count + 1 %>
 		<div class="user_widget_user">
-			<% if user.profile_photo %>
+			<% if user.avatar %>
 
-				<%= link_to image_tag(user.profile_photo.public_filename(:small), :alt=>user.name), user_url(user) %>
+				<%= link_to image_tag(user.avatar.url(:small), :alt=>user.name), user_url(user) %>
 			<% else %>
 				<%= link_to '<div class="no_photo_user_widget"></div>', user_url(user) %>
 			<% end %>

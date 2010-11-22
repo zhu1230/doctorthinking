@@ -1,0 +1,11 @@
+if (!logged_in?)
+  page.insert_html 'bottom','bingli_vote_'+params[:id],:partial => 'shared/ajax_message',:locals => {:message => "您需要  "+(link_to '登录',login_url,:style=>'font-size: 1.0em;color:red')+"  后才能使用收藏功能。"}
+  page.call 'favoriteback',params[:id]
+else
+b=BingliInfo.find(params[:id])
+if(current_user.has_favorite?(b))
+   current_user.has_no_favorite(b)
+else
+  current_user.has_favorite(b)
+end
+end

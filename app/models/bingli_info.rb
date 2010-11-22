@@ -1,5 +1,7 @@
 class BingliInfo < ActiveRecord::Base
-  acts_as_commentable
+	cattr_reader :per_page
+	  @@per_page = 20
+	acts_as_commentable
   acts_as_voteable
   acts_as_favorite
   acts_as_taggable
@@ -13,7 +15,7 @@ with_page_views :buffer_size => 1, :days => 1, :model_name => 'post'
   # has_many :fine,:class_name=>"UsersRankBingliInfos",:conditions=>"rank_tag='fine'"
   # has_many :perfect,:class_name=>"UsersRankBingliInfos",:conditions=>"rank_tag='perfect'"
   # has_many :hide,:class_name=>"UsersRankBingliInfos",:conditions=>"rank_tag='hide'"
- validates_presence_of :title
+validates_length_of :title, :within => 5..30, :on => :create,  :too_long => I18n.t("activerecord.errors.messages.bingli_info.title.too_long_content"),:too_short => I18n.t("activerecord.errors.messages.bingli_info.title.too_short_content")
  validates_presence_of :tag_list,:message=>"最少要写一个"
  validates_associated :bingli
  validates_presence_of :bingli
@@ -26,7 +28,7 @@ accepts_nested_attributes_for :bingli, :allow_destroy => true, :reject_if => pro
     if !self.bingli.fuzhu_details.blank?
      fuzhu=self.bingli.fuzhu_details.detect{|fd|
 	  !fd.attachments.blank? }
-	fuzhu.attachments.first if fuzhu
+	fuzhu.attachments.first.file if fuzhu
     end
   end
 	def after_validation

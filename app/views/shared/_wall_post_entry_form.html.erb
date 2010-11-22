@@ -15,8 +15,8 @@ limitations under the License.
 %>
 <div id="wall_post_entry" style="display:none;">
 	<div class="wall_post_photo">
-		<% if current_user.profile_photo %>
-			<%= image_tag(current_user.profile_photo.public_filename(:thumb)) %>
+		<% if current_user.avatar %>
+			<%= image_tag(current_user.avatar.url(:thumb)) %>
 		<% end %>
 	</div>
 	<form id="wall_post_entry_form" name="wall_post_entry_form" action="/wall_posts/create" method="POST">

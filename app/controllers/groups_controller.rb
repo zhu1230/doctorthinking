@@ -119,7 +119,7 @@ class GroupsController < ApplicationController
       if @group.save
         if params[:group_photo] 
           # save group photo
-          @group.profile_photo = ProfilePhoto.create!(:is_profile=>true, :uploaded_data => params[:group_photo]) if params[:group_photo].size != 0 
+          @group.profile_photo = ProfilePhoto.create!(:is_profile=>true, :file => params[:group_photo]) if params[:group_photo].size != 0 
         end               
         flash[:notice] = 'Group was successfully created.'
         format.html { 
@@ -148,7 +148,7 @@ class GroupsController < ApplicationController
         if params[:group_photo] && params[:group_photo].size != 0 
           # remove old profile photos
           Photo.destroy_all("group_id = " + @group.id.to_s + " AND is_profile = true")
-          profile_photo = ProfilePhoto.create!(:group_id=>@group.id, :is_profile=>true, :uploaded_data => params[:group_photo]) if params[:group_photo].size != 0 
+          profile_photo = ProfilePhoto.create!(:group_id=>@group.id, :is_profile=>true, :file => params[:group_photo]) if params[:group_photo].size != 0 
           @group.profile_photo = profile_photo
         end         
         flash[:notice] = 'Group was successfully updated.'

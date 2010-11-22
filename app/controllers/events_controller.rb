@@ -90,8 +90,8 @@ class EventsController < ApplicationController
       if @event.save
         if params[:event_photo]  
           # save event photo
-          @event.profile_photo = ProfilePhoto.create!(:is_profile=>true, :uploaded_data => params[:event_photo]) if params[:event_photo].size != 0 
-          #profile_photo = ProfilePhoto.create!(:uploaded_data => params[:event_photo]) if params[:event_photo].size != 0 
+          @event.profile_photo = ProfilePhoto.create!(:is_profile=>true, :file => params[:event_photo]) if params[:event_photo].size != 0 
+          #profile_photo = ProfilePhoto.create!(:file => params[:event_photo]) if params[:event_photo].size != 0 
           #profile_photo.event_id = @event.id;
           #profile_photo.is_profile = true;
           #@event.profile_photo = profile_photo

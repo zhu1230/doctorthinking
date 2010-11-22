@@ -32,7 +32,7 @@ limitations under the License.
 		<% @user.groups.each do |group| %>
 			<div class="user_group">
 				<% if group.profile_photo %>
-					<%= link_to image_tag(group.profile_photo.public_filename(:small)), group_path(group.id) %>
+					<%= link_to image_tag(group.profile_photo.url(:small)), group_path(group.id) %>
 				<% else %>
 					<%= link_to 'No Photo', group_path(group.id) %>
 				<% end %>

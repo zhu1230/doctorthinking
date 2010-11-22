@@ -1,7 +1,7 @@
 <div class="photo_album">
 	<div class="photo_album_pic">	
 		<% if album.cover_photo %>
-			<%= image_tag(album.cover_photo.public_filename(:member)) %>
+			<%= image_tag(album.cover_photo.url(:member)) %>
 		<% else %> 
 			No Photos
 		<% end %> 

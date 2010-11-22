@@ -14,7 +14,7 @@ limitations under the License. %>
         <div class="blog_post blog_post_view">
             <div class="blog_post_photo">
                 <% if @blog_post.user.profile_photo %>
-                <%= link_to image_tag(@blog_post.user.profile_photo.public_filename(:medium), :alt=>@blog_post.user.name), user_url(@blog_post.user) %>
+                <%= link_to image_tag(@blog_post.user.profile_photo.url(:medium), :alt=>@blog_post.user.name), user_url(@blog_post.user) %>
                 <% end %>
             </div>
             <div class="blog_post_text">

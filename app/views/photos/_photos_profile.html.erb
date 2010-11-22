@@ -10,11 +10,11 @@
 	</div>
 	<div class="module_body" id="my_photos_body">
 		<% displayed = 0 %>
-		<% @user.photos.each do |photo| %>
+		<% @user.avatars.each do |photo| %>
 			<% if photo.is_profile == false || photo.is_profile == nil %>
 				<% displayed = displayed + 1 %>
 				<div class="photo_display">
-					<%= link_to image_tag(photo.public_filename(:medium)), photo_path(photo.id) %>
+					<%= link_to image_tag(photo.url(:medium)), photo_path(photo.id) %>
 				</div>
 			<% end %>
 		<% end %>

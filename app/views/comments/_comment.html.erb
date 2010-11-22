@@ -1,0 +1,26 @@
+<%@comment=comment%>
+<tr id="comment-<%=comment.id%>" class="comment">
+		<td class="comment-actions">
+			<table>
+				<tbody>
+					<tr>
+						<td class="comment-score">
+							<span title="number of 'great comment' votes received" class="cool">4</span>
+						</td>
+						<td>
+							<div class="comment-up comment-up-off" title="this is a great comment" style="visibility: hidden; ">up vote</div>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							<div class="comment-flag flag-off" title="flag this comment as noise, offensive, or spam" style="visibility: hidden; ">flag</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</td>
+	    <td class="comment-text">
+			<div style='word-break:break-all;'><%=in_place_text_area :comment,'comment'%> –&nbsp;<%= link_to(comment.user.name,user_path(comment.user),{:title => '',:class => 'comment-user'}) %><span class="mod-flair" title="moderator">♦</span> <span class="comment-date"><span title="<%=comment.updated_at%>"><%=comment.updated_at%></span><span><%=link_to '删除',nil,{:class => 'edit-comment-cancel'}%></span></span></div>
+		</td>
+</tr>

@@ -1,0 +1,11 @@
+p=params[:parent_id].split('_')
+#id=p[1][p[1].index('[')+1..p[1].index('[')+1]
+id=p[2]
+if p[0].blank? 
+  page.replace_html "typechilds[#{id}]",''
+  return
+end
+@type_childs=FuzhuType.find(:all,:conditions=>['parent_id=?',p[0]])
+#page.replace_html "typechilds[#{id}]",select_tag("fuzhu[#{id}][fuzhu_type]",options_for_select([['请选择','']])+options_from_collection_for_select(@type_childs,:id,:title))
+page << "if($('fuzhu_#{id}_fuzhu_type') != undefined){$('fuzhu_#{id}_fuzhu_type').replace(''); }"
+page.insert_html :before,"typechilds[#{id}]",select_tag("fuzhu[#{id}][fuzhu_type]",options_for_select([['请选择','']])+options_from_collection_for_select(@type_childs,:id,:title))

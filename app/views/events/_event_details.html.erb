@@ -18,7 +18,7 @@ limitations under the License.
 	<div class="module_body">
 		<div id="event_photo">
 			<% if (@event.profile_photo) %>
-				<%= image_tag(@event.profile_photo.public_filename(:thumb)) %>
+				<%= image_tag(@event.profile_photo.url(:thumb)) %>
 			<% else %>
 				No Photo
 			<% end %>

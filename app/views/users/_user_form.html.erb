@@ -93,8 +93,8 @@ limitations under the License.
 		</div>
 		<div class="form_field">
 			<label for="profile_photo">Profile Photo:</label>
-			<% if (@user.profile_photo) %>
-					<%= image_tag(@user.profile_photo.public_filename(:thumb)) %>
+			<% if (@user.avatar) %>
+					<%= image_tag(@user.avatar.url(:thumb)) %>
 			<% end %>
 			<%= file_field_tag :user_photo %>
 			<br/><br/><br/>

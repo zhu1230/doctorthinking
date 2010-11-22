@@ -1,0 +1,138 @@
+<%= stylesheet_link_tag "showone.css","bingli_comment.css" %>
+<%=javascript_include_tag "bingli_info.js"%>
+<%= javascript_include_tag 'lytebox.js'%>
+<%= stylesheet_link_tag 'lytebox.css'%>
+<%= stylesheet_link_tag "in_place_style_comment" %>
+<%= javascript_include_tag 'wysihat_engine_pack' %>
+<%= stylesheet_link_tag 'facebox', 'wysihat' %>
+<script type="text/javascript" charset="utf-8">
+var fkey='<%=form_authenticity_token%>'
+</script>
+<style type="text/css" media="screen">
+	.in_place_editor_form {width:730px;margin:0 auto;float:none;border-top:1px solid #d8d8d8;line-height:22px;padding:0px 0px 10px 30px; margin-bottom:20px;}
+	.inplace_select{float:left;margin-right: 20px;}
+</style>
+<%#=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>@bingli_info.keshi} %>
+ 
+<%#=render :partial=>"shared/nav3"%>
+
+<div class="listbox">
+    <div class="menu">
+        <div class="menu_tab3" style="margin-left:10px;">
+            <%=link_to "参与讨论",new_biz_bingli_info_bingli_comment_path(@bingli_info) %>
+        </div>
+        <div class="menu_tab3">
+            <%=link_to "发表病例",new_biz_bingli_info_path%>
+        </div>
+    </div>
+</div>
+</div>
+<div class="show_box">
+    <div class="menu">
+        <h1><%=@bingli_info.title %></h1>
+        <span class="info">
+            <%=link_to @user.nickname,:controller=>"user/personal",:action=>"index",:id=>@user.id %>
+            <font color="#999999">
+                发表于
+            </font>
+            <%=@bingli_info.thetime.to_s(:basic) %>
+<a href="#">
+                <u>
+                    与朋友分享此讨论
+                </u>
+            </a>
+            <u>
+                打印 
+            </u>
+            <font color="#FFB32E">
+                <u id='add_fav<%=@bingli_info.id%>'>
+                    <%#= if logged_in? && current_user.favorites.exists?(@bingli_info.id) then '已收藏' else (link_to_remote "收藏",:url=>{:controller=>'biz/bingli_info',:action=>'add_favorite',:id=>@bingli_info.id}) end %>
+                </u>
+            </font>
+        </span>
+    </div>
+    <div style="float:left;">
+      <div id='bingli_vote_<%=@bingli_info.id%>' class="vote">
+    <input type="hidden" value="<%=@bingli_info.id%>">
+    <span  class="vote-up-off" title="这个问题清晰，有用处。">支持</span>
+    <span class="vote-count-post"><%=@bingli_info.votes_count%></span>
+    <span class="vote-down-off" title="这个问题模糊，没有用处。">反对</span>
+
+    <span class="star-off<%=current_user.has_favorite?(@bingli_info) ? ' star-on' : '' if logged_in?%>" title="这是一个值得收藏的病例">收藏</span>
+    <div id='favorite_<%=@bingli_info.id%>' class="favoritecount<%=current_user.has_favorite?(@bingli_info) ? ' favoritecount-selected' : '' if logged_in?%>"><b><%=@bingli_info.favorites.size%></b></div>    
+
+</div>
+    </div>
+<%=render :partial => 'bingli',:object => @bingli%>
+	<div class='comments-bingli'>	
+		<li>
+			<div class='tags'>
+				<%for tag in @bingli_info.tags%><%=link_to tag.name,tagged_source_path(:controller=>'biz/bingli_infos',:tag => tag.name),{:class=>"post-tag",:title=>"显示更多关于 '#{tag.name}' 的病例" ,:rel=>"tag"}%><%end%></div>
+				<Br><div class='post-menu' style='margin-top:10px;width:500px;float:left;line-height:18px;color:#888888;'><%= link_to "修改", edit_biz_bingli_info_path(@bingli_info) if logged_in? && @bingli_info.user==current_user%>
+			</div>
+		</li>
+		<li>
+			<span >
+				<%=render :partial => 'comments/comments',:locals=>{:post=>@bingli_info}%>
+			</span>
+		</li>
+	</div>
+</div>
+<div class="blank">
+</div>
+<div class="comment_box">
+	<a name="tab-top"></a>
+	<a name="bingli-comment"></a>
+	<div id="answers-header">
+	        <div class="subheader answers-subheader">
+	            <h2>讨论<%="(#{@bingli_comments.size})" unless @bingli_comments.blank?%></h2>
+	            <div id="tabs">
+	                <%=link_to '最新',biz_bingli_info_path(@bingli_info,:type => 'new',:anchor => 'bingli-comment'),({:class => 'youarehere'} if params[:type]=='new')%>
+	<%=link_to '最早',biz_bingli_info_path(@bingli_info,:type => 'old',:anchor => 'bingli-comment'),({:class => 'youarehere'} if params[:type]=='old')%>
+	<%=link_to '投票',biz_bingli_info_path(@bingli_info,:type => 'vote',:anchor => 'bingli-comment'),({:class => 'youarehere'} if params[:type].nil? || params[:type]=='vote')%>
+	            </div>
+	        </div>
+	    </div>
+    <!-- <div class="menu">
+        <h1>讨论<%#="(#{@bingli_comments.size})" unless @bingli_comments.blank?%></h1>
+		<li class='order-link '><%#=link_to '最新',biz_bingli_info_path(@bingli_info,:type => 'new'),{:class => 'youarehere'}%></li>
+		<li class='order-link'><%#=link_to '最早',biz_bingli_info_path(@bingli_info,:type => 'old')%></li>
+		<li class='order-link'><%#=link_to '按投票',biz_bingli_info_path(@bingli_info,:type => 'vote')%></li>
+    </div> -->
+    <div class="cnt">
+        <ul id="bingli_comments">
+        	 <%=render :partial=>"shared/bingli_comment",:collection=>@bingli_comments%>
+        </ul>
+        <div class="blank">
+        </div>
+    </div>
+</div>
+<div class="blank">
+</div>
+<div id='comment-form' style='display:none;'>
+	<table><tbody><tr><td><%=text_area_tag 'comment',nil,{:minlimit=>10,:maxlimit=>600,:cols => 68, :rows => 3,:id => 'comment_id'}%></td><td><input type="submit" value="添加评论" tabindex="205"></td></tr><tr><td colspan="2"><div id='comment_counter' class="text-counter cool">最少10个字符</div><span id='comment-form-error' class="form-error"></span></td></tr></tbody></table>
+	</div>
+<%=will_paginate @bingli_comments,:class=>"apple_pagination" %>
+<div class="user_box">
+    <div class="menu">
+        <h1>我要讨论</h1>
+    </div>
+   <div class="cnt">
+        <%if logged_in? %>
+		<%form_for :bingli_comment,{:url=>biz_bingli_info_bingli_comments_path(@bingli_info),:html => {:id => 'bingli_comment_form'}  }do |bc| %>
+		 
+		<%=bc.wysihat_editor :content%>
+		<!-- {:placeholder=>"对病例有疑问？现在提问，或者发起回应表达你的观点",:minlimit=>10,:maxlimit=>9000,:cols=>"",:rows=>"",:style=>"width:600px;height:100px;border:1px #ccc solid;color:#999;font-size:12px;padding:10px; float:left;"} -->
+		<%#=bc.hidden_field :bingli_info_id,:value=>@bingli_info.id.to_s%>
+		 <label style="top:100px;padding:0px 0px 0px 30px;bottom: 0px;"><%=submit_tag "提交"%></label>
+		    </div>
+		<span id='bingli_comment_content_counter' class="text-counter cool" style='float:left;margin-left:20px;margin-top:-5px;'>最少10个字符</span><span class="form-error"></span>
+		
+		<%end%>
+        <%else %>
+        <h1>您尚未
+            <%=link_to('登录',login_url,{:style =>"color:'#FF6600'"}) %>，不能参与讨论<%=link_to "我要注册>>",signup_url,{ :style => "color:#FF0000"} %></font>
+        </h1>
+		
+		<%end%>
+		</div>

@@ -28,7 +28,7 @@ limitations under the License.
 	<div class="form_field">
     	<label for="photo">图片:</label>
 		<% if (@group.profile_photo) %>
-				<%= image_tag(@group.profile_photo.public_filename(:thumb)) %>
+				<%= image_tag(@group.profile_photo.url(:thumb)) %>
 		<% end %>
 		<%= file_field_tag :group_photo, :class=>'group_photo_field' %>
 	</div>

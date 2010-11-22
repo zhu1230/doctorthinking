@@ -1,0 +1,109 @@
+<div class="bingli">
+        <ul>
+	        <li>
+	            <font color="#004575">
+	                性别：
+	            </font>
+	            <%=bingli.sex==1? "男".to_s : "女".to_s %>&nbsp;&nbsp;&nbsp;
+	            <font color="#004575">
+	            </font>
+	            <%=bingli.age.blank? ? '不详' : bingli.age.to_s+'岁' %>
+	            &nbsp;&nbsp;&nbsp;
+	            <font color="#004575">
+	                婚姻状况：
+	            </font>
+	            <%= bingli.marriage ? "已婚" : "未婚" %>
+	            <br/>
+	            <font color="#004575">
+	                主诉：
+	            </font>
+	            <%=bingli.zhusu %>
+
+	            <%if !bingli.yibanbuchong.blank?%><br/><font color="#004575">一般情况补充：</font><%=bingli.yibanbuchong%><%end%>
+	        </li>
+            <%if !bingli.zhuyaozhengzhuang.blank? %>
+            <li>
+                <span class="name">主要症状：</span>
+                <p class="intro">
+                    <%=bingli.zhuyaozhengzhuang %>
+                </p>
+            </li>
+            <%end %>
+            <% if !bingli.xianbingshi.blank? %>
+            <li>
+                <span class="name">现病史 ：</span>
+                <p class="intro">
+                    <%=bingli.xianbingshi %>
+                </p>
+            </li>
+            <%end %>
+            <%if !bingli.jiwang.blank? %>
+            <li>
+                <span class="name">既往病史 ：</span>
+                <p class="intro">
+                    <%=bingli.jiwang %>
+                </p>
+            </li>
+            <%end %>
+			<%if !bingli.tigejiancha.blank?%>
+			<li>
+			<span class="name">体格检查 ：</span>
+			 <p class="intro">
+                    <%=bingli.tigejiancha %>
+                </p>
+				</li>
+			<%end%>
+            <%if !bingli.fuzhu_details.blank? %>
+            <%bingli.fuzhu_details.each {|fd| %>
+            <li>
+                <span class="name">辅助诊断：</span>
+                <p class="intro">
+                    <%=fd.fuzhu_type.name+" : "+fd.content %>
+                    <br/>
+                    <%fd.attachments.each {|pic| %><span class="pic"><%="附件"+(fd.attachments.index(pic)+1).to_s %><%=link_to image_tag(pic.file.url(:thumb),:style=>"border:0px"),pic.file.url ,:toptions=>"effect=transform,group="+fd.id.to_s+",layout=quicklook,shaded=1",:rel=>"lytebox[0]"%>
+                        <br/>
+                        
+                    </span>
+               
+                <%} %>
+                     </p>
+            </li>
+            <% } end %>
+            <%if !bingli.chubu_details.blank? %>
+	<li>
+              <span class="name">初步诊断：</span>
+              <%bingli.chubu_details.each{|c|%>
+                <p class="intro">
+                    <%=(bingli.chubu_details.index(c)+1).to_s+":" if bingli.chubu_details.size > 1%><%=c.content%>
+                </p>
+                <%}%>
+            </li>
+            <%end %>
+            <%if !bingli.question_details.blank? %>
+            <li>
+                <span class="name">疑问：</span>
+                <%bingli.question_details.each{|q|%>
+                <p class="intro">
+                    <%=(bingli.question_details.index(q)+1).to_s+":" if bingli.question_details.size > 1%><%=q.content%>
+                </p>
+                <%}%>
+            </li>
+            <%end %>
+            <%if !bingli.final.blank? %>
+            <li>
+                <span class="name">最终诊断：</span>
+                <p class="intro">
+                    <%=bingli.final %>
+                </p>
+            </li>
+            <%end %>
+            <%if !bingli.zongbuchong.blank?%>
+            <li>
+              <span class="name">病例补充：</span>
+                <p class="intro">
+                    <%=bingli.zongbuchong %>
+                </p>
+            </li>
+            <%end%>
+        </ul>
+    </div>

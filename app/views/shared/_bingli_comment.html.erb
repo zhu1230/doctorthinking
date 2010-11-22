@@ -1,72 +1,10 @@
-<style type="text/css" media="screen">
-	.comments>table{width:100%;}
-	.comments{float:left;width:860px;border-top:dotted 1px #aaa;margin-top:10px;padding-bottom:10px;line-height:135%;color:#444;}
-	.comments{border-top:none;}
-	.comment img{vertical-align:middle;}
-	.comment-score span{font-size:110%;color:#999;font-weight:bold;padding-right:2px;}
-	.cool{color:#999!important;}
-	.comment-up-off,.comment-up-on{background-image:url(/images/sprites.png);background-repeat:no-repeat;overflow:hidden;text-indent:-9999em;font-size:1px;}
-	.comment-up-off{background-position:0 -410px;}.comment-up-on{background-position:0 -390px;}
-	.comment-up-off,.comment-up-on{display:inline-block;height:14px;width:14px;vertical-align:text-bottom;line-height:12px;}
-	.comment-flag,.comment-up,.comment-delete{visibility:hidden;cursor:pointer;}
-	.comment-flag,.flag-off,.vote-accepted-off,.vote-accepted-on{text-indent:-9999em;font-size:1px;}
-	.comment-text code{background-color:#fff;padding:1px 5px 1px 5px;}
-	.comment-text,.comment-form{vertical-align:text-top;padding:0 6px 0 7px;}.comment-text .comment-edited{vertical-align:top;margin-top:3px;margin-left:2px;}.comment-text a{color:#444;border-bottom:1px #444 dotted;}.comment-text a:hover{color:#6C0000;border-bottom:1px #6C0000 dotted;text-decoration:none;}
-	.comment-form>form>table{text-align:left;margin-top:5px;margin-right:5px;vertical-align:top;}.comment-form>form>table td{vertical-align:top;}.comment-form>form input{margin-left:10px;margin-top:1px;width:100px;display:block;cursor:pointer;}.comment-form .edit-comment-cancel{margin-left:10px;}.comment-form>form textarea{margin-bottom:4px;height:5em;}
-	a.comment-user{border-bottom:none;color:#6C0000;text-decoration:none;white-space:nowrap;padding:0;}a.comment-user.owner{padding:2px 5px 2px 5px;}.comment-date{color:#999;}
-	.history-table .comments{border-top:none;}
-	.comments {
-border-top: 1px dotted #AAA;
-border-top-style: dotted;
-border-top-width: 1px;
-border-top-color: #AAA;
-}
-table {
-border-spacing: 2px 2px;
-border-collapse: separate;
-border-color: gray;
-border-top-color: gray;
-border-right-color: gray;
-border-bottom-color: gray;
-border-left-color: gray;
-border-collapse: separate;
-display: table;
-}
-tbody {
-border-color: inherit;
-display: table-row-group;
-vertical-align: middle;
-border: ;
-border-style: initial;
-border-color: initial;
-}
-tr.comment>td{padding-top:5px;padding-bottom:5px;border-bottom:dotted 1px #ddd;}tr.comment-hover{background-color:#fafafa;}
-.user-gravatar32 {
-float: left;
-height: 32px;
-width: 32px;
-}
-.user-info{height:35px;width:205px;}.user-info .user-gravatar32{float:left;width:48px;height:48px;}.user-info .user-action-time{margin-top:2px;margin-bottom:4px;}
-.user-info .user-details{float:left;margin-left:5px;width:145px;overflow:hidden;white-space:nowrap;}
-.user-details{color:#888;line-height:17px;}#revisions{margin-top:20px;margin-left:20px;}.revision{border:2px solid #ddd;}
-.user-details td{color:Black;padding:4px 0 4px 0;}
-.user-action-time{margin-top:2px;margin-bottom:4px;}
-.vt{vertical-align:top;}
-.post-signature{padding-left:5px;padding-top:2px;text-align:left;vertical-align:top;width:175px;height:74px;}
-
-.comments-link {
-	float:left;
-color: #888;
-padding: 0px 3px 2px;
-}
-</style>
-
+<a name="<%=bingli_comment.id%>"></a>
 <li id='bingli_comment_<%=bingli_comment.id%>'>
 <div style='width:30px;float:left'>
-    <div id='post_<%=bingli_comment.id%>' class="vote">
+    <div id='post_vote_<%=bingli_comment.id%>' class="vote">
         <input type="hidden" value="<%=bingli_comment.id%>">
-        <span id='vote' class="vote-up-off" title="这个答案清晰，有用处。">支持</span>
-        <span class="vote-count-post"><%=bingli_comment.votes_count%></span>
+        <span id='vote' class="vote-up-off" title="这个答案清晰，有用处。">支持</span><%puts bingli_comment.votes_against.to_i%>
+        <span class="vote-count-post"><%=bingli_comment.votes_for.to_i - bingli_comment.votes_against.to_i%></span>
         <span class="vote-down-off" title="这个答案模糊，没有用处。">反对</span>
     </div>
 </div>
@@ -77,68 +15,28 @@ padding: 0px 3px 2px;
                 </p>
               </div>
               
-              <table style='width:100%;'>
+              <table style='width:100%;height:77px;'>
             <tbody><tr>
             <td class="vt">
-                <div class="post-menu"><a href="/questions/31765/voting-bug-so-mistakenly-lets-me-change-my-vote-1x-but-then-locks-it-at-that/31766#31766" title="permalink to this answer">link</a><span class="lsep">|</span><a id="flag-post-31766" title="flag this post for serious problems or moderator attention">flag</a></div> 
+                <div class="post-menu"><%= link_to "修改", edit_biz_bingli_info_bingli_comment_path(bingli_comment.bingli_info,bingli_comment) if logged_in? && bingli_comment.user==current_user%><span class="lsep">|</span><a href="/questions/31765/voting-bug-so-mistakenly-lets-me-change-my-vote-1x-but-then-locks-it-at-that/31766#31766" title="permalink to this answer">link</a><span class="lsep">|</span><a id="flag-post-31766" title="flag this post for serious problems or moderator attention">flag</a></div> 
             </td>
             
             <td align="right" class="post-signature">
-            <div class="user-info"><div class="user-action-time">
-              
-                    发表于 <%=bingli_comment.thetime.strftime("%Y-%m-%d %H:%M:%S") %>
-                  </div><div class="user-gravatar32"><%=link_to image_tag(bingli_comment.user.photo.public_filename(:small)),:controller=>"user/personal",:action=>"index",:id=>bingli_comment.user.id %></div><div class="user-details">
-                    <font color="#F39B1D"><%=link_to bingli_comment.user.nickname,:controller=>"user/personal",:action=>"index",:id=>bingli_comment.user.id %></font>
-                    <span class="mod-flair" title="moderator">♦</span><br><span class="reputation-score" title="reputation score 21690">21.7k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="24 silver badges"><span class="badge2"></span><span class="badgecount">24</span></span><span title="57 bronze badges"><span class="badge3"></span><span class="badgecount">57</span></span></div></div>
+            <div class="user-info"><div class="user-action-time"> 发表于 <%=bingli_comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
+									<div class="user-gravatar32"><%=link_to image_tag(bingli_comment.user.avatar.url(:thumb)),user_path(bingli_comment.user)%></div>
+									<div class="user-details"><font color="#F39B1D"><%=link_to bingli_comment.user.nickname,user_path(bingli_comment.user) %></font>
+                    							<span class="mod-flair" title="moderator">♦</span><br><span class="reputation-score" title="reputation score 21690">21.7k</span><span title="2 gold badges">
+													<span class="badge1"></span><span class="badgecount">2</span></span><span title="24 silver badges">
+														<span class="badge2"></span><span class="badgecount">24</span></span>
+														<span title="57 bronze badges"><span class="badge3"></span><span class="badgecount">57</span></span>
+									</div>
+			</div>
             </td>
             </tr>
             </tbody></table>
                 <div class="info">
-
- <div id="comments-31766" class="comments">
-        <table>
-        <tbody>
- <%bingli_comment.comments.each{ |comment| %>                    
-    <tr id="comment-<%=comment.id%>" class="comment">
-        <td class="comment-actions"><table><tbody><tr>
-<td class="comment-score">
-<span title="number of 'great comment' votes received" class="cool">3</span>
-</td>
-<td>
-<div class="comment-up comment-up-off" title="this is a great comment" style="visibility: hidden; ">up vote</div>
-</td></tr>
-<tr><td>&nbsp;</td><td><div class="comment-flag flag-off" title="flag this comment as noise, offensive, or spam" style="visibility: hidden; ">flag</div></td></tr></tbody></table></td>
-        <td class="comment-text"><div>So the edit allowed me to change my vote 1x and since I was outside the INITIAL vote timer, I was unable to instantly switch it back?  Seems like the changed vote should start a new timer, that way I would be able to correct my mistake immediately rather than being instantly locked into the first change I made.  That is no longer a "vote is too old" style functionality.  That is a "your vote is so old, you're only allowed 1 change per edit" style functionality –&nbsp;<a href="/users/132898/allen" title="194 reputation" class="comment-user owner">Allen</a> <span class="comment-date"><span title="2009-12-04 02:19:03Z">Dec 4 '09 at 2:19</span></span></div></td>
-    </tr>
-  <%}%>          
-    <tr id="comment-67832" class="comment">
-        <td class="comment-actions"><table><tbody><tr>
-<td class="comment-score">
-<span title="number of 'great comment' votes received" class="cool">4</span>
-</td>
-<td>
-<div class="comment-up comment-up-off" title="this is a great comment" style="visibility: hidden; ">up vote</div>
-</td></tr>
-<tr><td>&nbsp;</td><td><div class="comment-flag flag-off" title="flag this comment as noise, offensive, or spam" style="visibility: hidden; ">flag</div></td></tr></tbody></table></td>
-        <td class="comment-text"><div>There's only the first timer on voting. After that, each edit allows one vote action only. –&nbsp;<a href="/users/9314/random" title="21690 reputation" class="comment-user">random<span class="mod-flair" title="moderator">♦</span></a> <span class="comment-date"><span title="2009-12-04 02:25:59Z">Dec 4 '09 at 2:25</span></span></div></td>
-    </tr>
-
-        </tbody>
-    
-        <tfoot>
-            <tr>
-                <td></td>
-                <td class="comment-form"><form id="add-comment-<%=bingli_comment.id%>">
-                	
-                </form></td>
-            </tr>
-        </tfoot>
-    
-        </table>
-    </div>
-	<div style='float:left;'>
-<%= link_to_function "添加评论","",{:id=>"comments-link-#{bingli_comment.id}",:class=>"comments-link", :title=>"对此讨论意见添加评论"} if logged_in? %>
-        </div>
+	
+<%=render :partial => 'comments/comments',:locals=>{:post=>bingli_comment}%>
 		
                     <%#=render :partial=>"shared/rank_bingli_comment",:locals=>{:bingli_comment=>bingli_comment} %>
                 </div>

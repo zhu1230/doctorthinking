@@ -10,7 +10,7 @@
   <%@bingli_comments.each{|bingli_comment|%>
   <tr>
     <td><%=@bingli_comments.find(:all,:conditions=>["user_id=:user_id",{:user_id=>current_user.id}]).size%></td>
-    <td><%=link_to bingli_comment.bingli_info.title,:controller=>'biz/bingli_info',:action=>'showOne',:id=>bingli_comment.bingli_info.id%></td>
+    <td><%=link_to bingli_comment.bingli_info.title,biz_bingli_info_path(bingli_comment.bingli_info)%></td>
     <td><%=bingli_comment.bingli_info.thetime%></td>
     <td><%=@bingli_comments.size%></td>
     <td><div id='add_fav<%=bingli_comment.bingli_info.id%>'>

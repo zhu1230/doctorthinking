@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "bingli_infos.css" %>
+<%= javascript_include_tag "bingli_infos.js" %>
+
+<div class="mainnav2"> 
+    <ul> 
+        <li class="begin"><a href="#">栏目一</a></li> 
+        <li><a href="#">栏目二</a></li> 
+        <li><a href="#">栏目三</a></li> 
+    </ul> 
+</div> 
+
+<div class="listbox"> 
+	<div class="menu"> 
+    	<div class="<%=params[:action]=="index" ? "menu_tab1" : "menu_tab2"%>"><%=link_to "最  新",biz_bingli_infos_path%></div>
+        <div class="<%=params[:action]=="active" ? "menu_tab1":  "menu_tab2"%>"><%=link_to "活  跃",active_biz_bingli_infos_path%></div>
+        <div class="<%=params[:action]=="hot" ? "menu_tab1" : "menu_tab2"%>"><%=link_to "热  门",hot_biz_bingli_infos_path%></div>
+		<div class="<%=params[:action]=="week"?"menu_tab1":"menu_tab2"%>">   <%=link_to "近一周",week_biz_bingli_infos_path%></div>
+		<div class="<%=params[:action]=="month"?"menu_tab1":"menu_tab2"%>"><%=link_to "近一月",month_biz_bingli_infos_path%></div>
+        <div class="menu_tab3"><%=link_to "发表病例",new_biz_bingli_info_path%></div> 
+    </div> 
+    
+
+</div> 
+<%= render :partial => 'bingli_infos_list',:locals => {:bingli_infos => @bingli_infos} %>

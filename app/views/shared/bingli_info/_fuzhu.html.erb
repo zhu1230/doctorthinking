@@ -12,7 +12,7 @@
     </span>
     <div id="file_upload_scope">
 	<%fuzhu.fields_for :attachments do |att|%>
-        <div id='upload_file' class="upload_file"><h1>相关附件：</h1><%=att.file_field :uploaded_data%><%=link_to_function "×删除","if(this.up().up().select('div.upload_file').size()==1){this.previous('input').value='';}else{this.up().remove();}"%>
+        <div id='upload_file' class="upload_file"><h1>相关附件：</h1><%=att.file_field :file%><%=link_to_function "×删除","if(this.up().up().select('div.upload_file').size()==1){this.previous('input')setValue('');}else{this.up().remove();}"%>
 
         </div>
 <%end%>

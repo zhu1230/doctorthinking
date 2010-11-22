@@ -20,8 +20,8 @@ ul,li {list-style-type:none;list-style-images:none;}
 <div class="area">
 	<div style="width:860px;background:#F5F9FA;float:left;border-bottom:1px solid #d8d8d8;padding:10px;">
 		<div style="float:left;width:96px;">
-			<% if @message.sender.profile_photo %>
-				<%= link_to image_tag(@message.sender.profile_photo.public_filename(:medium), :alt=>@message.sender.name), user_url(@message.sender) %>
+			<% if @message.sender.avatar %>
+				<%= link_to image_tag(@message.sender.avatar.url(:medium), :alt=>@message.sender.name), user_url(@message.sender) %>
 			<% else %>
 				<%= link_to @message.sender.name, user_url(@message.sender) %>
 			<% end %>
@@ -40,7 +40,7 @@ ul,li {list-style-type:none;list-style-images:none;}
     	<%=@message.body%>
 </p>
     </div>
-    <div class="message_footer"><img src="/images/message_icon1.gif" border="0" /><%=link_to "返回",:back%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/message_icon2.gif" border="0" /> <%=link_to "删除",@message,:method=>:delete,:confirm=>"您确认要删除吗？"%>
+    <div class="message_footer"><img src="/images/message_icon1.gif" border="0" /><%=link_to "返回",messages_path%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/message_icon2.gif" border="0" /> <%=link_to "删除",@message,:method=>:delete,:confirm=>"您确认要删除吗？"%>
 		<div style="float:right;">	<% if !(@message.sender == current_user) %>
 				<%=link_to "回复",new_message_path({:recipient_id=>@message.sender.id, :subject=>'RE: ' + @message.subject}) %>
 			<% end %>

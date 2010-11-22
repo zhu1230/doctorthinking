@@ -22,7 +22,7 @@ limitations under the License.
 </div>	
 <div id="edit_photo">
 	<div id="photo_pic">
-		<%= link_to image_tag(@photo.public_filename()), @photo.public_filename() %>
+		<%= link_to image_tag(@photo.url()), @photo.url() %>
 	</div>
 	<div id="edit_photo_form">					
 			<label for="title">Title:</label>
