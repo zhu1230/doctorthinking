@@ -6,11 +6,17 @@ bingli_infos:
     show: "病例讨论"
     edit: "修改病例讨论"
     tagged: "搜索病例标签"
+users:
+    new: '用户注册'
+    create: '用户注册'
+    forgot: "重设密码"
 search:
     do_search: "病例讨论列表"
 bingli_comments:
     new: "发表讨论"
+    create: "发表讨论"
     edit: "编辑讨论"
+    update: "编辑讨论"
 meet:
     index: "会议列表"
     input: "发表会议"
@@ -22,9 +28,6 @@ groups:
     participate: "我参与的圈子"
 sessions:
     new: "用户登录"
-users:
-    new: "用户注册"
-    forgot: "重设密码"
 user:
     account: "帐户资料修改"
     pass_change: "密码修改"

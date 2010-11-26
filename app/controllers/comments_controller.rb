@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	require_role 'user',:except => [:index]
   def index
   end
 
@@ -13,6 +14,7 @@ class CommentsController < ApplicationController
   end
 
   def update
+	
   end
 
   def destroy

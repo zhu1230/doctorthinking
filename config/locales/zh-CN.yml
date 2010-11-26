@@ -157,6 +157,7 @@ zh-CN:
           title: "主题"
           tag_list: "标签"
           zhusu: "主诉"
+          fuzhu_type_id: '辅助检查'
         bingli_comment:
           content: "讨论内容"
         comment:

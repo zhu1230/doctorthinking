@@ -3,3 +3,8 @@ log/*
 public/photos/*
 config/deploy.rb
 public/attachments/*
+public/tmp/*
+public/system/*
+public/attachment_miscs/*
+index/*
+

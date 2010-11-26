@@ -1,5 +1,7 @@
 <%= stylesheet_link_tag "fabiao"%>
 <%= javascript_include_tag "input.js"%>
+<%= javascript_include_tag 'lytebox.js'%>
+<%= stylesheet_link_tag 'lytebox.css'%>
 <%= error_messages_for :bingli_info,:header_message=>"请重试！",:message=>"在建立病例时出现了一些问题：",:class=>"validation" %>
 <%#=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>Keshi.all} %>
 <%=render :partial=>"shared/nav3"%>
@@ -16,12 +18,12 @@
     </div>
     <div class="cnt">
         <span class="title"><h2>主要内容</h2></span>
-        <span class="tab"><h1>主题：</h1><%=f.text_field :title,{:minlimit=>5,:maxlimit=>30,:style=>"border:1px #889BAA solid;width:250px;"}%>
+        <span class="tab"><h1>主题：</h1><%=f.text_field :title,{:minlimit=>5,:maxlimit=>50,:style=>"border:1px #889BAA solid;width:250px;"}%>
             <font color="red">
                 *
             </font>
             <font id='bingli_info_title_counter' color="#AFAFAF">
-                最多可输入30个字符
+                最多可输入50个字符
             </font>
         </span>
         <span class="tab"><h1>标签：</h1><%#=f.selectalready,BingliInfo.tag_counts_on(:tags,{:limit=>5}).collect{|t|[t.name,t.id]},{:prompt=>"--选择已有标签--"} %>
@@ -72,7 +74,7 @@
         <%=render :partial=>"shared/bingli_info/chubu",:locals=>{:chubu=>chubu} %>
 		<%end%>
 		</div>
-        <span class="title2"><h3>疑    问</h3><h4><%=link_to_function '+我要添加',"new Insertion.Bottom('yiwen','<div id=new style=display:none>'+$('yiwen_blank').innerHTML+'</div>');new Effect.Appear('new');$('new').id='';" %></h4></span>
+        <span class="title2"><h3>疑    问</h3><h4><%=link_to_function '+我要添加',"add_new_question();" %></h4></span>
 		<div id='yiwen'>
 		<%bingli.fields_for :question_details do |question|%>
 			<%=render :partial=>"shared/bingli_info/yiwen",:locals=>{:question=>question} %>

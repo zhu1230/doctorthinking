@@ -1,26 +1,26 @@
-<%@comment=comment%>
 <tr id="comment-<%=comment.id%>" class="comment">
 		<td class="comment-actions">
 			<table>
 				<tbody>
 					<tr>
-						<td class="comment-score">
-							<span title="number of 'great comment' votes received" class="cool">4</span>
-						</td>
-						<td>
-							<div class="comment-up comment-up-off" title="this is a great comment" style="visibility: hidden; ">up vote</div>
-						</td>
+						<!-- <td class="comment-score">
+													<span title="number of 'great comment' votes received" class="cool"></span>
+												</td>
+												<td>
+													<div class="comment-up comment-up-off" title="this is a great comment" style="visibility: hidden; ">不错</div>
+												</td> -->
 					</tr>
 					<tr>
 						<td>&nbsp;</td>
 						<td>
-							<div class="comment-flag flag-off" title="flag this comment as noise, offensive, or spam" style="visibility: hidden; ">flag</div>
+							<div class="comment-flag flag-off" title="flag this comment as noise, offensive, or spam" style="visibility: hidden; ">举报</div>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</td>
 	    <td class="comment-text">
-			<div style='word-break:break-all;'><%=in_place_text_area :comment,'comment'%> –&nbsp;<%= link_to(comment.user.name,user_path(comment.user),{:title => '',:class => 'comment-user'}) %><span class="mod-flair" title="moderator">♦</span> <span class="comment-date"><span title="<%=comment.updated_at%>"><%=comment.updated_at%></span><span><%=link_to '删除',nil,{:class => 'edit-comment-cancel'}%></span></span></div>
+			<div style='word-break:break-all;'><%= h comment.comment%> –&nbsp;<%= link_to(comment.user.login,user_path(comment.user),{:title => '',:class => "comment-user #{comment.user==current_user ? 'owner' : ''}"}) %><span class="mod-flair" title="moderator">♦</span> <span class="comment-date"><span title="<%=comment.updated_at%>"><%=comment.updated_at.to_s(:basic)%></span><span><%=link_to_function '修改',"edit_comment('#{comment.id}');" if logged_in? && current_user==comment.user  && comment.created_at > 1.hours.ago %></span>&nbsp;<span><%=link_to_remote '删除',:url => comment_path(comment),:method => :delete,:confirm =>'确定要删除此评论吗？'%></span></span></div>
+			<form id="edit-comment-<%=comment.id%>" class="dno"><div class="dno"><%=comment.comment%></div></form>
 		</td>
 </tr>

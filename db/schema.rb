@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101122153813) do
+ActiveRecord::Schema.define(:version => 20101124145526) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -293,6 +293,16 @@ ActiveRecord::Schema.define(:version => 20101122153813) do
   end
 
   create_table "feeds", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "flags", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "flaggable_id"
+    t.string   "flaggable_type"
+    t.integer  "flaggable_user_id"
+    t.string   "reason"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

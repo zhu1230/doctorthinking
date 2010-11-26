@@ -3,11 +3,11 @@
 	<%= f.hidden_field(:editor, :value => params[:editor]) %>
 
   <p>
-    <%= f.label :file %><br/>
+    <%= f.label :title,'文件:' %><br/>
     <%= f.file_field :file %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit '上传文件'%>
   </p>
 
 <% end %>

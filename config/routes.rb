@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :flags
+
   map.resources :wysihat_files
 
 
@@ -174,17 +176,15 @@ map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
  map.namespace :biz do |biz|
  	biz.resources :bingli_infos,:member => {:favorite => :get,:voteup => :get,:votedown => :get},:collection => {:hot => :get,:active => :get,:week => :get,:month => :get} do |bi|
  		bi.resources :comments
-		bi.resources :bingli_comments,:member => {:voteup => :get,:votedown => :get} do |bc|
-			bc.resources :comments
-			bc.resources :tags
-		end
+		bi.resources :bingli_comments
  		# bi.resources :tags
  	end
-	# biz.resources :bingli_comments ,:member => {:voteup => :get,:votedown => :get} do |bc|
-	# 	bc.resources :comments
-	# 	bc.resources :tags
-	# end
+	biz.resources :bingli_comments ,:member => {:voteup => :get,:votedown => :get} do |bc|
+		bc.resources :comments
+		bc.resources :tags
+	end
  end
+ map.resources :comments
  map.with_options :controller => 'pages' do |page|
  	page.about 'about',:action => 'about'
 	page.privacy 'privacy',:action => 'privacy'

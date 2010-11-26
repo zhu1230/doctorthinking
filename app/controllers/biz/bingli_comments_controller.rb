@@ -18,7 +18,7 @@ class Biz::BingliCommentsController < ApplicationController
 	# 					    :plugins => %w{contextmenu paste media emotions table fullscreen}},
 	# 					  :only => [:input]# tiny_mce考虑的非常贴心，这里是限定哪些action中起用
 						
-  require_role "user",:only=>[:save,:update,:edit,:input,:create]
+  require_role "user",:only=>[:save,:update,:edit,:input,:create,:new]
 
   def input
     
@@ -65,9 +65,18 @@ class Biz::BingliCommentsController < ApplicationController
 		@bingli_comment=BingliComment.find(params[:id],:include => [:bingli_info])	
 	end
 	def create
+		# if (bc=current_user.bingli_comments.recent.limit(1).first).updated_at > 30.seconds.ago
+		# 	flash.now[:warning]="30秒内仅能发表一个讨论，请稍后重试。"
+		# 	render :action => :new 
+		# 	 return
+		# end
 		@bingli_comment=BingliComment.new(params[:bingli_comment])
 		@bingli_comment.bingli_info=BingliInfo.find(params[:bingli_info_id])
 		@bingli_comment.user=current_user
+		if (bc=current_user.bingli_comments.recent.limit(1).first).updated_at > 30.seconds.ago
+			flash.now[:warning]="30秒内仅能发表一个讨论，请稍后重试。"
+			render :action => :new and return
+		end
 		if(@bingli_comment.save)
 			flash[:success]='讨论发表成功！'
 			 locate_bingli_comment(@bingli_comment)
@@ -80,7 +89,8 @@ class Biz::BingliCommentsController < ApplicationController
 	def locate_bingli_comment(bingli_comment)
 		count=BingliComment.count(:conditions=>["bingli_info_id=:id and ((vote_for_count - vote_against_count) > :count or ((vote_for_count - vote_against_count) = :count and  id < :bid))",{:id => bingli_comment.bingli_info.id,:count => bingli_comment.vote_value,:bid => bingli_comment.id}])
 		page=(count / BingliComment.per_page)+1
-		redirect_to biz_bingli_info_url(bingli_comment.bingli_info,:page => page,:anchor => bingli_comment.id)
+		redirect_to biz_bingli_info_url(bingli_comment.bingli_info,:page => page,:anchor => bingli_comment.id),:flash =>{:highlight =>bingli_comment.id } 
+	
 	end
 	
 	

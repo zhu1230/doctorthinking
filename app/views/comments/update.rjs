@@ -1,0 +1,8 @@
+comment=Comment.update(params[:id],params[:comment])
+if comment.errors.blank?
+	page.replace "comment-#{comment.id}",:partial=>'comments/comment',:locals=>{:comment=>comment}
+	page.visual_effect :highlight,"comment-#{comment.id}"
+	page << "later_register($('comment-#{comment.id}'));"
+else
+page.insert_html "bottom","comment-form-error-#{comment.id}",:partial => 'shared/ajax_message',:locals => {:message => (comment.errors.full_messages.join '-')}
+end	

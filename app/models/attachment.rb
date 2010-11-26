@@ -10,5 +10,14 @@ class Attachment < ActiveRecord::Base
 # def random_tempfile_filename
 # "#{rand Time.now.to_i}"
 # end
+attr_accessor :new_by_build
+@new_by_build=false;
+def new_by_build?
+	@new_by_build || false
+end
+def edit_file=(f)
+	pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+f.inspect
+	self.file.assign File.new(File.join(Rails.public_path,'tmp',f))
+end
 
 end

@@ -55,12 +55,12 @@
 			<%end%>
             <%if !bingli.fuzhu_details.blank? %>
             <%bingli.fuzhu_details.each {|fd| %>
-            <li>
+            <li style='background-color:#FEFFFE'>
                 <span class="name">辅助诊断：</span>
                 <p class="intro">
                     <%=fd.fuzhu_type.name+" : "+fd.content %>
                     <br/>
-                    <%fd.attachments.each {|pic| %><span class="pic"><%="附件"+(fd.attachments.index(pic)+1).to_s %><%=link_to image_tag(pic.file.url(:thumb),:style=>"border:0px"),pic.file.url ,:toptions=>"effect=transform,group="+fd.id.to_s+",layout=quicklook,shaded=1",:rel=>"lytebox[0]"%>
+                    <%fd.attachments.each {|pic| %><span class="pic" title='点击放大'><%="附件"+(fd.attachments.index(pic)+1).to_s %><%=link_to image_tag(pic.file.url(:thumb),:style=>"border:0px"),pic.file.url ,:toptions=>"effect=transform,group="+fd.id.to_s+",layout=quicklook,shaded=1",:rel=>"lytebox[0]"%>
                         <br/>
                         
                     </span>

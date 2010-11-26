@@ -1,7 +1,18 @@
 input.placeholder {
     color: #888;   
 }
-.fieldWithErrors input, .fieldWithErrors textarea {
+.fieldWithErrors input, .fieldWithErrors textarea ,.fieldWithErrors select{
   background-color: #ff8888;
 }
 /*input.placeholder { color: #a9a9a9 !important; }*/
+.fieldWithErrors {
+  margin: 0;
+  display: inline;
+  label {
+    color: #8a1f11;
+  }
+  input, textarea, select {
+    background-color: #fbe3e4 !important;
+    color: #8a1f11;
+  }
+}

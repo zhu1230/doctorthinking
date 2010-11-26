@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
+	session[:return_to] ||= request.referer
   end
   def show
 	render :action=>"new"

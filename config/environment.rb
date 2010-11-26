@@ -7,11 +7,11 @@
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 #RAILS_GEM_VERSION = '2.1.2' unless defined? RAILS_GEM_VERSION
-RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.10' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
-require 'plugins/app_config/lib/configuration'
+# require 'plugins/app_config/lib/configuration'
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -31,6 +31,7 @@ Rails::Initializer.run do |config|
   config.gem "aws-s3", :lib => "aws/s3"
 config.gem 'wysihat-engine', :source => 'http://gemcutter.org'
   config.gem 'tiny_mce'
+ config.gem 'attribute_normalizer'
   config.active_record.observers = :user_observer
 
   # config.gem "jammit"
@@ -50,7 +51,7 @@ config.gem 'wysihat-engine', :source => 'http://gemcutter.org'
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug
-config.load_paths += %W(#{RAILS_ROOT}/app/middleware)
+config.autoload_paths += %W(#{RAILS_ROOT}/app/middleware)
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
   # Run "rake -D time" for a list of tasks for finding time zone names. Comment line to use default local time.
@@ -80,11 +81,11 @@ config.load_paths += %W(#{RAILS_ROOT}/app/middleware)
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
   config.i18n.default_locale = 'zh-CN'
-  config.app_config.maxRankBingliCommentOneDay=20
-  config.app_config.maxRankBingliInfoOneDay=20
-  config.app_config.rankTagBingliInfo={:perfect=>10,:fine=>5,:hide=>-3}
-  config.app_config.perfectNum='10'
-  config.app_config.fineNum='5'
+  # config.app_config.maxRankBingliCommentOneDay=20
+  # config.app_config.maxRankBingliInfoOneDay=20
+  # config.app_config.rankTagBingliInfo={:perfect=>10,:fine=>5,:hide=>-3}
+  # config.app_config.perfectNum='10'
+  # config.app_config.fineNum='5'
  config.active_record.observers = :announcement_observer, :invite_observer, :user_observer, :message_observer, :wall_post_observer
  
  config.action_mailer.delivery_method = :smtp

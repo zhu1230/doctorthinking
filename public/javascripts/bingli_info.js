@@ -53,6 +53,10 @@
 		function(s){
 			 comment_submit(s);
 		});
+	o.select("form[id^='edit-comment-']").each(
+		function(f){
+				 comment_submit(f,'put');
+	});
 	// o.select('#bingli_comment_form').each(function(f){
 	// 	f.observe('submit',function(event){
 	// 		// alert(f.select);
@@ -125,23 +129,36 @@ var add_comment=function(s){s.observe('click',function(){
 	var_textCounter(f);// text count check first register
 });
 }
-var comment_submit=function(s){
+var comment_submit=function(s,m){
 	s.observe('submit',function(event){
 		if(!check_form_length(s)){
 			event.stop();
 			s.select('img#ajax-loader').first().remove();
 			return;
 		}
-		var v=s.select("textarea[name='comment']").first().getValue().trim();
-		var id=s.id.substr('add-comment-'.length);
+		// new comment id is parent's(such as : bingli_info,bingli_comment)
+		//edit comment id is comment's
+		var v=s.select("textarea[id^='comment_']").first().getValue().trim();
+		var id=m=='put' ? s.id.substr('edit-comment-'.length) : s.id.substr('add-comment-'.length);
+		if (m=='put'){
+			comments_id=s.up("[id^='comments-']").id;
+			if(comments_id.indexOf('bingli')==-1){
+											true_id=comments_id.substr('comments-'.length);
+									s.writeAttribute('action', '/biz/bingli_comments/'+true_id+'/comments/'+id);
+										}else{
+											true_id=comments_id.substr('comments-bingli-'.length);
+											s.writeAttribute('action', '/biz/bingli_infos/'+true_id+'/comments/'+id);
+										}		
+		}else{
 		if(id.indexOf('bingli')==-1){
 								s.writeAttribute('action', '/biz/bingli_comments/'+id+'/comments');
 									}else{
-										id=id.split('-')[1];
-										s.writeAttribute('action', '/biz/bingli_infos/'+id+'/comments');
+										true_id=id.split('-')[1];
+										s.writeAttribute('action', '/biz/bingli_infos/'+true_id+'/comments');
 									}
+								}
 	s.select("input[type='submit']").first().disable();
-	s.request({method:'post',parameters:{authenticity_token:fkey},
+	s.request({method:'post',parameters:{authenticity_token:fkey,_method:m},
 	onComplete:function(r){
 	s.select("img#ajax-loader").first().remove();
 	s.select("input[type='submit']").first().enable();
@@ -150,5 +167,31 @@ var comment_submit=function(s){
 	event.stop();
 	})
 }
-
+function edit_comment(id)
+{
+	// alert($('comment-form').clone(true).innerHTML);
+	$('edit-comment-'+id).insert( { bottom :$('comment-form').innerHTML.gsub('comment-form-error','comment-form-error-'+id).gsub('comment_counter','comment_'+id+"_counter").gsub('comment_id','comment_'+id) } );
+	// alert($('edit-comment-'+id).outerHTML);
+	var edit_form=$('edit-comment-'+id);
+	placeholder(edit_form);//placeholder first register 
+	var_textCounter(edit_form);// text count check first register
+	// var edit_form=$('comment-form').clone().writeAttribute('id','edit-comment-'+id);
+	// alert(edit_form.outerHTML);
+	// alert($('edit-comment-'+id).outerHTML);
+	// comment_id=id.gsub('bingli-','');
+	// alert(comment_id);
+	edit_form.select("input[type='submit']").first().insert({after:"<a class='edit-comment-cancel'>取消</a>"});
+	edit_form.select('textarea').first().setValue(edit_form.select('div.dno').first().innerText);
+	$('comment-'+id).select('.comment-text').first().addClassName('comment-form');
+	edit_form.setStyle('display: block;');
+	$('comment-'+id).select('td.comment-text > div').first().hide();
+	
+	edit_form.select('.edit-comment-cancel').first().observe('click',function(){
+	edit_form.hide();
+	edit_form.select('table').first().remove();
+	$('comment-'+id).select('.comment-text').first().removeClassName('comment-form');
+	$('comment-'+id).select('td.comment-text > div').first().show();
+	});
+	
+}
 

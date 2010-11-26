@@ -1,8 +1,10 @@
+<%fuzhu.object.attachments.build(){|fd|fd.new_by_build=true}%>
 <%if fuzhu.object.new_record? && fuzhu.object.new_by_build?%>
 <div id="fuzhu_blank" style='display:none;'>
 <%else%>
-<div id="fuzhu_<%=fuzhu.object.object_id%>" class='fuzhu'>
+<div id="fuzhu_<%=fuzhu.object.object_id%>" class='fuzhu'>	
 <%end%>
+	<%=fuzhu.hidden_field :_destroy%>
 	<p id="compartmentation" style="width:860px;height:30px;line-height:30px;margin:0px auto;background:url(/images/line3.gif) 0px 15px repeat-x;">
 
     <div class="tab" style="height:30px;width:860px;margin:10px auto;display:block;"><h1>检查类型：</h1><%=fuzhu.select :fuzhu_type_id,  grouped_options_for_select(fuzhu_by_groups,fuzhu.object.fuzhu_type_id,'-选择分类-')%>
@@ -10,16 +12,35 @@
 
     <span class="tab"><h1>结果描述：</h1><%=fuzhu.text_area :content,:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;" %>
     </span>
-    <div id="file_upload_scope">
+    <div id="file_upload_scope" >
 	<%fuzhu.fields_for :attachments do |att|%>
-        <div id='upload_file' class="upload_file"><h1>相关附件：</h1><%=att.file_field :file%><%=link_to_function "×删除","if(this.up().up().select('div.upload_file').size()==1){this.previous('input')setValue('');}else{this.up().remove();}"%>
+	<%if (att.object.new_record? && !att.object.new_by_build?) then pp att.object.file.inspect;  end%>
+		<%if att.object.new_by_build? %><div id='upload_file_blank' style='display:none;'><% else %><div id='upload_file' class="upload_file"><% end%>
+			<%=att.hidden_field :_destroy%>	
+        <h1>相关附件：</h1><%= if (att.object.new_by_build?) 
+								(att.file_field :file ) 
+						elsif (att.object.new_record?)
+							 FileUtils.mkdir_p(File.join(Rails.public_path, 'tmp'))
+							
+							att.object.file.stream_to(att.object.file.to_file(:original),File.join(Rails.public_path,'tmp',new_name=Time.new.to_f.to_s+'-'+att.object.file_file_name))
+							att.object.file.stream_to(att.object.file.to_file(:thumb),File.join(Rails.public_path, 'tmp','thumb'+new_name))
+							att.object.file.stream_to(att.object.file.to_file(:big),File.join(Rails.public_path, 'tmp','big'+new_name))
+							(att.hidden_field :edit_file,:value => new_name)+
+							(link_to image_tag(File.join('/tmp','thumb'+new_name),:style=>"border:0px"),File.join('/tmp','big'+new_name) ,:toptions=>"effect=transform,group="+fuzhu.object.id.to_s+",layout=quicklook,shaded=1",:rel=>"lytebox[0]")
+						else
+							 (link_to image_tag(att.object.file.url(:thumb),:style=>"border:0px"),att.object.file.url ,:toptions=>"effect=transform,group="+fuzhu.object.id.to_s+",layout=quicklook,shaded=1",:rel=>"lytebox[0]")
+						end%>
+		<%=link_to_function "×删除","this.up().down(\"input[type=\'hidden\']\").setValue(1);this.up('.upload_file').hide();"%>
 
         </div>
 <%end%>
     </div>
-<div id='file_upload_new' style='width:860px;color: #0F3A4A;float:left;padding-left: 20px;margin-top:0px;margin-bottom:10px;'><%=link_to_function '+新增附件',"this.up().previous().insert({bottom:this.up().previous('div#file_upload_scope').down().outerHTML.gsub(/attachments_attributes\\\]\\\[\\d+\\\]/,'attachments_attributes]['+this.up().previous('#file_upload_scope').select('div.upload_file input').size()+']')});",:style=>'margin-top:10px;' %>
+<div id='file_upload_new' style='width:860px;color: #0F3A4A;float:left;padding-left: 20px;margin-top:0px;margin-bottom:10px;'>
+<%=link_to_function '+新增附件',"add_new_file(this.up('.fuzhu'));",:style=>'margin-top:10px;' %>
+<!-- <div id="upload_file_blank" class="upload_file" style='display:none;'><h1>相关附件：</h1><input id="bingli_info_bingli_attributes_fuzhu_details_attributes_0_attachments_attributes_0_file" name="bingli_info[bingli_attributes][fuzhu_details_attributes][0][attachments_attributes][0][file]" size="30" type="file"><a href="#" onclick="this.up().remove(); return false;">×删除</a>
+</div> -->
 <div style='border: 1px solid #999;float:right;margin-right:50px;padding:7px 10px;'>	<%=link_to_function '+再次添加',"add_new_fuzhu();",:style=>'float:right;'%>
-	<%=link_to_function '×取消',"this.up().up().up().remove()",:style=>"float:right;margin-right:30px;",:id=>"bottom"%> </div>
+	<%=link_to_function '×取消',"this.up('.fuzhu').down(\"input[type='hidden']\").setValue(1);this.up('.fuzhu').hide();",:style=>"float:right;margin-right:30px;",:id=>"bottom"%> </div>
 	</div>
     <div style="clear:both"></div> 
 </div>

@@ -161,7 +161,9 @@ text-decoration: none;
     border-bottom:1px #EBEBEB dotted;
     margin: 6px 0px;
     padding: 3px 0px;
-} .bingli .name {
+}
+.bingli li:hover{background-color:#fafafa;}
+ .bingli .name {
     width: 100%;
     float: left;
     display: block;
@@ -185,6 +187,7 @@ text-decoration: none;
     margin: 0px;
     padding-bottom: 0px;
 } 
+.bingli .pic:hover{background-color:#DEDFE2;}
 .comment_box .cnt {
 	float:left;
     width: 958px;
@@ -349,6 +352,7 @@ margin-left: 5px;
 padding-top: 2px;
 }
 .post-menu>a:hover,.edit-tags-wrapper>span>a:hover{background-color:#777;color:#fff;text-decoration:none;}
+.tags>a:hover {}
 .post-menu > a, .edit-tags-wrapper > span > a {
 color: #888;
 padding: 0px 3px 2px;
@@ -357,6 +361,23 @@ padding-right: 3px;
 padding-bottom: 2px;
 padding-left: 3px;
 }
+.post-tag:hover{background-color:#3E6D8E;color:#E0EAF1;border-bottom:1px solid #37607D;border-right:1px solid #37607D;text-decoration:none;}
 .comment-form .edit-comment-cancel {
 	.	margin-left: 10px;
+}
+.owner {
+background-color: #E0EAF1;
+}
+a.comment-user {
+white-space: nowrap;
+padding: 0;
+}
+a {
+/*color: #07C;*/
+text-decoration: none;
+cursor: pointer;
+}
+tr.comment:hover{background-color:#fafafa;}
+.dno {
+display: none;
 }

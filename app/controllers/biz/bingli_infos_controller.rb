@@ -57,11 +57,11 @@ def update
 	if !@bingli_info.errors.blank?
 		render :action => :new
 	else
-	@bingli=@bingli_info.bingli
-    @bingli_comments=BingliComment.paginate :conditions=>["bingli_info_id =:bingli_info_id",{:bingli_info_id=>params[:id]}],:page=>params[:page]
-    @user=@bingli_info.user
-	flash.now[:success]="病例修改成功！"
-	render :action => :show
+	# @bingli=@bingli_info.bingli
+	#    	@bingli_comments=BingliComment.find(:all,:select => '*,(vote_for_count - vote_against_count) as count',:conditions => ["bingli_info_id=:id",{:id => params[:id]}],:order => 'count desc,id asc').paginate :page=>params[:page]
+	#     @user=@bingli_info.user
+	flash[:success]="病例修改成功！"
+	redirect_to biz_bingli_info_url(@bingli_info)
 	end
 end
 
@@ -90,6 +90,7 @@ end
 		flash[:success]="病例发布成功！"
           redirect_to biz_bingli_info_url(@bingli_info)
         else
+	pp @bingli_info.errors
          render :action=>"new"
         end
   end

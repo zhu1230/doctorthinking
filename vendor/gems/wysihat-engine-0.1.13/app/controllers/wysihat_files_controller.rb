@@ -1,16 +1,17 @@
 class WysihatFilesController < ApplicationController
   def index
-    @wysihat_file, @wysihat_files = WysihatFile.new, WysihatFile.all
+    @wysihat_file, @wysihat_files = WysihatFile.new, WysihatFile.recent(1)
     render :layout => false
   end
 
   def create
     @wysihat_file = WysihatFile.new(:file => params[:wysihat_file][:file])
-	p @wysihat_file.class.name
     responds_to_parent do
       render :update do |page|
         if(@wysihat_file.save)
           page.insert_html :bottom, :wysihat_files, :partial => 'wysihat_file', :object => @wysihat_file
+		  page << "$('new_wysihat_file').reset();"
+			page << "$('new_wysihat_file').down('ajax-loader').remove();"
         end
       end
     end

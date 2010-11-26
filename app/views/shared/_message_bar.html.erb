@@ -19,7 +19,7 @@
 	.notify-close{
 /*		background-color: #FAD163;*/
 background-color:transparent;
-border: 2px solid #475F80;
+border: 1px solid #475F80;
 cursor: pointer;
 display: block;
 float: right;
@@ -79,10 +79,11 @@ text-decoration: none;
 
 <script type="text/javascript">
   	function message_bar() {
-	<%flash.each{ |key,value|%>
+	<%flash.each{ |key,value|
+		if [:notice,:success,:warning,:error,:validation].include? key%>
   		Element.update('<%= key.to_s=="notice" ? "info" : key%>',"<%=value%>"+$('notify-close').outerHTML);
 		Effect.Appear('<%= key.to_s=="notice" ? "info" : key%>',{duration:2,queue:{position: 'end', scope:'one'}});
-		<%}%>
+		<%end }%>
   	}
   </script>
     <!-- <%#= content_tag :div, flash[:error] || flash[:notice], :id => 'notice', :class => ('error' if flash[:error]) %>

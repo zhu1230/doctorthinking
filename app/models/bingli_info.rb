@@ -5,6 +5,8 @@ class BingliInfo < ActiveRecord::Base
   acts_as_voteable
   acts_as_favorite
   acts_as_taggable
+ can_be_flagged
+	normalize_attributes :title
 with_page_views :buffer_size => 1, :days => 1, :model_name => 'post'
   belongs_to :bingli,:autosave=>true
   belongs_to :user,:counter_cache=>true
@@ -15,7 +17,7 @@ with_page_views :buffer_size => 1, :days => 1, :model_name => 'post'
   # has_many :fine,:class_name=>"UsersRankBingliInfos",:conditions=>"rank_tag='fine'"
   # has_many :perfect,:class_name=>"UsersRankBingliInfos",:conditions=>"rank_tag='perfect'"
   # has_many :hide,:class_name=>"UsersRankBingliInfos",:conditions=>"rank_tag='hide'"
-validates_length_of :title, :within => 5..30, :on => :create,  :too_long => I18n.t("activerecord.errors.messages.bingli_info.title.too_long_content"),:too_short => I18n.t("activerecord.errors.messages.bingli_info.title.too_short_content")
+validates_length_of :title, :within => 5..50, :on => :save,  :too_long => I18n.t("activerecord.errors.messages.bingli_info.title.too_long_content"),:too_short => I18n.t("activerecord.errors.messages.bingli_info.title.too_short_content")
  validates_presence_of :tag_list,:message=>"最少要写一个"
  validates_associated :bingli
  validates_presence_of :bingli

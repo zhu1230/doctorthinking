@@ -31,7 +31,7 @@ var fkey='<%=form_authenticity_token%>'
     <div class="menu">
         <h1><%=@bingli_info.title %></h1>
         <span class="info">
-            <%=link_to @user.nickname,:controller=>"user/personal",:action=>"index",:id=>@user.id %>
+            <%=link_to @user.login,:controller=>"user/personal",:action=>"index",:id=>@user.id %>
             <font color="#999999">
                 发表于
             </font>
@@ -110,7 +110,7 @@ var fkey='<%=form_authenticity_token%>'
 <div class="blank">
 </div>
 <div id='comment-form' style='display:none;'>
-	<table><tbody><tr><td><%=text_area_tag 'comment',nil,{:minlimit=>10,:maxlimit=>600,:cols => 68, :rows => 3,:id => 'comment_id'}%></td><td><input type="submit" value="添加评论" tabindex="205"></td></tr><tr><td colspan="2"><div id='comment_counter' class="text-counter cool">最少10个字符</div><span id='comment-form-error' class="form-error"></span></td></tr></tbody></table>
+	<table><tbody><tr><td><%=text_area :comment,:comment,{:minlimit=>10,:maxlimit=>600,:cols => 68, :rows => 3,:id => 'comment_id'}%></td><td><input type="submit" value="添加评论" tabindex="205"></td></tr><tr><td colspan="2"><div id='comment_counter' class="text-counter cool">最少10个字符</div><span id='comment-form-error' class="form-error"></span></td></tr></tbody></table>
 	</div>
 <%=will_paginate @bingli_comments,:class=>"apple_pagination" %>
 <div class="user_box">
@@ -124,7 +124,7 @@ var fkey='<%=form_authenticity_token%>'
 		<%=bc.wysihat_editor :content%>
 		<!-- {:placeholder=>"对病例有疑问？现在提问，或者发起回应表达你的观点",:minlimit=>10,:maxlimit=>9000,:cols=>"",:rows=>"",:style=>"width:600px;height:100px;border:1px #ccc solid;color:#999;font-size:12px;padding:10px; float:left;"} -->
 		<%#=bc.hidden_field :bingli_info_id,:value=>@bingli_info.id.to_s%>
-		 <label style="top:100px;padding:0px 0px 0px 30px;bottom: 0px;"><%=submit_tag "提交"%></label>
+		 <label style="top:100px;padding:0px 0px 0px 30px;bottom: 0px;"><%=submit_tag "提 交",{:class => 'subtn'}%></label>
 		    </div>
 		<span id='bingli_comment_content_counter' class="text-counter cool" style='float:left;margin-left:20px;margin-top:-5px;'>最少10个字符</span><span class="form-error"></span>
 		
@@ -136,3 +136,11 @@ var fkey='<%=form_authenticity_token%>'
 		
 		<%end%>
 		</div>
+		<%=render :partial => 'shared/flag', :object => @bingli_info %>
+<%
+p flash[:highlight]
+if flash[:highlight]%>
+<script type="text/javascript" charset="utf-8">
+	document.observe('dom:loaded',function(){$('bingli_comment_<%=flash[:highlight]%>').highlight();});
+</script>
+<%end%>
