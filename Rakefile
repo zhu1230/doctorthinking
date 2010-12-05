@@ -8,7 +8,7 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
-
+require 'thinking_sphinx/tasks' 
 # require 'disguise/tasks'
 
 test_dir = File.expand_path('test')

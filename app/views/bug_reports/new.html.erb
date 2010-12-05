@@ -251,9 +251,11 @@
 	<div style="clear:both;"></div>
 </div>	 -->
 <%= error_messages_for :bug_report,:header_message=>"请重试！",:message=>"在提交问题建议时出现了一些问题：",:class=>"validation" %>
-<div style='background-color:#F3F7F8;width:100%;float:left;margin:0px auto;'><div id="add_bug">
+<div id='new_bug' style='background-color:#F3F7F8;width:100%;float:left;margin:0px auto;'><div id="add_bug">
 	<%= render :partial => 'bug_report_form' %>
 	<div style="clear:both;"></div>
 </div></div>
 <div style="clear:both;"></div>
-
+<script type="text/javascript" charset="utf-8">
+	new Effect.Corner('new_bug', "30px;cc:#ffffff");
+</script>

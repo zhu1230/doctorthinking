@@ -1,1 +1,2 @@
-<%=tag.name%>
+<div class='tags'><%=link_to tag.name,tagged_source_path(:controller=>'biz/bingli_infos',:tag => tag.name),{:class=>"post-tag",:title=>"显示更多关于 '#{tag.name}' 的病例" ,:rel=>"tag"}%><span class='item-multiplier'><%='× '+tag.taggings.size.to_s%></span>
+						</div>

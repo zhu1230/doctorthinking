@@ -8,8 +8,9 @@
 .users{
 /*	width: 100%;*/
 	border: 1px #D0E1EB solid;
-	margin: 0px auto;
+	margin: 10px auto;
 	overflow: hidden;
+	
 /*	clear: both;*/
 }	
 .user{
@@ -19,14 +20,17 @@
 	margin:5px 5px;
 }
 .search_box{
-	height:40px;
+/*	height:40px;*/
+/*	background-color: #F3F7F8;*/
+	padding:5px 20px;
 }
 
 </style>
 
 <div class='users_list'>
-	<div class='search_box'>
-		<h3>输入用户名查找医生:  <%=text_field_tag :login%><%=observe_field :login,:url => search_users_path,:frequency => 0.5,:update => :users,:with => :login,:loading => "$('login').insert({after:$('ajax-loader').outerHTML});",:complete => "$('login').next('#ajax-loader').remove();"%></h3>
+	<div id='users_tip' style='background-color:#F3F7F8;display:none;'></div>
+	<div id='search' class='search_box'>
+		<h3>输入用户名查找同行:  <%=text_field_tag :login%><%=observe_field :login,:url => search_users_path,:frequency => 0.5,:update => :users,:with => :login,:loading => "$('login').insert({after:$('ajax-loader').outerHTML});",:complete => "$('login').next('#ajax-loader').remove();"%></h3>
 	</div>
 	<div id='users' class='users'>
 		<%=render @users%>
@@ -35,3 +39,6 @@
 	
 </div>
 
+<script type="text/javascript" charset="utf-8">
+	new Effect.Corner('users_tip', "30px;cc:#ffffff;");
+</script>

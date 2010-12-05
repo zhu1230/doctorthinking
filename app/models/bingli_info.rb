@@ -10,6 +10,7 @@ class BingliInfo < ActiveRecord::Base
  can_be_flagged
 	normalize_attributes :title
 with_page_views :buffer_size => 5, :days => 1, :model_name => 'post'
+
   belongs_to :bingli,:autosave=>true
   belongs_to :user,:counter_cache=>true
   belongs_to :keshi
@@ -27,7 +28,18 @@ validates_presence_of :keshi_id
 validates_associated :keshi
  # validates_presence_of :catelog_id
 accepts_nested_attributes_for :bingli, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
-
+		
+		define_index do
+		   indexes title
+		   indexes tags(:name),:as => :tags
+		   indexes user(:login), :as => :author, :sortable => true
+		   indexes keshi(:name),:as => :keshi, :sortable => true
+		   
+		   has keshi_id, created_at, updated_at
+		   has user(:id),:as => :user_id
+		   has tags(:id),:as => :tag_ids
+		 end
+		
   def votes
   	vote_for_count - vote_against_count
   end

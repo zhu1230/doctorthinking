@@ -105,6 +105,7 @@ body {
 	width:958px;
 	float:left;
 	margin:0px auto;
+/*	background-color: #DDD;*/
 
 }
 .area2 .a2cont ul {
@@ -212,32 +213,13 @@ h1,h2,h3,h4,p {margin:0;padding:0;}
 	</div>
     <div class="a2cont">
     	<ul>
-        	<li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+	<%for user in @users%>
+        	<li><%=link_to image_tag(user.avatar.url(:thumb),:size => '43x43'),user_path(user)%><p><%=link_to user.login[0..7],user_path(user)%></p></li>
+				<%end%>
+			<% (26- @users.size).times do %>
             <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
-            <li><a href="#"><img src="/images/face.gif" /></a><p><a href="#">jeman01</a></p></li>
+			<%end%>
+
 
         </ul>
     </div>

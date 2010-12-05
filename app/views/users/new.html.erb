@@ -46,10 +46,12 @@ ul,li {list-style-type:none;list-style-images:none;}
 	height:68px;
 	z-index:6;*/
 	line-height:20px;
-	font-size:12px;
-	padding:6px;
+	font-size:16px;
+	padding:6px 20px;
 	border:#CCCCCC solid 1px;
-	background-color: #F8F8F8;
+/*	background-color: #F8F8F8;*/
+	background-color: #F3F7F8;
+	
 }
 .terms{
 	font-weight: bold;
@@ -79,17 +81,18 @@ ul,li {list-style-type:none;list-style-images:none;}
         	<span>加*号的为必填信息</span>
         	<h3>1.建立你的账号</h3>
        	  <ul>
-				<li><label for="uesr">用户名：</label><%= f.text_field :login -%>&nbsp;<font color="red">*</font></li>
+				<li><label for="uesr">用户名：</label><%= f.text_field :login -%>&nbsp;<font color="red">*</font><br>
+					<font color="#99999" style='margin-left:135px;margin-top:-15px;'>4-20个字符之内，使用英文字母或下划线</font></li>
            	<li><label for="uesr">你的邮箱：</label><%= f.text_field :email %>&nbsp;<font color="red">*</font><br />
-					<font color="#99999">例如:name@163.com</font>
+					<font color="#99999" style='margin-left:135px;margin-top:-15px;'>例如:name@163.com</font>
             </li>
                 <li><label for="uesr">密码：</label><%=f.password_field :password%>&nbsp;<font color="red">*</font></li>
                 <li><label for="uesr">重复密码：</label><%= f.password_field :password_confirmation %>&nbsp;<font color="red">*</font></li>
           </ul>
             <h3>2.建立你的个人信息</h3>
         	<ul>
-            	<li><label for="uesr">昵称：</label><%= f.text_field :name %>&nbsp;<font color="red">*</font><br/>
-					<font color="#99999">4-20个字符之内，使用中文或英文字母</font>                 </li>
+            	<!-- <li><label for="uesr">昵称：</label><%#= f.text_field :name %>&nbsp;<font color="red">*</font><br/>
+            					<font color="#99999">4-20个字符之内，使用中文或英文字母</font>                 </li> -->
                 <li><label for="uesr">科室选择：</label><%=f.select :keshi_id, grouped_options_for_select(keshi_by_groups,f.object.keshi_id,'-选择分类-')%>
                   &nbsp;<font color="red">*</font>                </li>
                 <li><label for="uesr">个人补充说明 ：</label>
@@ -130,7 +133,9 @@ ul,li {list-style-type:none;list-style-images:none;}
 <div id="add_user">
 	<%= render :partial => 'new_user_form' %>
 </div> -->
-
+<script type="text/javascript" charset="utf-8">
+		new Effect.Corner('signup_help', "20px;cc:#ffffff;");
+</script>
 
 
 

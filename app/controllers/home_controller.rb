@@ -74,19 +74,20 @@ class HomeController < ApplicationController
   
   # Render the network's homepage
   def index
-    if false #Network.find(:first) == nil
-      flash[:notice] = 'Looks like you have not created a network yet.'
-      redirect_to :action => 'install'
-    else
-      @section = 'MAIN'
-      @page_name = 'home' 
+	@users=User.limited(26)
+    # if false #Network.find(:first) == nil
+    #      # flash[:notice] = 'Looks like you have not created a network yet.'
+    #      #     redirect_to :action => 'install'
+    #    else
+      # @section = 'MAIN'
+      # @page_name = 'home' 
       # @page = Page.find_by_title('home')
       # @photos = Photo.find(:all, :limit=>6, 
       #                      :select=>'id, parent_id, filename', 
       #                      :order => Photo.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()',
       #                      :conditions => {:thumbnail => nil, :is_profile => nil})
 
-    end
+    # end
   end
   
   

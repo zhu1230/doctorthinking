@@ -6,6 +6,8 @@ bingli_infos:
     show: "病例讨论"
     edit: "修改病例讨论"
     tagged: "搜索病例标签"
+    search: '搜索病例'
+    query: '病例搜索结果'
 users:
     new: '用户注册'
     create: '用户注册'

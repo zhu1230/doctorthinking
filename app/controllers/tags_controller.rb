@@ -2,7 +2,7 @@ class TagsController < ApplicationController
 
 	# before_filter :find_model
 	def index
-		@tags= Tag.paginate(:all,:per_page => 30,:page => params[:page])
+		@tags= Tag.paginate(:all,:per_page => 30,:page => params[:page],:include => [:taggings])
 	end
 	
 	def bingli_infos

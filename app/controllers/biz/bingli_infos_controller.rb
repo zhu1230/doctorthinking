@@ -100,6 +100,9 @@ end
 		
 	end
 	def query
+		if params[:query_type]=='simple'
+			@bingli_infos=BingliInfo.search(params[:search])
+		end
 		
 	end
 	

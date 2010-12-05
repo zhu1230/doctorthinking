@@ -323,24 +323,7 @@ background-position: 0px -190px;
 .vote-down-off{background-position:0 -300px;}
 .favoritecount-selected{color:#D4A849;}
 .vote-down-on{background-position:0 -330px;}
-.post-tag {
-/*float:left;*/
-color: #3E6D8E;
-background-color: #E0EAF1;
-border-bottom: 1px solid #3E6D8E;
-border-right: 1px solid #7F9FB6;
-margin: 2px 2px 2px 0;
-padding: 3px 4px 3px 4px;
-text-decoration: none;
-font-size: 90%;
-line-height: 2.4;
-white-space: nowrap;
-}
-.tags {
-width:800px;
-float: left;
-line-height: 18px;
-}
+
 .form-error {
 color: #900;
 font-size: 90%;
@@ -360,7 +343,6 @@ padding-right: 3px;
 padding-bottom: 2px;
 padding-left: 3px;
 }
-.post-tag:hover{background-color:#3E6D8E;color:#E0EAF1;border-bottom:1px solid #37607D;border-right:1px solid #37607D;text-decoration:none;}
 .comment-form .edit-comment-cancel {
 	.	margin-left: 10px;
 }

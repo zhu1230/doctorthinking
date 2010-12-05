@@ -1,0 +1,19 @@
+<style type="text/css" media="screen">
+	.results{
+		width:960px;
+		margin:10px auto;
+	}
+	.tip{
+		padding:10px 20px;
+		font-size:20px;
+		background-color:#EFF4F6;
+	}
+</style>
+<div class='results'>
+	<div id='results_tip' class='tip'>本次搜索的结果为：</div>
+</div>
+<%=render :partial => 'bingli_info_simple_list',:locals => {:bingli_infos => @bingli_infos}%>
+<%=will_paginate @bingli_infos,:class=>"apple_pagination"%>
+<script type="text/javascript" charset="utf-8">
+	new Effect.Corner('results_tip', "20px;cc:#ffffff");
+</script>

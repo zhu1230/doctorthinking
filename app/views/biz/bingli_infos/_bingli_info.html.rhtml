@@ -6,7 +6,7 @@
 				</div>
 				<div style='width:900px;'><span style='width:600px;float:left;'><div class='tags'><%for tag in bingli_info.tags%><%=link_to tag.name,tagged_source_path(:controller=>'biz/bingli_infos',:tag => tag.name),{:class=>"post-tag",:title=>"显示更多关于 '#{tag.name}' 的病例" ,:rel=>"tag"}%><%end%>
 										</div>
-             	<p class="intro" style='clear:both'><%=(bingli_info.bingli.zhusu.to_s+bingli_info.bingli.xianbingshi.to_s+bingli_info.bingli.tigejiancha.to_s)[1..250]%>...<%=link_to "更多>>",biz_bingli_info_path(bingli_info),:style=>"color:#FFB32E;"%></p></span>
+             	<p class="intro" style='clear:both'><%=(bingli_info.bingli.zhusu.to_s+bingli_info.bingli.xianbingshi.to_s+bingli_info.bingli.tigejiancha.to_s)[0..250]%>...<%=link_to "更多>>",biz_bingli_info_path(bingli_info),:style=>"color:#FFB32E;"%></p></span>
 			 <span class='pic'> <%unless bingli_info.getpic.nil? then %>
 			   <%=link_to image_tag(bingli_info.getpic.url(:index)),biz_bingli_info_path(bingli_info)%>
 			   <%end%></span>

@@ -74,6 +74,7 @@
 		                <ul>
 		                    <li><%form_tag query_biz_bingli_infos_path,:method => :post do %>
 			<%=text_field_tag :search,nil,{:style => 'width:290px;margin:6px 10px;line-height:30px;',:placeholder => '－－搜索内容－－'}%><%=submit_tag '立即搜索',{:class => 'btn'}%>
+			<%=hidden_field_tag :query_type,'simple'%>
 											<%end%>
 										</li>
 							<li style='margin-top:-10px;margin-left:10px;'>或者</li>
@@ -83,6 +84,7 @@
 		
 		            <div id='search_conditions' class="acont2" style='display:none;'>
 				<%form_tag query_biz_bingli_infos_path,:method => :post do %>
+				<%=hidden_field_tag :query_type,'advanced'%>
 				<li id='blank_search' class="arrow" style='display:none;'><span>选择</span><%fields_for "bingli_info[0]" do |bi|%><%=bi.hidden_field :condition_type%><%=bi.select :item,[['－请选择－',''],["主题",'title'], ['主诉','zhusu'], [' 现病史','xianbinshi'], ['既往史','jiwangshi'], ['体格检查','tigejiancha'], ['辅助检查','fuzhu_detail'], ['鉴别诊断','chubu'], ['疑问','question'], ['最终诊断','final'], ['性别','sex'], ['年龄','age'], ['婚否','marriage']],{},{:class => 'search_type',:onchange => 'add_fuzhu(this);'}%><span style='display:none;'>中在<br><%=select 'bingli_info[0]',:fuzhu_type_id,  grouped_options_for_select(fuzhu_by_groups,nil,'-选择分类-')%></span>中包含<%=bi.text_field :content%><%end%></li>
 				
 		                <ul>
@@ -98,7 +100,7 @@
 		                      <option value="请选择">主诉</option>
 		                    </select>中包含<input name="" type="text"><a href="#"><font color="#F26521">取消</font></a></li> -->
 		                    <li id='add_botton'><font color="#F26521">增加一个搜索条件？</font><%=link_to_function '并且',"add_more(this);",{:id => 'and'}%> <%=link_to_function '或者',"add_more(this);",{:id => 'or'}%> <%=link_to_function '除外',"add_more(this);",{:id => 'except'}%></li>
-		                    <li class="arrow">选择科室<%=select :bingli_info,:keshi_id, grouped_options_for_select(keshi_by_groups,(current_user.keshi.id if logged_in?),'-选择分类-')%></li>
+		                    <li class="arrow">选择科室<%=select :bingli_info,:keshi_id, grouped_options_for_select(keshi_by_groups,(current_user.keshi.id if logged_in?),'-全部科室-')%></li>
 							<li class="arrow">发表时间</li>
 							<li><%{"时间不限" => 'any','最新结果' => 'last','一天内' => 'day','一周内' => 'week','一年内' => 'year'}.each do |key,value| %>
 							    <%=radio_button 'bingli_info','timezone',value,{:class =>"noborder"}%><%=key%>

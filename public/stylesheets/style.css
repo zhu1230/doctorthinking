@@ -142,3 +142,22 @@ border: 0;
 vertical-align: baseline;
 background: transparent;
 }
+.post-tag {
+/*float:left;*/
+color: #3E6D8E;
+background-color: #E0EAF1;
+border-bottom: 1px solid #3E6D8E;
+border-right: 1px solid #7F9FB6;
+margin: 2px 2px 2px 0;
+padding: 3px 4px 3px 4px;
+text-decoration: none;
+font-size: 110%;
+line-height: 2.4;
+white-space: nowrap;
+}
+.tags {
+/*width:800px;*/
+float: left;
+line-height: 18px;
+}
+.post-tag:hover{background-color:#3E6D8E;color:#E0EAF1;border-bottom:1px solid #37607D;border-right:1px solid #37607D;text-decoration:none;}

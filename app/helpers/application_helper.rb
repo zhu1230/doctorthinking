@@ -19,7 +19,6 @@ module ApplicationHelper
 
   include TagsHelper
 
-  
   # if the user is currently logged in as an admin or creator return true
   def logged_in_as_admin?
     if logged_in? && (current_user.roles.include?(Role.creator) || current_user.roles.include?(Role.admin))

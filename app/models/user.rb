@@ -152,7 +152,7 @@ end
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
-  validates_presence_of     :login, :email
+  # validates_presence_of     :login, :email
   validates_length_of       :login,    :within => 3..40
   validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :login, :email, :case_sensitive => false

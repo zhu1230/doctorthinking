@@ -2,19 +2,22 @@
 	<ul>
 		
 	<li class="index <%="current" if controller.controller_name=="home"%>"><img src="/images/navindexcurrent.gif" width="15" height="15" style="margin-top:3px;"/> <%=link_to "首页",index_url%></li>
-	    <li class="index <%="current" if %w{bingli_infos bingli_comments}.include?(controller.controller_name) && controller.action_name!='search'%>"><img src="/images/navindexcurrent5.gif" width="10" height="15" style="margin-top:3px;"/> <%=link_to "病例讨论",biz_bingli_infos_url%></li>
+	    <li class="index <%="current" if %w{bingli_infos bingli_comments}.include?(controller.controller_name) && controller.action_name!='search'%>"><img src="/images/user_comment.png" width="10" height="15" style="margin-top:3px;"/> <%=link_to "病例讨论",biz_bingli_infos_url%></li>
+	
+	<li class="index <%="current" if controller.controller_name=="tags"%>"><img src="/images/navindexcurrent5.gif" width="15" height="15" style="margin-top:3px;"/> <%=link_to "分类标签",tags_path%></li>
+	    <li class="index <%="current" if controller.controller_name=="bingli_infos" && controller.action_name=='search'%>"><img src="/images/navindexcurrent4.gif" width="16" height="15" style="margin-top:3px;"/> <%=link_to "病例搜索",search_biz_bingli_infos_url%><%#=link_to "经验交流",forum_topics_url%></li>
     <!-- <li class="index <%#="current" if controller.controller_name=="meet"%>"><img src="/images/navindexcurrent2.gif" width="17" height="15" style="margin-top:3px;"/> <%#=link_to "学术会议",{:controller=>"/meet",:action=>"index"}%></li> -->
 <li class="index <%="current" if controller.controller_name=="users"%>"><img src="/images/blogs.png" width="15" height="15" style="margin-top:3px;"/> <%=link_to "医生列表",users_path%><%#=link_to "医生博客",blog_posts_url%></li>
-    <li class="index <%="current" if controller.controller_name=="bingli_infos" && controller.action_name=='search'%>"><img src="/images/user_comment.png" width="16" height="15" style="margin-top:3px;"/> <%=link_to "病例搜索",search_biz_bingli_infos_url%><%#=link_to "经验交流",forum_topics_url%></li>
-    						<li class="index  <%="current" if controller.controller_name=="groups"%>"><img src="/images/navindexcurrent4.gif" width="15" height="15" style="margin-top:3px;"/> <%=link_to "医生圈子",groups_url%></li>
-				<li class="index  <%="current" if controller.controller_name=="events"%>"><img src="/images/navindexcurrent2.gif" width="15" height="15" style="margin-top:3px;"/> <%=link_to "医生活动",events_url%></li>
+
+   <!-- <li class="index  <%#="current" if controller.controller_name=="groups"%>"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%#=link_to "医生圈子",groups_url%></li>
+  				<li class="index  <%#="current" if controller.controller_name=="events"%>"><img src="/images/navindexcurrent2.gif" width="15" height="15" style="margin-top:3px;"/> <%#=link_to "医生活动",events_url%></li> -->
 
 					
 
 		<%# if logged_in?%>
 		 <!-- <li class="index"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%#=link_to "个人信息", user_path(current_user)%></li>
 							<li class="index"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%#=link_to "医生圈子",{:controller=>"/groups",:action=>"index"}%></li> -->
-				<li class="index <%="current" if controller.controller_name=="tags"%>"><img src="/images/navindexcurrent3.gif" width="15" height="15" style="margin-top:3px;"/> <%=link_to "分类标签",tags_path%></li>
+				
 					<li class="index <%="current" if controller.controller_name=="bug_reports"%>"><img src="/images/photos.png" width="15" height="15" style="margin-top:3px;"/> <%=link_to "问题及建议",new_bug_report_url%></li>
 						
 			<%#end%>	  
