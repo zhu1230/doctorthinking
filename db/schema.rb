@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101124145526) do
+ActiveRecord::Schema.define(:version => 20101202145454) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20101124145526) do
 
   create_table "bingli_infos", :force => true do |t|
     t.string   "title",                 :default => "", :null => false
-    t.datetime "thetime",                               :null => false
+    t.datetime "created_at",                            :null => false
     t.integer  "rank_num",              :default => 0,  :null => false
     t.integer  "bingli_id",             :default => 0,  :null => false
     t.integer  "keshi_id",              :default => 0,  :null => false
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20101124145526) do
     t.integer  "page_views_counter",    :default => 0
     t.integer  "vote_for_count",        :default => 0
     t.integer  "vote_against_count",    :default => 0
+    t.datetime "updated_at"
   end
 
   add_index "bingli_infos", ["page_views_counter"], :name => "index_bingli_infos_on_page_views_counter"
@@ -270,6 +271,10 @@ ActiveRecord::Schema.define(:version => 20101124145526) do
     t.string   "organized_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "ey_modules", :force => true do |t|
@@ -369,9 +374,13 @@ ActiveRecord::Schema.define(:version => 20101124145526) do
     t.integer  "creator_id"
     t.boolean  "featured"
     t.text     "announcements"
-    t.boolean  "private",       :default => false
+    t.boolean  "private",            :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "html_contents", :force => true do |t|
@@ -449,7 +458,7 @@ ActiveRecord::Schema.define(:version => 20101124145526) do
 
   create_table "meetings", :force => true do |t|
     t.string   "title"
-    t.datetime "thetime"
+    t.datetime "created_at"
     t.datetime "arrange_time"
     t.string   "content"
     t.integer  "user_id"
@@ -715,7 +724,10 @@ ActiveRecord::Schema.define(:version => 20101124145526) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "page_views_counter",                      :default => 0
   end
+
+  add_index "users", ["page_views_counter"], :name => "index_users_on_page_views_counter"
 
   create_table "users_rank_bingli_comments", :force => true do |t|
     t.integer  "user_id",                                              :null => false

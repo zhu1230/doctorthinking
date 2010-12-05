@@ -15,8 +15,8 @@ limitations under the License.
 %>
 <div class="group_brief">
 	<div class="group_brief_photo">
-		<% if group.profile_photo %>
-			<%= link_to image_tag(group.profile_photo.url(:member), :alt=>group.name), group_url(group) %>
+		<% if group.photo %>
+			<%= link_to image_tag(group.photo.url(:member), :alt=>group.name), group_url(group) %>
 		<% else %>
 			<br/><br/>No Photo
 		<% end %>

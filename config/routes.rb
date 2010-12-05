@@ -33,7 +33,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :widget_layouts, :collection => {:load => :get}
   map.resources :widgets, :collection => {:grid_data=>:get, :load=>:get}
-  map.resources :users, :collection => {:online_users=>:get, :grid_data=>:get, :link_facebook_account => :get, :fb_register_all_users => :get}
   map.resources :forum_posts, :collection => {:grid_data=>:get}
   map.resources :blog_posts, :collection => {:publish=>:get}
   map.resources :events, :collection => {:full_index=>:get,:participate=>:get}
@@ -73,7 +72,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :photos
   map.resources :profile_photos
   map.resources :messages
-  map.resources :users
   map.resources :memberships
   map.resource :session
   map.resources :likes
@@ -88,9 +86,9 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-map.forgot    '/forgot', :controller => 'users', :action => 'forgot'  
-map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
-  map.resources :users
+  map.forgot    '/forgot', :controller => 'users', :action => 'forgot'  
+  map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
+  map.resources :users, :collection => {:search => :get,:online_users=>:get, :grid_data=>:get, :link_facebook_account => :get, :fb_register_all_users => :get}
 
   map.resource :session
   
@@ -174,7 +172,7 @@ map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "home"
  map.namespace :biz do |biz|
- 	biz.resources :bingli_infos,:member => {:favorite => :get,:voteup => :get,:votedown => :get},:collection => {:hot => :get,:active => :get,:week => :get,:month => :get} do |bi|
+ 	biz.resources :bingli_infos,:member => {:favorite => :get,:voteup => :get,:votedown => :get},:collection => {:hot => :get,:active => :get,:week => :get,:month => :get,:search => :get,:query => :post} do |bi|
  		bi.resources :comments
 		bi.resources :bingli_comments
  		# bi.resources :tags
@@ -191,6 +189,10 @@ map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
 	page.terms 'terms',:action => 'terms'
 	
  end
+map.resources :tags ,:collection => {:bingli_infos => :get,:bingli_comments => :get,:search => :post}do |t|
+	t.resources :bingli_infos
+	t.resources :bingli_comments
+end
  # map.connect ':controller/:action/:id'
 	# map.resources :bingli_infos 
 	# map.resources :bingli_comments 

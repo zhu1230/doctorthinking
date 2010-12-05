@@ -15,12 +15,7 @@
 
 class BugReportsController < ApplicationController
 
-  before_filter :set_section
-  
-  def set_section
-    @section = 'BUG' 
-  end
-  
+  require_role 'admin',:except => [:new,:create]  
   
   def index
     @bug_reports = BugReport.find(:all)
@@ -44,6 +39,7 @@ class BugReportsController < ApplicationController
 
   def new
     @bug_report = BugReport.new
+session[:return_to] ||= request.referer
   end
 
 
@@ -59,8 +55,8 @@ class BugReportsController < ApplicationController
     end
     respond_to do |format|
       if @bug_report.save
-        flash[:notice] = 'BugReport was successfully created.'
-        format.html { redirect_to(bug_reports_url) }
+        flash[:notice] = '十分感谢您对医思网的支持，您的问题建议已成功提交，我们会尽快处理及改进.'
+        format.html { redirect_back_or_default('/') }
         format.xml  { render :xml => @bug_report, :status => :created, :location => @bug_report }
         format.json  { render :json => @bug_report, :status => :created, :location => @bug_report }
       else

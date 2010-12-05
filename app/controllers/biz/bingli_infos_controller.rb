@@ -6,7 +6,7 @@ class Biz::BingliInfosController < ApplicationController
 	include PageViews::Controller
   def index
     #params[:keshi]=1 unless params[:keshi]
-    @bingli_infos=BingliInfo.paginate :page=>params[:page],:order=>'thetime desc'#,:conditions=>["keshi_id= ?",params[:keshi]]
+    @bingli_infos=BingliInfo.paginate :page=>params[:page],:order=>'created_at desc'#,:conditions=>["keshi_id= ?",params[:keshi]]
     #@bingli_infos=BingliInfo.find(:all,:conditions=>["keshi_id= ?",params[:keshi]])
   end
 	def hot
@@ -25,11 +25,11 @@ class Biz::BingliInfosController < ApplicationController
 	render :action => "index"
 	end
 	def week
-		@bingli_infos=BingliInfo.paginate :page=>params[:page],:conditions => ['thetime > ?',1.weeks.ago],:order =>'thetime desc'
+		@bingli_infos=BingliInfo.paginate :page=>params[:page],:conditions => ['created_at > ?',1.weeks.ago],:order =>'created_at desc'
 		render :action => "index"
 	end
 	def month
-	@bingli_infos=BingliInfo.paginate :page=>params[:page],:conditions => ['thetime > ?',1.months.ago],:order =>'thetime desc'
+	@bingli_infos=BingliInfo.paginate :page=>params[:page],:conditions => ['created_at > ?',1.months.ago],:order =>'created_at desc'
 	render :action => "index"
 	end
 
@@ -76,7 +76,7 @@ end
   def create
         @bingli_info=BingliInfo.new(params[:bingli_info])
 		@bingli_info.user=current_user
-		@bingli_info.thetime=Time.new
+		@bingli_info.created_at=Time.new
 		
         # process_yiwen params,@bingli
         # process_chubu params,@bingli
@@ -84,18 +84,23 @@ end
 # params[:bingli_info][:catelog_id]=0
 #         @bingli.bingli_info=BingliInfo.new(params[:bingli_info])
 #         @bingli.bingli_info.user=current_user
-#         @bingli.bingli_info.thetime=Time.new
+#         @bingli.bingli_info.created_at=Time.new
         # process_bingli_info params,@bingli
         if  @bingli_info.save  
 		flash[:success]="病例发布成功！"
           redirect_to biz_bingli_info_url(@bingli_info)
         else
-	pp @bingli_info.errors
          render :action=>"new"
         end
   end
 	def tagged
 		@bingli_infos=BingliInfo.tagged_with(params[:tag],:on => :tags).paginate(:page => params[:page])
+	end
+	def search
+		
+	end
+	def query
+		
 	end
 	
   private

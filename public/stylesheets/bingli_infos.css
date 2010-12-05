@@ -41,7 +41,7 @@ text-decoration: none;
 white-space: nowrap;
 }
 .tags {
-width:560px;
+/*width:560px;*/
 float: left;
 line-height: 18px;
 }

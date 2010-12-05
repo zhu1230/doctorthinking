@@ -15,7 +15,8 @@
 class Invite < ActiveRecord::Base  
   
   belongs_to :user
-
+  validates_format_of       :email,    :with => Authentication.email_regex, :message => I18n.t("activerecord.errors.messages.look_like_email")
+  validates_length_of :message, :within => 3..1000, :on => :create, :too_long => I18n.t("activerecord.errors.messages.bingli_info.title.too_long_content"),:too_short => I18n.t("activerecord.errors.messages.bingli_info.title.too_short_content")
   def self.generate_invite_code
     chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
     newpass = ""

@@ -264,4 +264,7 @@ function iframeload(){
 	// alert($('bingli_comment_content_editor').outerHTML);
 	
 }
+function getText(element){
+return element.textContent || element.innerText
+}
 

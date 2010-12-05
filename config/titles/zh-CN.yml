@@ -10,6 +10,7 @@ users:
     new: '用户注册'
     create: '用户注册'
     forgot: "重设密码"
+    index: '医生列表'
 search:
     do_search: "病例讨论列表"
 bingli_comments:
@@ -49,5 +50,22 @@ events:
     index: "活动列表"
     new: "创建活动"
     participate: "我参与的活动"
-    
+invites:
+    index: '邀请列表'
+    new: '发送邀请'
+    show: '邀请信息'
+    create: '发送邀请'
+events:
+    index: '活动列表'
+    show: '活动详情'
+    new: '创建活动'
+    create: '创建活动'
+bug_reports:
+    index: '问题建议列表'
+    show: '问题建议内容'
+    new: '提交问题或建议'
+    create: '提交问题或建议'
+tags:
+    index: '标签列表'
+    show: '标签'
     

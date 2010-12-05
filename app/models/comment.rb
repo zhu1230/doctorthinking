@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
  can_be_flagged
+include Pacecar
   include ActsAsCommentable::Comment
 	normalize_attributes :comment
   belongs_to :commentable, :polymorphic => true

@@ -24,11 +24,11 @@
             <td align="right" class="post-signature">
             <div class="user-info"><div class="user-action-time"> 发表于 <%=bingli_comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
 									<div class="user-gravatar32"><%=link_to image_tag(bingli_comment.user.avatar.url(:thumb)),user_path(bingli_comment.user)%></div>
-									<div class="user-details"><font color="#F39B1D"><%=link_to bingli_comment.user.nickname,user_path(bingli_comment.user) %></font>
-                    							<span class="mod-flair" title="moderator">♦</span><br><span class="reputation-score" title="reputation score 21690">21.7k</span><span title="2 gold badges">
-													<span class="badge1"></span><span class="badgecount">2</span></span><span title="24 silver badges">
-														<span class="badge2"></span><span class="badgecount">24</span></span>
-														<span title="57 bronze badges"><span class="badge3"></span><span class="badgecount">57</span></span>
+									<div class="user-details"><%=link_to bingli_comment.user.login,user_path(bingli_comment.user) %></br>
+                    							<span class="mod-flair" title="moderator">♦</span><span class="reputation-score" title="威望值 <%=bingli_comment.user.karma%>"><%=bingli_comment.user.karma%></span><span title="<%=bingli_comment.user.bingli_infos.size%>  个病例">
+													<span class="badge1"></span><span class="badgecount"><%=bingli_comment.user.bingli_infos.size%></span></span><span title="<%=bingli_comment.user.bingli_comments.size%> 个讨论">
+														<span class="badge2"></span><span class="badgecount"><%=bingli_comment.user.bingli_comments.size%></span></span>
+														<span title="<%=bingli_comment.user.comments.size%> 个评论"><span class="badge3"></span><span class="badgecount"><%=bingli_comment.user.comments.size%></span></span>
 									</div>
 			</div>
             </td>

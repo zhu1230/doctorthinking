@@ -1,4 +1,5 @@
 class BingliComment < ActiveRecord::Base
+	include Pacecar
 	named_scope :in_order, {:order => 'created_at ASC'}
     named_scope :recent, {:order => "created_at DESC"}
     named_scope :limit, lambda {|limit| {:limit => limit}}

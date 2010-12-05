@@ -15,8 +15,10 @@
 class BugReport < ActiveRecord::Base
   
   belongs_to :user
-  
-  validates_presence_of     :title, :description
-  
+  normalize_attributes :title
+  normalize_attributes :description
+  validates_length_of :title, :within => 3..50, :on => :save,  :too_long => I18n.t("activerecord.errors.messages.bingli_info.title.too_long_content"),:too_short => I18n.t("activerecord.errors.messages.bingli_info.title.too_short_content")
+  validates_length_of :description, :within => 5..2000, :on => :save,  :too_long => I18n.t("activerecord.errors.messages.bingli_info.title.too_long_content"),:too_short => I18n.t("activerecord.errors.messages.bingli_info.title.too_short_content")
+  # validates_length_of :description, :within => 3..2000, :on => :save, :message => "must be present"
   
 end

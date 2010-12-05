@@ -12,8 +12,8 @@
 		</div>
 		<div class="module_body">
 			<div id="group_photo">
-				<% if (@group.profile_photo) %>
-					<%= image_tag(@group.profile_photo.url()) %>
+				<% if (@group.photo) %>
+					<%= image_tag(@group.photo.url()) %>
 				<% else %>
 					No Photo
 				<% end %>

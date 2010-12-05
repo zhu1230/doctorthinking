@@ -1,37 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-body,td,th {
-	font-family:宋体;
-	font-size:12px;
-	color:#042A53;
-	margin:0px;
-}
-a {
-	font-family:宋体;
-	font-size:12px;
-	color:#042A53;
-}
 
-a:visited {
-	text-decoration: none;
-	color: #042A53;
-}
-a:hover {
-	text-decoration: none;
-	color: #042A53;
-}
-a:active {
-	text-decoration: none;
-	color: #FF0000;
-}
-body,td,th {font-family:宋体;font-size:12px;color:#000000;}
-body {margin:0px;}
-a {font-family:宋体;font-size:12px;color:#000000;}
-a:link {text-decoration:none;}
-a:visited {text-decoration:none;color:#000000;}
-a:hover {text-decoration:underline;color:#000000;}
-a:active {text-decoration:none;color:#134E78;}
 .f12white {font-family:宋体;font-size:12px;color:#fff;}
 .f12white:link {text-decoration:none;}
 .f12white:visited {text-decoration:none;color:#fff;}
@@ -54,7 +24,7 @@ input,select {font-size:12px;}
 .mainnav ul {list-style-type:none;list-style-image:none;margin:0px;padding:0px;float:left;}
 .mainnav li {width:110px;height:29px;line-height:30px;list-style-type:none;list-style-image:none;margin:0px;padding:4px 0px 0px 0px;float:left;text-align:center;overflow:hidden;}
 .mainnav li.index {border-left:thin solid #D9E5E4;}
-.mainnav li a {font-size:11pt;}
+.mainnav li a {font-size:11pt;color:#042A53;}
 .mainnav li.index.current {background-color: #FEFFFE;border-top: thin solid #D9E5E4;border-left: thin solid #D9E5E4;}       
 
 .mainnav li.rnav {float:right;width:100px;}

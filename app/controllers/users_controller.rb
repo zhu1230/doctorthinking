@@ -13,19 +13,10 @@
 #   limitations under the License.
 
 class UsersController < ApplicationController
-    include AuthenticatedSystem
-  uses_tiny_mce :options => {
-                              :theme => 'advanced',
-                              :theme_advanced_toolbar_location => "top",
-                              :theme_advanced_toolbar_align => "left",
-                              :theme_advanced_resizing => true,
-                              :theme_advanced_resize_horizontal => false,
-                              :theme_advanced_buttons1 => "forecolor,backcolor,bullist,numlist,separator,outdent,indent,separator,undo,redo,separator,link,unlink,anchor,image,cleanup,help,code",
-                              :theme_advanced_buttons2 => "",
-                              :theme_advanced_buttons3 => ""
-                            }
-  
- require_role "user", :only => [:edit, :update]
+    include AuthenticatedSystem  
+	include PageViews::Controller
+	after_filter :increment_page_views, :only => [:show]
+ 	require_role "user", :only => [:edit, :update]
   
 
   	def forgot  
@@ -133,12 +124,12 @@ class UsersController < ApplicationController
   
   # Called to show the 'Members' page or the members of a group page
   def index
-    @section = 'MEMBERS' 
-    if params[:group_id] == nil
-      display_members_list_page
-    else
-      display_group_members_page
-    end
+    # @section = 'MEMBERS' 
+	@users=User.paginate :page => params[:page]
+  end
+  def search
+  	@users=User.find(:all,:conditions => ["login like :login",{:login => "%#{params[:login]}%"}],:limit => 50)
+	render @users,:layout => false
   end
   
   
@@ -148,7 +139,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html {
         @users = User.paginate(:all, :page => params[:page], :conditions => "activated_at is not null", 
-                               :include=>[:profile_photo, :state, :country], :order => @sort_field + ' ASC') 
+                               :include=>[:state, :country], :order => @sort_field + ' ASC') 
         @user_count = User.cached_count
       }
       format.xml  { 
@@ -228,17 +219,18 @@ class UsersController < ApplicationController
   # Most content loaded onto the page as AJAX widgets
   def show   
     @user = User.find(params[:id])
+	@bingli_infos=@user.bingli_infos.paginate :page => params[:page],:per_page => 10
     respond_to do |format|
       format.html { 
-        if (current_user && (current_user.id.to_s == params[:id].to_s))
-          @section = 'PROFILE'
-        else 
-          @section = 'MEMBERS'
-        end
-        @page = Page.find_by_name('profile')
-        if @user.twitter_id && @user.display_tweets
-          @tweets = @user.fetch_tweets
-        end
+        # if (current_user && (current_user.id.to_s == params[:id].to_s))
+        #   
+        # else 
+        #  
+        # end
+        # @page = Page.find_by_name('profile')
+        # if @user.twitter_id && @user.display_tweets
+        #   @tweets = @user.fetch_tweets
+        # end
       }
       format.xml { render :xml => @user.to_xml(:dasherize => false) }
       format.json { render :json => @user.to_json }
@@ -445,6 +437,9 @@ class UsersController < ApplicationController
     website, blog, blog_feed, flickr, flickr_username, linked_in_url, twitter_id, aim_name,
     gtalk_name, yahoo_messenger_name, msn_name, youtube_username, skype_name, posts_count,
     last_seen_at, login_count, activated_at, enabled, is_active, identity_url'
+  end
+  def increment_page_views
+  page_views_increment @user  #load @post before
   end
 
 end

@@ -1,38 +1,81 @@
-<%= stylesheet_link_tag 'profile' %>
-	
-<div class="col1">
-	<div class="profile">
-		<div class="column_1">
-			<div id="user_photo" class="user_profile_section">
-				<% if (@user.avatar) %>
-					<%= image_tag(@user.avatar.url()) %>
-				<% else %>
-					<div class="no_photo_member"></div>
-				<% end %>
-			</div>
-			<div id="user_detail" class="user_profile_section">
-				<%= render :partial => 'user_detail_widget' %>
-			</div>
-			<div id="user_friends" class="user_profile_section">
-				<%= render :partial => 'friends/friends_widget' %>
-			</div>
-			<div id="col_1_widgets"></div>
+<%#= stylesheet_link_tag 'profile' %>
+<style type="text/css" media="screen">
+	.user_show{
+		width:960px;
+		margin:10px auto;
+		float:left;
+	}
+	.tab1{
+		width:100%;
+/*		height:400px;*/
+		float:left;
+		
+	}
+	.avatar{
+		width:200px;
+		padding:10px;
+		float:left;
+		text-align   :center;
+	}
+	.info{
+		width:200px;
+		float:left;
+	}
+	.user_intro{
+		float:left;
+		margin-left: 20px;
+		background-color: #DDD;
+	}
+	.tab2{
+		width:100%;
+		float:left;
+		margin:0px auto;
+	}
+	.bingli_list{
+		margin:0px auto;
+		width:840px;
+	}
+	.ar {
+	text-align: right;
+	}
+	.summarycount {
+	text-align: center;
+	color: #808185;
+/*	font-size: 350%;*/
+	font-weight: bold;
+	}
+	.summary-header {
+	vertical-align: middle;
+	padding-left: 10px;
+	}
+</style>
+<div class='user_show'>
+	<div class='tab1'>
+		<span class='avatar'>
+			<%=image_tag @user.avatar.url,{:style => 'margin:0px auto;'}%><br>
+			<h1><%=@user.karma%></h1>
+			<h2><%=@user.page_views%></h2>
+		</span>
+		<span class='info'>
+			<li>用户名： <%=@user.login%></li>
+			<li></li>
+		</span>
+		<span class='user_intro'>
+			
+		</span>
+	</div>
+	<div class='tab2'>
+		<div><h1 class='summary-header'>发表的病例(<span class='summarycount'><%=@user.bingli_infos.size%></span>)：</h1></div>
+		<div class='bingli_list'>
+			<%=render 'biz/bingli_infos/bingli_info_simple_list',:bingli_infos => @bingli_infos%>
+			<%=will_paginate @bingli_infos,:class=>"apple_pagination"%>
 		</div>
-		<div class="column_2">
-			<div id="col_2_widgets"></div>
-			<% if @user.twitter_id && @user.display_tweets %>
-				<%= render :partial => 'tweets/display_tweets' %>
-			<% end %>
-			<%= render :partial => 'shared/wall_posts_widget', :locals=>{:parent=>@user} %>
+		
+		<div><h1 class='summary-header'>发表的讨论(<span class='summarycount'><%=@user.bingli_comments.size%></span>)：</h1></div>
+		<div class='bingli_list'>
+			
 		</div>
 	</div>
-</div>
-<div class="col2">
-	<%= render :partial => 'users/add_friend_widget' %>
-	<%= render :partial => 'users/user_control_widget' %>
-	<% if current_user == @user %>
-		<%= render :partial => 'messages/unread_messages_widget' %>
-	<% end %>
-	<div id="col_3_widgets"></div>
-</div>
+</div>	
+
 <div style="clear:both;"></div>

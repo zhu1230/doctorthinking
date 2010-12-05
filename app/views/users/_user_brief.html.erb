@@ -16,7 +16,7 @@ limitations under the License.
 <div class="user_brief">
 	<div class="user_brief_photo">
 		<% if user.avatar %>
-			<%= link_to image_tag(user.avatar.url(:member), :alt=>user.name), user_url(user) %>
+			<%= link_to image_tag(user.avatar.url(:thumb), :alt=>user.login), user_url(user) %>
 		<% else %>
 			<div class="no_photo_member"></div>
 		<% end %>

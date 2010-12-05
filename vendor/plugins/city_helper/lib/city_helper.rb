@@ -202,9 +202,9 @@ module CityHelper
       
       html += self.select_tag id, options_for_select(options_for_country), options
       html += %| <script type='text/javascript'>
-      $(document).ready(function(){
-        country_updated($('##{id}').val());
-      });
+		document.observe('on:loaded',function(){
+			country_updated($('##{id}').val());
+			});
       </script>
       |
       html
@@ -262,7 +262,7 @@ module CityHelper
       
       html += self.select_tag id, options_for_select(state_options(country)), options
       html += %| <script type='text/javascript'>
-      $(document).ready(function(){
+     	document.observe('on:loaded',function(){
         state_updated($('##{id}').val());
       });
       </script>

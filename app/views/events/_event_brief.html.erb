@@ -19,8 +19,8 @@ limitations under the License.
 		<%= event.start_time.to_s(:event_day) %>
 	</div>
 	<div class="event_brief_photo">
-		<% if event.profile_photo %>
-			<%= link_to image_tag(event.profile_photo.url(:medium), :alt=>event.name), event_url(event) %>
+		<% if event.photo %>
+			<%= link_to image_tag(event.photo.url(:medium), :alt=>event.name), event_url(event) %>
 		<% else %>
 			<br/><br/>No Photo
 		<% end %>

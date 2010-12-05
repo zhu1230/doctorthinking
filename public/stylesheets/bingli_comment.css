@@ -46,7 +46,7 @@ height: 32px;
 width: 32px;
 }
 .user-info{height:35px;width:205px;}.user-info .user-gravatar32{float:left;width:48px;height:48px;}.user-info .user-action-time{margin-top:2px;margin-bottom:4px;}
-.user-info .user-details{float:left;margin-left:5px;width:145px;overflow:hidden;white-space:nowrap;}
+.user-info .user-details{float:left;margin-left:5px;width:145px;height:48px;overflow:hidden;white-space:nowrap;}
 .user-details{color:#888;line-height:17px;}#revisions{margin-top:20px;margin-left:20px;}.revision{border:2px solid #ddd;}
 .user-details td{color:Black;padding:4px 0 4px 0;}
 .user-action-time{margin-top:2px;margin-bottom:4px;}
@@ -61,4 +61,10 @@ padding: 0px 3px 2px;
 .comment-actions {
 padding-left: 3px;
 width: 15px;
+}
+.reputation-score {
+font-weight: bold;
+color: #444;
+font-size: 120%;
+margin-right: 2px;
 }

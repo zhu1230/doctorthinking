@@ -1,0 +1,17 @@
+<style type="text/css" media="screen">
+	.files li{
+		margin-left:20px;
+		font-size:18px;
+		list-style-type:default;
+	}
+</style>
+<ul id="wysihat_files" class="files" style='padding-left:20px;'>
+<h3>最近一天上传的文件：</h3>(点击文件名插入)  
+
+<%= render @wysihat_files %>
+</ul>
+
+<%= render 'form' %>
+<script type="text/javascript" charset="utf-8">
+	var_add_form_ajax_loader($('new_wysihat_file'));
+</script>

@@ -3,7 +3,7 @@
 
 # Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
-#ENV['RAILS_ENV'] ||= 'production'
+# ENV['RAILS_ENV'] ||= 'development'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 #RAILS_GEM_VERSION = '2.1.2' unless defined? RAILS_GEM_VERSION
@@ -27,11 +27,6 @@ Rails::Initializer.run do |config|
   # config.gem "peteonrails-vote_fu", :lib => 'vote_fu', :source => 'http://gems.github.com'
   # config.gem 'disguise'
   # config.gem 'acts_as_commentable'
-  config.gem "ruby-openid", :lib => "openid"
-  config.gem "aws-s3", :lib => "aws/s3"
-config.gem 'wysihat-engine', :source => 'http://gemcutter.org'
-  config.gem 'tiny_mce'
- config.gem 'attribute_normalizer'
   config.active_record.observers = :user_observer
 
   # config.gem "jammit"
@@ -117,6 +112,6 @@ Time::DATE_FORMATS[:event_brief] = "%B %d, %Y at %I:%M %p"
 
 #   2009-03-04 13:51:51
 Time::DATE_FORMATS[:basic] = "%Y-%m-%d %H:%M %p"
-
+# CalendarDateSelect.format = :euro_24hr_ymd
 TagList.delimiter = /,|;|，/
-
+Bundler.require

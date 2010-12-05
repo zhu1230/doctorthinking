@@ -36,7 +36,10 @@ class Group < ActiveRecord::Base
   
   belongs_to :creator, :class_name => 'User' # the creator
   
-  has_one :profile_photo
+  # has_one :profile_photo
+ has_attached_file :photo, :styles => {:thumb => '48x48>', :medium => '96x96>' ,:big => '158x158>'},:default_style => :big,:default_url => "/:attachment/:style/missing.jpg"
+validates_attachment_size :photo,:less_than => 5.megabytes
+validates_attachment_content_type :photo,:content_type => ['image/gif','image/jpeg','image/png','image/tiff'],:message => '图片只能使用类型为 jpg,gif,png,tiff 的图片。'
   has_many :wall_posts, :order=>'created_at DESC'
   has_many :permissions
   has_many :admins, :source=>:user, :through => :permissions

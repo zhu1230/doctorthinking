@@ -1,5 +1,6 @@
 <%=render :partial => "event_menu"%>
-<%#= stylesheet_link_tag 'events' %>	
+<%#= stylesheet_link_tag 'events' %>
+<%= error_messages_for :event,:header_message=>"请重试！",:message=>"在建立活动时出现了一些问题：",:class=>"validation" %>	
 <div id="add_event">
 	<%= render :partial => 'event_form' %>
 </div>

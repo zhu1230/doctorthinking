@@ -46,7 +46,7 @@
 <div class="show_box">
   <div class="menu">
     <h1><%=@meeting.title%></h1>
-    <span class="info"><font color="#999999">发表时间：</font><font color="#004575"><%=@meeting.thetime.to_s(:short_text)%></font> <font color="#999999">分值：</font>1 <a href="#"></a> <a href="#"><u><font color="#004575">打印</font></u></a> <a href="#"><font color="#FFB32E"><u>收藏</u></font></a></span> <a href="#"> <font color="#FF6600"><u>+发表新会议</u></font></a></div>
+    <span class="info"><font color="#999999">发表时间：</font><font color="#004575"><%=@meeting.created_at.to_s(:short_text)%></font> <font color="#999999">分值：</font>1 <a href="#"></a> <a href="#"><u><font color="#004575">打印</font></u></a> <a href="#"><font color="#FFB32E"><u>收藏</u></font></a></span> <a href="#"> <font color="#FF6600"><u>+发表新会议</u></font></a></div>
     <div class="cnt"><p><%=@meeting.content%></p>
     <h1>相关附件下载</h1>
     <ul>

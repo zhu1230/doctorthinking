@@ -1,0 +1,33 @@
+<%if bingli_info.favoriting_users.size > 0 %>
+<div class="favorites-count-off" title="此病例已经被  个用户收藏"><div class="star-off"></div><b><%=bingli_info.favoriting_users.size%></b></div>
+<%else%>
+<div class="favorite-cell">&nbsp;</div>
+<%end%>
+<div class="question-summary narrow" id="question-summary-4131662">
+    <div onclick="window.location.href='<%=biz_bingli_info_path(bingli_info)%>'" class="cp">
+        <div class="votes">
+            <div class="mini-counts"><%=bingli_info.votes%></div>
+            <div>投票</div>
+        </div>
+        <div class="status unanswered">
+            <div class="mini-counts"><%=bingli_info.bingli_comments.size%></div>
+            <div>讨论</div>
+        </div>
+        <div class="views">
+            <div class="mini-counts"><%=bingli_info.page_views%></div>
+            <div>浏览</div>
+        </div>
+    </div>
+    <div class="summary">
+        <h3><%=link_to bingli_info.title,biz_bingli_info_path(bingli_info),{:title => bingli_info.title,:class =>" question-hyperlink"}%></h3>
+        
+        <div class="tags t-cçç t-geocoding t-garmin">
+            <%for tag in bingli_info.tags%><%=link_to tag.name,tagged_source_path(:controller=>'biz/bingli_infos',:tag => tag.name),{:class=>"post-tag",:title=>"显示更多关于 '#{tag.name}' 的病例" ,:rel=>"tag"}%><%end%>
+        </div>
+        <div class="started">
+            <span title="<%=bingli_info.created_at%>" class="relativetime"><%=bingli_info.created_at.to_s(:basic)%></span>
+            <%=link_to bingli_info.user.login,user_path(bingli_info.user)%>&nbsp;♦<span class="reputation-score" title="reputation score"><%=bingli_info.user.karma%></span>
+        </div>
+    </div>
+</div>
+<br class="cbt">

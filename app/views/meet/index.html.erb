@@ -79,7 +79,7 @@ function MM_closeTopAd()
 <li>
                 <span class="title"><a href="#"><font color="#004575"><%=link_to meeting.title,:controller=>'/meet',:action=>'showone',:id=>meeting.id%></font></a></span>
                 <span class="time"><font color="#666666"><script type="text/javascript" charset="utf-8">
-	document.write(get_local_time_for_date(<%=meeting.thetime.to_i * 1000%>));
+	document.write(get_local_time_for_date(<%=meeting.created_at.to_i * 1000%>));
 </script></font></span>
                 <span class="check"><font color="#666666"><%=link_to meeting.user.nickname,:controller=>'/user/personal',:action=>'index',:id=>meeting.user.id%></font></span>
                 <span class="fen"><font color="#666666">0</font></span>          </li>

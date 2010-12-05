@@ -1,3 +1,4 @@
+<%= calendar_date_select_includes %>
 <% form_for(@event, :html => { :multipart => true }) do |f| -%>			
 	<%= f.error_messages %>
 	<label for="name">活动名称:</label>
@@ -15,13 +16,13 @@
 	<div class="field_help_text">例如: "研讨会", "培训班"</div>
 
 	<label for="start_time">开始时间:</label>
-	<div class="datetime"><%= f.datetime_select :start_time, :twelve_hour => true, :class=>'input_field' %></div>
+	<div class="datetime"><%=f.calendar_date_select :start_time, :class=>'input_field',:time => false %></div>
 
 	<label for="end_time">结束时间:</label>
-	<div class="datetime"><%= f.datetime_select :end_time, :twelve_hour => true, :class=>'input_field' %></div>
+	<div class="datetime"><%= f.calendar_date_select :end_time,:class=>'input_field',:time => false %></div>
 
 	<label for="location">地点:</label>
-	<div style='width:300px;border:1px solid red;height:30px'> <%=country_select_tag(:country,
+	<div style='width:300px;height:30px'> <%=country_select_tag(:country,
 	       :only => [:china, :japan, :united_states],
 	       :update => 'state')%>
 	<%=state_select_tag(:state,:country => :china,:countries => [:china, :japan, :united_states],
@@ -42,6 +43,6 @@
 	<%= f.text_field :organized_by, :class=>'input_field' %>
 	<div class="field_help_text">默认为您自己</div>
 
-	<%= f.submit "Add Event", :class=>'add_button' %>
+	<%= f.submit "完成", :class=>'add_button' %>
 	<div style="clear:both"></div>
 <% end %>

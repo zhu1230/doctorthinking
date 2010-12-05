@@ -1,13 +1,15 @@
 class BingliInfo < ActiveRecord::Base
+	include Pacecar
 	cattr_reader :per_page
 	  @@per_page = 20
 	acts_as_commentable
+	
   acts_as_voteable
   acts_as_favorite
   acts_as_taggable
  can_be_flagged
 	normalize_attributes :title
-with_page_views :buffer_size => 1, :days => 1, :model_name => 'post'
+with_page_views :buffer_size => 5, :days => 1, :model_name => 'post'
   belongs_to :bingli,:autosave=>true
   belongs_to :user,:counter_cache=>true
   belongs_to :keshi
@@ -26,6 +28,10 @@ validates_associated :keshi
  # validates_presence_of :catelog_id
 accepts_nested_attributes_for :bingli, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
 
+  def votes
+  	vote_for_count - vote_against_count
+  end
+  
   def getpic
     if !self.bingli.fuzhu_details.blank?
      fuzhu=self.bingli.fuzhu_details.detect{|fd|
@@ -35,7 +41,7 @@ accepts_nested_attributes_for :bingli, :allow_destroy => true, :reject_if => pro
   end
 	def after_validation
 	    # Skip errors that won't be useful to the end user
-	    filtered_errors = self.errors.reject{ |err|p err.first; %{ bingli }.include?(err.first) }
+	    filtered_errors = self.errors.reject{ |err| %{ bingli }.include?(err.first) }
 	    # recollect the field names and retitlize them
 	    # this was I won't be getting 'user.person.first_name' and instead I'll get
 	    # 'First name'

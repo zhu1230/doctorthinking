@@ -40,7 +40,10 @@ class Event < ActiveRecord::Base
   has_many :attendances, :dependent => :destroy
   has_many :attendees, :through => :attendances, :order => Event.connection.adapter_name == 'PostgreSQL' ? 'RANDOM()' : 'RAND()'
   
-  has_one     :profile_photo
+  # has_one     :profile_photo
+	has_attached_file :photo, :styles => {:thumb => '48x48>', :medium => '96x96>' ,:big => '158x158>'},:default_style => :big,:default_url => "/:attachment/:style/missing.jpg"
+	validates_attachment_size :photo,:less_than => 5.megabytes
+	validates_attachment_content_type :photo,:content_type => ['image/gif','image/jpeg','image/png','image/tiff'],:message => '图片只能使用类型为 jpg,gif,png,tiff 的图片。'
   belongs_to  :user  # the creator
   has_many    :wall_posts, :order=>'created_at DESC'
   

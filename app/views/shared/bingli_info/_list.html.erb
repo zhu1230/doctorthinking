@@ -20,7 +20,7 @@
     <td><div align="center"><%=t.bingli_comments.size%></div></td>
     <td><div align="center"><%=t.rank_num%></div></td>
     <td><div align="center"><script type="text/javascript" charset="utf-8">
-	document.write(get_local_time_for_date(<%=t.thetime.to_i * 1000%>));
+	document.write(get_local_time_for_date(<%=t.created_at.to_i * 1000%>));
 </script></div></td>
   </tr>
   <% }%>

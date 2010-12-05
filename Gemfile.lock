@@ -1,0 +1,63 @@
+GEM
+  remote: http://rubygems.org/
+  remote: http://gemcutter.org/
+  specs:
+    actionmailer (2.3.10)
+      actionpack (= 2.3.10)
+    actionpack (2.3.10)
+      activesupport (= 2.3.10)
+      rack (~> 1.1.0)
+    activerecord (2.3.10)
+      activesupport (= 2.3.10)
+    activeresource (2.3.10)
+      activesupport (= 2.3.10)
+    activesupport (2.3.10)
+    acts_as_ferret (0.4.8.2)
+      jk-ferret (>= 0.11.8)
+    attribute_normalizer (0.3.1)
+    cgi_multipart_eof_fix (2.5.0)
+    daemons (1.1.0)
+    fastthread (1.0.7)
+    ferret (0.11.6)
+      rake (> 0.0.0)
+    gem_plugin (0.2.3)
+    hpricot (0.8.3)
+    jk-ferret (0.11.8.2)
+      rake
+    mongrel (1.1.5)
+      cgi_multipart_eof_fix (>= 2.4)
+      daemons (>= 1.0.3)
+      fastthread (>= 1.0.1)
+      gem_plugin (>= 0.2.3)
+    mysql2 (0.2.6)
+    paperclip (2.3.6)
+      activerecord
+      activesupport
+    rack (1.1.0)
+    rails (2.3.10)
+      actionmailer (= 2.3.10)
+      actionpack (= 2.3.10)
+      activerecord (= 2.3.10)
+      activeresource (= 2.3.10)
+      activesupport (= 2.3.10)
+      rake (>= 0.8.3)
+    rake (0.8.7)
+    rdig (0.3.5)
+      ferret (>= 0.10.0)
+      hpricot (>= 0.6)
+    will_paginate (2.3.15)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  acts_as_ferret (~> 0.4.8)
+  attribute_normalizer
+  hpricot
+  mongrel
+  mysql2
+  paperclip
+  rack
+  rails (= 2.3.10)
+  rdig
+  will_paginate (~> 2.3.15)

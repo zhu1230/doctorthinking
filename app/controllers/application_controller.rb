@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
   # Determine which users are currently signed in
   def who_is_online
     time_window = Time.now.utc - 30.minutes.to_i
-    online_sessions = CGI::Session::ActiveRecordStore::Session.find(:all,
+    online_sessions = ActiveRecord::SessionStore::Session.find(:all,
                                  :select => "user_id, last_url_visited, updated_at",
                                  :conditions => [ "updated_at > ? and user_id is not null", time_window ],
                                  :limit => 50 )

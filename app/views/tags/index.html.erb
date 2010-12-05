@@ -1,0 +1,19 @@
+<style type="text/css" media="screen">
+.tags_list{
+	width: 960px;
+	margin: 0px auto;
+	overflow: hidden;
+}	
+.search_box{
+	height:40px;
+}
+</style>
+<div class='tags_list'>
+<div class="search_box">
+		<h3>输入查找标签:  <%=text_field_tag :search_tag%><%=observe_field :search_tag,:url => search_tags_path,:frequency => 0.5,:update => :tags,:with => :search_tag,:loading => "$('search_tag').insert({after:$('ajax-loader').outerHTML});",:complete => "$('search_tag').next('#ajax-loader').remove();"%></h3>
+	</div>
+	<div id='tags'>
+		<%=render @tags%>
+		<%=will_paginate @tags,:class=>"apple_pagination"%>
+	</div>
+</div>
