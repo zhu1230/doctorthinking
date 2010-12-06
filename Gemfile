@@ -5,7 +5,7 @@
 gem "rails", "2.3.10"
 source "http://rubygems.org"
 source 'http://gemcutter.org'
-  # gem "ruby-openid"
+   gem "ruby-openid"
   # gem "aws-s3"
 # gem 'wysihat-engine'
   # gem 'tiny_mce'
@@ -19,6 +19,7 @@ gem 'mongrel'
 gem 'hpricot'
 gem 'rdig'
 gem 'thinking-sphinx'
+gem 'capistrano'
 # gem 'yaml_db','~>0.1.0'
 # gem 'ar_fixtures'
 # gem "wysihat-engine", :path => "vendor/gems"
