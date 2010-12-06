@@ -9,6 +9,8 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 require 'thinking_sphinx/tasks' 
+# require 'ar_fixtures/tasks'
+require 'yaml_db/tasks/yaml_db_tasks'
 # require 'disguise/tasks'
 
 test_dir = File.expand_path('test')

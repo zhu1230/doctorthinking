@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>config/titles/zh-CN.yml</string>
+	<string>vendor/plugins/yaml_db/about.yml</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -2249,6 +2249,64 @@
 			<key>firstVisibleLine</key>
 			<integer>61</integer>
 		</dict>
+		<key>vendor/plugins/yaml_db/README.markdown</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>4</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+		</dict>
+		<key>vendor/plugins/yaml_db/Rakefile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>vendor/plugins/yaml_db/about.yml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
@@ -2275,6 +2333,9 @@
 		<string>app/views/biz/bingli_infos/search.html.erb</string>
 		<string>app/views/biz/bingli_infos/query.html.erb</string>
 		<string>config/titles/zh-CN.yml</string>
+		<string>vendor/plugins/yaml_db/README.markdown</string>
+		<string>vendor/plugins/yaml_db/Rakefile</string>
+		<string>vendor/plugins/yaml_db/about.yml</string>
 		<string>app/views/users/new.html.erb</string>
 		<string>app/models/user.rb</string>
 		<string>lib/authenticated_system.rb</string>

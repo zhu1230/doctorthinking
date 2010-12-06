@@ -14,6 +14,8 @@ GEM
     activesupport (2.3.10)
     after_commit (1.0.8)
       activerecord (< 3.0.0)
+    ar_fixtures (0.0.4)
+      hoe (>= 1.2.1)
     attribute_normalizer (0.3.1)
     cgi_multipart_eof_fix (2.5.0)
     daemons (1.1.0)
@@ -21,7 +23,11 @@ GEM
     ferret (0.11.6)
       rake (> 0.0.0)
     gem_plugin (0.2.3)
+    hoe (2.7.0)
+      rake (>= 0.8.7)
+      rubyforge (>= 2.0.4)
     hpricot (0.8.3)
+    json_pure (1.4.6)
     mongrel (1.1.5)
       cgi_multipart_eof_fix (>= 2.4)
       daemons (>= 1.0.3)
@@ -44,16 +50,20 @@ GEM
       ferret (>= 0.10.0)
       hpricot (>= 0.6)
     riddle (1.2.1)
+    rubyforge (2.0.4)
+      json_pure (>= 1.1.7)
     thinking-sphinx (1.4.0)
       activerecord (>= 1.15.6, < 3.0.0)
       after_commit (>= 1.0.7)
       riddle (>= 1.2.0)
     will_paginate (2.3.15)
+    yaml_db (0.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  ar_fixtures
   attribute_normalizer
   hpricot
   mongrel
@@ -64,3 +74,4 @@ DEPENDENCIES
   rdig
   thinking-sphinx
   will_paginate (~> 2.3.15)
+  yaml_db (~> 0.1.0)

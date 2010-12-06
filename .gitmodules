@@ -1,0 +1,15 @@
+[submodule "vendor/plugins/ar_fixtures"]
+	path = vendor/plugins/ar_fixtures
+	url = git://github.com/topfunky/ar_fixtures.git
+[submodule "vendor/plugins/yaml_db"]
+	path = vendor/plugins/yaml_db
+	url = git://github.com/ludicast/yaml_db.git
+[submodule "vendor/plugins/calendar_date_select"]
+	path = vendor/plugins/calendar_date_select
+	url = git://github.com/timcharper/calendar_date_select.git
+[submodule "vendor/plugins/can_flag"]
+	path = vendor/plugins/can_flag
+	url = git://github.com/courtenay/can_flag.git
+[submodule "vendor/plugins/pacecar"]
+	path = vendor/plugins/pacecar
+	url = git://github.com/thoughtbot/pacecar.git
