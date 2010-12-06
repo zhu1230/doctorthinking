@@ -46,17 +46,17 @@ class Photo < ActiveRecord::Base
   
   #has_many :activities, :source=>:item, :source_type=>'Photo', :dependent=>:destroy
   
-  has_attachment :content_type => :image, 
-                 :storage => :file_system, 
-                 :processor    => :rmagick,
-                 #:storage => :s3,
-                 :max_size => 50.megabyte,
-                 :resize_to => '640x640>',
-                 :thumbnails => { :thumb => '32x32', 
-                                  :small => '48x48', 
-                                  :medium => '82x82',
-                                  :member => '96x96',
-                                  :display => '175x175'}                  
+  # has_attachment :content_type => :image, 
+  #                :storage => :file_system, 
+  #                :processor    => :rmagick,
+  #                #:storage => :s3,
+  #                :max_size => 50.megabyte,
+  #                :resize_to => '640x640>',
+  #                :thumbnails => { :thumb => '32x32', 
+  #                                 :small => '48x48', 
+  #                                 :medium => '82x82',
+  #                                 :member => '96x96',
+  #                                 :display => '175x175'}                  
 
   validates_as_attachment
   

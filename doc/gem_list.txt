@@ -1,8 +1,0 @@
-Required:
-
-rmagick 2.9.0  see http://rmagick.rubyforge.org/install-faq.html
-mysql
-hpricot
-
-
-
