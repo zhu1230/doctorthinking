@@ -27,7 +27,7 @@ Rails::Initializer.run do |config|
   # config.gem "peteonrails-vote_fu", :lib => 'vote_fu', :source => 'http://gems.github.com'
   # config.gem 'disguise'
   # config.gem 'acts_as_commentable'
-  config.active_record.observers = :user_observer
+  #config.active_record.observers = :user_observer
 
   # config.gem "jammit"
 
@@ -81,7 +81,7 @@ config.autoload_paths += %W(#{RAILS_ROOT}/app/middleware)
   # config.app_config.rankTagBingliInfo={:perfect=>10,:fine=>5,:hide=>-3}
   # config.app_config.perfectNum='10'
   # config.app_config.fineNum='5'
- config.active_record.observers = :announcement_observer, :invite_observer, :user_observer, :message_observer, :wall_post_observer
+  config.active_record.observers = :user_observer unless File.basename($0) == 'rake'#, :message_observer, :wall_post_observer,:announcement_observer, :invite_observer,
  
  config.action_mailer.delivery_method = :smtp
  
@@ -115,3 +115,4 @@ Time::DATE_FORMATS[:basic] = "%Y-%m-%d %H:%M %p"
 # CalendarDateSelect.format = :euro_24hr_ymd
 TagList.delimiter = /,|;|，/
 Bundler.require
+require("wysihat-engine")

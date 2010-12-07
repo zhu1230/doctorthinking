@@ -23,6 +23,7 @@ GEM
       net-ssh-gateway (>= 1.0.0)
     cgi_multipart_eof_fix (2.5.0)
     daemons (1.1.0)
+    default_value_for (1.0.1)
     fastthread (1.0.7)
     ferret (0.11.6)
       rake (> 0.0.0)
@@ -71,6 +72,7 @@ PLATFORMS
 DEPENDENCIES
   attribute_normalizer
   capistrano
+  default_value_for
   hpricot
   mongrel
   mysql2

@@ -70,4 +70,6 @@ bug_reports:
 tags:
     index: '标签列表'
     show: '标签'
+pages:
+    about_us: '关于医思网'
     

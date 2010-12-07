@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   
-  before_filter :set_vars, :update_session
+  before_filter :set_vars, :update_session,:store_location
   # before_filter :set_facebook_session
   # helper_method :facebook_session
   
@@ -68,7 +68,9 @@ class ApplicationController < ActionController::Base
 #    end
   end
   
-  
+  def store_location
+  session[:return_to] = request.request_uri if request.get? and controller_name != "user_sessions" and controller_name != "sessions"
+end
   # Determine which users are currently signed in
   def who_is_online
     time_window = Time.now.utc - 30.minutes.to_i

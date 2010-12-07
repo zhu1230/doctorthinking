@@ -65,7 +65,7 @@ ul,li {list-style-type:none;list-style-images:none;}*/
                 <h3>社区头像</h3><span>
                 <a id='mail_edit' onclick="$('avatar_old').hide();$('avatar_new').show();">修改</a></span>
                 <p><span id='avatar_old' style='padding-top:10px;'><%=current_user.avatar ? image_tag(current_user.avatar.url(:medium), :alt=>current_user.name) : "目前没有设置头像"%></span>
-<div id='avatar_new' style='display:none;border-top: 1px solid #d8d8d8;width:730px;float:left;text-indent:1em;line-height:22px;padding:0px 0px 10px 0px; margin-bottom:20px;margin-left: 10px;'><%=form_tag({:action=>"update_avatar",:controller=>"/user"},:multipart => true)%><%=file_field_tag 'avatar',{:accept => 'image/png,image/gif,image/jpeg'}%><%=submit_tag "完成",:disable_with => '注册中...' %><%=link_to_function "取消","$('avatar_new').hide();$('avatar_old').show();return false;"%></form></div></p>
+<div id='avatar_new' style='display:none;border-top: 1px solid #d8d8d8;width:730px;float:left;text-indent:1em;line-height:22px;padding:0px 0px 10px 0px; margin-bottom:20px;margin-left: 10px;'><%=form_tag({:action=>"update_avatar",:controller=>"/user"},:multipart => true)%><%=file_field_tag 'avatar',{:accept => 'image/png,image/gif,image/jpeg'}%><%=submit_tag "完成",:disable_with => '上传中...' %><%=link_to_function "取消","$('avatar_new').hide();$('avatar_old').show();return false;"%></form></div></p>
             </li>
         </ul>
     </div>

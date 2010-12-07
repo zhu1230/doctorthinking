@@ -102,11 +102,37 @@ end
 	def query
 		if params[:query_type]=='simple'
 			@bingli_infos=BingliInfo.search(params[:search])
+		elsif params[:query_type]=='advanced'
+			conditions=''
+			if params[:bingli_info]
+				conditions=''
+				params[:bingli_info].each_value do |v|
+					next if v['condition_type'].blank?
+					p ">>>"+conditions
+					if v['item']=='fuzhu_detail'
+						conditions << and_or_except(v['fuzhus'],v['condition_type'],v['content'])
+					else
+						conditions << and_or_except(v['item'],v['condition_type'],v['content'])
+					end
+				end
+			end
+			p ">>>"+conditions
+			@binglis = Bingli.search( conditions,:include => [:bingli_info],:match_mode =>:extended) 
 		end
 		
 	end
 	
   private
+def and_or_except(field,cond,value)
+	if cond=='or'
+		"@#{field} #{value} " 
+	elsif cond=='and'
+		"@#{field} #{value} "
+	elsif cond=='except'
+		"@#{field} -#{value} "
+	end
+end
+
 def increment_page_views
   page_views_increment @bingli_info  #load @post before
 end

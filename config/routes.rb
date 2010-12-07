@@ -184,7 +184,7 @@ ActionController::Routing::Routes.draw do |map|
  end
  map.resources :comments
  map.with_options :controller => 'pages' do |page|
- 	page.about 'about',:action => 'about'
+ 	page.about 'about_us',:action => 'about_us'
 	page.privacy 'privacy',:action => 'privacy'
 	page.terms 'terms',:action => 'terms'
 	

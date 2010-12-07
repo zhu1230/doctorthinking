@@ -20,6 +20,7 @@ gem 'hpricot'
 gem 'rdig'
 gem 'thinking-sphinx'
 gem 'capistrano'
+gem 'default_value_for'
 # gem 'yaml_db','~>0.1.0'
 # gem 'ar_fixtures'
 # gem "wysihat-engine", :path => "vendor/gems"

@@ -1,13 +1,14 @@
 class PagesController < ApplicationController
-	layout false,:only => [:privacy	, :terms,:about]
+	# layout false,:except => [:about_us]
+	 skip_before_filter :store_location,:except => :about_us
 def privacy
-	
+		render :layout => false
 end
 def terms
-	
+		render :layout => false
 end
-def about
-	
+def about_us
+	render :layout => true
 end
 
   def show

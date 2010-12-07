@@ -85,7 +85,7 @@
 		            <div id='search_conditions' class="acont2" style='display:none;'>
 				<%form_tag query_biz_bingli_infos_path,:method => :post do %>
 				<%=hidden_field_tag :query_type,'advanced'%>
-				<li id='blank_search' class="arrow" style='display:none;'><span>选择</span><%fields_for "bingli_info[0]" do |bi|%><%=bi.hidden_field :condition_type%><%=bi.select :item,[['－请选择－',''],["主题",'title'], ['主诉','zhusu'], [' 现病史','xianbinshi'], ['既往史','jiwangshi'], ['体格检查','tigejiancha'], ['辅助检查','fuzhu_detail'], ['鉴别诊断','chubu'], ['疑问','question'], ['最终诊断','final'], ['性别','sex'], ['年龄','age'], ['婚否','marriage']],{},{:class => 'search_type',:onchange => 'add_fuzhu(this);'}%><span style='display:none;'>中在<br><%=select 'bingli_info[0]',:fuzhu_type_id,  grouped_options_for_select(fuzhu_by_groups,nil,'-选择分类-')%></span>中包含<%=bi.text_field :content%><%end%></li>
+				<li id='blank_search' class="arrow" style='display:none;'><span>选择</span><%fields_for "bingli_info[0]" do |bi|%><%=bi.hidden_field :condition_type%><%=bi.select :item,[['－请选择－',''],["主题",'title'], ['主诉','zhusu'], [' 现病史','xianbinshi'], ['既往史','jiwang'], ['体格检查','tigejiancha'], ['辅助检查','fuzhus'], ['鉴别诊断','chubus'], ['疑问','questions'], ['最终诊断','final'], ['性别','sex'], ['年龄','age'], ['婚否','marriage']],{},{:class => 'search_type',:onchange => 'add_fuzhu(this);'}%><span style='display:none;'>中在<br><%=select 'bingli_info[0]',:fuzhu_type_id,  grouped_options_for_select(fuzhu_by_groups,nil,'-选择分类-')%></span>中包含<%=bi.text_field :content%><%end%></li>
 				
 		                <ul>
 		
@@ -107,7 +107,7 @@
 							<%end%>
 		                    </li>
 		                    <li><%=radio_button 'bingli_info','timezone','custom',{:class =>"noborder"}%>自定义时间范围：从<%=calendar_date_select_tag :start_time,nil,:popup => "force" ,:time => false%><br><p style='margin-left:135px;'>到<%=calendar_date_select_tag :end_time,nil,:popup => "force" ,:time => false%><br><font color="#BABABA">点击右侧图标选择日期</font></p></li>
-							<li><input type="button" class="btn" value="搜索病例"></li>
+							<li><%=submit_tag '搜索病例',{:class => 'btn'}%></li>
 		                </ul>
 		<%end%>
 		            </div>

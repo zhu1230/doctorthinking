@@ -251,11 +251,19 @@
 	<div style="clear:both;"></div>
 </div>	 -->
 <%= error_messages_for :bug_report,:header_message=>"请重试！",:message=>"在提交问题建议时出现了一些问题：",:class=>"validation" %>
-<div id='new_bug' style='background-color:#F3F7F8;width:100%;float:left;margin:0px auto;'><div id="add_bug">
+
+<div id='new_bug' style='width:100%;float:left;margin:0px auto;'>
+	<div id='bug_tip' style='padding:10px 20px 10px 50px;font-size:16px;line-height:25px;background-color:#F3F7F8;'>
+	<li>	医思网是一个新兴的团体，正处于不断完善和发展中。我们亟需您的宝贵意见与建议，帮助我们更好的为大家服务。</li>
+				<li>如果您发现医思网的页面访问错误或者碰到问题，请到这里告诉我们，我们会第一时间改进。</li>
+							<li>如果你有任何关于医思网的使用上的困难，请到这里告诉我们，我们会第一时间为您解答。</li>
+							<li>如果您在使用中，有什么好的想法，请与我们联系，我们真诚邀请您加入我们的团队，一起为国内医疗学术添砖加瓦。</li>
+	</div>
+	<div id="add_bug">
 	<%= render :partial => 'bug_report_form' %>
 	<div style="clear:both;"></div>
 </div></div>
 <div style="clear:both;"></div>
 <script type="text/javascript" charset="utf-8">
-	new Effect.Corner('new_bug', "30px;cc:#ffffff");
+	new Effect.Corner('bug_tip', "30px;cc:#ffffff");
 </script>
