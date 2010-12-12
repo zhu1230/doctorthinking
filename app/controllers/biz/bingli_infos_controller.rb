@@ -1,35 +1,45 @@
 class Biz::BingliInfosController < ApplicationController
-	in_place_edit_for :comment,:comment
+	# auto_complete_for :tag_list
 	# in_place_edit_for :user,:about_me,{:error_messages=>"error"}
   require_role "user",:only=>[:new,:create,:add_favorite]
 	after_filter :increment_page_views, :only => [:show]
+	# after_filter :by_keshi,:only => [:hot,:active,:week,:month]
 	include PageViews::Controller
+
+
   def index
     #params[:keshi]=1 unless params[:keshi]
-    @bingli_infos=BingliInfo.paginate :page=>params[:page],:order=>'created_at desc'#,:conditions=>["keshi_id= ?",params[:keshi]]
+	if !params[:keshi_id].blank? 
+			session[:keshi_id]=params[:keshi_id]
+	    @bingli_infos=Keshi.find(params[:keshi_id]).bingli_infos.paginate :page=>params[:page],:order=>'created_at desc'#,:conditions=>["keshi_id= ?",params[:keshi]]
+	
+	else
+			session[:keshi_id]=nil
+			@bingli_infos=BingliInfo.paginate :page=>params[:page],:order=>'created_at desc'#,:conditions=>["keshi_id= ?",params[:keshi]]
+	end
     #@bingli_infos=BingliInfo.find(:all,:conditions=>["keshi_id= ?",params[:keshi]])
   end
 	def hot
-		@bingli_infos=BingliInfo.paginate :page=>params[:page],:order => :page_views_counter
+		@bingli_infos=BingliInfo.paginate :page=>params[:page],:order => :page_views_counter,:conditions =>( ['keshi_id=?',session[:keshi_id]] if session[:keshi_id])
 		render :action => "index"
 	end
 	def active
-		@bingli_infos=BingliInfo.tally(
-	  {  :at_least => 1, 
+		@bingli_infos=(session[:keshi_id] ? BingliInfo.keshi_id_equals(session[:keshi_id]) : BingliInfo.created_at_inside(10.weeks.ago,1.days.ago)).tally(
+	  {  :at_least => 0, 
 	      :at_most => 10000,  
-	      :start_at => 10.weeks.ago,
-	      :end_at => 1.day.ago,
+	      # :start_at => 10.weeks.ago,
+	      # :end_at => 1.day.ago,
 	      :order => 'votes.count desc',
 		  :conditions=>["votes.voteable_type=:voteable_type",{:voteable_type => 'BingliInfo'}]
 	  }).paginate :page=>params[:page]
 	render :action => "index"
 	end
 	def week
-		@bingli_infos=BingliInfo.paginate :page=>params[:page],:conditions => ['created_at > ?',1.weeks.ago],:order =>'created_at desc'
+		@bingli_infos=BingliInfo.created_at_after(1.weeks.ago).paginate :page => params[:page],:order =>'created_at desc',:conditions =>( ['keshi_id=?',session[:keshi_id]] if session[:keshi_id])
 		render :action => "index"
 	end
 	def month
-	@bingli_infos=BingliInfo.paginate :page=>params[:page],:conditions => ['created_at > ?',1.months.ago],:order =>'created_at desc'
+	@bingli_infos=BingliInfo.created_at_after(1.months.ago).paginate :page=>params[:page],:order =>'created_at desc',:conditions =>( ['keshi_id=?',session[:keshi_id]] if session[:keshi_id])
 	render :action => "index"
 	end
 
@@ -75,6 +85,7 @@ end
   # end
   def create
         @bingli_info=BingliInfo.new(params[:bingli_info])
+        @bingli_info.set_tag_list_on(:tags,params[:bingli_info]['tag_list'],current_user)
 		@bingli_info.user=current_user
 		@bingli_info.created_at=Time.new
 		
@@ -103,33 +114,65 @@ end
 		if params[:query_type]=='simple'
 			@bingli_infos=BingliInfo.search(params[:search])
 		elsif params[:query_type]=='advanced'
+			hashs=Hash.new
 			conditions=''
-			if params[:bingli_info]
+			unless params[:bingli_info].blank?
 				conditions=''
 				params[:bingli_info].each_value do |v|
-					next if v['condition_type'].blank?
+					next if (v['condition_type'].blank? || v['item'].blank? || v['content'].blank? || (v['item']=='fuzhus' && v['fuzhu_type_id'].blank?))
 					p ">>>"+conditions
-					if v['item']=='fuzhu_detail'
-						conditions << and_or_except(v['fuzhus'],v['condition_type'],v['content'])
+					if v['item']=='fuzhus'
+						@fuzhus=FuzhuDetail.search v['content'],:with => {:fuzhu_type_id => v['fuzhu_type_id'].to_i}
+						bingli_ids=@fuzhus.collect{|f|f.bingli.bingli_info.id}.uniq.join(' | ')
+						p "binglis_ids>>"+bingli_ids
+						conditions << and_or_except('id',v['condition_type'],bingli_ids)
 					else
 						conditions << and_or_except(v['item'],v['condition_type'],v['content'])
 					end
 				end
 			end
+			hashs=Hash.new
+			unless params[:keshi_id].blank?
+				hashs = {:keshi_id => params[:keshi_id]}
+			end
+			
+			unless params[:timezone].blank?
+				if params[:timezone]=='custom'
+					timezone =  Time.parse(params[:start_time])..Time.parse(params[:end_time]).advance(:days => 1)
+				elsif params[:timezone]=='day'
+					timezone = 1.days.ago..Time.now
+				elsif params[:timezone]=='month'
+					timezone = 1.months.ago..Time.now
+				elsif params[:timezone]=='year'
+					timezone=1.years.ago..Time.now			
+				end
+				hashs[:created_at]=timezone
+			end
 			p ">>>"+conditions
-			@binglis = Bingli.search( conditions,:include => [:bingli_info],:match_mode =>:extended) 
+			p "hash>>>>"+hashs.inspect
+			@bingli_infos = BingliInfo.search(conditions,:match_mode =>:extended,:with => hashs,:order => "created_at DESC, @relevance DESC")
 		end
 		
+	end
+	def autocomplete
+		tags=Tag.all(:conditions => ['name like ?','%'+params[:tag].split(',').last+'%'],:order => 'name',:limit => 10)
+		 # tags_s=tags.collect{|t|{:name => t.name,:id => t.id}}.to_json
+		tags_s=tags.collect{|t|{:key => t.name,:value => t.id}}.to_json
+		 # tags_s=tags.collect{|t|"\""+t.name+"\""}.join(',')
+		p tags_s
+		render :text => tags_s#:json => {:query => params[:query],:suggestions=> tags.collect{|t|t.name}}# :text => "{\"query\":\"#{params[:query]}\",\"suggestions\":[#{tags_s}]}"#
+		# render :text => "{\"query\":\"#{params[:query]}\",\"suggestions\":[#{tags_s}]}"
+		# render :json
 	end
 	
   private
 def and_or_except(field,cond,value)
 	if cond=='or'
-		"@#{field} #{value} " 
+		"| (@#{field} #{value}) " 
 	elsif cond=='and'
-		"@#{field} #{value} "
+		"& (@#{field} #{value}) "
 	elsif cond=='except'
-		"@#{field} -#{value} "
+		"& (@#{field} -#{value}) "
 	end
 end
 
@@ -174,4 +217,8 @@ end
   #         }
   #         
   #   end
+def by_keshi
+	@bingli_infos.find_by_keshi_id(session[:keshi_id]) unless session[:keshi_id].blank?
+end
+
 end

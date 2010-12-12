@@ -58,7 +58,7 @@ class Photo < ActiveRecord::Base
   #                                 :member => '96x96',
   #                                 :display => '175x175'}                  
 
-  validates_as_attachment
+  # validates_as_attachment
   
   after_create :log_create_activity
   

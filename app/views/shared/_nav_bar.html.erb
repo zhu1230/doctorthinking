@@ -9,6 +9,6 @@
 </style>
 <div class="nowpsn">
 	<div class="nav_title"><%=easy_title%></div>
-    <span><%=link_to "首页",index_url%> > <%=link_to EasyTitles.get_current_title(controller.controller_name,"index"),:action=>"index"%> <%if controller.action_name!="index"%>>  <%=link_to EasyTitles.get_current_title(controller.controller_name, controller.action_name),:action=>controller.action_name%><%end%></span>
+    <span><%=link_to "首页",index_url%> > <%=link_to EasyTitles.get_current_title(controller.controller_name,"index"),:action=>"index"%> <%if controller.action_name!="index"%>>  <%=link_to ((et=EasyTitles.get_current_title(controller.controller_name, controller.action_name)).blank? ? @page_title : et),:action=>controller.action_name%><%end%></span>
 </div>
 <%end%>

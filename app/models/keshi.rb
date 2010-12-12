@@ -4,7 +4,7 @@ class Keshi < ActiveRecord::Base
     #           :class_name=>"FuzhuType",
     #           :foreign_key => "parent_id"
 	after_save :update_depth
-
+	has_many :bingli_infos
 	  # Validations
 	  validates_presence_of :name
 	  validates_uniqueness_of :name

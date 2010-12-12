@@ -25,7 +25,7 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
   # config.gem "peteonrails-vote_fu", :lib => 'vote_fu', :source => 'http://gems.github.com'
-  # config.gem 'disguise'
+   config.gem 'default_value_for'
   # config.gem 'acts_as_commentable'
   #config.active_record.observers = :user_observer
 
@@ -81,7 +81,7 @@ config.autoload_paths += %W(#{RAILS_ROOT}/app/middleware)
   # config.app_config.rankTagBingliInfo={:perfect=>10,:fine=>5,:hide=>-3}
   # config.app_config.perfectNum='10'
   # config.app_config.fineNum='5'
-  config.active_record.observers = :user_observer unless File.basename($0) == 'rake'#, :message_observer, :wall_post_observer,:announcement_observer, :invite_observer,
+  # config.active_record.observers = :user_observer unless File.basename($0) == 'rake'#, :message_observer, :wall_post_observer,:announcement_observer, :invite_observer,
  
  config.action_mailer.delivery_method = :smtp
  
@@ -112,7 +112,11 @@ Time::DATE_FORMATS[:event_brief] = "%B %d, %Y at %I:%M %p"
 
 #   2009-03-04 13:51:51
 Time::DATE_FORMATS[:basic] = "%Y-%m-%d %H:%M %p"
-# CalendarDateSelect.format = :euro_24hr_ymd
+
+CalendarDateSelect.format = :iso_date
 TagList.delimiter = /,|;|，/
 Bundler.require
 require("wysihat-engine")
+WillPaginate::ViewHelpers.pagination_options[:class] = "yourclass"  
+WillPaginate::ViewHelpers.pagination_options[:previous_label] = "前一页"  
+WillPaginate::ViewHelpers.pagination_options[:next_label] = "后一页"

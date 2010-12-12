@@ -1,0 +1,44 @@
+<style type="text/css" media="screen">
+	.side_bar{
+		width:180px;
+		float:left;
+		height:100%;
+/*		border-left: 1px solid #999;*/
+		padding:20px 10px 20px 20px;
+	}
+	.side_bar p{
+/*		margin:0px auto;*/
+/*		line-height:30px;*/
+		clear:both;
+		font-size: 120%;
+		line-height: 1.3;
+		margin-bottom: .5em;
+	}
+	.side_bar p.label-key{
+		color: #444;
+		margin-bottom: 0px;
+		margin-top:20px;
+	}
+	.side_bar p.label-value {
+	color: #444;
+	font-size: 160%;
+	font-weight: bold;
+	}
+	
+</style>
+<div class='side_bar'>
+	<p class='label-key'>标签:</p>
+	<div class="tagged" style='line-height:1px;'>    
+	<%for t in bingli_info.tags%>
+	<%=render 'tags/tag',:object => t%><br style='clear:both;'/>
+	<%end%>
+	</div>
+	<p class='label-key'>发表于:</p>
+	<p class='label-value'><%=distance_of_time_in_words(bingli_info.created_at,Time.now)%>前</p>
+	<p class='label-key'>被浏览:</p>
+	<p class='label-value'><%=bingli_info.page_views%>次</p>
+	<p class='label-key' style='margin-top:50px;'>相关病例：</p>
+	<%for bi in bingli_info.find_related_tags.reject{|b|b.id==bingli_info.id}%>
+	<p class='label-key'><%=link_to bi.title,biz_bingli_info_path(bi)%></p>
+	<%end%>
+</div>

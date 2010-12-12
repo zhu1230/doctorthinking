@@ -11,7 +11,7 @@ class WysihatFilesController < ApplicationController
         if(@wysihat_file.save)
           page.insert_html :bottom, :wysihat_files, :partial => 'wysihat_file', :object => @wysihat_file
 		  page << "$('new_wysihat_file').reset();"
-			page << "$('new_wysihat_file').down('ajax-loader').remove();"
+			page << "$('new_wysihat_file').down('#ajax-loader').remove();"
         end
       end
     end

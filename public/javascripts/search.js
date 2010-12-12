@@ -13,7 +13,7 @@ function add_more(link) {
 	// result.highlight();
 }
 function add_fuzhu(link){
-	if(link.getValue()=='fuzhu_detail'){
+	if(link.getValue()=='fuzhus'){
 		link.next('span').show().highlight();
 		// b.up('li').highlight();
 	}else{

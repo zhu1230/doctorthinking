@@ -1,9 +1,9 @@
 <div class="add_comment">
 	<% if logged_in? %>
-	<%form_remote_tag :url=>add_comment_blog_post_comments_path(@blog_post.id),:before => "tinyMCE.triggerSave(true,true)" do -%>
+	<%form_remote_tag :url=>add_comment_blog_post_comments_path(@blog_post.id),:before => "" do -%>
 		<span class="title">增加评论:</span>	
-			<%=text_area(:comment,:comment, :cols => 40, :rows => 10,:class=>"mceEditor") %>
-			<%=submit_tag "发表",{:onclick=>"uses_tiny_mce"}%>
+			<%=text_area(:comment,:comment, :cols => 40, :rows => 10,:class=>"") %>
+			<%=submit_tag "发表",{:onclick=>""}%>
 
 		<%end-%>
 	<% else %>

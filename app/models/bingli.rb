@@ -1,6 +1,7 @@
 class Bingli < ActiveRecord::Base
   acts_as_commentable
 normalize_attributes :zhusu
+attr_accessible :zhusu,:age,:sex,:marriage,:yibanqingkuang,:zhuyaozhengzhuang,:xianbingshi,:jiwang,:buchong,:final,:tigejiancha,:yibanbuchong,:zongbuchong,:fuzhu_details_attributes,:chubu_details_attributes,:question_details_attributes
   has_one :bingli_info,:autosave=>true
   has_many :chubu_details#,:conditions=>"chubu_has is not null" 
   has_many :fuzhu_details#,:conditions=>"fuzhu_has is not null"
@@ -19,31 +20,31 @@ default_value_for :marriage,0
 	def keshi_id
 		self.bingli_info.keshi.id
 	end
-	define_index do
-	   indexes zhusu
-	   indexes xianbingshi
-	   indexes jiwang
-	   indexes tigejiancha
-	indexes age
-	indexes marriage
-	indexes sex
-	indexes yibanbuchong
-	indexes zongbuchong
-	indexes final
-	indexes fuzhu_details(:content),:as => :fuzhus
-	indexes chubu_details(:content),:as => :chubus
-	indexes question_details(:content),:as => :questions
-	indexes fuzhu_details.fuzhu_type(:name),:as => :fuzhu_types,:sortable => true
-	   # indexes user(:login), :as => :author, :sortable => true
-		indexes bingli_info.title,:as => :title
-		   indexes bingli_info.tags(:name),:as => :tags
-		indexes bingli_info.keshi(:name),:as => :keshi
-	   has bingli_info(:id),:as => :bingli_info_id
-	   has bingli_info.keshi_id,:as => :keshi_id
-	   has bingli_info.created_at,:as => :created_at
-	    has bingli_info.user(:id),:as => :user_id
-	   has bingli_info.updated_at,:as => :updated_at
-	   has bingli_info.tags(:id),:as => :tag_ids
-	 end
+	# define_index do
+	#    indexes zhusu
+	#    indexes xianbingshi
+	#    indexes jiwang
+	#    indexes tigejiancha
+	# indexes age
+	# indexes marriage
+	# indexes sex
+	# indexes yibanbuchong
+	# indexes zongbuchong
+	# indexes final
+	# indexes fuzhu_details(:content),:as => :fuzhus
+	# indexes chubu_details(:content),:as => :chubus
+	# indexes question_details(:content),:as => :questions
+	# indexes fuzhu_details.fuzhu_type(:name),:as => :fuzhu_types,:sortable => true
+	#    # indexes user(:login), :as => :author, :sortable => true
+	# 	indexes bingli_info.title,:as => :title
+	# 	   indexes bingli_info.tags(:name),:as => :tags
+	# 	indexes bingli_info.keshi(:name),:as => :keshi
+	#    has bingli_info(:id),:as => :bingli_info_id
+	#    has bingli_info.keshi_id,:as => :keshi_id
+	#    has bingli_info.created_at,:as => :created_at
+	#     has bingli_info.user(:id),:as => :user_id
+	#    has bingli_info.updated_at,:as => :updated_at
+	#    has bingli_info.tags(:id),:as => :tag_ids
+	#  end
 #  validates_
 end

@@ -1,14 +1,16 @@
 class BingliInfo < ActiveRecord::Base
 	include Pacecar
 	cattr_reader :per_page
+	attr_accessible :tag_list,:title,:bingli_attributes
 	  @@per_page = 20
 	acts_as_commentable
 	
   acts_as_voteable
   acts_as_favorite
-  acts_as_taggable
+  acts_as_taggable_on :tags
  can_be_flagged
 	normalize_attributes :title
+	# normalize_attributes :tag_list
 with_page_views :buffer_size => 5, :days => 1, :model_name => 'post'
 
   belongs_to :bingli,:autosave=>true
@@ -16,6 +18,7 @@ with_page_views :buffer_size => 5, :days => 1, :model_name => 'post'
   belongs_to :keshi
   # belongs_to :catelog
   has_many :bingli_comments
+ has_many :fuzhu_details,:through => :binglis
   # has_and_belongs_to_many :tags
   # has_many :fine,:class_name=>"UsersRankBingliInfos",:conditions=>"rank_tag='fine'"
   # has_many :perfect,:class_name=>"UsersRankBingliInfos",:conditions=>"rank_tag='perfect'"
@@ -30,17 +33,38 @@ validates_associated :keshi
 accepts_nested_attributes_for :bingli, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
 		
 		define_index do
+			indexes :id
 		   indexes title
 		   indexes tags(:name),:as => :tags
 		   indexes user(:login), :as => :author, :sortable => true
 		   indexes keshi(:name),:as => :keshi, :sortable => true
-		   
+		   indexes bingli.zhusu,:as => :zhusu
+		   indexes bingli.xianbingshi,:as => :xianbingshi
+		   indexes bingli.jiwang,:as => :jiwang
+		   indexes bingli.tigejiancha,:as => :tigejiancha
+		indexes bingli.age,:as => :age
+		indexes bingli.marriage,:as => :marriage
+		indexes bingli.sex,:as => :sex
+		indexes bingli.yibanbuchong,:as => :yibanbuchong
+		indexes bingli.zongbuchong,:as => :zongbuchong
+		indexes bingli.final,:as => :final
+		# indexes bingli.fuzhu_details(:content),:as => :fuzhus
+		indexes bingli.chubu_details(:content),:as => :chubus
+		indexes bingli.question_details(:content),:as => :questions
+		indexes bingli.fuzhu_details.fuzhu_type(:name),:as => :fuzhu_types,:sortable => true
+		indexes "group_concat(concat('--',fuzhu_details.fuzhu_type_id,'--',fuzhu_details.content))",:as => :fuzhus
 		   has keshi_id, created_at, updated_at
 		   has user(:id),:as => :user_id
 		   has tags(:id),:as => :tag_ids
+		  
+		   # has bingli_info.keshi_id,:as => :keshi_id
+		   # has bingli_info.created_at,:as => :created_at
+		    # has bingli_info.user(:id),:as => :user_id
+		   # has bingli_info.updated_at,:as => :updated_at
+		   # has bingli_info.tags(:id),:as => :tag_ids
 		 end
 		
-  def votes
+  def votes_value
   	vote_for_count - vote_against_count
   end
   

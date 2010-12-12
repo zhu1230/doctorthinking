@@ -15,7 +15,7 @@ normalize_attributes :content
  validates_presence_of :user, :on => :save
   validates_associated :bingli_info, :on => :save
   validates_length_of :content, :within => 20..9000, :on => :save, :too_long => I18n.t("activerecord.errors.messages.bingli_comment.too_long_content"),:too_short => I18n.t("activerecord.errors.messages.bingli_comment.too_short_content")
-  def vote_value
+  def votes_value
 	self.vote_for_count - self.vote_against_count
 	end
 	

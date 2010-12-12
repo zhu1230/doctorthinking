@@ -1,8 +1,6 @@
 <li> 
                <div class="title"><%=link_to bingli_info.title,biz_bingli_info_path(bingli_info)%> 
-		               <div class="time"><script type="text/javascript" charset="utf-8">
-											document.write(get_local_time_for_date(<%=bingli_info.created_at.to_i * 1000%>));
-										</script></div>
+		               <div class="time"><%=distance_of_time_in_words(bingli_info.created_at,Time.now)%></div>
 				</div>
 				<div style='width:900px;'><span style='width:600px;float:left;'><div class='tags'><%for tag in bingli_info.tags%><%=link_to tag.name,tagged_source_path(:controller=>'biz/bingli_infos',:tag => tag.name),{:class=>"post-tag",:title=>"显示更多关于 '#{tag.name}' 的病例" ,:rel=>"tag"}%><%end%>
 										</div>

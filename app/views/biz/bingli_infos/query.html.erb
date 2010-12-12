@@ -8,12 +8,15 @@
 		font-size:20px;
 		background-color:#EFF4F6;
 	}
+	.match{
+		font-weight:bold;
+		color:#903;
+	}
 </style>
 <div class='results'>
 	<div id='results_tip' class='tip'>本次搜索的结果为：</div>
 </div>
-<%p @binglis.inspect ; @binglis.each {|b|@bingli_infos << b.bingli_info}%>
-<%=render :partial => 'bingli_info_simple_list',:locals => {:bingli_infos => @bingli_infos}%>
+<%=render :partial => 'bingli_info_simple_list',:locals => {:bingli_infos => @bingli_infos,:search => true}%>
 <%=will_paginate @bingli_infos,:class=>"apple_pagination"%>
 <script type="text/javascript" charset="utf-8">
 	new Effect.Corner('results_tip', "20px;cc:#ffffff");

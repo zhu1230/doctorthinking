@@ -1,6 +1,6 @@
 <a name="<%=bingli_comment.id%>"></a>
 <li id='bingli_comment_<%=bingli_comment.id%>'>
-<div style='width:30px;float:left'>
+<div class='bingli_comment_left'>
     <div id='post_vote_<%=bingli_comment.id%>' class="vote">
         <input type="hidden" value="<%=bingli_comment.id%>">
         <span id='vote' class="vote-up-off" title="这个答案清晰，有用处。">支持</span><%puts bingli_comment.votes_against.to_i%>
@@ -8,17 +8,17 @@
         <span class="vote-down-off" title="这个答案模糊，没有用处。">反对</span>
     </div>
 </div>
-<div style='width:890px;float:right'>
-  <div style='float:right;margin-top:7px;'>
-                  <p class="intro">
+<div class='bingli_comment_right'>
+  <div class='post-text'>
+               
                     <%=bingli_comment.content %>
-                </p>
+            
               </div>
               
-              <table style='width:100%;height:77px;'>
+              <table style='width:680px;height:77px;'>
             <tbody><tr>
             <td class="vt">
-                <div class="post-menu"><%= link_to "修改", edit_biz_bingli_info_bingli_comment_path(bingli_comment.bingli_info,bingli_comment) if logged_in? && bingli_comment.user==current_user%><span class="lsep">|</span><a href="/questions/31765/voting-bug-so-mistakenly-lets-me-change-my-vote-1x-but-then-locks-it-at-that/31766#31766" title="permalink to this answer">link</a><span class="lsep">|</span><a id="flag-post-31766" title="flag this post for serious problems or moderator attention">flag</a></div> 
+                <div class="post-menu"><%= link_to "修改", edit_biz_bingli_info_bingli_comment_path(bingli_comment.bingli_info,bingli_comment) if logged_in? && bingli_comment.user==current_user%><!-- <span class="lsep">|</span><a href="/questions/31765/voting-bug-so-mistakenly-lets-me-change-my-vote-1x-but-then-locks-it-at-that/31766#31766" title="permalink to this answer">link</a><span class="lsep">|</span><a id="flag-post-31766" title="flag this post for serious problems or moderator attention">flag</a> --></div> 
             </td>
             
             <td align="right" class="post-signature">

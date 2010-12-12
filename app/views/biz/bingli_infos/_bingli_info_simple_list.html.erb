@@ -73,22 +73,7 @@
 	font-weight: bold;
 	margin-bottom: 5px;
 	}
-	.tags {
-	line-height: 18px;
-	float: left;
-	}
-	.post-tag {
-	color: #3E6D8E;
-	background-color: #E0EAF1;
-	border-bottom: 1px solid #3E6D8E;
-	border-right: 1px solid #7F9FB6;
-	margin: 2px 2px 2px 0;
-	padding: 3px 4px 3px 4px;
-	text-decoration: none;
-	font-size: 90%;
-	line-height: 2.4;
-	white-space: nowrap;
-	}
+
 	.narrow .started {
 	width: auto;
 	line-height: inherit;
@@ -146,5 +131,5 @@
 	
 </style>
 <%for b in bingli_infos%>
-<%=render :partial => 'biz/bingli_infos/bingli_info_simple',:locals => {:bingli_info => b}%>
+<%=render :partial => 'biz/bingli_infos/bingli_info_simple',:locals => {:bingli_info => b,:search => (search || false)}%>
 <%end%>

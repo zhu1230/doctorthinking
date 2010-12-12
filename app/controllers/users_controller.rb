@@ -219,7 +219,10 @@ class UsersController < ApplicationController
   # Most content loaded onto the page as AJAX widgets
   def show   
     @user = User.find(params[:id])
-	@bingli_infos=@user.bingli_infos.paginate :page => params[:page],:per_page => 10
+	@page_title=@user.login
+	@bingli_infos=@user.bingli_infos.paginate :page => params[:page_bi],:per_page => 10
+	@bingli_comments=@user.bingli_comments.paginate :page => params[:page_bc],:per_page => 10
+	@tags=@user.owned_tags.paginate :page => params[:page_tags],:per_page => 30
     respond_to do |format|
       format.html { 
         # if (current_user && (current_user.id.to_s == params[:id].to_s))

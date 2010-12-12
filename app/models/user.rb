@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
 @@per_page = 35
 can_flag 
 acts_as_voter
+acts_as_tagger
 has_karma :bingli_infos
 has_karma :bingli_comments
 acts_as_favorite_user

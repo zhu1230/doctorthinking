@@ -1,11 +1,10 @@
 <% form_for(@bug_report) do |f| -%>			
 	<div class="form_field">
-    	<label for="title">主题:</label><br/>
-		<%= f.text_field :title, :class=>'input_field' %>
+    	<label for="title" style='line-height:30px;'>主题:</label><span><%= f.text_field :title, :class=>'input_field' %></span>
 	</div>
 	<div class="form_field">
-    	<label for="browser">您的浏览器为:</label><br/>
-		<%= f.select( :browser, { "IE 8" => "IE8", 
+    	<label for="browser">您的浏览器为:</label>
+<span>		<%= f.select( :browser, { "IE 8" => "IE8", 
 								  "IE 7" => "IE7",
 								  "IE 6" => "IE6",
 								  "Firefox" => "FIREFOX",
@@ -13,13 +12,13 @@
 								  "Safari" => "SAFARAI",
 								  "WebKit" => "WebKit",
 								  "MULTIPLE" => "MULTIPLE"
-								}) %>
+								}) %></span>
 	</div>
 	<div class="form_field">
     	<label for="description">描述:</label>
 		<span id='bug_report_description_counter' class="help_text">最多2000字</span><br/>
-		<%= f.text_area :description, :cols=>80, :rows=>20,:minlimit => 3,:maxlimit => 2000 %>
-		<%= f.submit "完成", :class=>'subtn',:style => "vertical-align:baseline;" %>
+		<span><%= f.text_area :description, :cols=>80, :rows=>20,:minlimit => 3,:maxlimit => 2000 %>
+		<%= f.submit "完成", :class=>'subtn',:style => "vertical-align:baseline;margin-left:20px;" %></span>
 	</div>
     
 <% end %>

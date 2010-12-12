@@ -2,13 +2,16 @@
 <style type="text/css" media="screen">
 	.user_show{
 		width:960px;
-		margin:10px auto;
+		margin:0px auto;
 		float:left;
 	}
 	.tab1{
-		width:100%;
+/*		width:100%;*/
 /*		height:400px;*/
 		float:left;
+		background-color:#CCC;
+		padding:20px 20px;
+		height:300px;
 		
 	}
 	.avatar{
@@ -18,18 +21,26 @@
 		text-align   :center;
 	}
 	.info{
-		width:200px;
+		width:310px;
 		float:left;
+		margin-top:20px;
+	}
+	.info li{
+		line-height:33px;
+		font-size:18px;
 	}
 	.user_intro{
 		float:left;
 		margin-left: 20px;
-		background-color: #DDD;
+		background-color: #C0C0C0;
+		width:100%;
+		height:100%;
 	}
 	.tab2{
 		width:100%;
 		float:left;
 		margin:0px auto;
+		margin-top:30px;
 	}
 	.bingli_list{
 		margin:0px auto;
@@ -48,34 +59,54 @@
 	vertical-align: middle;
 	padding-left: 10px;
 	}
+	.tags {
+	margin: 5px 5px;
+	}
 </style>
 <div class='user_show'>
-	<div class='tab1'>
+	<div id='user_tab1' class='tab1'>
 		<span class='avatar'>
 			<%=image_tag @user.avatar.url,{:style => 'margin:0px auto;'}%><br>
-			<h1><%=@user.karma%></h1>
-			<h2><%=@user.page_views%></h2>
+			<h1 style='margin-top:15px;'>积分值：<%=@user.karma%></h1>
+			<h2 style='line-height:37px;'>被浏览<%=@user.page_views%>次</h2>
 		</span>
 		<span class='info'>
 			<li>用户名： <%=@user.login%></li>
-			<li></li>
-		</span>
-		<span class='user_intro'>
+			<li>所属科室：<%=@user.keshi.name%></li>
+			<li>登录次数：<%=@user.login_count%></li>
+			<li>注册时间：<%=@user.created_at.to_s(:basic)%></li>
+			<li>最近登录时间：<%=@user.last_seen_at.to_s(:basic)%></li>
 			
 		</span>
+
 	</div>
+	<div id='user_intro' class='tab1' style='margin-left:20px;width:330px;'><span>
+		<h2>个人说明：</h2>
+		<p style='padding:10px 10px;font-size:16px;OVERFLOW-Y:scroll;border:0px solid;height:250px;'><%=@user.about_me%></p>
+	</span></div>
 	<div class='tab2'>
 		<div><h1 class='summary-header'>发表的病例(<span class='summarycount'><%=@user.bingli_infos.size%></span>)：</h1></div>
 		<div class='bingli_list'>
-			<%=render 'biz/bingli_infos/bingli_info_simple_list',:bingli_infos => @bingli_infos%>
-			<%=will_paginate @bingli_infos,:class=>"apple_pagination"%>
+			<%=render 'biz/bingli_infos/bingli_info_simple_list',:bingli_infos => @bingli_infos,:search => false%>
+			<div style='float:right;margin-top:20px;'><%=will_paginate @bingli_infos,:param_name => 'page_bi',:class=>"digg_pagination"%></div>
 		</div>
 		
-		<div><h1 class='summary-header'>发表的讨论(<span class='summarycount'><%=@user.bingli_comments.size%></span>)：</h1></div>
-		<div class='bingli_list'>
-			
+		<div style='clear:both;'><h1 class='summary-header'>发表的讨论(<span class='summarycount'><%=@user.bingli_comments.size%></span>)：</h1></div>
+		<div class='bingli_list' style='padding-left:30px;'>
+			<%=render 'biz/bingli_comments/bingli_comment_simple_list',:param_name => 'page_bc',:bingli_comments =>@bingli_comments %>
+			<div style='float:right;margin-top:20px;'><%=will_paginate @bingli_comments,:param_name => 'page_bi',:class=>"digg_pagination"%></div>
+		</div>
+		
+		<div style='clear:both;'><h1 class='summary-header'>相关的标签(<span class='summarycount'><%=@user.owned_tags.size%></span>)：</h1></div>
+		<div class='bingli_list' style='padding-left:30px;'>
+			<%=render 'tags/tags_list',:param_name => 'page_bc',:tags =>@tags %>
+			<div style='float:right;margin-top:20px;'><%=will_paginate @tags,:param_name => 'page_tags',:class=>"digg_pagination"%></div>
 		</div>
 	</div>
 </div>	
 
 <div style="clear:both;"></div>
+<script type="text/javascript" charset="utf-8">
+	new Effect.Corner('user_tab1', "30px;cc:#ffffff");
+	new Effect.Corner('user_intro', "30px;cc:#ffffff");
+</script>

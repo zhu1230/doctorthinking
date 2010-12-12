@@ -1,4 +1,7 @@
+function init(o){
+	// alert("ddd");
 
+}
 function add_new_fuzhu(){
 	
 		var new_id=new Date().getTime();

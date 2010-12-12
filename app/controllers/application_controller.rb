@@ -38,12 +38,12 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   
-  before_filter :set_vars, :update_session,:store_location
+  before_filter :set_vars, :update_session
   # before_filter :set_facebook_session
   # helper_method :facebook_session
   
   before_filter :api_filter
-
+	after_filter :my_store_location
 
   
   
@@ -68,8 +68,11 @@ class ApplicationController < ActionController::Base
 #    end
   end
   
-  def store_location
-  session[:return_to] = request.request_uri if request.get? and controller_name != "user_sessions" and controller_name != "sessions"
+  def my_store_location	
+  session[:return_to] = request.request_uri if request.get? and  controller_name != "sessions" and !response.layout.nil?
+p response.layout
+p session[:return_to] 
+p request.xhr?
 end
   # Determine which users are currently signed in
   def who_is_online
@@ -98,5 +101,9 @@ end
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
+def local_request?
+    return false
+  end
+
   
 end

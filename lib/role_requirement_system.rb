@@ -65,6 +65,7 @@ module RoleRequirementSystem
     
     # This is the core of RoleRequirement.  Here is where it discerns if a user can access a controller or not./
     def user_authorized_for?(user, params = {}, binding = self.binding)
+	p params.inspect
       return true unless Array===self.role_requirements
       self.role_requirements.each{| role_requirement|
         roles = role_requirement[:roles]
@@ -108,7 +109,7 @@ module RoleRequirementSystem
       raise "Because role_requirement extends acts_as_authenticated, You must include AuthenticatedSystem first before including RoleRequirementSystem!" unless klass.included_modules.include?(AuthenticatedSystem)
     end
     
-    def render_optional_error_file(status)
+    def user_authorized_for(status)
       render :text => "You don't have access here.", :status => status
     end
     

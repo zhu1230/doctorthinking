@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
 	# layout false,:except => [:about_us]
-	 skip_before_filter :store_location,:except => :about_us
 def privacy
 		render :layout => false
 end

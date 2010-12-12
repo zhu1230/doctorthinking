@@ -1,5 +1,5 @@
-	.comments>table{width:100%;}
-	.comments{float:left;width:860px;border-top:dotted 1px #aaa;margin-top:10px;padding-bottom:10px;line-height:135%;color:#444;}
+	.comments>table{}
+	.comments{float:left;width:680px;border-top:dotted 1px #aaa;margin-top:10px;padding-bottom:10px;line-height:135%;color:#444;}
 	.comments{border-top:none;}
 	.comment img{vertical-align:middle;}
 	.comment-score span{font-size:110%;color:#999;font-weight:bold;padding-right:2px;}

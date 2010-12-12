@@ -100,13 +100,13 @@
 		                      <option value="请选择">主诉</option>
 		                    </select>中包含<input name="" type="text"><a href="#"><font color="#F26521">取消</font></a></li> -->
 		                    <li id='add_botton'><font color="#F26521">增加一个搜索条件？</font><%=link_to_function '并且',"add_more(this);",{:id => 'and'}%> <%=link_to_function '或者',"add_more(this);",{:id => 'or'}%> <%=link_to_function '除外',"add_more(this);",{:id => 'except'}%></li>
-		                    <li class="arrow">选择科室<%=select :bingli_info,:keshi_id, grouped_options_for_select(keshi_by_groups,(current_user.keshi.id if logged_in?),'-全部科室-')%></li>
+		                    <li class="arrow">选择科室<%=select_tag 'keshi_id', grouped_options_for_select(keshi_by_groups,(current_user.keshi.id if logged_in?),'-全部科室-')%></li>
 							<li class="arrow">发表时间</li>
-							<li><%{"时间不限" => 'any','最新结果' => 'last','一天内' => 'day','一周内' => 'week','一年内' => 'year'}.each do |key,value| %>
-							    <%=radio_button 'bingli_info','timezone',value,{:class =>"noborder"}%><%=key%>
+							<li><%[['时间不限' , ''],['一天内' ,'day'],['一周内','week'],['一月内' ,'month'],['一年内','year']].each do |value| %>
+							    <%=radio_button_tag "timezone",value[1],(value[1]==''),{:class =>"noborder"}%><%=value[0]%>
 							<%end%>
 		                    </li>
-		                    <li><%=radio_button 'bingli_info','timezone','custom',{:class =>"noborder"}%>自定义时间范围：从<%=calendar_date_select_tag :start_time,nil,:popup => "force" ,:time => false%><br><p style='margin-left:135px;'>到<%=calendar_date_select_tag :end_time,nil,:popup => "force" ,:time => false%><br><font color="#BABABA">点击右侧图标选择日期</font></p></li>
+		                    <li><%=radio_button_tag "timezone",'custom',false,{:class =>"noborder"}%>自定义时间范围：从<%=calendar_date_select_tag :start_time,nil,:popup => "force" ,:time => false%><br><p style='margin-left:135px;'>到<%=calendar_date_select_tag :end_time,nil,:popup => "force" ,:time => false%><br><font color="#BABABA">点击右侧图标选择日期</font></p></li>
 							<li><%=submit_tag '搜索病例',{:class => 'btn'}%></li>
 		                </ul>
 		<%end%>

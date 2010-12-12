@@ -38,6 +38,7 @@ class Biz::BingliCommentsController < ApplicationController
 	#   end
   def show
     @bingli_comment=BingliComment.find(params[:id])
+	locate_bingli_comment(@bingli_comment)
   end
   # def add_bingli_comment
   #    c=Comment.new
@@ -87,7 +88,7 @@ class Biz::BingliCommentsController < ApplicationController
 	end
 	private
 	def locate_bingli_comment(bingli_comment)
-		count=BingliComment.count(:conditions=>["bingli_info_id=:id and ((vote_for_count - vote_against_count) > :count or ((vote_for_count - vote_against_count) = :count and  id < :bid))",{:id => bingli_comment.bingli_info.id,:count => bingli_comment.vote_value,:bid => bingli_comment.id}])
+		count=BingliComment.count(:conditions=>["bingli_info_id=:id and ((vote_for_count - vote_against_count) > :count or ((vote_for_count - vote_against_count) = :count and  id < :bid))",{:id => bingli_comment.bingli_info.id,:count => bingli_comment.votes_value,:bid => bingli_comment.id}])
 		page=(count / BingliComment.per_page)+1
 		redirect_to biz_bingli_info_url(bingli_comment.bingli_info,:page => page,:anchor => bingli_comment.id),:flash =>{:highlight =>bingli_comment.id } 
 	
