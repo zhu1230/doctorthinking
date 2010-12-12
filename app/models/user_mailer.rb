@@ -2,7 +2,7 @@ class UserMailer < ActionMailer::Base
   
   def init
     @network = Network.find(:first)
-    @url = 'http://www.doctorthinking.com/'
+    @urls = 'http://www.doctorthinking.com/'
     @network_name = '医思网'
     @admin_email = 'zhu1230@gmail.com'
   end
@@ -13,7 +13,7 @@ class UserMailer < ActionMailer::Base
     init
     setup_email(user)
     @subject    += '请激活您的帐户'  
-    @body[:url]="#{@url}/activate/#{user.activation_code}" 
+    @body[:url]="#{@urls}activate/#{user.activation_code}" 
     # @body[:url]  = "#{@url}/activate/#{user.activation_code}" 
   end
   

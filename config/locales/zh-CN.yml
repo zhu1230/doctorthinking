@@ -169,7 +169,10 @@ zh-CN:
           name: '活动名称'
         bug_report:
           title: '主题'
-          description: '描述'    
+          description: '描述'
+        message:
+          subject: '主题'
+          body: '内容'    
     app:
       user:
           login_success: "登陆成功"

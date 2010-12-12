@@ -26,7 +26,7 @@
 					<%= f.collection_select(:recipient_id, User.find(:all), :id, :login, options ={:prompt => "-选择收件人"}) %>
 			<% else %>
 		    	<label for="title">收件人：</label>
-				<%= User.find_by_id(@recipient_id).name %>
+				<%= User.find_by_id(@recipient_id).login %>
 				<%= f.hidden_field(:recipient_id, :value=>@recipient_id) %>	
 			<% end %>
 		

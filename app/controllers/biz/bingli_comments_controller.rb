@@ -74,7 +74,8 @@ class Biz::BingliCommentsController < ApplicationController
 		@bingli_comment=BingliComment.new(params[:bingli_comment])
 		@bingli_comment.bingli_info=BingliInfo.find(params[:bingli_info_id])
 		@bingli_comment.user=current_user
-		if (bc=current_user.bingli_comments.recent.limit(1).first).updated_at > 30.seconds.ago
+		bc=current_user.bingli_comments.recent.limit(1).first
+		if !bc.nil? && bc.updated_at > 30.seconds.ago
 			flash.now[:warning]="30秒内仅能发表一个讨论，请稍后重试。"
 			render :action => :new and return
 		end
