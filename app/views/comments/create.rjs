@@ -1,4 +1,5 @@
-if (f=current_user.comments.recent.limit(1).first).updated_at > 15.seconds.ago
+f=current_user.comments.recent.limit(1).first
+if !f.nil? && f.updated_at > 15.seconds.ago
 	f.update_attribute(:updated_at , Time.now)
 	page.insert_html "bottom","comment-form-error-#{params[:bingli_info_id] || params[:bingli_comment_id]}",:partial => 'shared/ajax_message',:locals => {:message => ("15秒内仅可以评论一次，请稍后再评论。限时重设。")}
 	 
