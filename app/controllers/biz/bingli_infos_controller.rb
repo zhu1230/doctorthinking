@@ -77,7 +77,12 @@ end
 
 
   def new
-@bingli_info=BingliInfo.new
+		if(current_user.bingli_infos.last && current_user.bingli_infos.last.created_at > 30.seconds.ago)
+			flash[:warning]='30秒内只能发表一篇病例。'
+			redirect_back_or_default('/') 
+		else
+		@bingli_info=BingliInfo.new
+		end
   end
   # def add_favorite
   #   current_user.favorites << BingliInfo.find(params[:id])

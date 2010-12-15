@@ -76,7 +76,7 @@
 			<li>登录次数：<%=@user.login_count%></li>
 			<li>注册时间：<%=@user.created_at.to_s(:basic)%></li>
 			<li>最近登录时间：<%=@user.last_seen_at.to_s(:basic)%></li>
-			
+			<li><%=image_tag 'email.png'%><%=link_to '给我发消息',new_user_message_path(@user)%></li>
 		</span>
 
 	</div>

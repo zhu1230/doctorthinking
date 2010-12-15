@@ -173,7 +173,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "home"
  map.namespace :biz do |biz|
  	biz.resources :bingli_infos,:member => {:favorite => :get,:voteup => :get,:votedown => :get},:collection => {:hot => :get,:active => :get,:week => :get,:month => :get,:search => :get,:query => :post,:autocomplete => :get} do |bi|
- 		bi.resources :comments
+ 		bi.resources :comments, :shallow => true
 		bi.resources :bingli_comments
  		# bi.resources :tags
  	end
@@ -182,7 +182,7 @@ ActionController::Routing::Routes.draw do |map|
 		bc.resources :tags
 	end
  end
- map.resources :comments
+ map.resources :comments, :controller => "biz/comments"
  map.with_options :controller => 'pages' do |page|
  	page.about 'about_us',:action => 'about_us'
 	page.privacy 'privacy',:action => 'privacy'

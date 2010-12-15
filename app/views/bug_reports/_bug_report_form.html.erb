@@ -3,8 +3,8 @@
     	<label for="title" style='line-height:30px;'>主题:</label><span><%= f.text_field :title, :class=>'input_field' %></span>
 	</div>
 	<div class="form_field">
-    	<label for="browser">您的浏览器为:</label>
-<span>		<%= f.select( :browser, { "IE 8" => "IE8", 
+    	<label for="browser" style='line-height:30px;'>您的联系方式:</label>
+<span>	<%=f.text_field :browser%>	<%#= f.select( :browser, { "IE 8" => "IE8", 
 								  "IE 7" => "IE7",
 								  "IE 6" => "IE6",
 								  "Firefox" => "FIREFOX",

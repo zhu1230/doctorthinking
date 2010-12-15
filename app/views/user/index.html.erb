@@ -27,7 +27,7 @@ h1,h2,h3,p {margin:0;padding:0;}
     <h2><%=link_to "补充个人信息",:controller=>"user",:action=>"account"%></h2>
   <h2 class="use2"><%=link_to "发表病例讨论",new_biz_bingli_info_path%></h2>
 <h2 class="use2"><%#=link_to "查看收藏的病例",%></h2>
-<h2 class="use2"><%=link_to "我的好友",user_friends_path(current_user)%></h2>
+<h2 class="use2"><%#=%><%=link_to "我的好友",user_friends_path(current_user)%></h2>
 <h2 class="use2"><%=link_to "我参与的圈子",user_groups_path(current_user)%></h2>
 <h2 class="use2"><%=link_to "邀请好友加入",new_invite_path%><%#=link_to "个人博客",user_blog_posts_path(current_user)%></h2>
 <h2 class="use2"><%=link_to "参与的活动",events_path()%></h2>

@@ -1,0 +1,3 @@
+<%=br.title%></br>
+<%=br.browser%></br>
+<%=body[:greeting]%><br/>

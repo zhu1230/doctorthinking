@@ -37,8 +37,9 @@
 	<p class='label-value'><%=distance_of_time_in_words(bingli_info.created_at,Time.now)%>前</p>
 	<p class='label-key'>被浏览:</p>
 	<p class='label-value'><%=bingli_info.page_views%>次</p>
-	<p class='label-key' style='margin-top:50px;'>相关病例：</p>
-	<%for bi in bingli_info.find_related_tags.reject{|b|b.id==bingli_info.id}%>
+	<%unless (relateds=bingli_info.find_related_tags(:limit => 25).reject{|b|b.id==bingli_info.id}).blank?%><p class='label-key' style='margin-top:50px;'>相关病例：</p>
+	<%for bi in relateds%>
 	<p class='label-key'><%=link_to bi.title,biz_bingli_info_path(bi)%></p>
+	<%end%>
 	<%end%>
 </div>

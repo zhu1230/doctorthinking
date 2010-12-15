@@ -230,7 +230,7 @@ alert(this.currentValue.match(/\w+/g));
     } catch (err) { return; }
     this.cachedResponse[response.query] = response;
     if (response.suggestions.length === 0) { this.badQueries.push(response.query); }
-    if (response.query === this.currentValue) {
+    if (response.query === this.currentValue.endsWith) {
       this.suggestions = response.suggestions;
       this.data = response.data;
       this.suggest(); 

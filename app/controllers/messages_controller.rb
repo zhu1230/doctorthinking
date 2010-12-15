@@ -62,11 +62,12 @@ class MessagesController < ApplicationController
 
 
   def new
+	
     @message = Message.new
-    @recipient_id = params[:recipient_id]
+    @recipient_id = params[:user_id] unless params[:user_id].to_i==current_user.id
     @subject = params[:subject]
     if @recipient_id == nil
-      @users = User.find(:all, :conditions => "activated_at is not null")
+      @users = User.friends#find(:all, :conditions => "activated_at is not null")
     end
     respond_to do |format|
       format.html # new.html.erb

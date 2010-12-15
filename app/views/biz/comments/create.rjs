@@ -1,0 +1,31 @@
+f=current_user.comments.recent.limit(1).first
+if !f.nil? && f.updated_at > 15.seconds.ago
+	f.update_attribute(:updated_at , Time.now)
+	page.insert_html "bottom","comment-form-error-#{params[:bingli_info_id] || params[:bingli_comment_id]}",:partial => 'shared/ajax_message',:locals => {:message => ("15秒内仅可以评论一次，请稍后再评论。限时重设。")}
+	 
+else
+if params[:bingli_info_id]
+	c=BingliInfo.find(params[:bingli_info_id]).comments.create(params[:comment]) do |v|
+		v.user=current_user
+	end 
+	id='bingli-'+params[:bingli_info_id]
+end
+if params[:bingli_comment_id]
+	c=BingliComment.find(params[:bingli_comment_id]).comments.create(params[:comment]) do |v|
+		v.user=current_user
+	end 
+	id=params[:bingli_comment_id]
+end
+if c.errors.blank?
+page.insert_html "bottom","comments-#{id}",:partial=>'biz/comments/comment',:locals=>{:comment=>c}
+page.visual_effect :highlight,"comment-#{c.id}"
+page["add-comment-#{id}"].reset
+page << "later_register($('comment-#{c.id}'));"
+else
+# r=render(:partial=>'shared/ajax_message',:locals=>{:message=>c.errors.full_messages.join('-')})
+# page << "$('comments-bingli-#{params[:id]}').select('.form-error').first().insert({bottom:#{r}});"
+
+	# page.replace "this.select('.form-error').first()",:partial=>'shared/ajax_message',:locals=>{:message=>c.errors.full_messages.join('-')}
+	page.insert_html "bottom","comment-form-error-#{id}",:partial => 'shared/ajax_message',:locals => {:message => (c.errors.full_messages.join '-')}
+end
+end
