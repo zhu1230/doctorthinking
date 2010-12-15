@@ -1,2 +1,0 @@
-module Biz::BingliCommentHelper
-end

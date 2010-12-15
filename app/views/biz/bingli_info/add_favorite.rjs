@@ -1,3 +1,0 @@
-#page.showMessage "收藏成功"
-page['add_fav'+params[:id]].replace_html "已收藏"
-page['add_fav'+params[:id]].visual_effect :highlight

@@ -1,2 +1,0 @@
-Comment.delete(params[:id])
-page.remove 'comment-'+params[:id]
