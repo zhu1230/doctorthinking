@@ -174,6 +174,10 @@ end
 	end
 	
   private
+def side_bar_info
+	Tag.find(:all,:limit)
+end
+
 def and_or_except(field,cond,value)
 	if cond=='or'
 		"| (@#{field} #{value}) " 
