@@ -6,17 +6,17 @@
 .listbox .menu .menu_tab2 a {font-size:15px;font-color: #777;vertical-align:middle;}
 .listbox .menu .menu_tab3 {width:105px;height:26px;line-height:27px;background:url(/images/box_menu_tab2.gif) no-repeat;text-align:center;border:1px #D7E0E5 solid;border-bottom:0px;float:right;}
 .listbox .menu .menu_tab3 a {color:#F0AE36;font-size:14px;font-weight:bold;}
-.listbox .cnt {width:958px;border:1px #D7E0E5 solid;}
-.listbox .cnt ul {width:900px;margin:0px auto;}
-.listbox .cnt li {width:900px;float:left;border-bottom:1px #ccc dotted;padding:10px 0px;}
+.listbox .cnt {width:960px;}
+.listbox .cnt ul {margin:0px auto;}
+.listbox .cnt li {float:left;border-bottom:1px #ccc dotted;padding:10px 0px;}
 .listbox .cnt h1 a {font-size:14px;float:left;color:#094C76;display:inline;}
-.listbox .cnt .title {width:900px;line-height:20px;}
+.listbox .cnt .title {line-height:20px;}
 .title a
 	{
 	color: #094C76;
 	display: inline;
 	float: left;
-	font-size: 16px;
+	font-size: 140%;
 	}
 
 .listbox .cnt .time {color:#A7A7A7;margin-left:30px;}

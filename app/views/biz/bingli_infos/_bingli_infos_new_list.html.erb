@@ -1,0 +1,118 @@
+<style type="text/css" media="screen">
+	.statscontainer {
+	width: 86px;
+	float: left;
+	margin-right: 8px;
+	}.statsarrow {
+	float: right;
+	height: 13px;
+	width: 7px;
+	margin-top: 12px;
+	background-position: 0 -435px;
+	}
+	.stats {
+	background: #EEE;
+	margin: 0 0 0 7px;
+	padding: 4px 7px 6px 7px;
+	width: 58px;
+	}
+	.vote {
+	text-align: center;
+	}
+	.votes {
+	color: #555;
+	padding: 0 0 7px 0;
+	text-align: center;
+	}
+	.vote span {
+	display: block;
+	color: #808185;
+	font-weight: bold;
+	}
+	.vote-count-post {
+	display: block;
+	font-size: 240%;
+	}
+	.answered {
+	background: #75845C;
+	color: white;
+	}
+	.status {
+	margin-top: -3px;
+	padding: 4px 0 4px;
+	text-align: center;
+	}
+	.views {
+	padding-top: 4px;
+	color: #999;
+	text-align: center;
+	}
+	.unanswered {
+	background: #9A4444;
+	color: white;
+	}
+	.summary {
+	float: left;
+	width: 635px;
+	}
+	.summary h3 {
+	font-size: 130%;
+	}
+	.excerpt {
+	line-height: 1.2;
+	padding: 0;
+	margin: 0;
+	padding-bottom: 5px;
+	}
+	.fr {
+	float: right;
+	}
+	.started {
+	width: 210px;
+	color: #999;
+	float: right;
+	line-height: 18px;
+	}
+	.user-info {
+	height: 35px;
+	width: 205px;
+	}
+	.bingli_info_summary {
+	border-bottom: 1px dotted #999;
+	overflow: hidden;
+	padding: 11px 0;
+	width: 730px;
+	float: left;
+	}
+	.question-hyperlink {
+	font-weight: bold;
+	}
+	.status strong {
+	color: white;
+	display: block;
+	font-size: 140%;
+	}
+	b, strong {
+	font-weight: bold;
+	}
+</style>
+<%unless bingli_infos.blank?%>
+<div class="listbox">
+<div class="cnt"> 
+    	<ul>
+       	  <%= render :partial =>'biz/bingli_infos/bingli_info_new',:collection => bingli_infos,:as => :bingli_info%>
+		
+        </ul> 
+        <div class="blank"></div> 
+        <div class="page"> 
+			<%= will_paginate bingli_infos,:class=>"apple_pagination",:params=>{:keshi=>params[:keshi]}%>
+            </div> 
+            <div class="blank"></div> 
+    </div> 
+</div>
+<%else%>
+<h1 id='no_content' style='margin-top:60px;padding:10px 20px 10px 50px;font-size:18px;line-height:25px;background-color:#F3F7F8;'><%="目前还没有病例内容，点击发表病例，来做第一个吧！"%></h1>
+<script type="text/javascript" charset="utf-8">
+	new Effect.Corner('no_content', "30px;cc:#ffffff");
+</script>
+<%end%>

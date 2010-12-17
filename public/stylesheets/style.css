@@ -142,6 +142,17 @@ border: 0;
 vertical-align: baseline;
 background: transparent;
 }
+#hlogo a, .envelope-on, .envelope-off, .vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off, .comment-up-off, .comment-up-on, .flag-off, .flag-on, .edited-yes, a.cc-wiki-link, .feed-icon, .statsarrow, .vote-accepted-off, .vote-accepted-on, .vote-accepted-bounty, .badge-earned-check, .delete-tag, .delete-tag-hover, .grippie, .expander-arrow-hide, .expander-arrow-show, .expander-arrow-small-hide, .expander-arrow-small-show, .anonymous-gravatar, .badge1, .badge2, .badge3, .add-interesting-tag-on, .add-interesting-tag-off {
+background-image: url(/images/sprites.png);
+background-repeat: no-repeat;
+overflow: hidden;
+}
+h3 {
+font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+font-size: 110%;
+font-weight: bold;
+margin-bottom: 5px;
+}
 .post-tag {
 /*float:left;*/
 color: #3E6D8E;
@@ -228,3 +239,15 @@ background: url(/images/showh1bg.gif) 8px 10px no-repeat;
 }
 #tabs a:hover{background:#fff;border:1px solid #777;border-bottom-color:#fff;line-height:20px;margin-top:9px;}
 #tabs a.youarehere{background:#fff;border:1px solid #777;border-bottom-color:white;color:black;font-size:120%;height:30px;line-height:28px;margin-top:3px;padding:0 11px 0 11px;}
+.user-gravatar32 {
+float: left;
+height: 32px;
+width: 32px;
+}
+.user-info{height:35px;width:205px;}.user-info .user-gravatar32{float:left;width:48px;height:48px;}.user-info .user-action-time{margin-top:2px;margin-bottom:4px;}
+.user-info .user-details{float:left;margin-left:5px;width:145px;height:48px;overflow:hidden;white-space:nowrap;}
+.user-details{color:#888;line-height:17px;}#revisions{margin-top:20px;margin-left:20px;}.revision{border:2px solid #ddd;}
+.user-details td{color:Black;padding:4px 0 4px 0;}
+.user-action-time{margin-top:2px;margin-bottom:4px;}
+.vt{vertical-align:top;}
+.post-signature{padding-left:5px;padding-top:2px;text-align:left;vertical-align:top;width:175px;height:74px;}

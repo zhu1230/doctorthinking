@@ -1,0 +1,9 @@
+<div class="user-info"><div class="user-action-time"> 发表于 <%=distance_of_time_in_words_to_now(post.created_at) %> 前</div>
+						<div class="user-gravatar32"><%=link_to image_tag(post.user.avatar.url(:thumb)),user_path(post.user)%></div>
+						<div class="user-details"><%=link_to post.user.login,user_path(post.user) %></br>
+        							<span class="mod-flair" title="moderator">♦</span><span class="reputation-score" title="威望值 <%=post.user.karma%>"><%=post.user.karma%></span><span title="<%=post.user.bingli_infos.size%>  个病例">
+										<span class="badge1"></span><span class="badgecount"><%=post.user.bingli_infos.size%></span></span><span title="<%=post.user.bingli_comments.size%> 个讨论">
+											<span class="badge2"></span><span class="badgecount"><%=post.user.bingli_comments.size%></span></span>
+											<span title="<%=post.user.comments.size%> 个评论"><span class="badge3"></span><span class="badgecount"><%=post.user.comments.size%></span></span>
+						</div>
+</div>
