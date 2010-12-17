@@ -175,7 +175,7 @@ end
 	
   private
 def side_bar_info
-	Tag.find(:all,:limit)
+	Tag.find(:all,:limit => 30)
 end
 
 def and_or_except(field,cond,value)

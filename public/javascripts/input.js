@@ -24,7 +24,7 @@ function add_new_question() {
 }
 function add_new_file(fuzhu) {
 	var new_id=new Date().getTime();
-	var div=new Element('div',{'id':'upload_file_'+new_id,style:'display:block;',class:'upload_file'});
+	var div=new Element('div',{'id':'upload_file_'+new_id,style:'display:block;','class':'upload_file'});
 	fuzhu.down('#file_upload_scope').insert({bottom:div.update(fuzhu.down('#upload_file_blank').innerHTML.gsub(/attachments_attributes\]\[\d+\]/,'attachments_attributes]['+new Date().getTime()+']'))});
 	new Effect.Highlight(div);
 }
