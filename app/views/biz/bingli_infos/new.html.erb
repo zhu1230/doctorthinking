@@ -51,14 +51,15 @@
         <span class="tab"><h1>性别：</h1><%=bingli.select :sex, options_for_select([['男',1],['女',0]],:selected=>bingli.object.sex)%>
             &nbsp;<font>年龄</font><%=bingli.text_field :age,:size=> 3 ,:value=>bingli.object.age,:style=>"border:1px #889BAA solid;width:50px;",:placeholder=>'0' %>
             &nbsp;&nbsp;<font>婚姻状况</font>&nbsp;<%=bingli.select :marriage,options_for_select([['不详','0'],['已婚','1'],['未婚','2']])%>
-            <h2 style="width:750px;">一般情况描述不足？<%=link_to_function "补充","new Effect.Appear('yibanqingkuang_buchong');",:class=>"f12red"%></h2></span>
-			<div id='yibanqingkuang_buchong' style="display:none">
-				<span class="tab">
+<h2 style='width:750px;margin-left:75px;'>一般情况描述不足？<%=link_to_function "补充","new Effect.Appear('yibanqingkuang_buchong');",:class=>"f12red"%></h2>
+            </span>
+				<span id='yibanqingkuang_buchong' class="tab" style="display:none">
 					<h1></h1><%=bingli.text_area "yibanbuchong",:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
 				</span>
 					
-			</div>
-        <span class="tab"><h1>详细：</h1><%=bingli.text_area :xianbingshi,{:class=>"bingshi placeholder",:placeholder=>"-现病史－"} %>
+        <span class="tab">
+			<h1>详细：</h1>
+			<%=bingli.text_area :xianbingshi,{:class=>"bingshi placeholder",:placeholder=>"-现病史－"} %>
             <%=bingli.text_area :jiwang,{:class=>"bingshi",:placeholder=>"-既往史－"}  %>
             <%=bingli.text_area :tigejiancha,{:class=>"bingshi",:placeholder=>"-体格检查－"}  %>
         </span>

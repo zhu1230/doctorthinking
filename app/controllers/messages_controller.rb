@@ -67,7 +67,7 @@ class MessagesController < ApplicationController
     @recipient_id = params[:user_id] unless params[:user_id].to_i==current_user.id
     @subject = params[:subject]
     if @recipient_id == nil
-      @users = User.friends#find(:all, :conditions => "activated_at is not null")
+      @users = current_user.following_by_type('User',:limit => 50)#find(:all, :conditions => "activated_at is not null")
     end
     respond_to do |format|
       format.html # new.html.erb

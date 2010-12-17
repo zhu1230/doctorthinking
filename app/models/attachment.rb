@@ -17,6 +17,8 @@ def new_by_build?
 end
 def edit_file=(f)
 	self.file.assign File.new(File.join(Rails.public_path,'tmp',f))
+	mime_type = MIME::Types.type_for(self.file_file_name)    
+	self.file_content_type = mime_type.first.content_type.to_s if mime_type.first
 end
 
 end

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/controllers/user_controller.rb</string>
+	<string>Gemfile.lock</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,6 +21,20 @@
 	<integer>374</integer>
 	<key>metaData</key>
 	<dict>
+		<key>Gemfile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>42</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>Gemfile.lock</key>
 		<dict>
 			<key>caret</key>
@@ -48,50 +62,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>app/controllers/biz/bingli_comments_controller.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>11</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-		</dict>
-		<key>app/controllers/biz/bingli_infos_controller.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>172</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>146</integer>
 		</dict>
 		<key>app/controllers/biz/comments_controller.rb</key>
 		<dict>
@@ -135,26 +105,12 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/controllers/messages_controller.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>27</integer>
-				<key>line</key>
-				<integer>69</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>46</integer>
-		</dict>
 		<key>app/controllers/user_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>46</integer>
+				<integer>106</integer>
 				<key>line</key>
 				<integer>39</integer>
 			</dict>
@@ -162,20 +118,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>7</integer>
-		</dict>
-		<key>app/controllers/users_controller.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>47</integer>
-				<key>line</key>
-				<integer>18</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
 		</dict>
 		<key>app/helpers/application_helper.rb</key>
 		<dict>
@@ -190,20 +132,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>40</integer>
-		</dict>
-		<key>app/models/attachment.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>19</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
 		</dict>
 		<key>app/models/bingli.rb</key>
 		<dict>
@@ -254,29 +182,29 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>16</integer>
+				<integer>66</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>3</integer>
+			<integer>58</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>6</integer>
 				<key>line</key>
-				<integer>16</integer>
+				<integer>66</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>16</integer>
+				<integer>66</integer>
 			</dict>
 		</dict>
 		<key>app/models/bug_report.rb</key>
@@ -292,50 +220,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>app/models/bug_report_mailer.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>4</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/models/bug_report_observer.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
 		</dict>
 		<key>app/models/chubu_detail.rb</key>
 		<dict>
@@ -356,37 +240,7 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>10</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>17</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-		</dict>
-		<key>app/models/keshi.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>23</integer>
+				<integer>95</integer>
 				<key>line</key>
 				<integer>6</integer>
 			</dict>
@@ -394,6 +248,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>app/models/message.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>32</integer>
+				<key>line</key>
+				<integer>32</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>5</integer>
 		</dict>
 		<key>app/models/question_detail.rb</key>
 		<dict>
@@ -403,64 +271,6 @@
 				<integer>25</integer>
 				<key>line</key>
 				<integer>2</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/models/user.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>231</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>283</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>228</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>231</integer>
-			</dict>
-		</dict>
-		<key>app/models/user_mailer.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>4</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/models/user_observer.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>25</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -481,12 +291,12 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/biz/bingli_comments/create.rjs</key>
+		<key>app/views/biz/bingli_infos/_bingli_info.html.rhtml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>16</integer>
 				<key>line</key>
 				<integer>5</integer>
 			</dict>
@@ -495,126 +305,40 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/biz/bingli_comments/votedown.rjs</key>
+		<key>app/views/biz/bingli_infos/_bingli_info_new.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>38</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>2</integer>
+				<integer>17</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/biz/bingli_comments/voteup.rjs</key>
+		<key>app/views/biz/bingli_infos/_bingli_infos_new_list.html.erb</key>
 		<dict>
 			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>196</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
 				<integer>2</integer>
 				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>196</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-		</dict>
-		<key>app/views/biz/bingli_infos/_bingli.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>49</integer>
-				<key>line</key>
-				<integer>57</integer>
+				<integer>96</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/biz/bingli_infos/_bingli_info_simple.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>140</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/biz/bingli_infos/_bingli_info_simple_list.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>101</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>89</integer>
-		</dict>
-		<key>app/views/biz/bingli_infos/_bingli_infos_list.html.rhtml</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>83</integer>
-				<key>line</key>
-				<integer>15</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/biz/bingli_infos/_bingli_side_bar.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>64</integer>
-				<key>line</key>
-				<integer>39</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>5</integer>
+			<integer>67</integer>
 		</dict>
 		<key>app/views/biz/bingli_infos/index.rhtml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>89</integer>
+				<integer>72</integer>
 				<key>line</key>
 				<integer>23</integer>
 			</dict>
@@ -622,20 +346,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>app/views/biz/bingli_infos/new.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>11</integer>
-				<key>line</key>
-				<integer>113</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>83</integer>
 		</dict>
 		<key>app/views/biz/bingli_infos/query.html.erb</key>
 		<dict>
@@ -666,50 +376,6 @@
 				<key>line</key>
 				<integer>11</integer>
 			</dict>
-		</dict>
-		<key>app/views/biz/bingli_infos/show.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>23</integer>
-				<key>line</key>
-				<integer>89</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>75</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>89</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>23</integer>
-				<key>line</key>
-				<integer>89</integer>
-			</dict>
-		</dict>
-		<key>app/views/biz/comments/_comment.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>568</integer>
-				<key>line</key>
-				<integer>22</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
 		</dict>
 		<key>app/views/biz/comments/_comments.html.erb</key>
 		<dict>
@@ -767,20 +433,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/biz/question/new.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>app/views/bug_reports/_bug_report_form.html.erb</key>
 		<dict>
 			<key>caret</key>
@@ -823,6 +475,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>app/views/layouts/application.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>4</integer>
+		</dict>
 		<key>app/views/meet/input.html.erb</key>
 		<dict>
 			<key>caret</key>
@@ -853,76 +519,34 @@
 				<integer>107</integer>
 			</dict>
 		</dict>
-		<key>app/views/messages/new.html.erb</key>
+		<key>app/views/shared/_post_signature.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
-				<key>line</key>
-				<integer>28</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/shared/_bingli_comment.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
+				<integer>121</integer>
 				<key>line</key>
 				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>8</integer>
-		</dict>
-		<key>app/views/shared/_bottom.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/shared/_message_bar.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>5</integer>
-				<key>line</key>
-				<integer>61</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>56</integer>
+			<integer>0</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>61</integer>
+				<integer>0</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>9</integer>
+				<integer>121</integer>
 				<key>line</key>
-				<integer>61</integer>
+				<integer>0</integer>
 			</dict>
 		</dict>
 		<key>app/views/shared/bingli_info/_fuzhu.html.erb</key>
@@ -953,20 +577,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/tags/_tags_list.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>56</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>app/views/tags/index.html.erb</key>
 		<dict>
 			<key>caret</key>
@@ -975,48 +585,6 @@
 				<integer>28</integer>
 				<key>line</key>
 				<integer>24</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/user/index.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>24</integer>
-				<key>line</key>
-				<integer>44</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>6</integer>
-		</dict>
-		<key>app/views/users/_followed.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>143</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/users/_unfollow.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>136</integer>
-				<key>line</key>
-				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -1051,34 +619,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/users/show.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>43</integer>
-				<key>line</key>
-				<integer>74</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>62</integer>
-		</dict>
-		<key>config/development.sphinx.conf</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>41</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>config/environment.rb</key>
 		<dict>
 			<key>caret</key>
@@ -1093,107 +633,19 @@
 			<key>firstVisibleLine</key>
 			<integer>66</integer>
 		</dict>
-		<key>config/environments/development.rb</key>
+		<key>config/production.sphinx.conf</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>5</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>50</integer>
-				<key>line</key>
-				<integer>18</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-		</dict>
-		<key>config/environments/production.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>61</integer>
-				<key>line</key>
-				<integer>32</integer>
+				<integer>41</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>config/routes.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>38</integer>
-				<key>line</key>
-				<integer>87</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>80</integer>
-		</dict>
-		<key>lib/authenticated_system.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>26</integer>
-				<key>line</key>
-				<integer>90</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>73</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>8</integer>
-				<key>line</key>
-				<integer>90</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>32</integer>
-				<key>line</key>
-				<integer>90</integer>
-			</dict>
-		</dict>
-		<key>log/development.log</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>66</integer>
-				<key>line</key>
-				<integer>198</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>177</integer>
+			<integer>22</integer>
 		</dict>
 		<key>public/javascripts/autocomplete.js</key>
 		<dict>
@@ -1228,72 +680,86 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>30</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>42</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>21</integer>
 		</dict>
 		<key>public/stylesheets/bingli_infos.css</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>24</integer>
 				<key>line</key>
-				<integer>23</integer>
+				<integer>8</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>public/stylesheets/fabiao.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>30</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>5</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>21</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>25</integer>
+				<integer>30</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>23</integer>
+				<integer>30</integer>
 			</dict>
 		</dict>
-		<key>public/stylesheets/showone.css</key>
+		<key>public/stylesheets/jquery_autocomplete.css</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>74</integer>
 				<key>line</key>
-				<integer>385</integer>
+				<integer>18</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>347</integer>
+			<integer>0</integer>
 		</dict>
 		<key>public/stylesheets/style.css</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>41</integer>
 				<key>line</key>
-				<integer>175</integer>
+				<integer>145</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>137</integer>
+			<integer>116</integer>
 		</dict>
 		<key>public/stylesheets/top/style.css</key>
 		<dict>
@@ -1309,33 +775,19 @@
 			<key>firstVisibleLine</key>
 			<integer>7</integer>
 		</dict>
-		<key>themes/twitter_clone/views/layouts/_sidebar.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>vendor/plugins/acts-as-taggable-on/README</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>121</integer>
+				<integer>174</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>97</integer>
+			<integer>151</integer>
 		</dict>
 		<key>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/acts_as_taggable_on.rb</key>
 		<dict>
@@ -1356,7 +808,7 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>7</integer>
 				<key>line</key>
 				<integer>93</integer>
 			</dict>
@@ -1369,90 +821,16 @@
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>93</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
 				<integer>24</integer>
 				<key>line</key>
 				<integer>93</integer>
 			</dict>
-		</dict>
-		<key>vendor/plugins/juafrlo-acts-as-favorite-updated-49c9421/README</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>30</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>6</integer>
-		</dict>
-		<key>vendor/plugins/pacecar/README.rdoc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>11</integer>
-				<key>line</key>
-				<integer>189</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>172</integer>
-			<key>selectFrom</key>
+			<key>selectTo</key>
 			<dict>
 				<key>column</key>
 				<integer>7</integer>
 				<key>line</key>
-				<integer>189</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>14</integer>
-				<key>line</key>
-				<integer>189</integer>
-			</dict>
-		</dict>
-		<key>vendor/plugins/peteonrails-vote_fu-0.0.11/README.markdown</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>24</integer>
-				<key>line</key>
-				<integer>102</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>94</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>37</integer>
-				<key>line</key>
-				<integer>102</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>24</integer>
-				<key>line</key>
-				<integer>102</integer>
+				<integer>93</integer>
 			</dict>
 		</dict>
 		<key>vendor/plugins/peteonrails-vote_fu-0.0.11/examples/routes.rb</key>
@@ -1667,276 +1045,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>vendor/plugins/sexy_auto_complete/README</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>5</integer>
-				<key>line</key>
-				<integer>47</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>22</integer>
-		</dict>
-		<key>vendor/plugins/sexy_auto_complete/Rakefile</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>13</integer>
-				<key>line</key>
-				<integer>57</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>57</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>13</integer>
-				<key>line</key>
-				<integer>57</integer>
-			</dict>
-		</dict>
-		<key>vendor/plugins/sexy_auto_complete/init.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>30</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>vendor/plugins/sexy_auto_complete/install.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>vendor/plugins/sexy_auto_complete/lib/sexy_auto_complete.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>42</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>vendor/plugins/sexy_auto_complete/lib/sexy_auto_complete/controller.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>53</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>38</integer>
-		</dict>
-		<key>vendor/plugins/sexy_auto_complete/lib/sexy_auto_complete/helper.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>21</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>16</integer>
-				<key>line</key>
-				<integer>21</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>35</integer>
-				<key>line</key>
-				<integer>21</integer>
-			</dict>
-		</dict>
-		<key>vendor/plugins/sexy_auto_complete/sexy_auto_complete.gemspec</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>28</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>vendor/plugins/sexy_auto_complete/tasks/auto_complete_tasks.rake</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>vendor/plugins/sexy_auto_complete/uninstall.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>vendor/plugins/squirrel/README</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>70</integer>
-				<key>line</key>
-				<integer>37</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>16</integer>
-		</dict>
-		<key>vendor/plugins/tooltips/README</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>9</integer>
-				<key>line</key>
-				<integer>20</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>11</integer>
-		</dict>
-		<key>vendor/plugins/tooltips/init.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>vendor/plugins/tooltips/install.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>vendor/plugins/tooltips/javascripts/scriptaculous_fixed.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>34</integer>
-				<key>line</key>
-				<integer>27</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>19</integer>
-		</dict>
-		<key>vendor/plugins/tooltips/lib/che_tooltips.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>63</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>34</integer>
-		</dict>
-		<key>vendor/plugins/tooltips/tasks/che_tooltips_tasks.rake</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>53</integer>
-				<key>line</key>
-				<integer>19</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>10</integer>
-		</dict>
 		<key>vendor/plugins/wysihat-engine-0.1.13/app/controllers/wysihat_files_controller.rb</key>
 		<dict>
 			<key>caret</key>
@@ -1951,50 +1059,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>vendor/plugins/yaml_db/README.markdown</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>4</integer>
-				<key>line</key>
-				<integer>20</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>21</integer>
-				<key>line</key>
-				<integer>20</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>4</integer>
-				<key>line</key>
-				<integer>20</integer>
-			</dict>
-		</dict>
-		<key>vendor/plugins/yaml_db/tasks/yaml_db_tasks.rake</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>7</integer>
-		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
@@ -2004,7 +1068,7 @@
 		<string>public/javascripts/bingli_info.js</string>
 		<string>app/helpers/application_helper.rb</string>
 		<string>app/models/bug_report.rb</string>
-		<string>app/views/shared/_bingli_comment.html.erb</string>
+		<string>app/views/shared/_post_signature.html.erb</string>
 		<string>app/views/biz/comments/_comments.html.erb</string>
 		<string>app/views/biz/comments/create.rjs</string>
 		<string>app/views/biz/comments/update.rjs</string>
@@ -2032,41 +1096,9 @@
 		<string>vendor/plugins/peteonrails-vote_fu-0.0.11/rails/init.rb</string>
 		<string>app/models/bingli.rb</string>
 		<string>Rakefile</string>
-		<string>vendor/plugins/yaml_db/README.markdown</string>
-		<string>vendor/plugins/yaml_db/tasks/yaml_db_tasks.rake</string>
-		<string>vendor/plugins/juafrlo-acts-as-favorite-updated-49c9421/README</string>
-		<string>app/controllers/biz/bingli_infos_controller.rb</string>
-		<string>app/views/shared/_message_bar.html.erb</string>
-		<string>lib/authenticated_system.rb</string>
-		<string>app/models/attachment.rb</string>
-		<string>vendor/plugins/sexy_auto_complete/README</string>
-		<string>vendor/plugins/tooltips/lib/che_tooltips.rb</string>
-		<string>vendor/plugins/tooltips/javascripts/scriptaculous_fixed.js</string>
-		<string>vendor/plugins/tooltips/install.rb</string>
-		<string>vendor/plugins/tooltips/init.rb</string>
-		<string>vendor/plugins/tooltips/tasks/che_tooltips_tasks.rake</string>
-		<string>vendor/plugins/tooltips/README</string>
-		<string>app/views/biz/question/new.html.erb</string>
-		<string>vendor/plugins/sexy_auto_complete/init.rb</string>
-		<string>vendor/plugins/sexy_auto_complete/tasks/auto_complete_tasks.rake</string>
-		<string>vendor/plugins/sexy_auto_complete/uninstall.rb</string>
-		<string>vendor/plugins/sexy_auto_complete/Rakefile</string>
-		<string>vendor/plugins/sexy_auto_complete/lib/sexy_auto_complete.rb</string>
-		<string>vendor/plugins/sexy_auto_complete/lib/sexy_auto_complete/controller.rb</string>
-		<string>vendor/plugins/sexy_auto_complete/lib/sexy_auto_complete/helper.rb</string>
-		<string>vendor/plugins/sexy_auto_complete/install.rb</string>
-		<string>vendor/plugins/sexy_auto_complete/sexy_auto_complete.gemspec</string>
-		<string>vendor/plugins/squirrel/README</string>
-		<string>vendor/plugins/pacecar/README.rdoc</string>
-		<string>vendor/plugins/peteonrails-vote_fu-0.0.11/README.markdown</string>
-		<string>app/views/biz/bingli_infos/_bingli_infos_list.html.rhtml</string>
-		<string>app/models/keshi.rb</string>
-		<string>app/views/biz/bingli_infos/_bingli.html.erb</string>
-		<string>public/stylesheets/showone.css</string>
-		<string>themes/twitter_clone/views/layouts/_sidebar.html.erb</string>
-		<string>app/views/biz/bingli_infos/show.html.erb</string>
-		<string>app/views/biz/bingli_infos/_bingli_side_bar.html.erb</string>
-		<string>app/views/biz/bingli_infos/new.html.erb</string>
+		<string>public/stylesheets/fabiao.css</string>
+		<string>app/views/layouts/application.html.erb</string>
+		<string>public/stylesheets/jquery_autocomplete.css</string>
 		<string>app/views/bug_reports/_bug_report_form.html.erb</string>
 		<string>app/controllers/bug_reports_controller.rb</string>
 		<string>vendor/plugins/acts-as-taggable-on/lib/acts_as_taggable_on/acts_as_taggable_on.rb</string>
@@ -2074,38 +1106,18 @@
 		<string>app/views/tags/_tag.html.erb</string>
 		<string>app/views/tags/index.html.erb</string>
 		<string>app/views/biz/bingli_infos/query.html.erb</string>
-		<string>config/development.sphinx.conf</string>
 		<string>app/models/fuzhu_detail.rb</string>
+		<string>Gemfile</string>
 		<string>app/views/shared/bingli_info/_fuzhu.html.erb</string>
 		<string>app/models/question_detail.rb</string>
 		<string>app/models/chubu_detail.rb</string>
 		<string>Gemfile.lock</string>
-		<string>app/views/biz/bingli_comments/create.rjs</string>
-		<string>app/views/biz/bingli_comments/votedown.rjs</string>
-		<string>app/views/biz/bingli_comments/voteup.rjs</string>
-		<string>app/controllers/biz/bingli_comments_controller.rb</string>
-		<string>app/views/messages/new.html.erb</string>
-		<string>config/routes.rb</string>
-		<string>app/views/biz/comments/_comment.html.erb</string>
-		<string>config/environments/development.rb</string>
-		<string>config/environments/production.rb</string>
-		<string>app/views/shared/_bottom.html.erb</string>
-		<string>app/models/user_observer.rb</string>
-		<string>app/models/user.rb</string>
-		<string>app/controllers/users_controller.rb</string>
-		<string>app/models/bug_report_observer.rb</string>
-		<string>app/models/bug_report_mailer.rb</string>
-		<string>app/models/user_mailer.rb</string>
-		<string>app/views/users/show.html.erb</string>
-		<string>app/views/users/_followed.html.erb</string>
-		<string>app/views/users/_unfollow.html.erb</string>
 		<string>app/views/biz/bingli_infos/index.rhtml</string>
-		<string>log/development.log</string>
-		<string>app/views/tags/_tags_list.html.erb</string>
-		<string>app/views/biz/bingli_infos/_bingli_info_simple_list.html.erb</string>
-		<string>app/views/biz/bingli_infos/_bingli_info_simple.html.erb</string>
-		<string>app/controllers/messages_controller.rb</string>
-		<string>app/views/user/index.html.erb</string>
+		<string>app/views/biz/bingli_infos/_bingli_info_new.html.erb</string>
+		<string>app/views/biz/bingli_infos/_bingli_infos_new_list.html.erb</string>
+		<string>app/models/message.rb</string>
+		<string>app/views/biz/bingli_infos/_bingli_info.html.rhtml</string>
+		<string>config/production.sphinx.conf</string>
 		<string>app/views/users/_user.html.erb</string>
 		<string>app/controllers/user_controller.rb</string>
 		<string>vendor/plugins/acts_as_follower/README.rdoc</string>
@@ -2114,6 +1126,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{587, 264}, {1675, 747}}</string>
+	<string>{{518, 290}, {1675, 747}}</string>
 </dict>
 </plist>

@@ -29,6 +29,7 @@ GEM
     gem_plugin (0.2.3)
     highline (1.5.2)
     hpricot (0.8.3)
+    mime-types (1.16)
     mongrel (1.1.5)
       cgi_multipart_eof_fix (>= 2.4)
       daemons (>= 1.0.3)
@@ -72,6 +73,7 @@ DEPENDENCIES
   attribute_normalizer
   capistrano
   hpricot
+  mime-types
   mongrel
   mysql2
   paperclip

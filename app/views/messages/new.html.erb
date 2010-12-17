@@ -23,7 +23,7 @@
     	<li>
 			<% if @recipient_id == nil %>
 			    	<label for="title" for="user">发送至：</label>
-					<%= f.collection_select(:recipient_id, User.find(:all), :id, :login, options ={:prompt => "-选择收件人"}) %>
+					<%= f.collection_select(:recipient_id,@users, :id, :login, options ={:prompt => "-选择收件人"}) %>(仅显示您所关注的人)
 			<% else %>
 		    	<label for="title">收件人：</label>
 				<%= User.find_by_id(@recipient_id).login %>
