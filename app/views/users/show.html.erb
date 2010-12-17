@@ -1,4 +1,4 @@
-<%#= stylesheet_link_tag 'profile' %>
+<%= stylesheet_link_tag 'showone.css' %>
 <style type="text/css" media="screen">
 	.user_show{
 		width:960px;
@@ -44,7 +44,7 @@
 	}
 	.bingli_list{
 		margin:0px auto;
-		width:840px;
+		width:850px;
 	}
 	.ar {
 	text-align: right;
@@ -59,9 +59,6 @@
 	vertical-align: middle;
 	padding-left: 10px;
 	}
-	.tags {
-	margin: 5px 5px;
-	}
 </style>
 <div class='user_show'>
 	<div id='user_tab1' class='tab1'>
@@ -75,8 +72,17 @@
 			<li>所属科室：<%=@user.keshi.name%></li>
 			<li>登录次数：<%=@user.login_count%></li>
 			<li>注册时间：<%=@user.created_at.to_s(:basic)%></li>
-			<li>最近登录时间：<%=@user.last_seen_at.to_s(:basic)%></li>
+			<li>最近登录时间：<%=@user.last_seen_at.nil? ? @user.created_at.to_s(:basic) : @user.last_seen_at.to_s(:basic)%></li>
 			<li><%=image_tag 'email.png'%><%=link_to '给我发消息',new_user_message_path(@user)%></li>
+			<li><%=image_tag 'twitter_follow_me_24.png'%>
+				<span id='follow_me'>
+			<%if logged_in? && current_user.following?(@user)%>
+				<%= render :partial => 'followed' ,:locals => {:user => @user} %>
+
+				<%else%>
+			<%= render :partial => 'unfollow',:locals => {:user => @user }%>
+			<%end%>
+				</span></li>
 		</span>
 
 	</div>
@@ -85,22 +91,45 @@
 		<p style='padding:10px 10px;font-size:16px;OVERFLOW-Y:scroll;border:0px solid;height:250px;'><%=@user.about_me%></p>
 	</span></div>
 	<div class='tab2'>
-		<div><h1 class='summary-header'>发表的病例(<span class='summarycount'><%=@user.bingli_infos.size%></span>)：</h1></div>
+		<a name="tab-top"></a>
+		<div id='bingli_infos'><div id="answers-header">
+			        <div class="subheader answers-subheader">
+			            <h1 class='summary-header'>病例(<span class='summarycount'><%=@bingli_infos.total_entries%></span>)：</h1>
+			            <div id="tabs">
+				<%=link_to '发表的病例',user_path(@user),({:class => 'youarehere'} if params[:tap].nil?)%>
+				<%=link_to '收藏的病例',user_path(@user,:tap => :favorite),({:class => 'youarehere'} if params[:tap]=='favorite')%>
+				<%#=link_to '参与讨论的',user_path(@user,:tap => :involved)%>
+			            </div>
+			        </div>
+			    </div>
+			
 		<div class='bingli_list'>
 			<%=render 'biz/bingli_infos/bingli_info_simple_list',:bingli_infos => @bingli_infos,:search => false%>
 			<div style='float:right;margin-top:20px;'><%=will_paginate @bingli_infos,:param_name => 'page_bi',:class=>"digg_pagination"%></div>
 		</div>
-		
-		<div style='clear:both;'><h1 class='summary-header'>发表的讨论(<span class='summarycount'><%=@user.bingli_comments.size%></span>)：</h1></div>
-		<div class='bingli_list' style='padding-left:30px;'>
-			<%=render 'biz/bingli_comments/bingli_comment_simple_list',:param_name => 'page_bc',:bingli_comments =>@bingli_comments %>
-			<div style='float:right;margin-top:20px;'><%=will_paginate @bingli_comments,:param_name => 'page_bi',:class=>"digg_pagination"%></div>
 		</div>
 		
-		<div style='clear:both;'><h1 class='summary-header'>相关的标签(<span class='summarycount'><%=@user.owned_tags.size%></span>)：</h1></div>
+		
+		<a name="bc-top"></a>
+		<div id='bingli_comments'><div style='clear:both;'><h1 class='summary-header'>发表的讨论(<span class='summarycount'><%=@user.bingli_comments.size%></span>)：</h1></div>
 		<div class='bingli_list' style='padding-left:30px;'>
+			<%=render 'biz/bingli_comments/bingli_comment_simple_list',:param_name => 'page_bc',:bingli_comments =>@bingli_comments %>
+			<div style='float:right;margin-top:20px;'><%=will_paginate @bingli_comments,:param_name => 'page_bc',:class=>"digg_pagination"%></div>
+		</div>
+		</div>
+		
+		<div id='tags'><div style='clear:both;'><h1 class='summary-header'>相关的标签(<span class='summarycount'><%=@user.owned_tags.size%></span>)：</h1></div>
+		<div class='bingli_list' style='padding:20px 0px 0px 30px;'>
 			<%=render 'tags/tags_list',:param_name => 'page_bc',:tags =>@tags %>
 			<div style='float:right;margin-top:20px;'><%=will_paginate @tags,:param_name => 'page_tags',:class=>"digg_pagination"%></div>
+		</div>
+		</div>
+		
+		<div style='clear:both;'><h1 class='summary-header'>投票(<span class='summarycount'><%=@user.vote_count%></span>)：</h1></div>
+		<div class='bingli_list' style='padding:20px 0px 0px 30px;'>
+			<div class="vote" style='width:80px;float:left;'><span class="vote-up-on">支持</span><span class="vote-count-post" title="此用户头赞成支持的次数"><%=@user.vote_count(true)%></span><span class="vote-down-off" style="cursor:default"></span></div>
+			<div class="vote" style='width:80px;float:left;'><span class="vote-up-off">反对</span><span class="vote-count-post" title="此用户投无用反对的次数"><%=@user.vote_count(false)%></span><span class="vote-down-on" style="cursor:default"></span></div>
+			
 		</div>
 	</div>
 </div>	

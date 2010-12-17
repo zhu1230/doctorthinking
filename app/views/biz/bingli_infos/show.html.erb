@@ -151,9 +151,3 @@ var fkey='<%=form_authenticity_token%>'
 </div>
 	<div class='box_right'><%=render :partial => 'bingli_side_bar',:locals => {:bingli_info => @bingli_info}%></div>
 		<%#=render :partial => 'shared/flag', :object => @bingli_info %>
-<%
-if flash[:highlight]%>
-<script type="text/javascript" charset="utf-8">
-	document.observe('dom:loaded',function(){$('bingli_comment_<%=flash[:highlight]%>').highlight();});
-</script>
-<%end%>

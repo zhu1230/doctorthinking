@@ -1,10 +1,10 @@
 class InvitesController < ApplicationController
 
- require_role "user", :only => [:new, :edit, :create, :update, :destroy]
+ require_role "user", :only => [:index,:new, :edit, :create, :update, :destroy]
   
   
   def index
-    @invites = Invite.find(:all)
+    @invites = Invite.paginate :page => params[:page]
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @invites }

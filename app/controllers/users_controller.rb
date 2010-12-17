@@ -220,7 +220,7 @@ class UsersController < ApplicationController
   def show   
     @user = User.find(params[:id])
 	@page_title=@user.login
-	@bingli_infos=@user.bingli_infos.paginate :page => params[:page_bi],:per_page => 10
+	@bingli_infos=((params[:tap]=='favorite' ? @user.favorite_bingli_infos : @user.bingli_infos).paginate :page => params[:page_bi],:per_page => 10)
 	@bingli_comments=@user.bingli_comments.paginate :page => params[:page_bc],:per_page => 10
 	@tags=@user.owned_tags.paginate :page => params[:page_tags],:per_page => 30
     respond_to do |format|
@@ -431,6 +431,7 @@ class UsersController < ApplicationController
       end
     end 
   end
+
   
   
   private

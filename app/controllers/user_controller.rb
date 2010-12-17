@@ -24,6 +24,26 @@ end
 def pass_change
 	
 end
+
+def favorite_index
+	
+end
+
+def my_bingli_infos
+end
+
+def my_involved
+	
+	
+end
+def follow_index
+	@users=current_user.following_by_type('user',:limit => 30).paginate :page => params[:page],:per_page => 1
+	render :action => :index
+end
+
+
+
+
 def capture(&block)
 block.call
 end

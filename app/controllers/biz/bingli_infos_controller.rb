@@ -169,6 +169,9 @@ end
 		# render :text => "{\"query\":\"#{params[:query]}\",\"suggestions\":[#{tags_s}]}"
 		# render :json
 	end
+	def favorite_bingli_infos
+		
+	end
 	
   private
 def and_or_except(field,cond,value)

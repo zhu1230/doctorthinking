@@ -1,12 +1,54 @@
-<%=render :partial => "invite_menu"%>
-<%= stylesheet_link_tag 'invites' %>
-
-<h1>邀请好友</h1>		
-<div id="add_invite">
-	<%= render :partial => 'invite_form' %>
-	<div style="clear:both;"></div>
+<%#=render :partial => "invite_menu"%>
+<%#= stylesheet_link_tag 'invites' %>
+<style type="text/css" media="screen">
+	#invite_form{
+		width:900;
+		margin:0px auto;
+		padding:20px 0px 20px 300px;
+		background-color:#F3F7F8;line-height:31px;
+		
+	}
+	.form_field{
+		margin:10px auto;
+	}
+</style>
+<div id="answers-header">
+	        <div class="subheader answers-subheader">
+	            <h1 class='summary-header'>发送邀请</h1>
+	            <div id="tabs">
+		<%=link_to '发送邀请',new_invite_path,{:class => 'youarehere'} %>
+		<%=link_to '已发送的邀请',user_invites_path(current_user)%>
+		<%#=link_to '收藏的病例',user_path(@user,:tap => :favorite),({:class => 'youarehere'} if params[:tap]=='favorite')%>
+		<%#=link_to '参与讨论的',user_path(@user,:tap => :involved)%>
+	            </div>
+	        </div>
 </div>
-<div style="clear:both;"></div>
+<%= error_messages_for :invite,:header_message=>"请重试！",:message=>"在发送邀请时出现了一些问题：",:class=>"validation" %>
+<div id='invite_form'>
+	
+	
+	<% form_for [current_user,@invite] do |f| %>
+		<div class="form_field">
+	    	<label for="email">发送到:</label>
+			<br/>
+			<%= f.text_field :email, :class=>'input_field',:placeholder => '-邮箱地址-' %>
+		</div>
+		<div class="form_field">
+	    	<label for="message">您的信息 <span class="label_help">(可选)</span>:</label>
+			<span id='invite_message_counter' class="help_text text-counter cool">最少3个字符</span><br/>
+			<%= f.text_area :message, :cols=>60, :rows=>8,:minlimit => 3,:maxlimit => 1000%>
+			<span class="form-error"></span>
+		</div>
+
+		<%= f.submit "发送邀请" %>
+	<% end %>
+	
+	
+</div>
+<script type="text/javascript" charset="utf-8">
+	new Effect.Corner('invite_form', "30px;cc:#ffffff");
+</script>
+
 
 
 

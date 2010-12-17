@@ -172,7 +172,10 @@ zh-CN:
           description: '描述'
         message:
           subject: '主题'
-          body: '内容'    
+          body: '内容'
+        invite:
+          email: '电子邮箱'
+          message: '邀请'    
     app:
       user:
           login_success: "登陆成功"

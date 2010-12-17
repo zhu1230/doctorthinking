@@ -1,0 +1,8 @@
+if logged_in?
+current_user.stop_following(user=User.find(params[:id]))
+page.replace_html 'follow_me',:partial => 'users/unfollow',:locals => {:user => user}
+visual_effect(:highlight, "follow_me")
+else
+	page << "$('follow_me').down('#ajax-loader').remove();"
+	page.insert_html 'bottom','follow_me',:partial => 'shared/ajax_message',:locals => {:message => "您需要  "+(link_to '登录',login_url,:style=>'font-size: 1.0em;color:red')+"  后才能使用关注功能。"}
+end

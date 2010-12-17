@@ -16,6 +16,15 @@ h1,h2,h3,p {margin:0;padding:0;}
 .use h2 {font-size:12px;font-weight:normal;color:#07315B;line-height:30px;text-decoration:underline;background:url(/images/icon.gif) 26px -56px no-repeat;padding-left:50px;}
 .use h2 a,.use h2 a:link,.use h2 a:visited {text-decoration:underline;}
 .use h2.use2 {background:url(/images/icon.gif) 26px -96px no-repeat;}
+.use .use_menu{
+	float:left;
+	width:250px;
+}
+.use .right{
+	float:right;
+	width:648px;
+	border: 1px solid #CCC;
+}
 -->
 </style>
 <div class="uesrinfo">
@@ -23,13 +32,22 @@ h1,h2,h3,p {margin:0;padding:0;}
     <span>您有<%=current_user.unread_messages.size%>条待读信息。<%=link_to "查看",:controller=>"messages"%></span>
 </div>
 <div class="use">
-	<h1>您可以通过快速通道使用以下功能：</h1>
+	<div class='use_menu'><h1>您可以通过快速通道使用以下功能：</h1>
     <h2><%=link_to "补充个人信息",:controller=>"user",:action=>"account"%></h2>
   <h2 class="use2"><%=link_to "发表病例讨论",new_biz_bingli_info_path%></h2>
-<h2 class="use2"><%#=link_to "查看收藏的病例",%></h2>
-<h2 class="use2"><%#=%><%=link_to "我的好友",user_friends_path(current_user)%></h2>
-<h2 class="use2"><%=link_to "我参与的圈子",user_groups_path(current_user)%></h2>
-<h2 class="use2"><%=link_to "邀请好友加入",new_invite_path%><%#=link_to "个人博客",user_blog_posts_path(current_user)%></h2>
-<h2 class="use2"><%=link_to "参与的活动",events_path()%></h2>
-<h2 class="use2"><%=link_to "我的图库",user_photos_path(current_user)%></h2>
+<h2 class="use2"><%=link_to "我发表的病例",user_path(current_user,:anchor => 'tab-top')%></h2>
+<h2 class="use2"><%=link_to '我收藏的病例',user_path(current_user,:tap => :favorite,:anchor => 'tab-top')%></h2>
+<h2 class="use2"><%=link_to '我参与的讨论',user_path(current_user,:anchor => 'bc-top')%><%#=link_to "我参与的圈子",user_groups_path(current_user)%></h2>
+<!-- <h2 class="use2"><%#=link_to "我的好友",user_friends_path(current_user)%><%#=link_to "个人博客",user_blog_posts_path(current_user)%></h2> -->
+<h2 class="use2"><%=link_to "我关注的人",:action =>'follow_index'%></h2>
+<h2 class="use2"><%=link_to "邀请好友加入",new_user_invite_path(current_user)%><%#=link_to "我的图库",user_photos_path(current_user)%></h2>
+</div>
+<% unless @users.blank?%>
+<div class='right'>
+	
+<div style='clear:both;'>	<%=render @users %></div>
+	<div style='clear:both;float:right;padding:5px 20px 20px 0px;'><%=will_paginate @users,:class => 'digg_paginate'%></div>
+
+</div>
+	<%end%>
 </div>

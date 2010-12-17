@@ -1,3 +1,2 @@
-<%for t in tags%>
-<%=render :partial => 'tags/tag',:locals => {:tag =>t }%>
+<%for t in tags%><div style='margin: 5px 5px;float:left;'><%=render :partial => 'tags/tag',:locals => {:tag =>t }%></div>
 <%end%>

@@ -174,3 +174,57 @@ margin-top: 5px;
 p{word-wrap:break-word;overflow:hidden
 word-break: break-all;
 }
+#tabs {
+float: right;
+font-weight: bold;
+}
+#tabs a {
+background: inherit;
+background: inherit;
+border: 1px solid white;
+color: #777;
+display: block;
+float: left;
+font-size: 90%;
+height: 24px;
+line-height: 22px;
+margin: 8px 8px 0px 0px;
+padding: 0px 11px;
+text-decoration: none;
+}
+#tabs a.youarehere {
+background: white;
+border: 1px solid black;
+border-bottom-color: white;
+color: black;
+font-size: 120%;
+height: 30px;
+line-height: 28px;
+margin-top: 3px;
+padding: 0px 11px;
+}
+#answers-header {
+margin-bottom: 10px;
+/*margin-top: 10px;*/
+width: 100%;
+}
+#answers .subheader {
+margin-bottom: -10px;
+}
+.subheader {
+border-bottom: 1px solid #666;
+clear: both;
+height: 34px;
+margin-bottom: 15px;
+}
+.subheader h1, .subheader h2 {
+float: left;
+font-size: 170%;
+line-height: 34px;
+margin-bottom: 0px;
+margin-top: 0px;
+padding: 0px 0px 0px 35px;
+background: url(/images/showh1bg.gif) 8px 10px no-repeat;
+}
+#tabs a:hover{background:#fff;border:1px solid #777;border-bottom-color:#fff;line-height:20px;margin-top:9px;}
+#tabs a.youarehere{background:#fff;border:1px solid #777;border-bottom-color:white;color:black;font-size:120%;height:30px;line-height:28px;margin-top:3px;padding:0 11px 0 11px;}

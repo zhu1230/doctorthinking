@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
 can_flag 
 acts_as_voter
 acts_as_tagger
+acts_as_followable
+acts_as_follower
 has_karma :bingli_infos
 has_karma :bingli_comments
 acts_as_favorite_user
@@ -224,10 +226,10 @@ end
   
   
   # Creates a follows relationship between this user and someone he wishes to follow
-  def follow(followee_id)
-    Follow.create(:follower_id => id,
-                  :followee_id => followee_id)
-  end
+  # def follow(followee_id)
+  #   Follow.create(:follower_id => id,
+  #                 :followee_id => followee_id)
+  # end
   
   
   # Find the user in the database, first by the facebook user id and if that fails through the email hash

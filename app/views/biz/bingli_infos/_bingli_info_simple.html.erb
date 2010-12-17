@@ -1,5 +1,5 @@
 <%if bingli_info.favoriting_users.size > 0 %>
-<div class="favorites-count-off" title="此病例已经被  个用户收藏"><div class="star-off"></div><b><%=bingli_info.favoriting_users.size%></b></div>
+<div class="favorites-count-off" title="此病例已经被<%=bingli_info.favoriting_users.size%> 个用户收藏"><div class="star-off <%= params[:tap]=='favorite' ? 'star-on' : '' %>"></div><b><%=bingli_info.favoriting_users.size%></b></div>
 <%else%>
 <div class="favorite-cell">&nbsp;</div>
 <%end%>

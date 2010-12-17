@@ -1,16 +1,2 @@
-<%= error_messages_for :invite,:header_message=>"请重试！",:message=>"在发送邀请时出现了一些问题：",:class=>"validation" %>
-<% form_for(@invite) do |f| %>
-	<div class="form_field">
-    	<label for="email">发送到:</label>
-		<%= f.text_field :email, :class=>'input_field' %>
-	</div>
-	<div class="form_field">
-    	<label for="message">您的信息 <span class="label_help">(可选)</span>:</label>
-		<span id='invite_message_counter' class="help_text text-counter cool">最少3个字符</span><br/>
-		<%= f.text_area :message, :cols=>60, :rows=>8,:minlimit => 3,:maxlimit => 1000%>
-		<span class="form-error"></span>
-	</div>
 
-	<%= f.submit "发送邀请" %>
-<% end %>
 

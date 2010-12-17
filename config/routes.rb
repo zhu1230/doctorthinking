@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :contents
   map.resources :facebook_posts
   map.resources :ideas
-  map.resources :invites
+  
   map.resources :classifieds
   map.resources :projects
   map.resources :links
@@ -88,14 +88,15 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.forgot    '/forgot', :controller => 'users', :action => 'forgot'  
   map.reset     '/reset/:reset_code', :controller => 'users', :action => 'reset'
-  map.resources :users, :collection => {:search => :get,:online_users=>:get, :grid_data=>:get, :link_facebook_account => :get, :fb_register_all_users => :get}
+  map.resources :users, :collection => {:search => :get,:online_users=>:get, :grid_data=>:get, :link_facebook_account => :get},:member => { :follow => :post,:unfollow => :post}
 
   map.resource :session
   
   map.resources :users do |user|
+	user.resources :favorite_bingli_infos,:as => :bingli_info,:only => [:index]
     user.resources :activities
     user.resources :friends
-    user.resources :follows
+    # user.resources :follows
     user.resources :announcements
     user.resources :book_reviews
     user.resources :groups,:collection => {:participate=>:get}
@@ -111,8 +112,9 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :links
     user.resources :projects
     user.resources :classifieds
+	user.resources :invites
   end 
-  
+  map.resources :invites
   map.resources :groups do |group|
     group.resources :wall_posts
     group.resources :users
