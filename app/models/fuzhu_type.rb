@@ -7,7 +7,7 @@ class FuzhuType < ActiveRecord::Base
 	has_many :fuzhu_details
 	  # Validations
 	  validates_presence_of :name
-	  validates_uniqueness_of :name
+	  # validates_uniqueness_of :name
 
 	  def update_depth
 	    unless self.level == self.depth
