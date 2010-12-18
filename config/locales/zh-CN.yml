@@ -175,7 +175,9 @@ zh-CN:
           body: '内容'
         invite:
           email: '电子邮箱'
-          message: '邀请'    
+          message: '邀请'
+        fuzhu_detail:
+          fuzhu_type: '辅助检查类型'    
     app:
       user:
           login_success: "登陆成功"
