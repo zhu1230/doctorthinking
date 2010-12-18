@@ -70,9 +70,9 @@ class ApplicationController < ActionController::Base
   
   def my_store_location	
   session[:return_to] = request.request_uri if request.get? and  controller_name != "sessions" and !response.layout.nil?
-p response.layout
-p session[:return_to] 
-p request.xhr?
+# p response.layout
+# p session[:return_to] 
+# p request.xhr?
 end
   # Determine which users are currently signed in
   def who_is_online
@@ -93,17 +93,17 @@ end
 		item.errors.full_messages.map { |e| 
 		  content_tag(:li, e) }
 		end
-end
+	end
 
 
-  def set_cache_buster
-    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-  end
-def local_request?
-    return false
-  end
+	  def set_cache_buster
+	    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+	    response.headers["Pragma"] = "no-cache"
+	    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+	  end
+	def local_request?
+    	return false
+  	end
 
   
 end

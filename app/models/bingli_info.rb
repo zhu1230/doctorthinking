@@ -31,7 +31,7 @@ validates_presence_of :keshi_id
 validates_associated :keshi
  # validates_presence_of :catelog_id
 accepts_nested_attributes_for :bingli, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
-		
+		 before_destroy :destroy_associates
 		define_index do
 			indexes :id
 		   indexes title
@@ -75,6 +75,12 @@ accepts_nested_attributes_for :bingli, :allow_destroy => true, :reject_if => pro
 	fuzhu.attachments.first.file if fuzhu
     end
   end
+	def destroy_associates
+		self.bingli.destroy
+		self.taggings.destroy_all
+		self.bingli_comments.destroy_all	
+	end
+	
 	def after_validation
 	    # Skip errors that won't be useful to the end user
 	    filtered_errors = self.errors.reject{ |err| %{ bingli }.include?(err.first) }

@@ -13,6 +13,7 @@ validates_length_of :zhusu, :within => 3..50, :on => :save,  :too_long => I18n.t
 accepts_nested_attributes_for :fuzhu_details, :allow_destroy => true, :reject_if => proc { |obj| ( obj['content'].blank? && (obj['attachments_attributes'].blank? || obj['attachments_attributes'].values.detect {|a|a["_destroy"].blank? && (!a['file'].blank? || !a['edit_file'].blank?)}.nil?)) } #pp obj;obj['fuzhu_type_id'].blank? || 
 accepts_nested_attributes_for :chubu_details, :allow_destroy => true, :reject_if => proc { |obj| obj['content'].blank? }
 accepts_nested_attributes_for :question_details, :allow_destroy => true, :reject_if => proc { |obj| obj['content'].blank? }
+before_destroy :destroy_associates
 default_value_for :age, nil
 default_value_for :sex, nil
 default_value_for :marriage,0
@@ -47,4 +48,11 @@ default_value_for :marriage,0
 	#    has bingli_info.tags(:id),:as => :tag_ids
 	#  end
 #  validates_
+private
+def destroy_associates
+	self.fuzhu_details.destroy_all
+	self.chubu_details.destroy_all
+	self.question_details.destroy_all
+end
+
 end

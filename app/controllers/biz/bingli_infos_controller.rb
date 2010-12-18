@@ -4,6 +4,7 @@ class Biz::BingliInfosController < ApplicationController
   require_role "user",:only=>[:new,:create,:add_favorite]
 	after_filter :increment_page_views, :only => [:show]
 	before_filter :side_bar_info,:only => [:index,:hot,:active,:week,:month]
+	
 	# after_filter :by_keshi,:only => [:hot,:active,:week,:month]
 	include PageViews::Controller
 	
