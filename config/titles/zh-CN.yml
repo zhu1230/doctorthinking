@@ -35,6 +35,7 @@ user:
     account: "帐户资料修改"
     pass_change: "密码修改"
     index: "个人帐户"
+    follow_index: '关注列表'
 blog_posts:
     new: "发表博文"
     index: "博客列表"

@@ -81,7 +81,7 @@ config.autoload_paths += %W(#{RAILS_ROOT}/app/middleware)
   # config.app_config.rankTagBingliInfo={:perfect=>10,:fine=>5,:hide=>-3}
   # config.app_config.perfectNum='10'
   # config.app_config.fineNum='5'
-  config.active_record.observers = :user_observer,:bug_report_observer unless File.basename($0) == 'rake'#, :message_observer, :wall_post_observer,:announcement_observer, :invite_observer,
+  config.active_record.observers = :user_observer,:bug_report_observer,:invite_observer unless File.basename($0) == 'rake'#, :message_observer, :wall_post_observer,:announcement_observer, :invite_observer,
  
  config.action_mailer.delivery_method = :sendmail
  

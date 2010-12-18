@@ -50,7 +50,7 @@ class InvitesController < ApplicationController
       respond_to do |format|
         if @invite.save
           flash[:notice] = '邀请已成功发送。'
-          format.html { redirect_to(@invite) }
+          format.html { redirect_to(user_invites_url(current_user)) }
           format.xml  { render :xml => @invite, :status => :created, :location => @invite }
           format.json  { render :json => @invite.to_json, :status => :created, :location => @invite }
         else
