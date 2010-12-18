@@ -3,9 +3,10 @@ class Biz::BingliInfosController < ApplicationController
 	# in_place_edit_for :user,:about_me,{:error_messages=>"error"}
   require_role "user",:only=>[:new,:create,:add_favorite]
 	after_filter :increment_page_views, :only => [:show]
+	before_filter :side_bar_info,:only => [:index,:hot,:active,:week,:month]
 	# after_filter :by_keshi,:only => [:hot,:active,:week,:month]
 	include PageViews::Controller
-
+	
 
   def index
     #params[:keshi]=1 unless params[:keshi]
@@ -175,7 +176,7 @@ end
 	
   private
 def side_bar_info
-	Tag.find(:all,:limit => 30)
+	@tags=Tag.maximum_taggings.limited(30)
 end
 
 def and_or_except(field,cond,value)

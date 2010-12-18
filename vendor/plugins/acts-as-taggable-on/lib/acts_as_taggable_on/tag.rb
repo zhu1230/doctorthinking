@@ -1,4 +1,5 @@
 class Tag < ActiveRecord::Base
+	include Pacecar
   has_many :taggings
   
   validates_presence_of :name

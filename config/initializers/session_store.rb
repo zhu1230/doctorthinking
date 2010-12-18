@@ -14,3 +14,8 @@ ActionController::Base.session = {
 # (create the session table with "rake db:sessions:create")
 # ActionController::Base.session_store = :active_record_store
  ActionController::Dispatcher.middleware.insert_before(ActionController::Base.session_store, FlashSessionCookieMiddleware, ActionController::Base.session_options[:key])
+class Tag < ActiveRecord::Base
+	# self.extend Pacecar::Ranking::ClassMethods
+	include Pacecar
+	has_ranking :taggings
+end

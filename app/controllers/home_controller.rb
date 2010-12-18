@@ -74,7 +74,7 @@ class HomeController < ApplicationController
   
   # Render the network's homepage
   def index
-	@users=User.limited(26)
+	@users=User.limited(26).by_created_at(:desc)
     # if false #Network.find(:first) == nil
     #      # flash[:notice] = 'Looks like you have not created a network yet.'
     #      #     redirect_to :action => 'install'
