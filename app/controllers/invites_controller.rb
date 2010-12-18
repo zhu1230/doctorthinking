@@ -38,7 +38,7 @@ class InvitesController < ApplicationController
     if Invite.find_by_email(@invite.email)
       # recipient has already been invited by this user
       respond_to do |format|
-        flash[:notice] = '您已经邀请了这个好友。'
+        flash[:notice] = '这个好友已经被邀请了。'
         format.html { render :action => "new" }
         format.xml  { render :status => :unprocessable_entity }
         format.json  { render :status => :unprocessable_entity }
@@ -81,7 +81,7 @@ class InvitesController < ApplicationController
 
 
   def destroy
-    @invite = Invite.find(params[:id])
+    @invite = current_user.invites.find(params[:id])
     @invite.destroy
     respond_to do |format|
       format.html { redirect_to(invites_url) }

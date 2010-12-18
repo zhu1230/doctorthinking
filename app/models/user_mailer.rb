@@ -14,6 +14,7 @@ class UserMailer < ActionMailer::Base
     setup_email(user)
     @subject    += '请激活您的帐户'  
     @body[:url]="#{@urls}activate/#{user.activation_code}" 
+	@content_type = "text/html"
     # @body[:url]  = "#{@url}/activate/#{user.activation_code}" 
   end
   
@@ -90,7 +91,7 @@ class UserMailer < ActionMailer::Base
     @recipients  = "#{invite.email}"
     @from        = "#{invite.user.email}"
 
-    @subject     = "#{invite.user.name} 邀请您加入医思社区"
+    @subject     = "#{invite.user.name.blank? ? invite.user.login : invite.user.name} 邀请您加入医思社区"
 
     @sent_on     = Time.now
     @body[:invite] = invite

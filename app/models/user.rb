@@ -68,7 +68,7 @@ with_page_views :buffer_size => 5, :days => 1, :model_name => 'user'
   has_many :sent_messages, :class_name => 'Message', :foreign_key =>'sender_id', :order=>'created_at DESC'
   has_many :received_messages, :class_name => 'Message', :foreign_key =>'recipient_id', :order=>'created_at DESC'
   has_many :unread_messages, :class_name => 'Message', :foreign_key =>'recipient_id', :conditions => {:read => false} 
-  
+  has_many :invites
   has_many :friends, :through => :friendships, :conditions => "status = 'accepted'"
   has_many :requested_friends, :through => :friendships, :source => :friend, :conditions => "status = 'requested'", :order=>"friendships.created_at"
   has_many :pending_friends, :through => :friendships, :source => :friend, :conditions => "status = 'pending'", :order=>"friendships.created_at"

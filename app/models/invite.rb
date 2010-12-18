@@ -14,7 +14,7 @@ class Invite < ActiveRecord::Base
   
   def self.accept(invite_code) 
     invite = Invite.find_by_invite_code(invite_code)
-    invite.update_attributes(:accepted=>true)
+    invite.update_attributes(:accepted=>true) unless invite.nil?
   end
   
 end
