@@ -1,5 +1,5 @@
 class Attachment < ActiveRecord::Base
-	has_attached_file :file,:styles => {:big => {:geometry =>'520x500>',:watermark_path => "#{Rails.public_path}/images/watermark.png"},:thumb => '100x100#',:index => '100x70!'},:default_style => :big,:convert_options => {}
+	has_attached_file :file,:processors => [:watermark],:styles => {:big => {:geometry =>'520x500>',:watermark_path => "#{Rails.public_path}/images/watermark.png"},:thumb => '100x100#',:index => '100x70!'},:default_style => :big,:convert_options => {}
 	validates_attachment_size :file,:less_than => 5.megabytes
 	validates_attachment_content_type :file,:content_type => ['image/gif','image/jpeg','image/jpg','image/png','image/tiff'],:message => '附件只能使用类型为 jpg,gif,png,tiff 的图片。'
 	belongs_to :fuzhu_detail
