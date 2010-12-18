@@ -1,7 +1,7 @@
 class BingliInfo < ActiveRecord::Base
 	include Pacecar
 	cattr_reader :per_page
-	attr_accessible :tag_list,:title,:bingli_attributes
+	attr_accessible :tag_list,:title,:bingli_attributes,:keshi_id
 	  @@per_page = 20
 	acts_as_commentable
 	
