@@ -290,6 +290,13 @@ class UsersController < ApplicationController
     if success && @user.errors.empty?
         if params[:invite_code] && Invite.accept(params[:invite_code])
 				@user.activate
+				
+			  self.current_user = user
+		    	login_count = self.current_user.login_count
+			      login_count = login_count + 1
+			      self.current_user.update_attribute('login_count', login_count)
+			      self.current_user.update_attribute('last_seen_at',Time.zone.now)
+			
 			    flash[:notice] = "您已注册成功，现在您可以完全参与到医思网社区中。"
 			      # render :template=>'users/activate_complete'
 				redirect_to :controller=>"/user",:action=>"index"

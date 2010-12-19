@@ -62,9 +62,11 @@ ul,li {list-style-type:none;list-style-images:none;}
 
 -->
 </style>
+<% if @invite_code %>
 <div id="signup_help">
 	在注册成功之后，您将收到一个确认注册的电子邮件。请按照邮件中的激活帐户链接来完成此次注册过程。
 </div>
+<%end%>
 <div class="area">
   <%= error_messages_for :user,:header_message=>"请重试！",:message=>"在建立新用户时出现了一些问题：",:class=>"validation" %>
 	<div class="atitle">
