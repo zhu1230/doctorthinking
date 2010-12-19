@@ -288,35 +288,34 @@ class UsersController < ApplicationController
       @user.roles << Role.find_by_rolename('user')
 	  success = @user && @user.save
     if success && @user.errors.empty?
-        if params[:invite_code]
-          if Invite.accept(params[:invite_code])
+        if params[:invite_code] && Invite.accept(params[:invite_code])
 				@user.activate
 			    flash[:notice] = "您已注册成功，现在您可以完全参与到医思网社区中。"
 			      # render :template=>'users/activate_complete'
 				redirect_to :controller=>"/user",:action=>"index"
-			end
-        end
-        respond_to do |format|
-          format.html {
-		 # self.current_user = @user # !! now logged in
-      #redirect_back_or_default('/')
-		UserMailer.deliver_signup_notification(@user) 
-            flash.now[:notice] = "感谢您的注册！"
-            render :template=>'sessions/signup_thankyou'
-          }
-          format.xml {
-            if !Configuration.REQUIRE_ACTIVATE_FOR_USER_CREATE_VIA_API
-              @user.activate
-            end
-            render :xml => @user, :status => :created, :location => @user
-          }
-          format.json {
-            if !Configuration.REQUIRE_ACTIVATE_FOR_USER_CREATE_VIA_API
-              @user.activate
-            end
-            render :json => @user.to_json, :status => :created, :location => @user
-          }
-        end
+        else
+        		respond_to do |format|
+		          format.html {
+				 # self.current_user = @user # !! now logged in
+		      #redirect_back_or_default('/')
+				UserMailer.deliver_signup_notification(@user) 
+		            flash.now[:notice] = "感谢您的注册！"
+		            render :template=>'sessions/signup_thankyou'
+		          }
+		          format.xml {
+		            if !Configuration.REQUIRE_ACTIVATE_FOR_USER_CREATE_VIA_API
+		              @user.activate
+		            end
+		            render :xml => @user, :status => :created, :location => @user
+		          }
+		          format.json {
+		            if !Configuration.REQUIRE_ACTIVATE_FOR_USER_CREATE_VIA_API
+		              @user.activate
+		            end
+		            render :json => @user.to_json, :status => :created, :location => @user
+		          }
+		        end
+		end
       else
         respond_to do |format|
           format.html {
