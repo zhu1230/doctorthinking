@@ -81,5 +81,5 @@ DEPENDENCIES
   rails (= 2.3.10)
   rdig
   ruby-openid
-  thinking-sphinx
+  thinking-sphinx (~> 1.4.0)
   will_paginate (~> 2.3.15)

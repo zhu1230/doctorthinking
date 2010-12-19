@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/views/biz/bingli_infos/show.html.erb</string>
+	<string>config/database.yml</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -450,9 +450,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>63</integer>
+				<integer>104</integer>
 				<key>line</key>
-				<integer>121</integer>
+				<integer>135</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -931,6 +931,50 @@
 			<key>firstVisibleLine</key>
 			<integer>66</integer>
 		</dict>
+		<key>config/database.yml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>18</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+		</dict>
+		<key>config/deploy.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>136</integer>
+				<key>line</key>
+				<integer>65</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>35</integer>
+		</dict>
 		<key>config/environment.rb</key>
 		<dict>
 			<key>caret</key>
@@ -1079,6 +1123,20 @@
 				<integer>15</integer>
 				<key>line</key>
 				<integer>15</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>config/production.sphinx.conf</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>41</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -1596,6 +1654,9 @@
 		<string>app/controllers/biz/bingli_infos_controller.rb</string>
 		<string>app/models/attachment.rb</string>
 		<string>app/views/biz/bingli_infos/show.html.erb</string>
+		<string>config/production.sphinx.conf</string>
+		<string>config/deploy.rb</string>
+		<string>config/database.yml</string>
 		<string>app/views/users/_user.html.erb</string>
 		<string>app/controllers/user_controller.rb</string>
 		<string>vendor/plugins/acts_as_follower/README.rdoc</string>
