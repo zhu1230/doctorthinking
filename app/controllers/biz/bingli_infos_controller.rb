@@ -47,7 +47,9 @@ class Biz::BingliInfosController < ApplicationController
 
 
   def show
+	
     @bingli_info=BingliInfo.find(params[:id],:include=>[:bingli,:user])
+	@page_title=@bingli_info.title+' - '+@bingli_info.tags.join(',')
     @bingli=@bingli_info.bingli
 	if params[:type]=='old'
 			@bingli_comments=BingliComment.paginate :conditions=>["bingli_info_id =:bingli_info_id",{:bingli_info_id=>params[:id]}],:order => 'created_at asc',:page=>params[:page]

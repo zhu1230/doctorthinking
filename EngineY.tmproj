@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>config/database.yml</string>
+	<string>app/views/layouts/application.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -161,6 +161,36 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>app/controllers/sessions_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>71</integer>
+				<key>line</key>
+				<integer>28</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+		</dict>
 		<key>app/controllers/tags_controller.rb</key>
 		<dict>
 			<key>caret</key>
@@ -194,14 +224,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>42</integer>
+				<integer>51</integer>
 				<key>line</key>
-				<integer>302</integer>
+				<integer>296</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>272</integer>
+			<integer>274</integer>
 		</dict>
 		<key>app/helpers/application_helper.rb</key>
 		<dict>
@@ -345,6 +375,20 @@
 				<integer>16</integer>
 			</dict>
 		</dict>
+		<key>app/models/keshi.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>16</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>app/models/question_detail.rb</key>
 		<dict>
 			<key>caret</key>
@@ -378,14 +422,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>31</integer>
+				<integer>55</integer>
 				<key>line</key>
-				<integer>11</integer>
+				<integer>106</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>72</integer>
 		</dict>
 		<key>app/models/user_observer.rb</key>
 		<dict>
@@ -590,21 +634,21 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>35</integer>
 				<key>line</key>
-				<integer>21</integer>
+				<integer>6</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>4</integer>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/layouts/user_mailer.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>13</integer>
 				<key>line</key>
 				<integer>0</integer>
 			</dict>
@@ -745,35 +789,33 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>app/views/user_mailer/activation.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>10</integer>
+				<key>line</key>
+				<integer>1</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>app/views/user_mailer/invite_notification.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>30</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>0</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>117</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
 		</dict>
 		<key>app/views/user_mailer/message_notification.html.erb</key>
 		<dict>
@@ -922,14 +964,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>10</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>77</integer>
+				<integer>64</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>66</integer>
+			<integer>50</integer>
 		</dict>
 		<key>config/database.yml</key>
 		<dict>
@@ -966,14 +1008,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>136</integer>
+				<integer>32</integer>
 				<key>line</key>
 				<integer>65</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>35</integer>
+			<integer>38</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>95</integer>
+				<key>line</key>
+				<integer>65</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>32</integer>
+				<key>line</key>
+				<integer>65</integer>
+			</dict>
 		</dict>
 		<key>config/environment.rb</key>
 		<dict>
@@ -1134,14 +1192,44 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>35</integer>
 				<key>line</key>
-				<integer>41</integer>
+				<integer>9</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>lib/authenticated_system.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>16</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
 		</dict>
 		<key>lib/paperclip_processors/watermark.rb</key>
 		<dict>
@@ -1342,6 +1430,78 @@
 				<key>line</key>
 				<integer>93</integer>
 			</dict>
+		</dict>
+		<key>vendor/plugins/awesome_nested_set/README.rdoc</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>28</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>vendor/plugins/awesome_nested_set/awesome_nested_set.gemspec</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>76</integer>
+				<key>line</key>
+				<integer>12</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>vendor/plugins/awesome_nested_set/lib/awesome_nested_set.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>15</integer>
+				<key>line</key>
+				<integer>460</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>382</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>12</integer>
+				<key>line</key>
+				<integer>460</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>15</integer>
+				<key>line</key>
+				<integer>460</integer>
+			</dict>
+		</dict>
+		<key>vendor/plugins/awesome_nested_set/lib/awesome_nested_set/helper.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>58</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>1</integer>
 		</dict>
 		<key>vendor/plugins/pacecar/lib/pacecar/search.rb</key>
 		<dict>
@@ -1569,6 +1729,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>vendor/plugins/restful-authentication/lib/authentication.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>20</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>2</integer>
+		</dict>
 		<key>vendor/plugins/wysihat-engine-0.1.13/app/controllers/wysihat_files_controller.rb</key>
 		<dict>
 			<key>caret</key>
@@ -1655,6 +1829,9 @@
 		<string>app/models/attachment.rb</string>
 		<string>app/views/biz/bingli_infos/show.html.erb</string>
 		<string>config/production.sphinx.conf</string>
+		<string>vendor/plugins/awesome_nested_set/README.rdoc</string>
+		<string>vendor/plugins/awesome_nested_set/lib/awesome_nested_set.rb</string>
+		<string>vendor/plugins/awesome_nested_set/lib/awesome_nested_set/helper.rb</string>
 		<string>config/deploy.rb</string>
 		<string>config/database.yml</string>
 		<string>app/views/users/_user.html.erb</string>
@@ -1663,6 +1840,9 @@
 		<string>config/environment.rb</string>
 		<string>app/models/invite_observer.rb</string>
 		<string>app/models/user_mailer.rb</string>
+		<string>app/views/user_mailer/activation.html.erb</string>
+		<string>app/models/keshi.rb</string>
+		<string>vendor/plugins/awesome_nested_set/awesome_nested_set.gemspec</string>
 		<string>app/views/user_mailer/signup_notification.html.erb</string>
 		<string>app/views/user_mailer/wall_post_notification.html.erb</string>
 		<string>app/views/user_mailer/rejected_notification.html.erb</string>
@@ -1673,6 +1853,9 @@
 		<string>app/views/layouts/user_mailer.html.erb</string>
 		<string>app/views/user_mailer/invite_notification.html.erb</string>
 		<string>app/controllers/users_controller.rb</string>
+		<string>vendor/plugins/restful-authentication/lib/authentication.rb</string>
+		<string>lib/authenticated_system.rb</string>
+		<string>app/controllers/sessions_controller.rb</string>
 		<string>app/models/user.rb</string>
 		<string>app/models/user_observer.rb</string>
 		<string>app/models/invite.rb</string>

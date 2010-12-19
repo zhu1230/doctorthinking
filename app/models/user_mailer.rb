@@ -104,7 +104,8 @@ class UserMailer < ActionMailer::Base
     setup_email(user)
 
     @subject    += '您的帐户已被激活!'
-    @body[:url]  = "http://www.doctorthinking.com/"
+    @body[:url]  = "http://www.doctorthinking.com/login"
+	@content_type = "text/html"
   end
 
   def reset_notification(user)  
