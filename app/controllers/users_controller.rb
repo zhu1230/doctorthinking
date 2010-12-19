@@ -291,7 +291,7 @@ class UsersController < ApplicationController
         if params[:invite_code] && Invite.accept(params[:invite_code])
 				@user.activate
 				
-			  self.current_user = user
+			  self.current_user = @user
 		    	login_count = self.current_user.login_count
 			      login_count = login_count + 1
 			      self.current_user.update_attribute('login_count', login_count)
