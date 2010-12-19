@@ -1,4 +1,4 @@
-<%=@invite.user.name.blank?  @invite.user.login : @invite.user.name%> 邀请您加入
+<%=@invite.user.name.blank? ?  @invite.user.login : @invite.user.name%> 邀请您加入
  <a href="http://www.doctorthinking.com">医思网社区</a>【 doctorthinking.com 】
 <br/><br/>
 <i>"<%=@invite.message%>"</i>
