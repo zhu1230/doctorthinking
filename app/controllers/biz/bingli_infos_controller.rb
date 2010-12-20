@@ -11,12 +11,12 @@ class Biz::BingliInfosController < ApplicationController
 
   def index
     #params[:keshi]=1 unless params[:keshi]
-	if !params[:keshi_id].blank? 
-			session[:keshi_id]=params[:keshi_id]
-	    @bingli_infos=Keshi.find(params[:keshi_id]).bingli_infos.paginate :page=>params[:page],:order=>'created_at desc'#,:conditions=>["keshi_id= ?",params[:keshi]]
+	if !params[:keshi_id].blank? || session[:keshi_id]
+			session[:keshi_id]=params[:keshi_id] if !params[:keshi_id].blank?
+	    @bingli_infos=Keshi.find(session[:keshi_id]).bingli_infos.paginate :page=>params[:page],:order=>'created_at desc'#,:conditions=>["keshi_id= ?",params[:keshi]]
 	
 	else
-			session[:keshi_id]=nil
+			# session[:keshi_id]=nil
 			@bingli_infos=BingliInfo.paginate :page=>params[:page],:order=>'created_at desc'#,:conditions=>["keshi_id= ?",params[:keshi]]
 	end
     #@bingli_infos=BingliInfo.find(:all,:conditions=>["keshi_id= ?",params[:keshi]])

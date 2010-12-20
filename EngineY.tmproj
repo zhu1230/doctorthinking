@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/views/layouts/application.html.erb</string>
+	<string>public/stylesheets/showone.css</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -68,14 +68,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>36</integer>
 				<key>line</key>
-				<integer>238</integer>
+				<integer>51</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>167</integer>
+			<integer>42</integer>
 		</dict>
 		<key>app/controllers/biz/comments_controller.rb</key>
 		<dict>
@@ -224,14 +224,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>51</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>296</integer>
+				<integer>221</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>274</integer>
+			<integer>200</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>221</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>221</integer>
+			</dict>
 		</dict>
 		<key>app/helpers/application_helper.rb</key>
 		<dict>
@@ -634,14 +650,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>35</integer>
+				<integer>24</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>65</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>36</integer>
 		</dict>
 		<key>app/views/layouts/user_mailer.html.erb</key>
 		<dict>
@@ -716,6 +732,48 @@
 				<key>line</key>
 				<integer>8</integer>
 			</dict>
+		</dict>
+		<key>app/views/shared/_nav3.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>1</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/shared/_nav_bar.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/shared/_nav_menu.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/shared/_post_signature.html.erb</key>
 		<dict>
@@ -1008,30 +1066,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>32</integer>
+				<integer>59</integer>
 				<key>line</key>
 				<integer>65</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>38</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>95</integer>
-				<key>line</key>
-				<integer>65</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>32</integer>
-				<key>line</key>
-				<integer>65</integer>
-			</dict>
+			<integer>37</integer>
 		</dict>
 		<key>config/environment.rb</key>
 		<dict>
@@ -1344,6 +1386,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>public/stylesheets/showone.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>228</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>206</integer>
 		</dict>
 		<key>public/stylesheets/style.css</key>
 		<dict>
@@ -1805,6 +1861,7 @@
 		<string>Rakefile</string>
 		<string>public/stylesheets/fabiao.css</string>
 		<string>app/views/layouts/application.html.erb</string>
+		<string>app/views/shared/_nav_bar.html.erb</string>
 		<string>public/stylesheets/jquery_autocomplete.css</string>
 		<string>app/views/bug_reports/_bug_report_form.html.erb</string>
 		<string>app/controllers/bug_reports_controller.rb</string>
@@ -1826,6 +1883,8 @@
 		<string>app/views/home/index.html.erb</string>
 		<string>app/controllers/home_controller.rb</string>
 		<string>app/controllers/biz/bingli_infos_controller.rb</string>
+		<string>app/views/shared/_nav3.html.erb</string>
+		<string>app/views/shared/_nav_menu.html.erb</string>
 		<string>app/models/attachment.rb</string>
 		<string>app/views/biz/bingli_infos/show.html.erb</string>
 		<string>config/production.sphinx.conf</string>
@@ -1833,6 +1892,7 @@
 		<string>vendor/plugins/awesome_nested_set/lib/awesome_nested_set.rb</string>
 		<string>vendor/plugins/awesome_nested_set/lib/awesome_nested_set/helper.rb</string>
 		<string>config/deploy.rb</string>
+		<string>public/stylesheets/showone.css</string>
 		<string>config/database.yml</string>
 		<string>app/views/users/_user.html.erb</string>
 		<string>app/controllers/user_controller.rb</string>

@@ -11,7 +11,7 @@ class BingliInfo < ActiveRecord::Base
  can_be_flagged
 	normalize_attributes :title
 	# normalize_attributes :tag_list
-with_page_views :buffer_size => 5, :days => 1, :model_name => 'post'
+with_page_views :buffer_size => 1, :days => 1, :model_name => 'post'
 
   belongs_to :bingli,:autosave=>true
   belongs_to :user,:counter_cache=>true
@@ -79,6 +79,7 @@ accepts_nested_attributes_for :bingli, :allow_destroy => true, :reject_if => pro
 		self.bingli.destroy
 		self.taggings.destroy_all
 		self.bingli_comments.destroy_all	
+		self.votes.destroy_all
 	end
 	
 	def after_validation
