@@ -57,7 +57,6 @@ module PageViews
     
     def page_views_clear_cookies(cookies)
       PageViews.array_to_hash(cookies.sort_by {|k, v| v}.reverse[0...2]) #how about new year?
-		p cookies.inpsect
        cookies.delete_if {|k, v| k < page_views_options[:days].minutes.ago.strftime('%m%d')}
     end
         
