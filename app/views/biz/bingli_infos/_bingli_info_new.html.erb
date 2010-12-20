@@ -17,7 +17,7 @@
 	<div class="summary">        
 	        <h3><%=link_to bingli_info.title,biz_bingli_info_path(bingli_info),{:class => 'question-hyperlink'}%></h3>
 	        <div class="excerpt">
-<%=truncate(bingli_info.bingli.zhusu.to_s+bingli_info.bingli.xianbingshi.to_s+bingli_info.bingli.tigejiancha.to_s,:length => 150)%>...
+<%=truncate(bingli_info.bingli.zhusu.to_s+bingli_info.bingli.xianbingshi.to_s+bingli_info.bingli.tigejiancha.to_s+bingli_info.bingli.bingcheng.to_s,:length => 120)%>...
 	        </div>
 
 	        <div class="tags t-java t-eclipse t-coding-style t-formatter">
