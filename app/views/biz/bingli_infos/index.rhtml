@@ -5,7 +5,8 @@
         <!-- <li class="begin"><a href="#">栏目一</a></li> 
         <li><a href="#">栏目二</a></li> 
         <li><a id='tooltip' href="#">栏目三</a></li>  -->
-<li>当前病例显示为 ：  <%=select_tag :keshi_id, grouped_options_for_select(keshi_by_groups,(session[:keshi_id] ? session[:keshi_id].to_i : ''),'-全部病例-'),{:onchange => "window.location.href='#{biz_bingli_infos_path()}?keshi_id='+this.value"}%></li>
+<%p grouped_options_for_select(keshi_by_groups,(session[:keshi_id] ? session[:keshi_id].to_i : ''))%>
+<li>当前病例显示为 ：  <%=select_tag :keshi_id, options_for_select([['-全部病例-','0']])+grouped_options_for_select(keshi_by_groups,(session[:keshi_id] ? session[:keshi_id].to_i : '')),{:onchange => "window.location.href='#{biz_bingli_infos_path()}?keshi_id='+this.value"}%></li>
     </ul> 
 </div> 
 

@@ -4,15 +4,14 @@ class Biz::BingliInfosController < ApplicationController
   require_role "user",:only=>[:new,:create,:add_favorite]
 	after_filter :increment_page_views, :only => [:show]
 	before_filter :side_bar_info,:only => [:index,:hot,:active,:week,:month]
-	
+	before_filter :keshi_set,:only => [:index,:hot,:active,:week,:month]
 	# after_filter :by_keshi,:only => [:hot,:active,:week,:month]
 	include PageViews::Controller
 	
 
   def index
     #params[:keshi]=1 unless params[:keshi]
-	if !params[:keshi_id].blank? || session[:keshi_id]
-			session[:keshi_id]=params[:keshi_id] if !params[:keshi_id].blank?
+	if session[:keshi_id]
 	    @bingli_infos=Keshi.find(session[:keshi_id]).bingli_infos.paginate :page=>params[:page],:order=>'created_at desc'#,:conditions=>["keshi_id= ?",params[:keshi]]
 	
 	else
@@ -188,6 +187,11 @@ def and_or_except(field,cond,value)
 	elsif cond=='except'
 		"& (@#{field} -#{value}) "
 	end
+end
+def keshi_set
+			if (!params[:keshi_id].blank?)
+					session[:keshi_id]=  params[:keshi_id]!='0' ? params[:keshi_id] : nil
+				end
 end
 
 def increment_page_views
