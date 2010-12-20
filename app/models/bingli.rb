@@ -1,7 +1,7 @@
 class Bingli < ActiveRecord::Base
   acts_as_commentable
 normalize_attributes :zhusu
-attr_accessible :zhusu,:age,:sex,:marriage,:yibanqingkuang,:zhuyaozhengzhuang,:xianbingshi,:jiwang,:buchong,:final,:tigejiancha,:yibanbuchong,:zongbuchong,:fuzhu_details_attributes,:chubu_details_attributes,:question_details_attributes
+attr_accessible :zhusu,:age,:sex,:marriage,:yibanqingkuang,:zhuyaozhengzhuang,:xianbingshi,:jiwang,:bingcheng,:buchong,:final,:tigejiancha,:yibanbuchong,:zongbuchong,:fuzhu_details_attributes,:chubu_details_attributes,:question_details_attributes
   has_one :bingli_info,:autosave=>true
   has_many :chubu_details#,:conditions=>"chubu_has is not null" 
   has_many :fuzhu_details#,:conditions=>"fuzhu_has is not null"

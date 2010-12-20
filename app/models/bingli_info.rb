@@ -48,6 +48,7 @@ accepts_nested_attributes_for :bingli, :allow_destroy => true, :reject_if => pro
 		indexes bingli.yibanbuchong,:as => :yibanbuchong
 		indexes bingli.zongbuchong,:as => :zongbuchong
 		indexes bingli.final,:as => :final
+		indexes bingli.bingcheng,:as => :bingcheng
 		# indexes bingli.fuzhu_details(:content),:as => :fuzhus
 		indexes bingli.chubu_details(:content),:as => :chubus
 		indexes bingli.question_details(:content),:as => :questions

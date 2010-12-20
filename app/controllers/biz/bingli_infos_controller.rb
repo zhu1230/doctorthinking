@@ -157,8 +157,6 @@ end
 				end
 				hashs[:created_at]=timezone
 			end
-			p ">>>"+conditions
-			p "hash>>>>"+hashs.inspect
 			@bingli_infos = BingliInfo.search(conditions,:match_mode =>:extended,:with => hashs,:order => "created_at DESC, @relevance DESC")
 		end
 		

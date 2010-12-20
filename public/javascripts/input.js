@@ -28,3 +28,7 @@ function add_new_file(fuzhu) {
 	fuzhu.down('#file_upload_scope').insert({bottom:div.update(fuzhu.down('#upload_file_blank').innerHTML.gsub(/attachments_attributes\]\[\d+\]/,'attachments_attributes]['+new Date().getTime()+']'))});
 	new Effect.Highlight(div);
 }
+function add_new_bingcheng() {
+	
+}
+

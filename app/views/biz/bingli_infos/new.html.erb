@@ -10,7 +10,7 @@
 <%= stylesheet_link_tag 'lytebox.css'%>
 <%= error_messages_for :bingli_info,:header_message=>"请重试！",:message=>"在建立病例时出现了一些问题：",:class=>"validation" %>
 <%#=render :partial=>"shared/bingli_info/search" ,:locals => {:keshi=>Keshi.all} %>
-<%=render :partial=>"shared/nav3"%>
+<%#=render :partial=>"shared/nav3"%>
 <%build_fuzhu%>
 <%form_for [:biz,@bingli_info],:html =>{:multipart => true}  do |f| %>
 <div class="fabiao_box">
@@ -51,9 +51,9 @@
         <span class="tab"><h1>性别：</h1><%=bingli.select :sex, options_for_select([['男',1],['女',0]],:selected=>bingli.object.sex)%>
             &nbsp;<font>年龄</font><%=bingli.text_field :age,:size=> 3 ,:value=>bingli.object.age,:style=>"border:1px #889BAA solid;width:50px;",:placeholder=>'0' %>
             &nbsp;&nbsp;<font>婚姻状况</font>&nbsp;<%=bingli.select :marriage,options_for_select([['不详','0'],['已婚','1'],['未婚','2']])%>
-<h2 style='width:750px;margin-left:75px;'>一般情况描述不足？<%=link_to_function "补充","new Effect.Appear('yibanqingkuang_buchong');",:class=>"f12red"%></h2>
+<h2 style='width:750px;margin-left:75px;'>一般情况描述不足？<%=link_to_function "补充","$('yibanqingkuang_buchong').toggle().highlight();",:class=>"f12red"%></h2>
             </span>
-				<span id='yibanqingkuang_buchong' class="tab" style="display:none">
+				<span id='yibanqingkuang_buchong' class="tab" style="<%='display:none;' if bingli.object.yibanbuchong.blank?%>">
 					<h1></h1><%=bingli.text_area "yibanbuchong",:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
 				</span>
 					
@@ -63,7 +63,8 @@
             <%=bingli.text_area :jiwang,{:class=>"bingshi",:placeholder=>"-既往史－"}  %>
             <%=bingli.text_area :tigejiancha,{:class=>"bingshi",:placeholder=>"-体格检查－"}  %>
         </span>
-
+		<span class="title2"><h3>病程/诊疗记录</h3><h4><%=link_to_function '+我要添加',"$('bingcheng').toggle().highlight();" %></h4></span>
+		<span id='bingcheng' class='tab' style='<%='display:none;' if bingli.object.bingcheng.blank?%>'><h1>描述内容：</h1><%=bingli.text_area :bingcheng,:style => "width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%></span>
         <span class="title2"><h3>辅助诊断</h3><%#=javascript_tag "var max_id=0;" %>
             <h4><%#=link_to_remote '+我要添加',{:url=>{:action=>'get_fuzhu'},:with=>"'max_id='+max_id",:before=>"$('tianjia').hide();",:complete => "$('tianjia').show();if($('fuzhu_scope').childElements() .size()>1)$('compartmentation_'+(max_id)).show();max_id++;new Effect.Highlight('fuzhu_id['+(max_id-1)+']');"},:id=>'tianjia' %>
 	<%=link_to_function '+我要添加',"add_new_fuzhu();"%></h4></span>
@@ -87,12 +88,12 @@
 			<%=render :partial=>"shared/bingli_info/yiwen",:locals=>{:question=>question} %>
 		   	<%end%>     
 		</div>
-        <span class="title2"><h3>最终诊断</h3></span>
+        <span class="title2"><h3>最终诊断(或病理结果)</h3></span>
         <span class="tab"><h1></h1>
 		<%=bingli.text_area :final,:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
         </span>
-        <span class="title3"><h1>如果您觉得有不足的地方，请<%=link_to_function "补充","new Effect.Appear('buchong');"%></h1></span>
-		<div id='buchong' style="display:none">
+        <span class="title3"><h1>如果您觉得有不足的地方，请<%=link_to_function "补充","$('buchong').toggle().highlight();"%></h1></span>
+		<div id='buchong' style="<%='display:none;' if bingli.object.zongbuchong.blank?%>">
         <!-- <span class="tab"><h1>补充类型：</h1>
                     <select name="buchong_catelog">
                         <option value="-请选择-">-请选择-</option>

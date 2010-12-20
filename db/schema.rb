@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101215134728) do
+ActiveRecord::Schema.define(:version => 20101220125059) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20101215134728) do
     t.text    "tigejiancha"
     t.text    "yibanbuchong"
     t.text    "zongbuchong"
+    t.text    "bingcheng"
   end
 
   create_table "blog_mirrors", :force => true do |t|

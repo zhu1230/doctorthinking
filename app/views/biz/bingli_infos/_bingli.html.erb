@@ -53,6 +53,14 @@
                 </p>
 				</li>
 			<%end%>
+			<%if !bingli.bingcheng.blank?%>
+			<li>
+			<span class="name">病程/诊疗记录 ：</span>
+			 <p class="intro">
+                    <%=bingli.bingcheng %>
+                </p>
+				</li>
+			<%end%>
             <%if !bingli.fuzhu_details.blank? %>
             <%bingli.fuzhu_details.each {|fd| %>
             <li style='background-color:#FEFFFE'>
@@ -79,16 +87,6 @@
                 <%}%>
             </li>
             <%end %>
-            <%if !bingli.question_details.blank? %>
-            <li>
-                <span class="name">疑问：</span>
-                <%bingli.question_details.each{|q|%>
-                <p class="intro">
-                    <%=(bingli.question_details.index(q)+1).to_s+":" if bingli.question_details.size > 1%><%=q.content%>
-                </p>
-                <%}%>
-            </li>
-            <%end %>
             <%if !bingli.final.blank? %>
             <li>
                 <span class="name">最终诊断：</span>
@@ -105,5 +103,15 @@
                 </p>
             </li>
             <%end%>
+            <%if !bingli.question_details.blank? %>
+            <li>
+                <span class="name">疑问：</span>
+                <%bingli.question_details.each{|q|%>
+                <p class="intro">
+                    <%=(bingli.question_details.index(q)+1).to_s+":" if bingli.question_details.size > 1%><%=q.content%>
+                </p>
+                <%}%>
+            </li>
+            <%end %>
         </ul>
     </div>
