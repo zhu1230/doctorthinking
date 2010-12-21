@@ -26,6 +26,9 @@ class InvitesController < ApplicationController
   def new
     @invite = Invite.new
   end
+def send_contacts
+	
+end
 
 
   def edit

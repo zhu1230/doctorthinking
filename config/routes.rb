@@ -112,7 +112,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :links
     user.resources :projects
     user.resources :classifieds
-	user.resources :invites
+	user.resources :invites,:collection => {:send_contacts => :post}
   end 
   map.resources :invites
   map.resources :groups do |group|
