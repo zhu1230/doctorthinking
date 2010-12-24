@@ -73,4 +73,8 @@ tags:
     show: '标签'
 pages:
     about_us: '关于医思网'
+meetings:
+    new: '发表会议'
+    show: '会议内容'
+    index: '会议列表'
     

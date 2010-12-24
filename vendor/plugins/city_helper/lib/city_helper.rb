@@ -135,9 +135,10 @@ module CityHelper
     def city_select(id, options = {}, html_options = {})
       @template.city_select @object_name, id, options, html_options
     end
-    
-    def state_select(id, options = {}, html_options = {})
-      @template.state_select @object_name, id, options, html_options
+    # by vincent .change method name to state*s*_select
+    def states_select(id, options = {}, html_options = {})
+	# by vincent .change method name to state*s*_select
+      @template.states_select @object_name, id, options, html_options
     end
   end
   
@@ -241,8 +242,8 @@ module CityHelper
         }
       </script>)
     end
-    
-    def state_select(object, id, options = {}, html_options = {})
+    # by vincent .change method name to state*s*_select
+    def states_select(object, id, options = {}, html_options = {})
       self.state_select_tag "#{object}_#{id}", options.merge(html_options)
     end
     

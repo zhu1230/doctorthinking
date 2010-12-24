@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101220125059) do
+ActiveRecord::Schema.define(:version => 20101221123339) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -458,6 +458,18 @@ ActiveRecord::Schema.define(:version => 20101220125059) do
     t.datetime "updated_at"
   end
 
+  create_table "meeting_attaches", :force => true do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.boolean  "used"
+    t.integer  "meeting_id"
+  end
+
   create_table "meeting_tags", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -466,7 +478,7 @@ ActiveRecord::Schema.define(:version => 20101220125059) do
   create_table "meetings", :force => true do |t|
     t.string   "title"
     t.datetime "created_at"
-    t.datetime "arrange_time"
+    t.datetime "start_time"
     t.string   "content"
     t.integer  "user_id"
     t.string   "richeng"
@@ -475,8 +487,15 @@ ActiveRecord::Schema.define(:version => 20101220125059) do
     t.string   "xieban"
     t.integer  "keshi_id"
     t.integer  "type_id"
-    t.string   "address"
+    t.string   "country"
+    t.datetime "end_time"
+    t.datetime "updated_at"
+    t.string   "state"
+    t.string   "city"
+    t.integer  "page_views_counter", :default => 0
   end
+
+  add_index "meetings", ["page_views_counter"], :name => "index_meetings_on_page_views_counter"
 
   create_table "memberships", :force => true do |t|
     t.integer  "user_id"
@@ -809,6 +828,8 @@ ActiveRecord::Schema.define(:version => 20101220125059) do
     t.datetime "file_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.boolean  "used"
   end
 
 end

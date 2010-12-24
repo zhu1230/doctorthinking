@@ -5,6 +5,7 @@ class Keshi < ActiveRecord::Base
     #           :foreign_key => "parent_id"
 	# after_save :update_depth
 	has_many :bingli_infos
+	has_many :meetings
 	  # Validations
 	  validates_presence_of :name
 	  validates_uniqueness_of :name

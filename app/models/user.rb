@@ -53,7 +53,8 @@ with_page_views :buffer_size => 5, :days => 1, :model_name => 'user'
   has_many :comments
   has_many :permissions, :dependent => :destroy
   has_many :roles, :through => :permissions 
-  
+  has_many :wysihat_files
+  has_many :meeting_attaches
   has_many :memberships, :dependent => :destroy
   has_many :groups, :through => :memberships 
   has_many :own_groups,:class_name=>'Group',:foreign_key=>'creator_id'

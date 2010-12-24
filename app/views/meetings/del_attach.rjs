@@ -1,0 +1,3 @@
+current_user.meeting_attaches.find(params[:rfid]).destroy
+page.remove params[:ldid]
+page["attachments"].select("input[type='hidden'][value='#{params[:rfid]}']").first.remove;

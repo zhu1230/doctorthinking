@@ -1,0 +1,170 @@
+<%= javascript_include_tag 'meeting' %>
+<style type="text/css">
+<!--
+.show_box,.comment_box {width:958px;margin:0px auto;overflow:hidden;clear:both;}
+.show_box .menu,.comment_box .menu {width:958px;height:30px;border-bottom:1px #D0E1EB solid;background:url(/images/tab_bg1.gif) repeat-x;float:left;}
+.show_box .menu h1,.comment_box .menu h1 {line-height:30px;margin:0px;padding:0px 0px 0px 30px;background:url(/images/showh1bg.gif) 10px 6px no-repeat;font-size:14px;float:left;display:inline;color:#004575;}
+.show_box .menu .info {float:right;line-height:30px;padding-right:10px;}
+.show_box .cnt {width:938px;float:left;padding:10px;}
+.show_box .cnt p {line-height:22px;margin:0;padding:3px 0;font-size:14px;}
+.show_box .cnt h1 {line-height:30px;margin:5px 0px 0px 0px;padding:0px 0px 0px 30px;background:url(/images/fujian.gif) 10px 6px no-repeat;font-size:12px;float:left;display:inline;border-top:1px solid #d8d8d8;width:880px;}
+.show_box .cnt ul {width:938px;float:left;padding:6px 0;}
+.smail_li {float:left;line-height:26px;display:block;clear:both;width:860px;
+line-height: 22px;
+color: #5D5D5B;
+border-bottom: 1px #EBEBEB dotted;
+margin: 6px 0px;
+padding: 3px 0px;
+padding-left:50px;}
+.wide_li {float:left;display:block;clear:both;width:860px;
+line-height: 22px;
+color: #5D5D5B;
+border-bottom: 1px #EBEBEB dotted;
+margin: 6px 0px;
+padding: 3px 0px;
+padding-left:50px;}
+
+
+.show_box .cnt li.header {background:#EFF8FF;}
+.comment_box .menu h1 {background:url(/images/commenth1bg.gif) 10px 6px no-repeat;}
+.comment_box .cnt ul {width:900px;margin:6px auto;}
+.comment_box .cnt li {width:900px;float:left;padding:6px 0px;border-bottom:1px #ccc dotted;}
+.comment_box .cnt .intro {width:900px;margin:0px auto;padding:0px;display:block;text-indent:2em;line-height:20px;}
+.comment_box .cnt .info {width:900px;text-align:right;margin:0px auto;display:block;}
+.user_box {width:958px;border:1px #FECFA5 solid;margin:0px auto;overflow:hidden;clear:both;}
+.user_box .menu {width:958px;float:left;}
+.user_box .menu h1 {line-height:30px;margin:0px;padding:0px 0px 0px 30px;background:url(/images/userh1bg.gif) 10px 6px no-repeat;font-size:14px;float:left;display:inline;color:#004575;}
+.user_box .cnt {width:880px;padding:10px;float:left;color:#999;line-height:30px;}
+.user_box .cnt h1{
+	width:300px;
+	float:left;
+	height:50px;
+	margin:50px 0px 0px 10px;
+	display:block;
+	font-size:14px;
+	font-weight:normal;
+	line-height:20px;
+}
+
+.title{
+	width: 80px;
+	float: left;
+	display: block;
+	color: #004575;
+	
+}
+.intro1 {
+	width: 380px;
+	float: left;
+	margin: 0px;
+	padding: 0px 0px 0px 0px;
+	display: block;
+	word-wrap: break-word;
+	word-break: keep-all;
+
+}
+.intro2 {
+	width: 580px;
+	float: left;
+	margin: 0px;
+	padding: 0px 0px 0px 0px;
+	display: block;
+	word-wrap: break-word;
+	word-break: keep-all;
+}
+
+.attach_header{
+
+	/*	color: #283F4B;*/
+/*		height: 60px;*/
+/*		margin:0px auto;*/
+		background:url(/images/headerbg.gif) repeat-x;
+		background: #EFF8FF;
+		height:26px;
+		width:860px;
+		line-height: 22px;
+		color: #5D5D5B;
+		border-bottom: 1px #EBEBEB dotted;
+		margin: 6px auto;
+		padding: 3px 0px;
+
+}
+.name {width:610px;float:left;text-indent:2em;}
+.data {width:150px;float:left;text-align:center;}
+.no {width:90px;float:left;text-align:center;}
+.fen {width:50px;float:left;text-align:center;}
+.attach_li{
+	height:26px;
+	width:860px;
+	clear: both;
+	line-height: 22px;
+	color: #5D5D5B;
+	border-bottom: 1px #EBEBEB dotted;
+	margin: 6px auto;
+	padding: 3px 0px;
+}
+-->
+</style>
+<div class="listbox"> 
+	<div class="menu"> 
+        <div class="menu_tab3"><%=link_to "发表会议",new_meeting_path%></div> 
+    </div> 
+</div>
+<div class="show_box">
+  <div class="menu">
+    <h1><%=@meeting.title%></h1>
+    <span class="info"><font color="#999999">发表时间：</font><font color="#004575"><%=@meeting.created_at.to_s(:basic)%></font> <font color="#999999">浏览次数：</font><%=@meeting.page_views%> <a href="#"></a> <!-- <a href="#"><u><font color="#004575">打印</font></u></a> <a href="#"><font color="#FFB32E"><u>收藏</u></font></a> --></span> </div>
+    <div class="cnt">
+	<ul>
+		<li class='smail_li'><span class='title'>举办时间:</span><span class='intro1'><%=@meeting.start_time%>--<%=@meeting.end_time%></span></li>
+		<li class='smail_li'><span class='title'>地点:</span><span class='intro1' style='width:120px;'><%=[I18n.t('countries.'+(@meeting.country || 'china')),I18n.t('states.'+(@meeting.state || 'beijing')),I18n.t('cities.'+@meeting.city) ].join('-')%></span><span class='title'>会议类别:</span><span class='intro1' style='width:140px;'><%=@meeting.type_id==1 ? '一类' : (@meeting.type_id==2 ? '二类' : '未知')%></span><span class='title'>相关科室：</span><span class='intro1' style='width:120px;'><%=@meeting.keshi.name%></span></li>
+	<%unless @meeting.zhuban.nil? %>	<li class='smail_li'><span class='title'>主办方:</span><span class='intro1'><%=@meeting.zhuban%></span></li><%end%>
+	<%unless @meeting.xieban.nil? %>	<li class='smail_li'><span class='title'>协办方:</span><span class='intro1'><%=@meeting.xieban%></span></li><%end%>
+	<%unless @meeting.content.nil? %>	<li class='wide_li'><span class='title'>会议介绍:</span><span class='intro2'><%=@meeting.content%></span></li><%end%>
+	<%unless @meeting.richeng.nil? %>	<li class='wide_li'><span class='title'>日程安排:</span><span class='intro2'><%=@meeting.richeng%></span></li><%end%>
+	<%unless @meeting.chuxi.nil? %>	<li class='wide_li'><span class='title'>出席介绍:</span><span class='intro2'><%=@meeting.chuxi%></span></li><%end%>
+		
+	</ul>
+    <%unless @meeting.meeting_attaches.blank? %>
+	<h1>相关附件下载</h1>
+    <ul>
+    	<li class="attach_header"><span class="name">名称</span><span class="data">类型</span><span class="no">文件大小</span><span class="fen"></span></li>
+<%@meeting.meeting_attaches.each do |a|%>
+        <li class='attach_li'><span class="name"><a href="#"><font color="#004575"><%=a.file_file_name%></font></a></span><span class="data"><font color="#999999"><%=(a.file_content_type.include? 'image') ? '图片' : '文档'%></font></span><span class="no"><font color="#666666"><%=a.file_file_size%></font></span><!-- <span class="fen"><font color="#666666">10分</font></span> --></li>
+<%end%>
+       
+    </ul>
+	<%end%>
+    </div>
+</div>
+<div class="blank"></div>
+<div class="comment_box">
+	<div class="menu"><h1>评论</h1></div>
+    <div class="cnt">
+    	<ul  id="comments">
+       	<%=render :partial=>'shared/comment',:collection=>@comments%>
+        </ul>
+        <div class="blank"></div>
+  </div>
+</div>
+<div class="blank">
+</div>
+<%=will_paginate @comments,:class=>"digg_pagination",:style=>"width:630px;padding:10px 0px;margin:0px auto;float:right;padding:6px 0px;" %>
+<div class="user_box">
+	<div class="menu"><h1>我要评论</h1></div>
+  <div class="cnt">
+   		<%if logged_in? %>
+		<%form_for :comment,:url => add_comment_meeting_path(@meeting),:html => {:id => 'comment_form'}  do |f|%>
+		<%=f.text_area "comment",{:cols=>"",:rows=>"",:style=>"width:600px;height:100px;border:1px #ccc solid;color:#999;font-size:12px;padding:10px; float:left;",:placeholder => "-表达你的观点-"}%>
+		<span class="form-error"></span>
+		 <label style="position: relative;top:100px;padding:0px 0px 0px 30px;bottom: 0px;"><%=submit_tag "提交"%></label>
+		<%end%>
+		<%else%>
+		 <h1>您尚未
+	            <%=link_to('登录',login_url,{:style =>"color:'#FF6600'"}) %>，不能参与讨论<%=link_to "我要注册>>",signup_url,{ :style => "color:#FF0000"} %>
+	        </h1>
+	<%end%>
+   
+    </label></h1>
+  </div>
+</div>

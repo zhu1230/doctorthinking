@@ -173,6 +173,8 @@ ActionController::Routing::Routes.draw do |map|
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "home"
+	map.resources :meetings,:collection => {:fileupload => :post},:member => {:add_comment => :post} 
+	
  map.namespace :biz do |biz|
  	biz.resources :bingli_infos,:member => {:favorite => :get,:voteup => :get,:votedown => :get},:collection => {:hot => :get,:active => :get,:week => :get,:month => :get,:search => :get,:query => :post,:autocomplete => :get} do |bi|
  		bi.resources :comments, :shallow => true
@@ -195,6 +197,7 @@ map.resources :tags ,:collection => {:bingli_infos => :get,:bingli_comments => :
 	t.resources :bingli_infos
 	t.resources :bingli_comments
 end
+map.calendar '/calendar/:year/:month', :controller => 'calendar', :action => 'index', :requirements => {:year => /\d{4}/, :month => /\d{1,2}/}, :year => nil, :month => nil
  # map.connect ':controller/:action/:id'
 	# map.resources :bingli_infos 
 	# map.resources :bingli_comments 
@@ -215,7 +218,7 @@ end
   #map.connect ':controller/:action/:type/:id'
   #for fine,perfect,favorite,participation
   map.connect 'user/:action/:id',:controller=>"user"
-  map.connect 'meet/:action/:id',:controller=>"meet"
+  # map.connect 'meet/:action/:id',:controller=>"meet"
   # map.connect 'biz/bingli_info/:action/:keshi',:controller=>"biz/bingli_info"
   
   

@@ -2,6 +2,7 @@ class TagsController < ApplicationController
 
 	# before_filter :find_model
 	def index
+	
 		@tags= Tag.paginate(:all,:per_page => 60,:page => params[:page],:include => [:taggings])
 	end
 	

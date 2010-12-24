@@ -122,11 +122,15 @@ function uploadSuccess(file, serverData) {
 		hidden.value=serverData.substring(7);	
 		var container=document.getElementById("attachments");
 		container.appendChild(hidden);
-
+		$(file.id).down('.progressName').insert({bottom:"<span class='hO' name='^i' title='删除此文件' alt='删除此文件'><a href='#' onclick=\"del_file('"+(hidden.value)+"','"+file.id+"');return false;\">X删除</a></span>"});
 	} catch (ex) {
 		this.debug(ex);
 	}
 }
+function del_file(remote_file_id,local_div_id) {
+	new Ajax.Request("/meetings/del_attach",{method:'post',parameters:{rfid:remote_file_id,ldid:local_div_id},});
+}
+
 
 function uploadError(file, errorCode, message) {
 	try {

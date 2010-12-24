@@ -1,11 +1,12 @@
 class WysihatFilesController < ApplicationController
   def index
-    @wysihat_file, @wysihat_files = WysihatFile.new, WysihatFile.recent(1)
+    @wysihat_file, @wysihat_files = WysihatFile.new, current_user.wysihat_files.recent(1)
     render :layout => false
   end
 
   def create
     @wysihat_file = WysihatFile.new(:file => params[:wysihat_file][:file])
+	@wysihat_file.user=current_user
     responds_to_parent do
       render :update do |page|
         if(@wysihat_file.save)
@@ -18,7 +19,7 @@ class WysihatFilesController < ApplicationController
   end
 
   def destroy
-    @wysihat_file = WysihatFile.find(params[:id])
+    @wysihat_file = current_user.wysihat_files.find(params[:id])
     respond_to do |wants|
       wants.js {
         render :update do |page|

@@ -27,7 +27,16 @@ class InvitesController < ApplicationController
     @invite = Invite.new
   end
 def send_contacts
-	
+	@contacts=Contacts::Sina.new(params[:email],params[:password]).contacts if params[:email].include? '@sina.'
+	@contacts=Contacts::NetEase.new(params[:email],params[:password]).contacts if params[:email].include? '@163.'
+	@contacts=Contacts::NetEase.new(params[:email],params[:password]).contacts if params[:email].include? '@126.'
+	@contacts=Contacts::NetEase.new(params[:email],params[:password]).contacts if params[:email].include? '@yeah.'
+	@contacts=Contacts::Sohu.new(params[:email],params[:password]).contacts if params[:email].include? '@sohu'
+	@contacts=Contacts::Yahoo.new(params[:email],params[:password]).contacts if params[:email].include? '@yahoo'
+	@contacts=Contacts::Gmail.new(params[:email],params[:password]).contacts if params[:email].include? '@gmail'
+	@contacts=Contacts::Gmail.new(params[:email],params[:password]).contacts if params[:email].include? '@googlemail'
+	@contacts=Contacts::Hotmail.new(params[:email],params[:password]).contacts if params[:email].include? '@hotmail'
+	@contacts=Contacts::Plaxo.new(params[:email],params[:password]).contacts if params[:email].include? '@plaxo'
 end
 
 

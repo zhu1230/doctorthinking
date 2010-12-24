@@ -4,7 +4,7 @@ include Pacecar
   include ActsAsCommentable::Comment
 	normalize_attributes :comment
   belongs_to :commentable, :polymorphic => true
-
+has_polymorph :commentable
   default_scope :order => 'created_at ASC'
 
   # NOTE: install the acts_as_votable plugin if you
