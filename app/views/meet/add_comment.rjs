@@ -1,8 +1,0 @@
-meeting=Meeting.find(params[:id])
-comment=Comment.new
-comment.comment = params[:comment]
-comment.user=current_user
-meeting.comments << comment
-meeting.save
-page.insert_html "top","comments",:partial=>'shared/comment',:locals=>{:comment=>comment}
-page.visual_effect :highlight, 'comment_'+comment.id.to_s
