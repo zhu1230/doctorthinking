@@ -29,7 +29,7 @@ class MeetingsController < ApplicationController
     m=Meeting.new(params[:meeting])
 	m.state=params['meeting_state']
 	m.country=params['meeting_country']
-    m.tag_list = params[:meeting]['tag_list'].split(/,|，/).join ','
+    # m.tag_list = params[:meeting]['tag_list'].split(/,|，/).join ','
     # m.arrange_time=[params['meeting']['arrange_time(1i)'],params['meeting']['arrange_time(2i)'],params['meeting']['arrange_time(3i)']].join('-')
     # logger.info [params['meeting']['arrange_time(1i)'],params['meeting']['arrange_time(2i)'],params['meeting']['arrange_time(3i)']].join('-')
     # m.address=[params[:country],params[:state],params[:city]].join "-"

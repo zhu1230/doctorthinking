@@ -130,7 +130,7 @@ padding-left:50px;}
     <ul>
     	<li class="attach_header"><span class="name">名称</span><span class="data">类型</span><span class="no">文件大小</span><span class="fen"></span></li>
 <%@meeting.meeting_attaches.each do |a|%>
-        <li class='attach_li'><span class="name"><a href="#"><font color="#004575"><%=a.file_file_name%></font></a></span><span class="data"><font color="#999999"><%=(a.file_content_type.include? 'image') ? '图片' : '文档'%></font></span><span class="no"><font color="#666666"><%=a.file_file_size%></font></span><!-- <span class="fen"><font color="#666666">10分</font></span> --></li>
+        <li class='attach_li'><span class="name"><font color="#004575"><%=link_to a.file_file_name,a.file.url%></font></span><span class="data"><font color="#999999"><%=(a.file_content_type.include? 'image') ? '图片' : '文档'%></font></span><span class="no"><font color="#666666"><%=a.file_file_size%></font></span><!-- <span class="fen"><font color="#666666">10分</font></span> --></li>
 <%end%>
        
     </ul>
