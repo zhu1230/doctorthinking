@@ -26,18 +26,22 @@ class MeetingsController < ApplicationController
   end
   
   def create
-    m=Meeting.new(params[:meeting])
-	m.state=params['meeting_state']
-	m.country=params['meeting_country']
+    @meeting=Meeting.new(params[:meeting])
+	@meeting.state=params['meeting_state']
+	@meeting.country=params['meeting_country']
     # m.tag_list = params[:meeting]['tag_list'].split(/,|，/).join ','
     # m.arrange_time=[params['meeting']['arrange_time(1i)'],params['meeting']['arrange_time(2i)'],params['meeting']['arrange_time(3i)']].join('-')
     # logger.info [params['meeting']['arrange_time(1i)'],params['meeting']['arrange_time(2i)'],params['meeting']['arrange_time(3i)']].join('-')
     # m.address=[params[:country],params[:state],params[:city]].join "-"
-    m.meeting_attaches << MeetingAttach.find(params[:attach]) unless params[:attach].blank?
-    m.user=current_user
-    m.save!
+    @meeting.meeting_attaches << MeetingAttach.find(params[:attach]) unless params[:attach].blank?
+    @meeting.user=current_user
+    if @meeting.save && @meeting.errors.blank?
+	
     flash[:notice] = "会议保存成功..."
-    redirect_to meeting_path(m)
+    redirect_to meeting_path(@meeting)
+	else
+	render :action => :new
+	end
   end
   def fileupload
     am=MeetingAttach.new :file=>params[:Filedata]

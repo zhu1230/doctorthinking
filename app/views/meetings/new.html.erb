@@ -92,6 +92,7 @@ color: #222;
 	};
 </script>
 <div class="area">
+	<%= error_messages_for :meeting,:header_message=>"请重试！",:message=>"在建立会议时出现了一些问题：",:class=>"validation" %>
   <div class="atitle">
 	  <h1><font color="#000000">创建新会议</font></h1><span><font color="#999999">加</font><font color="red">*</font><font color="#999999">号的为必填信息</font></span>	</div>
 	<%form_for @meeting do |f|%>
@@ -115,30 +116,30 @@ color: #222;
             <li><label for="uesr">主<font color="#004575">办方：</font></label>
             <%=f.text_field :zhuban%>&nbsp;<font color="red">*</font></li>
                <li><label for="uesr"><font color="#004575">协办方：</font></label>
-               <%=f.text_field :xieban%>&nbsp;<font color="red">*</font></li>
+               <%=f.text_field :xieban%>&nbsp;<font color="red"></font></li>
                <li>
                  <label for="uesr"><font color="#004575">会议介绍：</font></label>
                  <span class="tab">
 					<%=f.text_area :content,:cols=>'',:rows=>'',:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
-                 </span>&nbsp;<font color="red">*</font></li>
+                 </span>&nbsp;<font color="red"></font></li>
                <li style="padding-top:10px;">
                  <label for="uesr"><font color="#004575">日程安排：</font></label>
                  <span class="tab">
 		<%=f.text_area :richeng,:cols=>'',:rows=>'',:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
-                 </span>&nbsp;<font color="red">*</font></li>
+                 </span>&nbsp;<font color="red"></font></li>
                <li style="padding-top:10px;">
                  <label for="uesr"><font color="#004575">主要出席人物介绍：</font></label>
                  <span class="tab">
 		<%=f.text_area :chuxi,:cols=>'',:rows=>'',:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;"%>
-                 </span>&nbsp;<font color="red">*</font></li>
+                 </span>&nbsp;<font color="red"></font></li>
                <li style="padding-top:10px;">
                  <label for="uesr"><font color="#004575">会议类别：</font></label>
                  <%=f.select("type_id", [['请选择',0],["一类会议",1],["二类会议",2]], { :include_blank => false })%>
-                 &nbsp;<font color="red">*</font></li>
+                 &nbsp;<font color="red"></font></li>
                <li>
                  <label for="uesr"><font color="#004575">会议所属科室：</font></label>
                  <%=f.select("keshi_id",options_for_select([['-全部病例-','0']])+grouped_options_for_select(keshi_by_groups,(current_user.keshi_id)))%>
-                 &nbsp;<font color="red">*</font></li>
+                 &nbsp;<font color="red"></font></li>
                  <li id='attachments'>
 	<span id='upload_box'><label for="uesr"><font color="#004575">相关附件：：</font></label>
   

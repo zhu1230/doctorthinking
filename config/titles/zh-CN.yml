@@ -24,10 +24,6 @@ bingli_comments:
     create: "发表讨论"
     edit: "编辑讨论"
     update: "编辑讨论"
-meet:
-    index: "会议列表"
-    input: "发表会议"
-    showone: "查看会议"
 groups:
     index: "圈子列表"
     new: "新建圈子"
