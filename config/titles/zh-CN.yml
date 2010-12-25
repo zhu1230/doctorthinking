@@ -8,6 +8,10 @@ bingli_infos:
     tagged: "搜索病例标签"
     search: '搜索病例'
     query: '病例搜索结果'
+    month: '近一个月'
+    week: '近一周'
+    hot: '热门'
+    active: '活跃'
 users:
     new: '用户注册'
     create: '用户注册'

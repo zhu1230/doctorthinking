@@ -1,10 +1,19 @@
-<%unless bingli_infos.blank?%>
+
 <div class="listbox">
 	<div class="cnt"> 
-    	<ul>
+
+	<%unless bingli_infos.blank?%>
+	
+	    	<ul>
        	  <%= render :partial =>'biz/bingli_infos/bingli_info_new',:collection => bingli_infos,:as => :bingli_info%>
-		
-        </ul> 
+			</ul> 
+		<%else%>
+		<h1 id='no_content' style='margin-top:20px;padding:10px 20px 10px 150px;font-size:18px;line-height:25px;background-color:#F3F7F8;'><%="此分类目前还没有病例内容，点击发表病例，来做第一个吧！"%></h1>
+		<script type="text/javascript" charset="utf-8">
+			new Effect.Corner('no_content', "30px;cc:#ffffff");
+		</script>
+		<%end%>
+        
         <div class="blank"></div> 
         <div class="page"> 
 			<%= will_paginate bingli_infos,:class=>"apple_pagination",:params=>{:keshi=>params[:keshi]}%>
@@ -12,7 +21,16 @@
             <div class="blank"></div> 
   	</div>
 	<div class='sidebar'>
-		
+		<div class="c3">
+			<%Keshi.roots.each do |r|%>
+		            	<h3><%=r.name%></h3>
+					<p>	<%r.children.each do |c|%>
+						<%=link_to c.name,biz_bingli_infos_path(:keshi_id => c.id)%>
+						<%end%></p>
+		                <div class="blank"></div>
+			<%end%>
+
+		</div>
 		<div class='tags_list'>
 			<h2 style='margin-bottom:15px;'>标签：</h2>
 			<%for tag in @tags%>
@@ -21,9 +39,3 @@
 		</div>
 	</div> 
 </div>
-<%else%>
-<h1 id='no_content' style='margin-top:60px;padding:10px 20px 10px 50px;font-size:18px;line-height:25px;background-color:#F3F7F8;'><%="目前还没有病例内容，点击发表病例，来做第一个吧！"%></h1>
-<script type="text/javascript" charset="utf-8">
-	new Effect.Corner('no_content', "30px;cc:#ffffff");
-</script>
-<%end%>

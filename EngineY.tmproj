@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/controllers/tags_controller.rb</string>
+	<string>app/views/meetings/index.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -252,6 +252,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>app/views/meetings/index.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>23</integer>
+				<key>line</key>
+				<integer>111</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>77</integer>
 		</dict>
 		<key>app/views/meetings/new.html.erb</key>
 		<dict>
@@ -841,6 +855,7 @@
 	<key>openDocuments</key>
 	<array>
 		<string>app/controllers/tags_controller.rb</string>
+		<string>app/views/meetings/index.html.erb</string>
 		<string>vendor/plugins/squirrel/README</string>
 		<string>vendor/plugins/awesome_nested_set/README.rdoc</string>
 		<string>vendor/plugins/awesome_nested_set/lib/awesome_nested_set.rb</string>
@@ -881,6 +896,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{714, 267}, {1675, 747}}</string>
+	<string>{{607, 197}, {1675, 747}}</string>
 </dict>
 </plist>

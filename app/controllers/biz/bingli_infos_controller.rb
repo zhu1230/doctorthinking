@@ -191,6 +191,8 @@ end
 def keshi_set
 			if (!params[:keshi_id].blank?)
 					session[:keshi_id]=  params[:keshi_id]!='0' ? params[:keshi_id] : nil
+				else
+					session[:keshi_id]=nil
 				end
 end
 

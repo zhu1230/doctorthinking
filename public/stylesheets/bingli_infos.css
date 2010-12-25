@@ -118,3 +118,34 @@ font-weight: bold;
 .tags_list{
 
 }
+.c3  h3 {
+width: 100%;
+float: left;
+color: #06F;
+font-size: 14px;
+height: 26px;
+line-height: 26px;
+font-weight: normal;
+margin: 0;
+padding: 0;
+}
+.c3 p{
+	width: 100%;
+	float: left;
+	line-height: 22px;
+	border-bottom: 1px dotted #D8D8D8;
+	padding: 0;
+	margin: 0;
+	padding: 0;
+}
+.c3 a{
+	font-size: 14px;
+	color: #464646;
+}
+.c3{
+	width: 180px;
+	float: left;
+	padding: 6px 10px;
+	background: #F6FBFE;
+	margin-bottom:30px;
+}
