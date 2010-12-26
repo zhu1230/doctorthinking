@@ -113,7 +113,23 @@ padding-left:50px;}
 <div class="show_box">
   <div class="menu">
     <h1><%=@meeting.title%></h1>
-    <span class="info"><font color="#999999">发表时间：</font><font color="#004575"><%=@meeting.created_at.to_s(:basic)%></font> <font color="#999999">浏览次数：</font><%=@meeting.page_views%> <a href="#"></a> <!-- <a href="#"><u><font color="#004575">打印</font></u></a> <a href="#"><font color="#FFB32E"><u>收藏</u></font></a> --></span> </div>
+    <span class="info"> <font color="#999999">浏览次数：</font><%=@meeting.page_views%> <a href="#"></a> <!-- <a href="#"><u><font color="#004575">打印</font></u></a> <a href="#"><font color="#FFB32E"><u>收藏</u></font></a> --></span>  <span style='width:170px;float:right;padding:6px 10px;line-height:17px;'> 
+		<!-- AddThis Button BEGIN -->
+		<div class="addthis_toolbox addthis_default_style ">
+		<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=zhu1230" class="addthis_button_compact">共享</a>
+		<span class="addthis_separator">|</span>
+		<a class="addthis_button_email"></a>
+		<a class="addthis_button_print"></a>
+		<a class="addthis_button_gmail"></a>
+		<a class="addthis_button_google"></a>
+		<a class="addthis_button_baidu"></a>
+		</div>
+		<script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
+		<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=zhu1230"></script>
+		<!-- AddThis Button END -->
+		
+		
+       </span></div>
     <div class="cnt">
 	<ul>
 		<li class='smail_li'><span class='title'>举办时间:</span><span class='intro1'><%=@meeting.start_time%>--<%=@meeting.end_time%></span></li>
@@ -125,6 +141,7 @@ padding-left:50px;}
 	<%unless @meeting.chuxi.nil? %>	<li class='wide_li'><span class='title'>出席介绍:</span><span class='intro2'><%=@meeting.chuxi%></span></li><%end%>
 		
 	</ul>
+	<span style='clear:both;float:right;margin:10px 40px;'><%=render :partial => 'shared/post_signature',:locals => {:post => @meeting}%></span>
     <%unless @meeting.meeting_attaches.blank? %>
 	<h1>相关附件下载</h1>
     <ul>

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/models/meeting.rb</string>
+	<string>app/views/meetings/show.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,6 +21,20 @@
 	<integer>374</integer>
 	<key>metaData</key>
 	<dict>
+		<key>app/controllers/meetings_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>42</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>22</integer>
+		</dict>
 		<key>app/controllers/tags_controller.rb</key>
 		<dict>
 			<key>caret</key>
@@ -40,14 +54,44 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>30</integer>
 				<key>line</key>
-				<integer>9</integer>
+				<integer>13</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>app/models/user.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>15</integer>
+				<key>line</key>
+				<integer>162</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>146</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>162</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>162</integer>
+			</dict>
 		</dict>
 		<key>app/views/biz/bingli_infos/_bingli_info_new.html.erb</key>
 		<dict>
@@ -76,6 +120,36 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>app/views/biz/bingli_infos/show.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>31</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>25</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>15</integer>
+				<key>line</key>
+				<integer>47</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>31</integer>
+			</dict>
 		</dict>
 		<key>app/views/groups/index.html.erb</key>
 		<dict>
@@ -163,6 +237,34 @@
 				<integer>37</integer>
 			</dict>
 		</dict>
+		<key>app/views/meetings/new.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>48</integer>
+				<key>line</key>
+				<integer>133</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/meetings/show.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>131</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>93</integer>
+		</dict>
 		<key>app/views/shared/_menu_top.html.erb</key>
 		<dict>
 			<key>caret</key>
@@ -221,6 +323,36 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>app/views/users/new.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>70</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>51</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>106</integer>
+				<key>line</key>
+				<integer>70</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>70</integer>
+			</dict>
+		</dict>
 		<key>config/initializers/session_store.rb</key>
 		<dict>
 			<key>caret</key>
@@ -234,6 +366,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>config/locales/zh-CN.yml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>184</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>150</integer>
 		</dict>
 		<key>config/routes.rb</key>
 		<dict>
@@ -264,6 +410,34 @@
 				<key>line</key>
 				<integer>199</integer>
 			</dict>
+		</dict>
+		<key>config/titles/zh-CN.yml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>18</integer>
+				<key>line</key>
+				<integer>25</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>18</integer>
+		</dict>
+		<key>lib/authenticated_system.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>16</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>log/development.log</key>
 		<dict>
@@ -411,6 +585,20 @@
 				<integer>164</integer>
 			</dict>
 		</dict>
+		<key>vendor/plugins/restful-authentication/lib/authentication.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>20</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>vendor/plugins/squirrel/README</key>
 		<dict>
 			<key>caret</key>
@@ -452,6 +640,16 @@
 		<string>app/views/biz/bingli_infos/_bingli_info_new.html.erb</string>
 		<string>app/views/shared/_post_signature.html.erb</string>
 		<string>app/models/meeting.rb</string>
+		<string>app/views/users/new.html.erb</string>
+		<string>app/models/user.rb</string>
+		<string>lib/authenticated_system.rb</string>
+		<string>vendor/plugins/restful-authentication/lib/authentication.rb</string>
+		<string>app/views/meetings/new.html.erb</string>
+		<string>app/views/biz/bingli_infos/show.html.erb</string>
+		<string>config/titles/zh-CN.yml</string>
+		<string>config/locales/zh-CN.yml</string>
+		<string>app/views/meetings/show.html.erb</string>
+		<string>app/controllers/meetings_controller.rb</string>
 		<string>app/views/biz/bingli_infos/_bingli_infos_new_list.html.erb</string>
 		<string>public/stylesheets/bingli_infos.css</string>
 		<string>app/views/meetings/add_comment.rjs</string>
@@ -467,6 +665,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{607, 197}, {1675, 747}}</string>
+	<string>{{773, 92}, {1675, 747}}</string>
 </dict>
 </plist>
