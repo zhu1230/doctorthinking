@@ -7,9 +7,11 @@ function add_more(link) {
 	// result=link.up('ul').down('li').clone(true);
 	result.down('span').update((Object.isUndefined(link) ? '选择' : link.innerText));
 	result.down("input[type='hidden']").setValue((Object.isUndefined(link) ? 'and' : link.readAttribute('id')));
-	result.insert({bottom:"<a href='#' onclick=\"this.up('li').remove();\" style=\"color:#F26521\">取消</a>"});
+	result.insert({bottom:"<a href='#' onclick=\"if($(this).up('ul').select('div').size() > 1){$(this).up('div').remove();}\" style=\"color:#F26521\">取消</a>"});
 	$('search_conditions').down('ul > li#add_botton').insert({before:result.outerHTML.gsub(/bingli_info\[\d+\]/,'bingli_info['+new_id+']')});
-	$('search_conditions').down('ul > li#add_botton').previous().highlight();
+	if(!Object.isUndefined(link)){
+		$('search_conditions').down('ul > li#add_botton').previous().highlight();
+	}
 	// result.highlight();
 }
 function add_fuzhu(link){

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101221123339) do
+ActiveRecord::Schema.define(:version => 20110101122722) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -647,6 +647,20 @@ ActiveRecord::Schema.define(:version => 20101221123339) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "shared_files", :force => true do |t|
+    t.string   "title"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+    t.integer  "down_count",        :default => 0
+    t.string   "category"
+  end
 
   create_table "states", :force => true do |t|
     t.string   "name"

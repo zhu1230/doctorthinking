@@ -6,7 +6,7 @@
         	<span class="tab">
     <h1>疑问描述：</h1>
 			<%=question.hidden_field :_destroy%>
-            <%=question.text_area :content,:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;" %><%=link_to_function '取消',"this.previous('input').setValue(1);this.up('div').hide();" %>
+            <%=question.text_area :content,:style=>"width:500px;height:100px;border:1px #889BAA solid;color:#999;font-size:12px;padding:6px;" %><%=link_to_function '取消',"$(this).previous('input').setValue(1);$(this).up('div').hide();" %>
 			    <font color="#AFAFAF">
         可填写多项
     </font>

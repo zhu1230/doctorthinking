@@ -128,7 +128,8 @@ function uploadSuccess(file, serverData) {
 	}
 }
 function del_file(remote_file_id,local_div_id) {
-	new Ajax.Request("/meetings/del_attach",{method:'post',parameters:{rfid:remote_file_id,ldid:local_div_id},});
+	
+	new Ajax.Request("/meetings/del_attach",{method:'post',parameters:{rfid:remote_file_id,ldid:local_div_id}});
 }
 
 

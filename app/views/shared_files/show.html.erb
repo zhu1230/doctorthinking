@@ -1,0 +1,52 @@
+<style type="text/css">
+<!--
+.nowpsn {width:880px;padding:0 10px;height:26px;margin:6px auto;clear:both;}
+.nowpsn span {font-size:12px;float:right;line-height:26px;}
+.area {width:930px;margin:0 auto;}
+	.area .aleft {width:766px;float:left;}
+		.area .aleft .atitle {width:766px;height:32px;background:url(/images/atitlebg3.gif) repeat-x;float:left;}
+			.area .aleft .atitle h3 {font-size:14px;color:#FD9A00;float:left;background:url(/images/arrow1.gif) 10px 10px no-repeat;padding:0 20px;line-height:32px;}
+		.area .aleft .acont {width:764px;float:left;border:1px solid #ECEDEF;}
+			.area .aleft .acont .box1,.area .aleft .acont .box2 {width:744px;float:left;padding:10px;}
+			.area .aleft .acont .box2 {background:#F4F9FF;}
+				.area .aleft .acont .box1 .bleft {float:left;padding:0 10px;}
+					.area .aleft .acont .box1 .bleft p {clear:both;line-height:26px;float:left;}
+					.area .aleft .acont .box1 .bleft img {border:3px solid #D9EAF4;float:right;margin:0 10px;display:block;}
+				.area .aleft .acont .box2 p {clear:both;line-height:26px;padding:0 10px;}	
+	.area .aright {width:154px;float:right;}
+		.area .aright .col1,.area .aright .col2 {width:154px;float:left;}
+			.area .aright .col2 .btn {width:71px;height:28px;line-height:32px;cursor:pointer;background:url(/images/btn_ziliao.gif) no-repeat;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;margin:10px 0 0;padding:0;font-weight:bold;color:#072A46;}
+			.area .aright .col2 input {border:1px solid #879BB3;width:150px;margin:0;}
+
+-->
+</style>
+<div class="area">
+	<div class="aleft">
+    	<div class="atitle"><h3><%=@shared_file.title%></h3></div>
+        <div class="blank"></div>
+        <div class="acont">
+       	  <div class="box1">
+            	<div class="bleft">
+                	<p><b>属&nbsp;&nbsp;&nbsp;&nbsp;性：</b><font color="#FF9900">资料</font></p>
+                	<p><b>大&nbsp;&nbsp;&nbsp;&nbsp;小：</b><%=@shared_file.file_file_size%></p>
+                	<p><b>发布时间：</b><%=@shared_file.uploaded_at%></p>
+                	<p><b>发&nbsp;布&nbsp;人：</b><font color="#24A5C5"><%=link_to @shared_file.user.login,user_path(@shared_file.user)%></font></p>
+                	<p><b>下载次数：</b><%=@shared_file.down_count%>次</p>
+                    <img src="/images/img3.gif" />
+                </div>
+          </div>
+            <div class="box2">
+              <p><b>文件介绍：</b></p>
+                <p style="color:#696969;">综合性医书。一名《增补医方一盘珠》。十卷。清·洪金鼎纂。刊于1749年。卷一总论运气、经络、脏腑、脏象及外淫诸病；卷二-四
+内科杂病；卷五外科；卷六-七女科；卷八-九小儿科；卷十眼科。每种疾病首载医论，概述该病的病因、病机，主要证状和治疗原则等。
+次记治例，末记诸方及验案。所选方剂多简要实用。现存初刻本等20余种清刻本、石印本等。</p>
+          </div>
+            <div class="box1"><a href="#"><img src="/images/xiazai.gif" alt="开始下载" width="154" height="51" /></a>&nbsp;<a href="#"><img src="/images/fenxiang.gif" alt="我要分享" width="154" height="51" /></a></div>
+        </div>
+    </div>
+    <div class="aright">
+    	<div class="col1"><a href="#"><img src="/images/fabu2.gif" alt="我要发布" /></a></div>
+        <div class="blank"></div>
+        <div class="col2"><input name="" type="text" /><input type="button" class="btn" value="搜索资料" /></div>
+    </div>
+</div>

@@ -85,21 +85,10 @@
 		            <div id='search_conditions' class="acont2" style='display:none;'>
 				<%form_tag query_biz_bingli_infos_path,:method => :post do %>
 				<%=hidden_field_tag :query_type,'advanced'%>
-				<li id='blank_search' class="arrow" style='display:none;'><span>选择</span><%fields_for "bingli_info[0]" do |bi|%><%=bi.hidden_field :condition_type%><%=bi.select :item,[['－请选择－',''],["主题",'title'], ['主诉','zhusu'], [' 现病史','xianbinshi'], ['既往史','jiwang'], ['体格检查','tigejiancha'], ['病程/诊疗记录','bingcheng'],['辅助检查','fuzhus'], ['鉴别诊断','chubus'], ['疑问','questions'], ['最终诊断','final'], ['性别','sex'], ['年龄','age'], ['婚否','marriage']],{},{:class => 'search_type',:onchange => 'add_fuzhu(this);'}%><span style='display:none;'>中在<br><%=select 'bingli_info[0]',:fuzhu_type_id,  grouped_options_for_select(fuzhu_by_groups,nil,'-选择分类-')%></span>中包含<%=bi.text_field :content%><%end%></li>
+				<div id='blank_search' class="arrow" style='display:none;'><span>选择</span><%fields_for "bingli_info[0]" do |bi|%><%=bi.hidden_field :condition_type%><%=bi.select :item,[['－请选择－',''],["主题",'title'], ['主诉','zhusu'], [' 现病史','xianbinshi'], ['既往史','jiwang'], ['体格检查','tigejiancha'], ['病程/诊疗记录','bingcheng'],['辅助检查','fuzhus'], ['鉴别诊断','chubus'], ['疑问','questions'], ['最终诊断','final'], ['性别','sex'], ['年龄','age'], ['婚否','marriage']],{},{:class => 'search_type',:onchange => 'add_fuzhu($(this));'}%><span style='display:none;'>中在<br/><%=select 'bingli_info[0]',:fuzhu_type_id,  grouped_options_for_select(fuzhu_by_groups,nil,'-选择分类-')%></span>中包含<%=bi.text_field :content%><%end%></div>
 				
 		                <ul>
-		
-		                  <!-- <li class="arrow"><span>选择</span></li> -->
-		                  	<!-- <li class="arrow">并且<select name="" style="width:70px;">
-		                      <option value="请选择">主诉</option>
-		                    </select>中包含<input name="" type="text"><a href="#"><font color="#F26521">取消</font></a></li>
-		                    <li class="arrow">除外<select name="" style="width:70px;">
-		                      <option value="请选择">主诉</option>
-		                  </select>中包含<input name="" type="text"><a href="#"><font color="#F26521">取消</font></a></li>
-		                    <li class="arrow">或者<select name="" style="width:70px;">
-		                      <option value="请选择">主诉</option>
-		                    </select>中包含<input name="" type="text"><a href="#"><font color="#F26521">取消</font></a></li> -->
-		                    <li id='add_botton'><font color="#F26521">增加一个搜索条件？</font><%=link_to_function '并且',"add_more(this);",{:id => 'and'}%> <%=link_to_function '或者',"add_more(this);",{:id => 'or'}%> <%=link_to_function '除外',"add_more(this);",{:id => 'except'}%></li>
+		                    <li id='add_botton'><font color="#F26521">增加一个搜索条件？</font><%=link_to_function '并且',"add_more($(this));",{:id => 'and'}%> <%=link_to_function '或者',"add_more($(this));",{:id => 'or'}%> <%=link_to_function '除外',"add_more($(this));",{:id => 'except'}%></li>
 		                    <li class="arrow">选择科室<%=select_tag 'keshi_id', grouped_options_for_select(keshi_by_groups,(current_user.keshi.id if logged_in?),'-全部科室-')%></li>
 							<li class="arrow">发表时间</li>
 							<li><%[['时间不限' , ''],['一天内' ,'day'],['一周内','week'],['一月内' ,'month'],['一年内','year']].each do |value| %>
@@ -110,59 +99,6 @@
 							<li><%=submit_tag '搜索病例',{:class => 'btn'}%></li>
 		                </ul>
 		<%end%>
-		            </div>
-		        </div>
-		        <div id="Content1_div_2" style="display:none;">
-		        	<div class="acont1">
-		                <ul>
-		                    <li><input name="" type="text" style="width:290px;margin:6px 10px;"><input type="button" class="btn" value="立即搜索"></li>
-		                </ul>
-		            </div>
-		            <div class="acont2">
-		                <ul>
-		                    <li class="arrow">发表时间</li>
-		                    <li><input name="" type="radio" value="" class="noborder">时间不限<input name="" type="radio" value="" class="noborder">最新结果<input name="" type="radio" value="" class="noborder">一天内<input name="" type="radio" value="" class="noborder">一周内<input name="" type="radio" value="" class="noborder">一年内</li>
-		                    <li><input name="" type="radio" value="" class="noborder">自定义时间范围：从<input name="" type="text" style="width:90px;">到<input name="" type="text" style="width:90px;"><font color="#BABABA">例如：2004-5-23</font></li>
-		                    <li class="arrow">主题词</li>
-		                    <li style="padding-left:6px;"><select name="">
-		                      <option value="请选择">请选择</option>
-		                    </select>补充<input name="" type="text" style="width:120px;"></li>
-		                    <li><input type="button" class="btn" value="搜索会议"></li>
-		                </ul>
-		            </div>
-		        </div>
-		        <div id="Content1_div_3" style="display:none;">
-		        	<div class="acont1">
-		                <ul>
-		                    <li><input name="" type="text" style="width:290px;margin:6px 10px;"><input type="button" class="btn" value="立即搜索"></li>
-		                    <li><input name="" type="radio" value="" class="noborder">音频<input name="" type="radio" value="" class="noborder">视频<input name="" type="radio" value="" class="noborder">文本<input name="" type="radio" value="" class="noborder">试题</li>
-		                </ul>
-		            </div>
-		            <div class="acont2">
-		                <ul>
-		                    <li class="arrow">主题词</li>
-		                    <li style="padding-left:6px;"><select name="">
-		                      <option value="请选择">请选择</option>
-		                    </select>补充<input name="" type="text" style="width:120px;"></li>
-		                    <li><input type="button" class="btn" value="搜索资料"></li>
-		                </ul>
-		            </div>
-		        </div>
-		        <div id="Content1_div_4" style="display:none;">
-		        	<div class="acont1">
-		                <ul>
-		                    <li><input name="" type="text" style="width:290px;margin:6px 10px;"><input type="button" class="btn" value="立即搜索"></li>
-		                </ul>
-		            </div>
-		            <div class="acont2">
-		                <ul>
-		                    <li class="arrow">主题词</li>
-		                    <li style="padding-left:6px;"><select name="">
-		                      <option value="请选择">请选择</option>
-		                    </select>补充<input name="" type="text" style="width:120px;"></li>
-		                    <li class="arrow">选择科室</li>
-		                    <li><input type="button" class="btn" value="搜索经验"></li>
-		                </ul>
 		            </div>
 		        </div>
 		    </div>

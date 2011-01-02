@@ -1,6 +1,7 @@
 <%= calendar_date_select_includes :locale => 'zh',:style => 'silver' %>
 <%=javascript_include_tag "swfupload","swfupload.queue","fileprogress",'swfupload.speed','swfupload.cookies'%>
 <%=javascript_include_tag "handlers"%>
+<%=stylesheet_link_tag "swfupload"%>
 <style type="text/css">
 <!--
 body {font-family:"宋体";margin:0;font-size:12px;}
@@ -29,7 +30,6 @@ color: #222;
 }
 -->
 </style>
-<%=stylesheet_link_tag "swfupload"%>
 
 
 <%session_key_name = ActionController::Base.session_options[:key]%>
@@ -42,7 +42,7 @@ color: #222;
 		//	post_params: {"PHPSESSID": "<?php echo session_id(); ?>"},
 
 			// File Upload Settings
-			file_size_limit : "50 MB",	// 2MB
+			file_size_limit : "20 MB",	// 2MB
 			file_types : "*.*",
 			file_types_description : "All files",
 			file_upload_limit : 20,
