@@ -87,7 +87,7 @@ var fkey='<%=form_authenticity_token%>'
 		<li>
 			<div class='tags'>
 				<%for tag in @bingli_info.tags%><%=link_to tag.name,tagged_source_path(:controller=>'biz/bingli_infos',:tag => tag.name),{:class=>"post-tag",:title=>"显示更多关于 '#{tag.name}' 的病例" ,:rel=>"tag"}%><%end%></div>
-				<Br><div class='post-menu' style='margin-top:10px;width:500px;float:left;line-height:18px;color:#888888;'><%= link_to "修改", edit_biz_bingli_info_path(@bingli_info) if logged_in? && @bingli_info.user==current_user%>
+				<Br><div class='post-menu' style='margin-top:10px;width:500px;float:left;line-height:18px;color:#888888;'><%= link_to "修改", edit_biz_bingli_info_path(@bingli_info) if logged_in? && (@bingli_info.user==current_user || current_user.has_role?('admin'))%>
 			</div>
 		</li>
 		<li>

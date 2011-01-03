@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/models/user.rb</string>
+	<string>app/views/pages/privacy.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -63,6 +63,20 @@
 			<key>firstVisibleLine</key>
 			<integer>27</integer>
 		</dict>
+		<key>app/controllers/pages_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>25</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>app/controllers/shared_files_controller.rb</key>
 		<dict>
 			<key>caret</key>
@@ -76,6 +90,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>55</integer>
+		</dict>
+		<key>app/controllers/users_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>61</integer>
+				<key>line</key>
+				<integer>221</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>204</integer>
 		</dict>
 		<key>app/models/meeting.rb</key>
 		<dict>
@@ -263,6 +291,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>app/views/pages/privacy.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>app/views/shared/_menu_top.html.erb</key>
 		<dict>
 			<key>caret</key>
@@ -318,6 +360,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>app/views/users/show.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>71</integer>
+				<key>line</key>
+				<integer>122</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>103</integer>
 		</dict>
 		<key>config/environment.rb</key>
 		<dict>
@@ -538,6 +594,10 @@
 		<string>app/controllers/shared_files_controller.rb</string>
 		<string>app/views/shared_files/new.html.erb</string>
 		<string>app/models/user.rb</string>
+		<string>app/views/users/show.html.erb</string>
+		<string>app/controllers/users_controller.rb</string>
+		<string>app/controllers/pages_controller.rb</string>
+		<string>app/views/pages/privacy.html.erb</string>
 		<string>app/models/role.rb</string>
 		<string>vendor/plugins/peteonrails-vote_fu-0.0.11/examples/users_controller.rb</string>
 		<string>vendor/plugins/role_requirement/generators/roles/templates/role_model.rb.erb</string>
