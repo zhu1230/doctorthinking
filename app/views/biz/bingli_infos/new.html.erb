@@ -34,7 +34,7 @@
         </span>
         <span class="tab"><h1>标签：</h1><%#=f.selectalready,BingliInfo.tag_counts_on(:tags,{:limit=>5}).collect{|t|[t.name,t.id]},{:prompt=>"--选择已有标签--"} %>
             &nbsp;<%=f.text_field :tag_list,{:class=>"tag_list",:placeholder=>"-以逗号分隔－"} %>
-            &nbsp;&nbsp;<strong>科室分类：</strong>&nbsp;<%=f.select :keshi_id, grouped_options_for_select(keshi_by_groups,current_user.keshi.id,'-选择分类-')%><%#= related_collection_select(:bingli_info, :catelog_id,'bingli_info_keshi_id',@catelogs, :id, :title, :keshi_id,:include_blank =>['选择分类',''])%>
+            &nbsp;&nbsp;<strong>科室分类：</strong>&nbsp;<%=f.select :keshi_id, grouped_options_for_select(keshi_by_groups,(f.object.keshi_id==0 ? current_user.keshi.id : f.object.keshi_id),'-选择分类-')%><%#= related_collection_select(:bingli_info, :catelog_id,'bingli_info_keshi_id',@catelogs, :id, :title, :keshi_id,:include_blank =>['选择分类',''])%>
 <%#=select_tag "catelog_id",options_for_select(Catelog.find(:all,:conditions=>["keshi_id=?",params[:id]]).collect{|c|[c.title,c.id]}),{ :include_blank => true } %>
         </span>
 <%f.fields_for :bingli do |bingli|%>
