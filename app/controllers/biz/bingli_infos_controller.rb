@@ -62,11 +62,11 @@ class Biz::BingliInfosController < ApplicationController
     @user=@bingli_info.user
   end
 def edit
-	@bingli_info=current_user.bingli_infos.find(params[:id])
+	@bingli_info=(current_user.bingli_infos.find(params[:id]) || (current_user.has_role?('admin') && BingliInfo.find(params[:id]))) 
 	render :action => :new
 end
 def update
-	@bingli_info=current_user.bingli_infos.update(params[:id],params[:bingli_info])
+	@bingli_info=(current_user.bingli_infos.update(params[:id],params[:bingli_info]) || (current_user.has_role?('admin') && BingliInfo.update(params[:id],params[:bingli_info])))
 	if !@bingli_info.errors.blank?
 		render :action => :new
 	else
