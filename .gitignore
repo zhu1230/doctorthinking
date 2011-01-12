@@ -7,4 +7,5 @@ public/tmp/*
 public/system/*
 public/attachment_miscs/*
 index/*
-
+zip_files/*
+config/database.yml
