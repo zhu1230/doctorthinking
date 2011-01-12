@@ -44,10 +44,11 @@ class SharedResourcesController < ApplicationController
     @shared_resource = SharedResource.new(params[:shared_resource])
 @shared_resource.user=current_user
 @shared_resource.shared_files << SharedFile.find(params[:attach]) unless params[:attach].blank?
-
-Zip::ZipFile.open("", Zip::ZipFile::CREATE) { |zf|
-	
-	
+t = Tempfile.new("#{Time.now.to_s}-#{request.remote_ip}")
+Zip::ZipFile.open(t.path, Zip::ZipFile::CREATE) { |zf|
+	@shared_resource.shared_files.each{|f|
+	zf.add f.file_file_name,f.file.url
+	}
 	
 	}
 @shared_resource.zip_file 
