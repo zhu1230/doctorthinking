@@ -77,7 +77,7 @@ meetings:
     new: '发表会议'
     show: '会议内容'
     index: '会议列表'
-shared_files:
+shared_resources:
     index: '资源列表'
     show: '资源浏览'
     new: '分享资源'

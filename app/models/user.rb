@@ -45,7 +45,8 @@ with_page_views :buffer_size => 5, :days => 1, :model_name => 'user'
   has_many :groups, :through => :memberships 
   has_many :own_groups,:class_name=>'Group',:foreign_key=>'creator_id'
   has_many :likes
-  has_many :shard_files
+  has_many :shared_files
+  has_many :shared_resources
   # TODO: 
   #   Add a condition to only get the attendances set in the future.
   #   Do not get attendances for past events

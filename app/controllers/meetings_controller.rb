@@ -58,6 +58,9 @@ def tagged
 	      @shown_month = Date.civil(@year, @month)
 	
 end
+def ie6_patch
+	render :text => current_user.meeting_attaches.find_by_file_file_name(params[:file_name]).id
+end
 
 	private
 	def increment_page_views

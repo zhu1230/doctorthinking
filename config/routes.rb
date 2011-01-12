@@ -174,7 +174,7 @@ ActionController::Routing::Routes.draw do |map|
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "home"
 	map.resources :meetings,:collection => {:fileupload => :post},:member => {:add_comment => :post} 
-	map.resources :shared_files,:collection => {:fileupload => :post},:member => {:add_comment => :post,:download => :get} 
+	map.resources :shared_resources,:collection => {:fileupload => :post},:member => {:add_comment => :post,:download => :get} 
  map.namespace :biz do |biz|
  	biz.resources :bingli_infos,:member => {:favorite => :get,:voteup => :get,:votedown => :get},:collection => {:hot => :get,:active => :get,:week => :get,:month => :get,:search => :get,:query => :post,:autocomplete => :get} do |bi|
  		bi.resources :comments, :shallow => true

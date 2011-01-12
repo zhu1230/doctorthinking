@@ -1,6 +1,7 @@
 <%= calendar_date_select_includes :locale => 'zh',:style => 'silver' %>
-<%=javascript_include_tag "swfupload","swfupload.queue","fileprogress",'swfupload.speed','swfupload.cookies'%>
-<%=javascript_include_tag "handlers"%>
+<%=javascript_include_tag "swfupload","swfupload.queue","fileprogress",'swfupload.speed'%>
+<%#=javascript_include_tag "swfupload","swfupload.queue","fileprogress",'swfupload.speed','swfupload.cookies'%>
+<%=javascript_include_tag "handlers",'handler_shared_resources'%>
 <%=stylesheet_link_tag "swfupload"%>
 <style type="text/css">
 <!--
