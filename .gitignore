@@ -7,5 +7,5 @@ public/tmp/*
 public/system/*
 public/attachment_miscs/*
 index/*
-#shared_file/*
+shared_file/*
 config/database.yml
