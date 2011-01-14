@@ -102,8 +102,8 @@ end
 Time::DATE_FORMATS[:event_list] = "%B %d"
 
 #  Feb 27, 2009
-Time::DATE_FORMATS[:short_text] = "%b月 %d日, %Y" 
-
+Time::DATE_FORMATS[:short_text] = "%m月 %d日, %Y" 
+Time::DATE_FORMATS[:date] = "%Y-%m-%d" 
 #   Friday
 Time::DATE_FORMATS[:event_day] = "%A"
 

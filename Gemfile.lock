@@ -65,6 +65,7 @@ GEM
       hpricot (>= 0.6)
     riddle (1.2.1)
     ruby-openid (2.1.8)
+    rubyzip (0.9.4)
     thinking-sphinx (1.4.0)
       activerecord (>= 1.15.6, < 3.0.0)
       after_commit (>= 1.0.7)
@@ -87,5 +88,6 @@ DEPENDENCIES
   rails (= 2.3.10)
   rdig
   ruby-openid
+  rubyzip
   thinking-sphinx (~> 1.4.0)
   will_paginate (~> 2.3.15)

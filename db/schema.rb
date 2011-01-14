@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110112155725) do
+ActiveRecord::Schema.define(:version => 20110114135633) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -671,7 +671,11 @@ ActiveRecord::Schema.define(:version => 20110112155725) do
     t.string   "zip_file_content_type"
     t.integer  "zip_file_file_size"
     t.datetime "zip_file_updated_at"
+    t.integer  "page_views_counter",    :default => 0
+    t.integer  "keshi_id"
   end
+
+  add_index "shared_resources", ["page_views_counter"], :name => "index_shared_resources_on_page_views_counter"
 
   create_table "states", :force => true do |t|
     t.string   "name"

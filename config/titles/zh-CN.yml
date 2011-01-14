@@ -81,5 +81,7 @@ shared_resources:
     index: '资源列表'
     show: '资源浏览'
     new: '分享资源'
+    list: '资源分类'
+    tagged: '标签分类'
     
     

@@ -1,0 +1,66 @@
+<style type="text/css">
+<!--
+.area {width:930px;margin:0 auto;}
+.area .aleft {width:708px;float:left;border:1px solid #E8EEF3;}
+.area .aleft .atitle {width:688px;float:left;height:30px;background:url(/images/atitlebg2.gif) repeat-x;padding:0 10px;}
+.area .aleft .atitle h3 {padding:0 0 0 10px;float:left;font-size:14px;color:#FB9C04;line-height:30px;background:url(/images/arrow1.gif) 0 10px no-repeat;}
+.area .aleft .acont {float:left;width:708px;}
+
+.area .aleft .acont ul {width:708px;margin:0 auto;padding:0;}
+.area .aleft .acont li {width:708px;float:left;border-bottom:1px dotted #E6E6E6;padding:6px 0;margin:0;line-height:26px;}
+.area .aleft .acont li.header {background:#F2F9FB;height:20px;overflow:hidden;}
+
+
+.area .aleft .acont span.s1 {width:320px;color:#094C76;float:left;padding:0 10px;}
+.area .aleft .acont span.s2 {width:80px;color:#094C76;float:left;text-align:center;}
+.area .aleft .acont span.s3 {width:50px;color:#094C76;padding-left:10px;float:left;text-align:center;}
+.area .aleft .acont span.s4 {width:70px;color:#094C76;padding-left:10px;float:left;text-align:center;}
+.area .aleft .acont span.s5 {width:60px;color:#F75B00;padding-left:10px;float:left;text-align:center;}
+.area .aleft .acont span.s6 {width:60px;color:#094C76;padding-left:10px;float:left;text-align:center;}
+.area .aleft .acont span.s7 {width:658px;clear:both;padding:0 20px;color:#696969;float:left;}
+
+.page {PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; MARGIN:0px 3px; PADDING-TOP: 3px; TEXT-ALIGN: center}
+.page a {BORDER-RIGHT: #aaaadd 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #aaaadd 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 2px; BORDER-LEFT: #aaaadd 1px solid; COLOR: #000099; PADDING-TOP: 2px; BORDER-BOTTOM: #aaaadd 1px solid; TEXT-DECORATION: none}
+.page a:hover {border:1px solid #009;color:#000;}
+.page a:active {border:1px solid #009;color:#000;}
+.page span.current {BORDER-RIGHT: #000099 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #000099 1px solid; PADDING-LEFT: 5px; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; MARGIN: 2px; BORDER-LEFT: #000099 1px solid; COLOR: #fff; PADDING-TOP: 2px; BORDER-BOTTOM: #000099 1px solid; BACKGROUND-COLOR: #000099}
+.page span.disabled {BORDER-RIGHT: #eee 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #eee 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 2px; BORDER-LEFT: #eee 1px solid; COLOR: #ddd; PADDING-TOP: 2px; BORDER-BOTTOM: #eee 1px solid}
+
+
+-->
+</style>
+<div class="area">
+	<div class="aleft">
+    	<div class="atitle"><h3>材料下载列表</h3></div>
+        <div class="acont">
+        <ul>
+       	  <li class="header">
+                <span class="s1" style="text-align:center; color:#000000">名称</span>
+                <span class="s2" style="color:#000000">大小</span>
+                <span class="s3" style="color:#000000">文件类型</span>
+                <span class="s4" style="color:#000000">发布时间</span>
+                <span class="s5" style="color:#000000">发布人</span>
+                <span class="s6" style="color:#000000">下载次数</span>
+          </li>
+<%@shared_resources.each do |sf|%>
+          <li>
+                <span class="s1">·<%=link_to sf.title,shared_resource_path(sf)%></span>
+                <span class="s2"><%=sf.zip_file_file_size%></span>
+                <span class="s3"><%=[['电子书','dianzishu'],['试题','shiti'],['材料','cailiao'],['幻灯片','huandeng'],['课件','kejian'],['其他','qita']].detect{|f|f[1]==sf.category}.first%></span>
+                <span class="s4"><%=sf.created_at.to_s(:date)%></span>
+                <span class="s5"><%=link_to sf.user.login,user_path(sf.user)%></span>
+                <span class="s6"><%=sf.down_count || '0'%></span>
+                <span class="s7"><%=truncate(sf.description, :length => 100)%></span>
+          </li>
+<%end%>
+         
+        </ul>
+        <div class="blank"></div>
+        <div class="page">
+<%=will_paginate @shared_resource,:class => 'digg_paginate'%>
+            </div>
+            <div class="blank"></div>
+        </div>
+    </div>
+<%= render :partial => 'shared_resource_sidebar' %>
+</div>
