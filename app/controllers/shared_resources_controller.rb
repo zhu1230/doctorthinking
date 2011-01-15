@@ -1,5 +1,5 @@
 class SharedResourcesController < ApplicationController
-	require_role 'user',:only => [:new,:edit,:create,:update,:destroy,:download]
+	require_role 'user',:only => [:new,:edit,:create,:update,:destroy]
   before_filter :find_sharedFile, :only => [:show, :edit, :update]
  	after_filter :increment_page_views,:only => [:show]
 include PageViews::Controller
@@ -100,8 +100,16 @@ t.close
     end
   end
 	def download
+		if logged_in? && current_user.has_role?('user')
 		@shared_resource=SharedResource.find(params[:id])
+		@shared_resource.down_count+=1
+		@shared_resource.save
+		# @shared_resource.down_count=1 unless @shared_resource.down_count
 		send_file 	@shared_resource.zip_file.path,:type => 'application/zip',:filename => @shared_resource.title+".zip"
+		else
+				flash[:notice]="您需要登录后才能进行此次操作。"
+				redirect_to login_url
+		end
 	end
 	  def fileupload
 	    am=SharedFile.new :file=>params[:Filedata]

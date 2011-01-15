@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110114135633) do
+ActiveRecord::Schema.define(:version => 20110115184036) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -662,7 +662,7 @@ ActiveRecord::Schema.define(:version => 20110114135633) do
   create_table "shared_resources", :force => true do |t|
     t.string   "title"
     t.string   "description"
-    t.integer  "down_count"
+    t.integer  "down_count",            :default => 0, :null => false
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"

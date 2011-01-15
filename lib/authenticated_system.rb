@@ -62,6 +62,7 @@ module AuthenticatedSystem
     # to access the requested action.  For example, a popup window might
     # simply close itself.
     def access_denied
+	flash[:notice]="您需要登录后才能进行此次操作。"
       respond_to do |format|
         format.html do
           store_location
