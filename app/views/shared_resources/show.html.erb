@@ -15,7 +15,15 @@
 		.area .aright .col1,.area .aright .col2 {width:154px;float:left;}
 			.area .aright .col2 .btn {width:71px;height:28px;line-height:32px;cursor:pointer;background:url(/images/btn_ziliao.gif) no-repeat;border-top-style:none;border-right-style:none;border-bottom-style:none;border-left-style:none;margin:10px 0 0;padding:0;font-weight:bold;color:#072A46;}
 			.area .aright .col2 input {border:1px solid #879BB3;width:150px;margin:0;}
-
+			.post-menu {
+			padding-top: 2px;
+			clear: both;
+			}
+			.post-menu a{
+				color: #888;
+				padding: 0px 3px 2px 3px;
+			}
+			.post-menu>a:hover {background-color:#777;color:#fff;text-decoration:none;}
 -->
 </style>
 <div class="area">
@@ -46,7 +54,8 @@
                 	<p><b>大&nbsp;&nbsp;&nbsp;&nbsp;小：</b><%total_size=0;@shared_resource.shared_files.each{|sf|total_size+=sf.file_file_size};concat (total_size/1024).to_s+'KB'%></p>
                 	<p><b>发布时间：</b><%=@shared_resource.created_at%></p>
                 	<p><b>发&nbsp;布&nbsp;人：</b><font color="#24A5C5"><%=link_to @shared_resource.user.login,user_path(@shared_resource.user)%></font></p>
-                	<p><b>下载次数：</b><%=@shared_resource.down_count || 0%>次</p>
+                	<p><b>下载次数：</b><%=@shared_resource.down_count%>次</p>
+					<p class="post-menu" style="margin-top:10px;width:500px;float:left;line-height:18px;color:#888888;"><%=link_to '修改',edit_shared_resource_path(@shared_resource) if logged_in? && (@shared_resource.user==current_user || current_user.has_role?('admin'))%></p>
                     <!-- <img src="/images/img3.gif" /> -->
                 </div>
           </div>

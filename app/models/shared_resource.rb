@@ -8,6 +8,7 @@ class SharedResource < ActiveRecord::Base
 include Pacecar
 	belongs_to :user
 	has_many :shared_files
+	accepts_nested_attributes_for :shared_files, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
 	# has_one :zip_file
 	# def is_image?
 	# 	p file_content_type
