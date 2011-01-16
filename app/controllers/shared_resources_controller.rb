@@ -40,7 +40,11 @@ include PageViews::Controller
 
   # GET /sharedFiles/1/edit
   def edit
-	@shared_resource=current_user.shared_resources.find(params[:id])
+	@shared_resource=if current_user.has_role?('admin')
+		SharedResource.find params[:id]
+	else
+	current_user.shared_resources.find(params[:id])
+	end
 	render :action => :new
   end
 
