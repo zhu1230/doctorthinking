@@ -78,7 +78,7 @@ include PageViews::Controller
   def update
     respond_to do |wants|
 	@shared_resource=if current_user.has_role?('admin')
-		SharedResource.udpate(params[:id],params[:shared_resource])
+		SharedResource.update(params[:id],params[:shared_resource])
 	else
         current_user.shared_resources.update(params[:id],params[:shared_resource])
 	end
