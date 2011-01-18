@@ -64,7 +64,7 @@ include PageViews::Controller
     respond_to do |wants|
       if @shared_resource.save
         flash[:notice] = '分享资源成功！'
-        wants.html { redirect_to(@shared_resource) }
+        wants.html { redirect_to shared_resource_url(@shared_resource) }
         wants.xml  { render :xml => @shared_resource, :status => :created, :location => @shared_resource }
       else
         wants.html { render :action => "new" }

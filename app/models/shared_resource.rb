@@ -1,6 +1,6 @@
 class SharedResource < ActiveRecord::Base
 	has_attached_file :zip_file,:path => ":rails_root/shared_file/zip_files/:id/:filename",:url => ""
-		validates_attachment_size :zip_file,:less_than => 60.megabytes,:message => "文件大小不能超过60M。"
+		validates_attachment_size :zip_file,:less_than => 100.megabytes,:message => "文件大小不能超过100M。"
 		# validates_attachment_content_type :zip_file,:content_type => ['application/x-zip-compressed','application/zip'],:message => '文件的类型只是为 zip'
 		# before_post_process :is_image?
 	acts_as_commentable

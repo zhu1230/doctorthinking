@@ -109,14 +109,14 @@ def clearMessages
 	page['validation'].hide
 end
   	def keshi_by_groups
-		h=Hash.new
+		h=Array.new
 		Keshi.roots.each do |r|
 		setup_keshi(r,h)
 		end
 		h		
 	end
 	def fuzhu_by_groups
-		h=Hash.new
+		h=Array.new
 		FuzhuType.roots.each do |r|
 		setup_fuzhu(r,h)
 		end
@@ -125,22 +125,25 @@ end
 	protected
 	def setup_keshi(d,h)
 		if  !d.leaf?
-		h[d.name]||=Hash.new
+			h1=Array.new
+	
 	d.children.each do |c| 
-		self.setup_keshi(c,h[d.name])
+		self.setup_keshi(c,h1)
 			end
+				h << [d.name,h1]
 		else
-		h[d.name] ||=d.id
+		h << [d.name,d.id]
 		end
 	end
 	def setup_fuzhu(d,h)
 		if  !d.leaf?
-		h[d.name]||=Hash.new
+		h1=Array.new
 	d.children.each do |c| 
-		self.setup_fuzhu(c,h[d.name])
+		self.setup_fuzhu(c,h1)
 			end
+				h << [d.name,h1]
 		else
-		h[d.name] ||=d.id
+		h << [d.name,d.id]
 		end
 	end
 end
