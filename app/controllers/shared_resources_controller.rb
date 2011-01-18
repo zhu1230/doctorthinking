@@ -21,6 +21,7 @@ include PageViews::Controller
   # GET /sharedFiles/1.xml
   def show
 	@shared_resource=SharedResource.find(params[:id])
+	@comments=@shared_resource.comments.paginate :order => "created_at DESC",:per_page=>10,:page=>params[:page],:include=>"user"
     respond_to do |wants|
       wants.html # show.html.erb
       wants.xml  { render :xml => @shared_resource }

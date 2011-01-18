@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'shared_resource.js' %>
 <style type="text/css">
 <!--
 .area {width:930px;margin:0 auto;}
@@ -24,6 +25,7 @@
 				padding: 0px 3px 2px 3px;
 			}
 			.post-menu>a:hover {background-color:#777;color:#fff;text-decoration:none;}
+
 -->
 </style>
 <div class="area">
@@ -67,6 +69,7 @@
           </div>
             <div class="box1"><%=link_to image_tag("/images/xiazai.gif",:alt =>"开始下载" ),download_shared_resource_path(@shared_resource)%>&nbsp;<!-- <a href="#"><img src="/images/fenxiang.gif" alt="我要分享" width="154" height="51" /></a> --></div>
         </div>
+		<%=render 'shared/comments_show'%>
     </div>
     <div class="aright">
     	<div class="col1"><%=link_to image_tag("/images/fabu2.gif",:alt=>"我要发布"),new_shared_resource_path%></div>

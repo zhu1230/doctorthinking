@@ -1,0 +1,64 @@
+<style type="text/css" media="screen">
+	.show_box, .comment_box {
+/*	width: 766px;*/
+	margin: 0px auto;
+	overflow: hidden;
+	clear: both;
+	}
+	.comment_box{margin-top:10px;}
+	.show_box .menu,.comment_box .menu {width:958px;height:30px;border-bottom:1px #D0E1EB solid;background:url(/images/tab_bg1.gif) repeat-x;float:left;}
+	.show_box .menu h1,.comment_box .menu h1 {line-height:30px;margin:0px;padding:0px 0px 0px 30px;background:url(/images/showh1bg.gif) 10px 6px no-repeat;font-size:14px;float:left;display:inline;color:#004575;}
+	.show_box .menu .info {float:right;line-height:30px;padding-right:10px;}
+	.show_box .cnt {width:938px;float:left;padding:10px;}
+	.show_box .cnt li.header {background:#EFF8FF;}
+	.comment_box .menu h1 {background:url(/images/commenth1bg.gif) 10px 6px no-repeat;}
+	.comment_box .cnt ul {margin:6px auto;}
+	.comment_box .cnt li {width:100%;float:left;padding:6px 0px;border-bottom:1px #ccc dotted;}
+	.comment_box .cnt .intro {margin:0px auto;padding:0px;display:block;text-indent:2em;line-height:20px;}
+	.comment_box .cnt .info {text-align:right;margin:0px auto;display:block;}
+	.user_box {margin:0px auto;overflow:hidden;clear:both;}
+	.user_box .menu {float:left;}
+	.user_box .menu h1 {line-height:30px;margin:0px;padding:0px 0px 0px 30px;background:url(/images/userh1bg.gif) 10px 6px no-repeat;font-size:14px;float:left;display:inline;color:#004575;}
+	.user_box .cnt {width:880px;padding:10px;float:left;color:#999;line-height:30px;}
+	.user_box .cnt h1{
+		width:300px;
+		float:left;
+		height:50px;
+		margin:50px 0px 0px 10px;
+		display:block;
+		font-size:14px;
+		font-weight:normal;
+		line-height:20px;
+	}
+</style>
+<div class='blank'></div>
+<div class="comment_box">
+	<div class="menu"><h1>评论</h1></div>
+    <div class="cnt">
+    	<ul  id="comments">
+       	<%=render :partial=>'shared/comment',:collection=>@comments%>
+        </ul>
+        <div class="blank"></div>
+  </div>
+</div>
+<div class="blank">
+</div>
+<%=will_paginate @comments,:class=>"digg_pagination",:style=>"width:630px;padding:10px 0px;margin:0px auto;float:right;padding:6px 0px;" %>
+<div class="user_box">
+	<div class="menu"><h1>我要评论</h1></div>
+  <div class="cnt">
+   		<%if logged_in? %>
+		<%form_for :comment,:url => add_comment_shared_resource_path(@shared_resource),:html => {:id => 'comment_form'}  do |f|%>
+		<%=f.text_area "comment",{:cols=>"",:rows=>"",:style=>"width:600px;height:100px;border:1px #ccc solid;color:#999;font-size:12px;padding:10px; float:left;",:placeholder => "-留下您的评论-"}%>
+		<span class="form-error"></span>
+		 <label style="position: relative;top:100px;padding:0px 0px 0px 30px;bottom: 0px;"><%=submit_tag "提交"%></label>
+		<%end%>
+		<%else%>
+		 <h1>您尚未
+	            <%=link_to('登录',login_url,{:style =>"color:'#FF6600'"}) %>，不能参与讨论<%=link_to "我要注册>>",signup_url,{ :style => "color:#FF0000"} %>
+	        </h1>
+	<%end%>
+   
+    </label></h1>
+  </div>
+</div>
