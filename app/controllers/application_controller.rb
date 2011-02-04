@@ -44,8 +44,12 @@ class ApplicationController < ActionController::Base
   
   before_filter :api_filter
 	after_filter :my_store_location
+	before_filter :cookies_show
 
   
+  def cookies_show
+  	p cookies
+  end
   
   def set_vars
      #@network = Network.network

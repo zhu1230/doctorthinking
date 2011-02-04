@@ -1,4 +1,4 @@
-<%=javascript_include_tag "swfupload","swfupload.queue","fileprogress",'swfupload.speed'%>
+<%=javascript_include_tag "swfupload","swfupload.queue","fileprogress",'swfupload.speed','swfupload.cookies.js'%>
 <%=javascript_include_tag "handlers",'handler_shared_resources'%>
 <%=stylesheet_link_tag "swfupload"%>
 <style type="text/css" media="screen">
@@ -35,10 +35,10 @@ color: #222;
 			file_types_description : "All files",
 			file_upload_limit : 30,
 			file_queue_limit : 0,
-		    post_params: {
-		        "<%= session_key_name %>": "<%= cookies[session_key_name] %>",
-		        "authenticity_token": "<%= form_authenticity_token %>"
-		      },
+		    // post_params: {
+		    //     "<%= session_key_name %>": "<%= cookies[session_key_name] %>",
+		    //     "authenticity_token": "<%= form_authenticity_token %>"
+		    //   },
 			// Event Handler Settings - these functions as defined in Handlers.js
 			//  The handlers are not part of SWFUpload but are part of my website and control how
 			//  my website reacts to the SWFUpload events.

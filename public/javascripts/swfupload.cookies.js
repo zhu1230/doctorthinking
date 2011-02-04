@@ -29,6 +29,7 @@ if (typeof(SWFUpload) === "function") {
 		var postParams = this.settings.post_params;
 		
 		// Get the cookies
+		alert(document.cookie);
 		var i, cookieArray = document.cookie.split(';'), caLength = cookieArray.length, c, eqIndex, name, value;
 		for (i = 0; i < caLength; i++) {
 			c = cookieArray[i];

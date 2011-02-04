@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/views/shared_resources/edit.html.erb</string>
+	<string>public/javascripts/swfupload.cookies.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,42 +21,72 @@
 	<integer>374</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/controllers/biz/bingli_infos_controller.rb</key>
+		<key>app/controllers/application_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>53</integer>
-				<key>line</key>
-				<integer>73</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>55</integer>
-		</dict>
-		<key>app/controllers/shared_resources_controller.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>4</integer>
+				<integer>14</integer>
 				<key>line</key>
 				<integer>46</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>41</integer>
+			<integer>28</integer>
+		</dict>
+		<key>app/controllers/meetings_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>83</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>4</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>83</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+		</dict>
+		<key>app/controllers/shared_resources_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>10</integer>
+				<key>line</key>
+				<integer>23</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>12</integer>
 		</dict>
 		<key>app/middleware/flash_session_cookie_middleware.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>52</integer>
+				<integer>7</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>9</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -107,19 +137,63 @@
 				<integer>32</integer>
 			</dict>
 		</dict>
-		<key>app/models/shared_resource.rb</key>
+		<key>app/models/shared_file.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>10</integer>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>app/models/shared_resource.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>89</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/biz/bingli_infos/new.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>184</integer>
+				<key>line</key>
+				<integer>36</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>16</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>118</integer>
+				<key>line</key>
+				<integer>36</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>184</integer>
+				<key>line</key>
+				<integer>36</integer>
+			</dict>
 		</dict>
 		<key>app/views/biz/bingli_infos/show.html.erb</key>
 		<dict>
@@ -179,7 +253,7 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/meetings/del_attach.rjs</key>
+		<key>app/views/meetings/add_comment.rjs</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -197,9 +271,9 @@
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>90</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>2</integer>
+				<integer>15</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
@@ -208,6 +282,50 @@
 				<key>line</key>
 				<integer>0</integer>
 			</dict>
+		</dict>
+		<key>app/views/meetings/show.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>27</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>12</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>46</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>27</integer>
+			</dict>
+		</dict>
+		<key>app/views/shared/_comments_show.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>34</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/shared/bingli_info/_fuzhu.html.erb</key>
 		<dict>
@@ -239,42 +357,28 @@
 				<integer>18</integer>
 			</dict>
 		</dict>
-		<key>app/views/shared_resources/del_attach.rjs</key>
+		<key>app/views/shared_resources/add_comment.rjs</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>14</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>6</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>app/views/shared_resources/edit.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>76</integer>
-				<key>line</key>
-				<integer>92</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>85</integer>
 		</dict>
 		<key>app/views/shared_resources/new.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>67</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>22</integer>
+				<integer>40</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
@@ -287,14 +391,14 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>37</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>6</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>123</integer>
+				<integer>40</integer>
 			</dict>
 		</dict>
 		<key>app/views/shared_resources/show.html.erb</key>
@@ -302,14 +406,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>28</integer>
+				<integer>47</integer>
 				<key>line</key>
-				<integer>23</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>36</integer>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/users/activate_complete.html.erb</key>
 		<dict>
@@ -383,6 +487,64 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>public/javascripts/meeting.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<key>public/javascripts/shared_resource.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>public/javascripts/swfupload.cookies.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>50</integer>
+				<key>line</key>
+				<integer>20</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>15</integer>
+		</dict>
 		<key>public/stylesheets/showone.css</key>
 		<dict>
 			<key>caret</key>
@@ -413,56 +575,62 @@
 				<integer>304</integer>
 			</dict>
 		</dict>
-		<key>vendor/plugins/pacecar/README.rdoc</key>
+		<key>vendor/plugins/acts_as_commentable/README</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>76</integer>
+				<integer>63</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>67</integer>
-			<key>selectFrom</key>
+			<integer>34</integer>
+		</dict>
+		<key>vendor/plugins/awesome_nested_set/lib/awesome_nested_set.rb</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>47</integer>
 				<key>line</key>
-				<integer>76</integer>
+				<integer>148</integer>
 			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>18</integer>
-				<key>line</key>
-				<integer>76</integer>
-			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>121</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>app/controllers/shared_resources_controller.rb</string>
-		<string>app/views/shared_resources/edit.html.erb</string>
-		<string>app/controllers/biz/bingli_infos_controller.rb</string>
-		<string>app/views/meetings/del_attach.rjs</string>
-		<string>app/views/shared_resources/del_attach.rjs</string>
-		<string>vendor/plugins/pacecar/README.rdoc</string>
+		<string>vendor/plugins/acts_as_commentable/README</string>
+		<string>app/controllers/meetings_controller.rb</string>
+		<string>vendor/plugins/awesome_nested_set/lib/awesome_nested_set.rb</string>
 		<string>app/views/shared_resources/new.html.erb</string>
+		<string>app/views/meetings/show.html.erb</string>
+		<string>app/views/biz/bingli_infos/new.html.erb</string>
 		<string>app/middleware/flash_session_cookie_middleware.rb</string>
+		<string>public/javascripts/swfupload.cookies.js</string>
 		<string>config/preinitializer.rb</string>
 		<string>config/environment.rb</string>
 		<string>config/initializers/session_store.rb</string>
 		<string>app/views/shared/bingli_info/_fuzhu.html.erb</string>
 		<string>app/models/bingli_info.rb</string>
 		<string>app/models/shared_resource.rb</string>
+		<string>app/models/shared_file.rb</string>
 		<string>app/models/bingli.rb</string>
 		<string>app/views/biz/bingli_infos/show.html.erb</string>
 		<string>app/views/shared_resources/show.html.erb</string>
+		<string>app/views/shared_resources/add_comment.rjs</string>
+		<string>app/views/meetings/add_comment.rjs</string>
+		<string>app/views/shared/_comments_show.html.erb</string>
+		<string>app/controllers/application_controller.rb</string>
+		<string>public/javascripts/meeting.js</string>
+		<string>public/javascripts/shared_resource.js</string>
 		<string>public/stylesheets/showone.css</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
