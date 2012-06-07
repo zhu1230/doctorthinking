@@ -1,4 +1,0 @@
-t=BingliInfo.find(params[:id])
-p=BingliComment.new(:content=>params[:bingli_comment_content],:keshi_id=>t.keshi_id,:catelog_id=>t.catelog_id,:user_id=>current_user.id,:title=>"")
-t.bingli_comments << p
-t.save

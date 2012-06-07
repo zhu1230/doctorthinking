@@ -1,9 +1,0 @@
-if(!logged_in? )
-  page.insert_html 'bottom','bingli_vote_'+params[:id],:partial => 'shared/ajax_message',:locals => {:message => "您需要  "+(link_to '登录',login_url,:style=>'font-size: 1.0em;color:red')+"  后才能使用投票功能。"}
-  page.call 'votedownback','bingli_vote_'+params[:id]
-elsif(current_user.voted_on?(BingliInfo.find(params[:id])))
-  page.insert_html 'bottom','bingli_vote_'+params[:id],:partial => 'shared/ajax_message',:locals => {:message => "此前您已经对此病例投过票了。"}
-  page.call 'votedownback','bingli_vote_'+params[:id]
-else
-  current_user.vote_against(BingliInfo.find(params[:id]))
-end

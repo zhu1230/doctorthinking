@@ -1,3 +1,0 @@
-current_user.shared_files.find(params[:rfid]).destroy
-page.remove params[:ldid]
-page["attachments"].select("input[type='hidden'][value='#{params[:rfid]}']").first.remove;

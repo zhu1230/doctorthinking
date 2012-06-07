@@ -1,7 +1,0 @@
-<div  class="tag_bar">
-		<h2>热门标签</h2>
-		<div style="padding:10px"><%unless Meeting.tag_counts.blank?  %><% tag_cloud Meeting.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
-		    <%= link_to tag.name,'#', :class => css_class %>
-		<!-- tagged_source_path('meetings',tag.id) -->
-		  <% end%><%end%></div>
-	</div></div>

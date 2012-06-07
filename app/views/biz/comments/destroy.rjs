@@ -1,2 +1,0 @@
-current_user.comments.find(params[:id]).destroy
-page.remove 'comment-'+params[:id]

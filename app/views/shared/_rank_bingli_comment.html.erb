@@ -1,7 +1,0 @@
-<% if logged_in? %>
-<u><%= (link_to_remote "赞成",:url=>{:controller=>'misc/rank',:action=>'rank_bingli_comment',:id=>bingli_comment.id,:rank_tag=>'uphold'})+"(<font id='uphold[#{bingli_comment.id}]'>"+bingli_comment.uphold.to_s+'</font>)'%>
-</u><u><%= (link_to_remote "反对",:url=>{:controller=>'misc/rank',:action=>'rank_bingli_comment',:id=>bingli_comment.id,:rank_tag=>'denial'})+"(<font id='denial[#{bingli_comment.id}]'>"+bingli_comment.denial.to_s+'</font>)'%></u>
-<%else 
-session[:return_to] = request.request_uri%>
-<%="请"+link_to('登录',login_url)+"后投票"%> 
-<%end%>

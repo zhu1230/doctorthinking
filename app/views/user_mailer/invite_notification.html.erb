@@ -1,9 +1,0 @@
-<%=@invite.user.name.blank? ?  @invite.user.login : @invite.user.name%> 邀请您加入
- <a href="http://www.doctorthinking.com">医思网社区</a>【 doctorthinking.com 】
-<br/><br/>
-<i>"<%=@invite.message%>"</i>
-<br/><br/>
-医思网(DoctorThinking.com) 是一个多平台的,为针对全球医生的专业交流社区. 获取您想要的病例，听取专业医生的诊疗意见，跟踪最新医学技术，认识同领域的医生并保持联系。，旨在为医生提供学术科研交流，疑难病例讨论的平台。
-<br/><br/>
-点击下面的链接，接受邀请:<br/>
-<%= link_to "http://www.doctorthinking.com/signup?invite_code=#{@invite.invite_code}", "http://www.doctorthinking.com/signup?invite_code=#{@invite.invite_code}" %>

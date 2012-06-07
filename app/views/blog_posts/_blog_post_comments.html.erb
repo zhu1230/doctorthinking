@@ -1,9 +1,0 @@
-<style type="text/css" media="screen">
-	#comments {border-top: 1px solid #999;border-bottom: 1px solid #999;}
-</style>
-<div style='margin:20px auto'>评论：<br/>
-
-	<% @blog_post.comments.each do |comment| %>
-	<%=render :partial => "blog_post_comment",:locals=>{:comment=>comment}%>
-	<% end %>
-</div>

@@ -1,5 +1,0 @@
-<div id="tagcloud">
-    <%cache do
-    @tags=Tag.find(:all,:limit=>80) %><%tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do |id,title, css_class| %><%=link_to title,{:controller=>"misc/search",:action=>"do_search",:id=>id,:type=>"tag"},:class=>css_class %> &nbsp; &nbsp;<%end
-    end %>
-</div>

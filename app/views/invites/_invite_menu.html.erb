@@ -1,8 +1,0 @@
-<div class="mainnav2">
-    <ul>
-        <li class="begin"><%= link_to '所有邀请',user_invites_path(current_user) %></li>
-        <%if logged_in? %><li><%= link_to '我创建的邀请', user_invites_path(current_user)%></li>
-	<li><%#= link_to '我参与的活动', participate_user_invites_path(current_user)%></li><%end%>
-        <li><%= link_to '创建邀请', new_user_invite_path(current_user) %></li>
-    </ul>
-</div>

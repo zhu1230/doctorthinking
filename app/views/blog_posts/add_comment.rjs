@@ -1,9 +1,0 @@
-  blog_post = BlogPost.find(params[:blog_post_id])
-  comment = Comment.new
-  comment.comment = params[:comment][:comment]
-  comment.user = current_user
-  blog_post.comments << comment
-blog_post.save
-	page.insert_html :bottom,"comments",:partial=>'blog_post_comment',:locals=>{:comment=>comment}
-	page.visual_effect :highlight, 'blog_post_comment_'+comment.id.to_s
-

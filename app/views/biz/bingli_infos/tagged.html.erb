@@ -1,8 +1,0 @@
-<%= stylesheet_link_tag "bingli_infos.css" %>
-<%= javascript_include_tag "bingli_infos.js" %>
-<div class="listbox">
-	<div style='font-size:18px;font-weight:bold;font-space:2px;'>
-		搜索标签为&nbsp;<%=params[:tag]%>&nbsp;&nbsp;的病例：
-	</div>
-	</div>
-<%=render :partial => 'bingli_infos_list',:locals => {:bingli_infos => @bingli_infos}%>
